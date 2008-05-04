@@ -1,0 +1,8 @@
+LXLauncher is an open source clone of Asus launcher for EeePC.
+It outperformes the original launcher developed by Xandros.
+
+Background images used by Asus launcher are non-free and are
+hence not included in this package.
+
+Please put the images in /usr/share/lxlauncher/backround.
+LXLauncher will use those background images if available.
