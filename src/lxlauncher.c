@@ -414,6 +414,24 @@ int main(int argc, char** argv)
     if( !init_inotify() )
         return 1;
 
+    // set up themes for notebook
+    gtk_rc_parse_string(
+        "style \"launcher-bg\" {\n" // for the background GtkWindow
+            "bg[NORMAL] = \"#3675AD\"\n"
+        "}\n"
+        "style \"launcher-nb\" {\n"  // for the notebook
+            "font_name=\"Sans Bold 11\"\n"
+            "text[NORMAL] = \"#000000\"\n"  // the active tab
+            "bg[NORMAL] = \"#ffffff\"\n"
+            //"bg[SELECTED] = \"#3675AD\"\n"
+            "fg[ACTIVE] = \"#ffffff\"\n"    // text color for non-active tabs
+            "bg[ACTIVE] = \"#3675AD\"\n"    // the other non-active tabs
+        "}\n"
+        "widget_class \"*<GtkNotebook>\" style \"launcher-nb\""
+        "widget_class \"*<GtkNotebook><GtkHBox><GtkLabel>\" style \"launcher-nb\""
+        "widget \"GtkWindow\" style \"launcher-bg\""
+        );
+
 	icon_size = gtk_icon_size_register( "ALIcon", IMG_SIZE, IMG_SIZE );
 
 	main_window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
@@ -450,8 +468,8 @@ int main(int argc, char** argv)
 		gtk_scrolled_window_set_policy(scroll, GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
 
         // create label
-		gtk_box_pack_start( label, gtk_image_new_from_icon_name(groups[i].icon, GTK_ICON_SIZE_MENU), FALSE, TRUE, 0 );
-		gtk_box_pack_start( label, gtk_label_new(_(groups[i].title)), FALSE, TRUE, 0 );
+		gtk_box_pack_start( label, gtk_image_new_from_icon_name(groups[i].icon, GTK_ICON_SIZE_MENU), FALSE, TRUE, 2 );
+		gtk_box_pack_start( label, gtk_label_new(_(groups[i].title)), FALSE, TRUE, 2 );
 		gtk_widget_show_all(label);
 
 		viewport = gtk_viewport_new( NULL, NULL );
