@@ -419,9 +419,12 @@ int main(int argc, char** argv)
         "style \"launcher-bg\" {\n" // for the background GtkWindow
             "bg[NORMAL] = \"#3675AD\"\n"
         "}\n"
-        "style \"launcher-nb\" {\n"  // for the notebook
+        "style \"launcher-fg\" {\n" // for the text size/color
             "font_name=\"Sans Bold 11\"\n"
-            "text[NORMAL] = \"#000000\"\n"  // the active tab
+            "fg[NORMAL] = \"#3675AD\"\n"
+            "fg[PRELIGHT] = \"#3675AD\"\n"
+        "}\n"
+        "style \"launcher-nb\" = \"launcher-fg\" {\n"  // for the notebook
             "bg[NORMAL] = \"#ffffff\"\n"
             //"bg[SELECTED] = \"#3675AD\"\n"
             "fg[ACTIVE] = \"#ffffff\"\n"    // text color for non-active tabs
@@ -430,6 +433,7 @@ int main(int argc, char** argv)
         "widget_class \"*<GtkNotebook>\" style \"launcher-nb\""
         "widget_class \"*<GtkNotebook><GtkHBox><GtkLabel>\" style \"launcher-nb\""
         "widget \"GtkWindow\" style \"launcher-bg\""
+        "widget_class \"*<GtkTable><GtkButton>*<GtkLabel>\" style \"launcher-fg\""
         );
 
 	icon_size = gtk_icon_size_register( "ALIcon", IMG_SIZE, IMG_SIZE );
