@@ -72,8 +72,8 @@ static char* settings_cats[] = { "Settings", "System", NULL };
 
 static Group groups[]={
 	{N_("Internet"), "accessibility_internet_wallpaper.jpg", "applications-internet", NULL, net_cats, 0 },
-	{N_("Work"), "accessibility_work_wallpaper.jpg", "applications-office", NULL, work_cats, 0 },
 	{N_("Learn"), "accessibility_learn_wallpaper.jpg", "applications-accessories", NULL, learn_cats, 0 },
+	{N_("Work"), "accessibility_work_wallpaper.jpg", "applications-office", NULL, work_cats, 0 },
 	{N_("Play"), "accessibility_play_wallpaper.jpg", "applications-multimedia", NULL, play_cats, 0 },
 	{N_("Settings"), "accessibility_settings_wallpaper.jpg", "gtk-preferences", NULL, settings_cats, 0 },
 };
@@ -450,6 +450,8 @@ int main(int argc, char** argv)
             g_object_weak_ref( viewport, (GWeakNotify)g_object_unref, pixmap );
         }
 	}
+
+	gtk_notebook_reorder_child(notebook, gtk_notebook_get_nth_page(notebook, 2), 1 );
 
 	load_apps();
 	gtk_window_set_default_size( (GtkWindow*)main_window, WIN_WIDTH, WIN_HEIGHT );
