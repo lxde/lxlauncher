@@ -143,8 +143,9 @@ static gboolean is_app_in_group( VFSAppDesktop* app, Group* grp )
 	return FALSE;
 }
 
-static void add_app( gpointer key, gpointer val, gpointer data )
+static void categorize_app( gpointer key, gpointer val, gpointer data )
 {
+    GList** app_lists = (GList**)data;
 	int i;
 	VFSAppDesktop* app = val;
 	if( app->categories )
@@ -153,56 +154,68 @@ static void add_app( gpointer key, gpointer val, gpointer data )
 		{
 			if( is_app_in_group( app, &groups[i] ) )
 			{
-				GtkButton *btn, *box, *img, *label;
-				int x, y;
-				GtkTable* table = (GtkTable*)groups[i].page;
-				// add the app to that page
-
-				btn = gtk_button_new();
-				GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
-				GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
-//				if( g_path_is_absolute( vfs_app_desktop_get_icon_name(app) ) )
-//				{
-					GdkPixbuf* pix = vfs_app_desktop_get_icon( app, IMG_SIZE, TRUE );
-					img = gtk_image_new_from_pixbuf( pix );
-//				}
-//				else
-//					img = gtk_image_new_from_icon_name( vfs_app_desktop_get_icon_name(app), icon_size );
-				box = gtk_vbox_new( FALSE, 2 );
-				gtk_box_pack_start( box, img, FALSE, TRUE, 2 );
-
-				label = gtk_label_new( vfs_app_desktop_get_disp_name(app) );
-				gtk_widget_show( label );
-				gtk_widget_set_size_request( label, BUTTON_SIZE - 10, -1 );
-				gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
-				gtk_label_set_line_wrap( label, TRUE );
-				gtk_label_set_justify( label, GTK_JUSTIFY_CENTER );
-				gtk_box_pack_start( box, label, FALSE, TRUE, 2 );
-				gtk_container_add( btn, box );
-
-				gtk_button_set_relief( btn, GTK_RELIEF_NONE );
-				gtk_widget_set_size_request( btn, BUTTON_SIZE, BUTTON_SIZE );
-				gtk_widget_show_all( btn );
-
-				gtk_tooltips_set_tip( tooltips, btn, vfs_app_desktop_get_desc(app), NULL );
-
-				vfs_app_desktop_ref( app );
-				g_signal_connect( btn, "clicked", G_CALLBACK(on_btn_clicked), app );
-
-				y = groups[i].n_btns / N_COLS;
-				x = groups[i].n_btns % N_COLS;
-				//g_debug("x = %d, y = %d", x, y);
-				gtk_table_resize( table, y + 1, N_COLS );
-				gtk_table_attach( table, btn, x, x+1, y, y+1, 0, 0, 2, 2 );
-				++groups[i].n_btns;
-
-                gtk_widget_realize( btn );
-                gtk_widget_set_app_paintable( btn, TRUE );
-                gdk_window_set_back_pixmap( ((GtkWidget*)btn)->window, NULL, TRUE );
+			    app_lists[i] = g_list_prepend(app_lists[i], app);
+			    // g_debug( "add %s to %s", app->disp_name, groups[i].title );
 				return;
 			}
 		}
 	}
+}
+
+static void add_app_btn( Group* group, VFSAppDesktop* app )
+{
+    GtkButton *btn, *box, *img, *label;
+    int x, y;
+    GtkTable* table = (GtkTable*)group->page;
+
+    // add the app to that page
+    btn = gtk_button_new();
+    GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
+    GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
+//  if( g_path_is_absolute( vfs_app_desktop_get_icon_name(app) ) )
+//  {
+        GdkPixbuf* pix = vfs_app_desktop_get_icon( app, IMG_SIZE, TRUE );
+        img = gtk_image_new_from_pixbuf( pix );
+//  }
+//  else
+//      img = gtk_image_new_from_icon_name( vfs_app_desktop_get_icon_name(app), icon_size );
+    box = gtk_vbox_new( FALSE, 2 );
+    gtk_box_pack_start( box, img, FALSE, TRUE, 2 );
+
+    label = gtk_label_new( vfs_app_desktop_get_disp_name(app) );
+    gtk_widget_show( label );
+    gtk_widget_set_size_request( label, BUTTON_SIZE - 10, -1 );
+    gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
+    gtk_label_set_line_wrap( label, TRUE );
+    gtk_label_set_justify( label, GTK_JUSTIFY_CENTER );
+    gtk_box_pack_start( box, label, FALSE, TRUE, 2 );
+    gtk_container_add( btn, box );
+
+    gtk_button_set_relief( btn, GTK_RELIEF_NONE );
+    gtk_widget_set_size_request( btn, BUTTON_SIZE, BUTTON_SIZE );
+    gtk_widget_show_all( btn );
+
+    gtk_tooltips_set_tip( tooltips, btn, vfs_app_desktop_get_desc(app), NULL );
+
+    vfs_app_desktop_ref( app );
+    g_signal_connect( btn, "clicked", G_CALLBACK(on_btn_clicked), app );
+
+    y = group->n_btns / N_COLS;
+    x = group->n_btns % N_COLS;
+    //g_debug("x = %d, y = %d", x, y);
+    gtk_table_resize( table, y + 1, N_COLS );
+    gtk_table_attach( table, btn, x, x+1, y, y+1, 0, 0, 2, 2 );
+    ++group->n_btns;
+
+    gtk_widget_realize( btn );
+    gtk_widget_set_app_paintable( btn, TRUE );
+    gdk_window_set_back_pixmap( ((GtkWidget*)btn)->window, NULL, TRUE );
+}
+
+// compare func used to sort apps in lists
+static int sort_apps(VFSAppDesktop* app1, VFSAppDesktop* app2, Group* group)
+{
+    return g_utf8_collate( app1->disp_name, app2->disp_name );
 }
 
 static void load_apps()
@@ -211,6 +224,9 @@ static void load_apps()
 	GHashTable* hash = g_hash_table_new_full( g_str_hash, g_str_equal, g_free,
 														  vfs_app_desktop_unref );
     gboolean init_watch = FALSE;
+    GList* app_lists[ G_N_ELEMENTS(groups) ] = {0};
+    int i;
+
     if( ! watches )
     {
         watches = g_new0( int, g_strv_length(dirs) + 1 );
@@ -233,7 +249,24 @@ static void load_apps()
 	}
 	watches[(dir-dirs)] = -1;
 
-	g_hash_table_foreach( hash, add_app, NULL );
+	g_hash_table_foreach( hash, categorize_app, app_lists );
+
+    // add the categorized apps to every pages
+    for( i = 0; i < G_N_ELEMENTS(groups); ++i )
+    {
+        GList* l;
+        // sort the apps
+        app_lists[i] = g_list_sort_with_data( app_lists[i], (GCompareDataFunc)sort_apps, &groups[i] );
+
+        // add the apps to every pages
+        for( l = app_lists[i]; l; l = l->next )
+        {
+            VFSAppDesktop* app = (VFSAppDesktop*)l->data;
+            add_app_btn( &groups[i], app );
+        }
+        
+        g_list_free( app_lists[i] );
+    }
 
 	g_hash_table_destroy( hash );
 }
@@ -271,7 +304,7 @@ static gboolean reload_apps()
         gtk_container_foreach( groups[i].page, G_CALLBACK(gtk_widget_destroy), NULL );
         groups[i].n_btns = 0;
         gtk_table_resize( groups[i].page, 1, 1 );
-        g_debug("remove all children");
+        // g_debug("remove all children");
     }
     // load all apps again
     load_apps();
