@@ -2,8 +2,8 @@
 
 SUBDIRS = src po
 
-backgrounddir=$(datadir)/background
-background_DATA=
+#backgrounddir=$(datadir)/background
+#background_DATA=
 
 EXTRA_DIST = \
 	autogen.sh

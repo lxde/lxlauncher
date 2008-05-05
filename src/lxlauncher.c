@@ -64,11 +64,11 @@ typedef struct {
 	int n_btns;
 }Group;
 
-static char* net_cats[] = { "Internet", "Network", NULL };
-static char* work_cats[] = { "Office", NULL };
-static char* learn_cats[] = { "Education", NULL };
+static char* net_cats[] = { "Network", NULL };
+static char* work_cats[] = { "Office", "Utility", "Graphics", "TextEditor", "TextTools", "Viewer", "Core", "Development", NULL };
+static char* learn_cats[] = { "Education", "Dictionary", NULL };
 static char* play_cats[] = { "AudioVideo", "Game", NULL };
-static char* settings_cats[] = { "Settings", NULL };
+static char* settings_cats[] = { "Settings", "System", NULL };
 
 static Group groups[]={
 	{N_("Internet"), "accessibility_internet_wallpaper.jpg", "applications-internet", NULL, net_cats, 0 },
