@@ -38,11 +38,11 @@
 #include "exo-wrap-table.h"
 #include "working-area.h"
 
-#define WIN_WIDTH	800
-#define WIN_HEIGHT	480
+// #define WIN_WIDTH	800
+// #define WIN_HEIGHT	480
 #define BUTTON_SIZE	120
 #define IMG_SIZE	48
-#define N_COLS	(WIN_WIDTH / BUTTON_SIZE)
+// #define N_COLS	(WIN_WIDTH / BUTTON_SIZE)
 
 #define BACKGROUND_DIR  PACKAGE_DATA_DIR"/lxlauncher/background"
 #define ICON_DIR        PACKAGE_DATA_DIR"/lxlauncher/icons"
@@ -66,7 +66,6 @@ typedef struct {
 	char* themed_icon;
 	GtkWidget* page;
 	char** categories;
-	int n_btns;
 }Group;
 
 static char* net_cats[] = { "Network", NULL };
@@ -195,7 +194,7 @@ static void categorize_app( gpointer key, gpointer val, gpointer data )
 static void add_app_btn( Group* group, VFSAppDesktop* app )
 {
     GtkButton *btn, *box, *img, *label;
-    int x, y;
+    // int x, y;
     GtkTable* table = (GtkTable*)group->page;
 
     // add the app to that page
@@ -230,13 +229,13 @@ static void add_app_btn( Group* group, VFSAppDesktop* app )
     vfs_app_desktop_ref( app );
     g_signal_connect( btn, "clicked", G_CALLBACK(on_btn_clicked), app );
 
-    y = group->n_btns / N_COLS;
-    x = group->n_btns % N_COLS;
+    // y = group->n_btns / N_COLS;
+    // x = group->n_btns % N_COLS;
     //g_debug("x = %d, y = %d", x, y);
     // gtk_table_resize( table, y + 1, N_COLS );
     // gtk_table_attach( table, btn, x, x+1, y, y+1, 0, 0, 2, 2 );
     gtk_container_add( table, btn );
-    ++group->n_btns;
+    // ++group->n_btns;
 
     gtk_widget_realize( btn );
     gtk_widget_set_app_paintable( btn, TRUE );
@@ -348,7 +347,7 @@ static gboolean reload_apps()
     {
         // destroy all existing buttons
         gtk_container_foreach( groups[i].page, G_CALLBACK(gtk_widget_destroy), NULL );
-        groups[i].n_btns = 0;
+        // groups[i].n_btns = 0;
         // gtk_table_resize( groups[i].page, 1, 1 );
         // g_debug("remove all children");
     }
@@ -448,6 +447,7 @@ int main(int argc, char** argv)
 {
 	int i;
 	gboolean use_asus_icons;
+	GdkRectangle working_area;
 
 #ifdef ENABLE_NLS
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -462,26 +462,7 @@ int main(int argc, char** argv)
         return 1;
 
     // set up themes for notebook
-    gtk_rc_parse_string(
-        "style \"launcher-bg\" {\n" // for the background GtkWindow
-            "bg[NORMAL] = \"#3675AD\"\n"
-        "}\n"
-        "style \"launcher-fg\" {\n" // for the text size/color
-            "font_name=\"Sans Bold 11\"\n"
-            "fg[NORMAL] = \"#3675AD\"\n"
-            "fg[PRELIGHT] = \"#3675AD\"\n"
-        "}\n"
-        "style \"launcher-nb\" = \"launcher-fg\" {\n"  // for the notebook
-            "bg[NORMAL] = \"#ffffff\"\n"
-            //"bg[SELECTED] = \"#3675AD\"\n"
-            "fg[ACTIVE] = \"#ffffff\"\n"    // text color for non-active tabs
-            "bg[ACTIVE] = \"#3675AD\"\n"    // the other non-active tabs
-        "}\n"
-        "widget_class \"*<GtkNotebook>\" style \"launcher-nb\""
-        "widget_class \"*<GtkNotebook><GtkHBox><GtkLabel>\" style \"launcher-nb\""
-        "widget \"GtkWindow\" style \"launcher-bg\""
-        "widget_class \"*<GtkTable><GtkButton>*<GtkLabel>\" style \"launcher-fg\""
-        );
+    gtk_rc_parse( PACKAGE_DATA_DIR "/lxlauncher/gtkrc" );
 
 	icon_size = gtk_icon_size_register( "ALIcon", IMG_SIZE, IMG_SIZE );
 
@@ -572,7 +553,10 @@ int main(int argc, char** argv)
 	gtk_notebook_reorder_child(notebook, gtk_notebook_get_nth_page(notebook, 2), 1 );
 
 	load_apps();
-	gtk_window_set_default_size( (GtkWindow*)main_window, WIN_WIDTH, WIN_HEIGHT );
+
+    get_working_area( gtk_widget_get_screen(main_window), &working_area );
+    gtk_window_set_default_size( (GtkWindow*)main_window, working_area.width, working_area.height );
+
 	gtk_widget_show_all( main_window );
 	gtk_main();
 

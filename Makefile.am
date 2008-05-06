@@ -2,8 +2,12 @@
 
 SUBDIRS = src po
 
-#backgrounddir=$(datadir)/background
+themedir=$(datadir)/lxlauncher
+theme_DATA=gtkrc
+
+#backgrounddir=$(datadir)/lxlauncher/background
 #background_DATA=
 
 EXTRA_DIST = \
+	$(theme_DATA) \
 	autogen.sh
