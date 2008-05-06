@@ -28,6 +28,10 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 
+#include <gdk/gdkx.h>
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+
 #include <errno.h>
 
 #include "vfs-app-desktop.h"
@@ -38,11 +42,8 @@
 #include "exo-wrap-table.h"
 #include "working-area.h"
 
-// #define WIN_WIDTH	800
-// #define WIN_HEIGHT	480
 #define BUTTON_SIZE	120
 #define IMG_SIZE	48
-// #define N_COLS	(WIN_WIDTH / BUTTON_SIZE)
 
 #define BACKGROUND_DIR  PACKAGE_DATA_DIR"/lxlauncher/background"
 #define ICON_DIR        PACKAGE_DATA_DIR"/lxlauncher/icons"
@@ -52,6 +53,8 @@ static GtkWidget* notebook;
 static GtkTooltips* tooltips;
 static int n_cols;
 static GtkIconSize icon_size;
+
+static Atom atom_NET_WORKAREA = NULL;
 
 static int inotify_fd = -1;
 static GIOChannel* inotify_io_channel = NULL;
@@ -194,7 +197,6 @@ static void categorize_app( gpointer key, gpointer val, gpointer data )
 static void add_app_btn( Group* group, VFSAppDesktop* app )
 {
     GtkButton *btn, *box, *img, *label;
-    // int x, y;
     GtkTable* table = (GtkTable*)group->page;
 
     // add the app to that page
@@ -229,13 +231,7 @@ static void add_app_btn( Group* group, VFSAppDesktop* app )
     vfs_app_desktop_ref( app );
     g_signal_connect( btn, "clicked", G_CALLBACK(on_btn_clicked), app );
 
-    // y = group->n_btns / N_COLS;
-    // x = group->n_btns % N_COLS;
-    //g_debug("x = %d, y = %d", x, y);
-    // gtk_table_resize( table, y + 1, N_COLS );
-    // gtk_table_attach( table, btn, x, x+1, y, y+1, 0, 0, 2, 2 );
     gtk_container_add( table, btn );
-    // ++group->n_btns;
 
     gtk_widget_realize( btn );
     gtk_widget_set_app_paintable( btn, TRUE );
@@ -443,6 +439,20 @@ static void finalize_inotify()
     inotify_fd = -1;
 }
 
+GdkFilterReturn evt_filter(GdkXEvent *xevt, GdkEvent *evt, gpointer data)
+{
+    XEvent *xev = (XEvent*)xevt;
+    // working area is changed
+    if(xev->type == PropertyNotify && xev->xproperty.atom == atom_NET_WORKAREA )
+    {
+        GdkRectangle working_area;
+        get_working_area( gdk_drawable_get_screen(evt->any.window), &working_area );
+        gtk_window_move( main_window, working_area.x, working_area.y );
+        gtk_window_resize( main_window, working_area.width, working_area.height );
+    }
+    return GDK_FILTER_CONTINUE;
+}
+
 int main(int argc, char** argv)
 {
 	int i;
@@ -478,6 +488,10 @@ int main(int argc, char** argv)
 	gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
 	//gtk_window_set_gravity(GDK_GRAVITY_STATIC );
 
+    atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);;
+    XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XID(gtk_widget_get_root_window(main_window)), PropertyChangeMask);
+	gdk_window_add_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
+
 	notebook = gtk_notebook_new();
 	GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
 	gtk_container_add( (GtkContainer*)main_window, notebook );
@@ -491,7 +505,6 @@ int main(int argc, char** argv)
 	{
 	    GtkWidget* *viewport;
 		GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
-		// GtkWidget* page = gtk_table_new( 1, 1, FALSE );
 		GtkWidget* page = exo_wrap_table_new(TRUE);
 		GtkWidget* label;
 		GtkWidget* image;
@@ -555,10 +568,13 @@ int main(int argc, char** argv)
 	load_apps();
 
     get_working_area( gtk_widget_get_screen(main_window), &working_area );
-    gtk_window_set_default_size( (GtkWindow*)main_window, working_area.width, working_area.height );
+    gtk_window_move( main_window, working_area.x, working_area.y );
+    gtk_window_resize( main_window, working_area.width, working_area.height );
 
 	gtk_widget_show_all( main_window );
 	gtk_main();
+
+    gdk_window_remove_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
 
     finalize_inotify();
 
