@@ -35,6 +35,7 @@
 #include "inotify/linux-inotify.h"
 #include "inotify/inotify-syscalls.h"
 
+#include "exo-wrap-table.h"
 #include "working-area.h"
 
 #define WIN_WIDTH	800
@@ -232,8 +233,9 @@ static void add_app_btn( Group* group, VFSAppDesktop* app )
     y = group->n_btns / N_COLS;
     x = group->n_btns % N_COLS;
     //g_debug("x = %d, y = %d", x, y);
-    gtk_table_resize( table, y + 1, N_COLS );
-    gtk_table_attach( table, btn, x, x+1, y, y+1, 0, 0, 2, 2 );
+    // gtk_table_resize( table, y + 1, N_COLS );
+    // gtk_table_attach( table, btn, x, x+1, y, y+1, 0, 0, 2, 2 );
+    gtk_container_add( table, btn );
     ++group->n_btns;
 
     gtk_widget_realize( btn );
@@ -347,7 +349,7 @@ static gboolean reload_apps()
         // destroy all existing buttons
         gtk_container_foreach( groups[i].page, G_CALLBACK(gtk_widget_destroy), NULL );
         groups[i].n_btns = 0;
-        gtk_table_resize( groups[i].page, 1, 1 );
+        // gtk_table_resize( groups[i].page, 1, 1 );
         // g_debug("remove all children");
     }
     // load all apps again
@@ -508,7 +510,8 @@ int main(int argc, char** argv)
 	{
 	    GtkWidget* *viewport;
 		GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
-		GtkWidget* page = gtk_table_new( 1, 1, FALSE );
+		// GtkWidget* page = gtk_table_new( 1, 1, FALSE );
+		GtkWidget* page = exo_wrap_table_new(TRUE);
 		GtkWidget* label;
 		GtkWidget* image;
 		GdkPixbuf* pixbuf;
@@ -532,6 +535,9 @@ int main(int argc, char** argv)
 		gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
 		gtk_box_pack_start( label, gtk_label_new(_(groups[i].title)), FALSE, TRUE, 2 );
 		gtk_widget_show_all(label);
+
+        // gtk_container_set_border_width( page, 4 );
+        exo_wrap_table_set_col_spacing( page, 8 );
 
 		viewport = gtk_viewport_new( NULL, NULL );
 		gtk_container_add( viewport, page );

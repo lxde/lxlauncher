@@ -1,1 +1,10 @@
-洪任諭 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+洪任諭 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>, LXDE developers
+
+src/working-area.[ch] was taken from guification plugin of gaim/pidgin.
+ * License: GNU GPL
+ * Copyright (C) 2003-2004 Gary Kramlich
+
+src/exo-wrap-table.[ch] was taken from libexo.
+ * License: GNU LGPL
+ * Copyright (c) 2000      Ramiro Estrugo <ramiro@eazel.com>
+ * Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
