@@ -35,6 +35,8 @@
 #include "inotify/linux-inotify.h"
 #include "inotify/inotify-syscalls.h"
 
+#include "working-area.h"
+
 #define WIN_WIDTH	800
 #define WIN_HEIGHT	480
 #define BUTTON_SIZE	120
@@ -42,6 +44,7 @@
 #define N_COLS	(WIN_WIDTH / BUTTON_SIZE)
 
 #define BACKGROUND_DIR  PACKAGE_DATA_DIR"/lxlauncher/background"
+#define ICON_DIR        PACKAGE_DATA_DIR"/lxlauncher/icons"
 
 static GtkWidget* main_window;
 static GtkWidget* notebook;
@@ -59,6 +62,7 @@ typedef struct {
 	char* title;
 	char* background;
 	char* icon;
+	char* themed_icon;
 	GtkWidget* page;
 	char** categories;
 	int n_btns;
@@ -71,11 +75,36 @@ static char* play_cats[] = { "AudioVideo", "Game", NULL };
 static char* settings_cats[] = { "Settings", "System", NULL };
 
 static Group groups[]={
-	{N_("Internet"), "accessibility_internet_wallpaper.jpg", "applications-internet", NULL, net_cats, 0 },
-	{N_("Learn"), "accessibility_learn_wallpaper.jpg", "applications-accessories", NULL, learn_cats, 0 },
-	{N_("Work"), "accessibility_work_wallpaper.jpg", "applications-office", NULL, work_cats, 0 },
-	{N_("Play"), "accessibility_play_wallpaper.jpg", "applications-multimedia", NULL, play_cats, 0 },
-	{N_("Settings"), "accessibility_settings_wallpaper.jpg", "gtk-preferences", NULL, settings_cats, 0 },
+	{
+	    N_("Internet"),
+        "accessibility_internet_wallpaper.jpg",
+        "Internet.png", "applications-internet",
+        NULL, net_cats, 0
+    },
+	{
+	    N_("Learn"),
+        "accessibility_learn_wallpaper.jpg",
+        "learn_sel.png", "applications-accessories",
+        NULL, learn_cats, 0
+    },
+	{
+	    N_("Work"),
+    	"accessibility_work_wallpaper.jpg",
+    	"work_sel.png", "applications-office",
+    	NULL, work_cats, 0
+    },
+	{
+	    N_("Play"),
+        "accessibility_play_wallpaper.jpg",
+        "play_sel.png", "applications-multimedia",
+         NULL, play_cats, 0
+    },
+	{
+	    N_("Settings"),
+        "accessibility_settings_wallpaper.jpg",
+        "system_sel.png", "gtk-preferences",
+        NULL, settings_cats, 0
+    },
 };
 
 static void finalize_inotify();
@@ -226,13 +255,16 @@ static void load_apps()
     gboolean init_watch = FALSE;
     GList* app_lists[ G_N_ELEMENTS(groups) ] = {0};
     int i;
+    static int n = 0;
 
     if( ! watches )
     {
-        watches = g_new0( int, g_strv_length(dirs) + 1 );
+        n = g_strv_length(dirs) + 1;
+        watches = g_new0( int, n );
         init_watch = TRUE;
     }
 
+    // load system-wide apps
     for( dir = dirs; *dir; ++dir )
 	{
 		char* dir_path = g_build_filename( *dir, "applications",NULL );
@@ -247,7 +279,19 @@ static void load_apps()
 		load_app_desktops( hash, dir_path, NULL );
 		g_free( dir_path );
 	}
-	watches[(dir-dirs)] = -1;
+	// load user-specific apps
+	{
+		char* dir_path = g_build_filename( g_get_user_data_dir(), "applications",NULL );
+        if( init_watch )
+        {
+            // monitor the dir for changes
+            watches[n - 2] = inotify_add_watch ( inotify_fd, dir_path,
+                                        IN_MODIFY|IN_CREATE|IN_DELETE );
+        }
+		load_app_desktops( hash, dir_path, NULL );
+		g_free( dir_path );
+    }
+	watches[n-1] = -1;
 
 	g_hash_table_foreach( hash, categorize_app, app_lists );
 
@@ -277,7 +321,7 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
     GtkWidgetClass* wc = (GtkWidgetClass*)g_type_class_peek_parent( oc );
     GdkPixmap* pixmap = (GdkPixmap*)data;
 
-    if( GTK_WIDGET_DRAWABLE(w) )
+    if( GTK_WIDGET_DRAWABLE(w) && evt->window == ((GtkViewport*)w)->bin_window )
     {
         GdkGC* gc = gdk_gc_new(evt->window);
 
@@ -401,6 +445,7 @@ static void finalize_inotify()
 int main(int argc, char** argv)
 {
 	int i;
+	gboolean use_asus_icons;
 
 #ifdef ENABLE_NLS
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -451,10 +496,13 @@ int main(int argc, char** argv)
 	//gtk_window_set_gravity(GDK_GRAVITY_STATIC );
 
 	notebook = gtk_notebook_new();
+	GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
 	gtk_container_add( (GtkContainer*)main_window, notebook );
 
 	tooltips = gtk_tooltips_new();
 	g_object_ref_sink( tooltips );
+
+    use_asus_icons = g_file_test( ICON_DIR, G_FILE_TEST_IS_DIR );
 
 	for( i = 0; i < G_N_ELEMENTS(groups); ++i )
 	{
@@ -472,7 +520,16 @@ int main(int argc, char** argv)
 		gtk_scrolled_window_set_policy(scroll, GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
 
         // create label
-		gtk_box_pack_start( label, gtk_image_new_from_icon_name(groups[i].icon, GTK_ICON_SIZE_MENU), FALSE, TRUE, 2 );
+        if( use_asus_icons ) // use the ugly asus icons
+        {
+            file = g_build_filename( ICON_DIR, groups[i].icon, NULL );
+            image = gtk_image_new_from_file(file);
+            g_free( file );
+        }
+        else // use themed icon provided by icon themes
+            image = gtk_image_new_from_icon_name(groups[i].themed_icon, GTK_ICON_SIZE_MENU);
+
+		gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
 		gtk_box_pack_start( label, gtk_label_new(_(groups[i].title)), FALSE, TRUE, 2 );
 		gtk_widget_show_all(label);
 
