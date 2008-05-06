@@ -144,7 +144,10 @@ static void load_app_desktops( GHashTable* hash, const char* dir_path, const cha
 												 app_desktop );
 				}
 				else
+				{
+					g_hash_table_remove( hash, desktop_id );
 					vfs_app_desktop_unref( app_desktop );
+				}
 			}
 
 			g_free( desktop_id );
