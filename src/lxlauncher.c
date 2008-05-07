@@ -456,6 +456,11 @@ GdkFilterReturn evt_filter(GdkXEvent *xevt, GdkEvent *evt, gpointer data)
     return GDK_FILTER_CONTINUE;
 }
 
+static gboolean window_delete(GtkWidget *window, gpointer data)
+{
+    return TRUE;
+}
+
 int main(int argc, char** argv)
 {
 	int i;
@@ -490,6 +495,8 @@ int main(int argc, char** argv)
 	gdk_window_set_type_hint( main_window->window, GDK_WINDOW_TYPE_HINT_DESKTOP );
 	gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
 	//gtk_window_set_gravity(GDK_GRAVITY_STATIC );
+	
+    g_signal_connect(main_window, "delete-event", G_CALLBACK(window_delete), NULL);
 
     atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);;
     XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XID(gtk_widget_get_root_window(main_window)), PropertyChangeMask);
