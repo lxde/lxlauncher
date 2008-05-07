@@ -17,7 +17,7 @@ msgstr ""
 
 #: src/lxlauncher.c:74
 msgid "Internet"
-msgstr "網路"
+msgstr "網際網路"
 
 #: src/lxlauncher.c:75
 msgid "Work"
