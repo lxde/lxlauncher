@@ -34,4 +34,3 @@ msgstr "Pelaa"
 #: src/lxlauncher.c:78
 msgid "Settings"
 msgstr "Asetukset"
-
