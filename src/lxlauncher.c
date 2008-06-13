@@ -362,21 +362,142 @@ static gboolean on_scroll_change_val( GtkRange* scroll, GtkScrollType type, gdou
     return FALSE;
 }
 
+static char* app_dir_to_path( AppDir* dir, gboolean use_disp_name )
+{
+    if( dir->parent == app_dir_root )
+    {
+        if( use_disp_name )
+            return g_strdup( dir->title );
+        else
+            return g_strconcat( "/", use_disp_name ? dir->title : dir->name, NULL );
+    }
+    else
+    {
+        char* parent = app_dir_to_path( dir->parent, use_disp_name );
+        char* ret;
+        if( use_disp_name )
+            ret = g_strconcat( parent, " / ", dir->title, NULL );
+        else
+            ret = g_strconcat( parent, "/", dir->name, NULL );
+        g_free( parent );
+        return ret;
+    }
+    return NULL;
+}
+
+static AppDir* app_dir_from_path( const char* path )
+{
+    GList* l;
+    AppDir* dir = app_dir_root;
+    char** names = g_strsplit( path + 1, "/", -1 ), **name;
+    for( name = names; *name; ++name )
+    {
+        AppDir* subdir = NULL;
+        for( l = dir->children; l; l = l->next )
+        {
+            subdir = (AppDir*)l->data;
+            if( 0 == strcmp(subdir->name, *name ) )
+                break;
+        }
+        if( l ) // found
+            dir = subdir;
+        else
+        {
+            dir = NULL;
+            break;
+        }
+    }
+    g_strfreev( names );
+    return dir;
+}
+
+static void create_notebook_pages();
+
+static PageData* notebook_page_from_dir( AppDir* dir )
+{
+    int i, n;
+    GtkWidget* page;
+    AppDir* top = dir;
+    PageData* page_data;
+
+    // get toplevel parent dir
+    while( top->parent != app_dir_root )
+        top = top->parent;
+
+    n = gtk_notebook_get_n_pages( notebook );
+    for( i = 0; i < n; ++i )
+    {
+        AppDir* top2;
+        page = gtk_notebook_get_nth_page( notebook, i );
+        page_data = (PageData*)g_object_get_data(page, "page");
+        top2 = page_data->dir;
+        while( top2->parent != app_dir_root )
+            top2 = top2->parent;
+
+        if( top == top2 )
+            return page_data;
+    }
+    return NULL;
+}
+
 static gboolean reload_apps()
 {
     int i;
-#if 0
-    for( i = 0; i < G_N_ELEMENTS(groups); ++i )
+    PageData* page_data;
+    GtkWidget* page;
+
+    GDK_THREADS_ENTER();
+
+    int n = gtk_notebook_get_n_pages( notebook );
+    char** page_paths = g_new0(char*, n + 1);
+    int cur_page = gtk_notebook_get_current_page(notebook);
+
+    for( i = 0; i < n; ++i )
     {
-        // destroy all existing buttons
-        gtk_container_foreach( groups[i].page, G_CALLBACK(gtk_widget_destroy), NULL );
-        // groups[i].n_btns = 0;
-        // gtk_table_resize( groups[i].page, 1, 1 );
-        // g_debug("remove all children");
+        page = gtk_notebook_get_nth_page( notebook, 0 );
+        page_data = (PageData*)g_object_get_data( page, "page" );
+        page_paths[i] = app_dir_to_path( page_data->dir, FALSE );
+        // g_debug("page[%d] = %s", i, page_paths[i]);
+        gtk_notebook_remove_page( notebook, 0 );
     }
+
+    // unload all apps and groups
+    app_dir_free( app_dir_root );
+    app_dir_root = NULL;
+
     // load all apps again
     load_apps();
-#endif
+
+    // rebuild every pages
+    create_notebook_pages();
+
+    for( i = 0; i < n; ++i )
+    {
+        AppDir* dir = app_dir_from_path( page_paths[i] );
+        if( dir )
+        {
+            AppDir* top = dir;
+            // get toplevel parent dir
+
+            while( top->parent != app_dir_root )
+                top = top->parent;
+            // find notebook page containing the top dir
+            page_data = notebook_page_from_dir( top );
+            if( ! page_data )
+                continue;
+
+            if( page_data->dir != dir )
+                notebook_page_chdir( page_data, dir );
+
+            if( i == cur_page )
+                gtk_notebook_set_current_page( notebook, cur_page );
+        }
+    }
+
+    GDK_THREADS_LEAVE();
+
+    g_strfreev( page_paths );
+
     reload_handler = 0;
     return FALSE;
 }
@@ -409,11 +530,11 @@ static gboolean on_inotify_event( GIOChannel * channel,
 
     // some changes happened in applications dirs
     // reload is needed
-
+    // g_debug( "file changed" );
     if( reload_handler )
         g_source_remove( reload_handler );
 
-    reload_handler = g_timeout_add( 1000,(GSourceFunc)reload_apps, NULL );
+    reload_handler = g_timeout_add( 2000,(GSourceFunc)reload_apps, NULL );
 
 #if 0
     i = 0;
@@ -537,12 +658,14 @@ AppDir* app_dir_new(const char* name)
     return dir;
 }
 
-AppDir* app_dir_free( AppDir* dir )
+void app_dir_free( AppDir* dir )
 {
     g_free(dir->name);
     g_free(dir->title);
     g_free(dir->icon);
     g_free(dir->desc);
+    g_list_foreach( dir->items, vfs_app_desktop_unref, NULL );
+    g_list_foreach( dir->children, app_dir_free, NULL );
     g_free(dir);
 }
 
@@ -685,7 +808,7 @@ static gboolean grouping_apps( GHashTable* app_pool_hash )
 static void notebook_page_chdir( PageData* data, AppDir* dir )
 {
     GList* l;
-
+    char* dir_path;
     data->dir = dir;
 
     // destroy old buttons
@@ -695,8 +818,8 @@ static void notebook_page_chdir( PageData* data, AppDir* dir )
 
     for( l = data->dir->children; l; l = l->next )
     {
-        VFSAppDesktop* app = (VFSAppDesktop*)l->data;
-        add_dir_btn( data, app );
+        AppDir* app_dir = (AppDir*)l->data;
+        add_dir_btn( data, app_dir );
     }
 
     for( l = dir->items; l; l = l->next )
@@ -707,10 +830,14 @@ static void notebook_page_chdir( PageData* data, AppDir* dir )
 
     if( dir->parent != app_dir_root )   // if dir has parent, not top-level group
     {
-        GtkWidget* label = gtk_label_new( dir->title );
+        GtkWidget* label;
         char* text = g_strdup_printf( _("Go back to \"%s\""), dir->parent->title );
         GtkWidget* btn = gtk_button_new_with_label( text );
         g_free( text );
+
+        dir_path = app_dir_to_path( dir, TRUE );
+        label = gtk_label_new( dir_path );
+        g_free( dir_path );
 
         gtk_misc_set_alignment( label, 0.0, 0.5 );
         g_object_set_data( btn, "dir", dir->parent );
@@ -734,10 +861,97 @@ static void page_data_free( PageData* data )
     g_free( data );
 }
 
+static void create_notebook_pages()
+{
+    GList* l;
+    // build pages for toplevel groups
+	for( l = app_dir_root->children; l; l = l->next )
+	{
+	    GtkWidget* *viewport;
+		GtkAdjustment* adj;
+		GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
+		GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
+		GtkWidget* table = exo_wrap_table_new(TRUE);
+		GtkWidget* label;
+		GtkWidget* image;
+		GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
+		GdkPixbuf* pixbuf=NULL;
+		GdkPixmap* pixmap;
+		GdkGC *pixmap_gc=NULL;
+		char* file;
+        AppDir* app_dir = (AppDir*)l->data;
+
+        PageData* page_data = g_new0( PageData, 1 );
+        g_object_set_data_full( page_vbox, "page", page_data, page_data_free );
+
+		label = gtk_hbox_new( FALSE, 2 );
+
+		gtk_scrolled_window_set_policy(scroll, GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
+
+        // Very bad dirty hacks used to force gtk+ to draw transparent background
+		GtkRange* range = gtk_scrolled_window_get_vscrollbar(scroll);
+		//gtk_range_set_update_policy( range, GTK_UPDATE_DELAYED );
+		g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
+		adj = gtk_scrolled_window_get_vadjustment(scroll);
+		adj->step_increment = BUTTON_SIZE / 3;
+		adj->page_increment = BUTTON_SIZE / 2;
+		gtk_adjustment_changed( adj );
+        g_signal_connect( adj, "value-changed", G_CALLBACK(on_scroll), page_data );
+
+        // create label
+        image = gtk_image_new_from_icon_name( app_dir->icon, GTK_ICON_SIZE_MENU );
+
+		gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
+		gtk_box_pack_start( label, gtk_label_new( app_dir->title ), FALSE, TRUE, 2 );
+		gtk_widget_show_all(label);
+
+        // gtk_container_set_border_width( page_vbox, 4 );
+        exo_wrap_table_set_col_spacing( table, 8 );
+
+		viewport = gtk_viewport_new( NULL, NULL );
+		gtk_container_add( viewport, table );
+		gtk_container_add( scroll, viewport );
+		gtk_widget_show_all( scroll );
+
+        gtk_box_pack_start( page_vbox, go_up_bar, FALSE, TRUE, 0 );
+        gtk_box_pack_start( page_vbox, scroll, TRUE, TRUE, 0 );
+		gtk_widget_show_all( page_vbox );
+
+		gtk_notebook_append_page( notebook, page_vbox, label );
+
+        // set background
+        gtk_widget_set_app_paintable( viewport, TRUE );
+/*
+        file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
+        pixbuf = gdk_pixbuf_new_from_file( file, NULL );
+        g_free( file );
+*/
+        if( pixbuf )
+        {
+            pixmap = gdk_pixmap_new( gdk_get_default_root_window(), gdk_pixbuf_get_width(pixbuf), gdk_pixbuf_get_height(pixbuf), -1 );
+            pixmap_gc = gdk_gc_new(pixmap);
+            gdk_pixbuf_render_to_drawable(pixbuf, pixmap, pixmap_gc,
+                                    0, 0, 0, 0,
+                                    gdk_pixbuf_get_width(pixbuf),
+                                    gdk_pixbuf_get_height(pixbuf),
+                                    GDK_RGB_DITHER_NORMAL, 0, 0 );
+            g_object_unref( pixbuf );
+
+            g_object_weak_ref( viewport, (GWeakNotify)g_object_unref, pixmap );
+            g_object_unref(pixmap_gc);
+        }
+        g_signal_connect( viewport, "expose_event", G_CALLBACK(on_viewport_expose), pixmap );
+
+        page_data->page_vbox = page_vbox;
+        page_data->go_up_bar = go_up_bar;
+        page_data->table = table;
+        notebook_page_chdir( page_data, app_dir );
+	}
+}
+
 int main(int argc, char** argv)
 {
 	int i;
-	gboolean use_asus_icons;
 	GdkRectangle working_area;
     GList* l;
 
@@ -783,99 +997,9 @@ int main(int argc, char** argv)
 	tooltips = gtk_tooltips_new();
 	g_object_ref_sink( tooltips );
 
-    use_asus_icons = g_file_test( ICON_DIR, G_FILE_TEST_IS_DIR );
-
 	load_apps();    // find all available apps
 
-    // build pages for toplevel groups
-	for( l = app_dir_root->children; l; l = l->next )
-	{
-	    GtkWidget* *viewport;
-		GtkAdjustment* adj;
-		GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
-		GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
-		GtkWidget* table = exo_wrap_table_new(TRUE);
-		GtkWidget* label;
-		GtkWidget* image;
-		GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
-		GdkPixbuf* pixbuf=NULL;
-		GdkPixmap* pixmap;
-		GdkGC *pixmap_gc=NULL;
-		char* file;
-        AppDir* app_dir = (AppDir*)l->data;
-
-        PageData* page_data = g_new0( PageData, 1 );
-        g_object_set_data_full( page_vbox, "data", page_data, page_data_free );
-
-		label = gtk_hbox_new( FALSE, 2 );
-
-		gtk_scrolled_window_set_policy(scroll, GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
-
-        // Very bad dirty hacks used to force gtk+ to draw transparent background
-		GtkRange* range = gtk_scrolled_window_get_vscrollbar(scroll);
-		//gtk_range_set_update_policy( range, GTK_UPDATE_DELAYED );
-		g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
-		adj = gtk_scrolled_window_get_vadjustment(scroll);
-		adj->step_increment = BUTTON_SIZE / 3;
-		adj->page_increment = BUTTON_SIZE / 2;
-		gtk_adjustment_changed( adj );
-        g_signal_connect( adj, "value-changed", G_CALLBACK(on_scroll), page_data );
-
-        // create label
-        if( use_asus_icons ) // use the ugly asus icons
-        {
-            file = g_build_filename( ICON_DIR, app_dir->icon, NULL );
-            image = gtk_image_new_from_file(file);
-            g_free( file );
-        }
-        else // use themed icon provided by icon themes
-            image = gtk_image_new_from_icon_name( app_dir->icon, GTK_ICON_SIZE_MENU );
-
-		gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
-		gtk_box_pack_start( label, gtk_label_new( app_dir->title ), FALSE, TRUE, 2 );
-		gtk_widget_show_all(label);
-
-        // gtk_container_set_border_width( page_vbox, 4 );
-        exo_wrap_table_set_col_spacing( table, 8 );
-
-		viewport = gtk_viewport_new( NULL, NULL );
-		gtk_container_add( viewport, table );
-		gtk_container_add( scroll, viewport );
-		gtk_widget_show_all( scroll );
-
-        gtk_box_pack_start( page_vbox, go_up_bar, FALSE, TRUE, 0 );
-        gtk_box_pack_start( page_vbox, scroll, TRUE, TRUE, 0 );
-
-		gtk_notebook_append_page( notebook, page_vbox, label );
-
-        // set background
-        gtk_widget_set_app_paintable( viewport, TRUE );
-/*
-        file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
-        pixbuf = gdk_pixbuf_new_from_file( file, NULL );
-        g_free( file );
-*/
-        if( pixbuf )
-        {
-            pixmap = gdk_pixmap_new( gdk_get_default_root_window(), gdk_pixbuf_get_width(pixbuf), gdk_pixbuf_get_height(pixbuf), -1 );
-            pixmap_gc = gdk_gc_new(pixmap);
-            gdk_pixbuf_render_to_drawable(pixbuf, pixmap, pixmap_gc,
-                                    0, 0, 0, 0,
-                                    gdk_pixbuf_get_width(pixbuf),
-                                    gdk_pixbuf_get_height(pixbuf),
-                                    GDK_RGB_DITHER_NORMAL, 0, 0 );
-            g_object_unref( pixbuf );
-
-            g_object_weak_ref( viewport, (GWeakNotify)g_object_unref, pixmap );
-            g_object_unref(pixmap_gc);
-        }
-        g_signal_connect( viewport, "expose_event", G_CALLBACK(on_viewport_expose), pixmap );
-
-        page_data->page_vbox = page_vbox;
-        page_data->go_up_bar = go_up_bar;
-        page_data->table = table;
-        notebook_page_chdir( page_data, app_dir );
-	}
+    create_notebook_pages();
 
     get_working_area( gtk_widget_get_screen(main_window), &working_area );
     // working_area.height = 200;
