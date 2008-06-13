@@ -1,18 +1,18 @@
 /*
  *      lxlauncher.c - Open source replace for EeePC Asus Launcher
- *      
+ *
  *      Copyright 2008 PCMan <pcman.tw@gmail.com>
- *      
+ *
  *      This program is free software; you can redistribute it and/or modify
  *      it under the terms of the GNU General Public License as published by
  *      the Free Software Foundation; either version 2 of the License, or
  *      (at your option) any later version.
- *      
+ *
  *      This program is distributed in the hope that it will be useful,
  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *      GNU General Public License for more details.
- *      
+ *
  *      You should have received a copy of the GNU General Public License
  *      along with this program; if not, write to the Free Software
  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
@@ -34,6 +34,8 @@
 
 #include <errno.h>
 
+#include <cairo.h>
+
 #include "vfs-app-desktop.h"
 
 #include "inotify/linux-inotify.h"
@@ -45,6 +47,7 @@
 #define BUTTON_SIZE	120
 #define IMG_SIZE	48
 
+#define DATA_DIR  PACKAGE_DATA_DIR"/lxlauncher"
 #define BACKGROUND_DIR  PACKAGE_DATA_DIR"/lxlauncher/background"
 #define ICON_DIR        PACKAGE_DATA_DIR"/lxlauncher/icons"
 
@@ -62,57 +65,29 @@ static int* watches = NULL;
 static guint inotify_io_watch = 0;
 static int reload_handler = 0;
 
-typedef struct {
-	char* title;
-	char* background;
-	char* icon;
-	char* themed_icon;
-	GtkWidget* page;
-	char** categories;
-}Group;
+typedef struct _AppDir
+{
+    char* title;
+    char* icon;
+    char* desc;
+    GList* items;
+    GList* children;
+    struct _AppDir* parent;
+}AppDir;
 
-static char* net_cats[] = { "Network", NULL };
-static char* work_cats[] = { "Office", "Utility", "Graphics", "TextEditor", "TextTools", "Viewer", "Core", "Development", NULL };
-static char* learn_cats[] = { "Education", "Dictionary", NULL };
-static char* play_cats[] = { "AudioVideo", "Game", NULL };
-static char* settings_cats[] = { "Settings", "System", NULL };
+typedef struct _PageData{
+    AppDir* dir;
+	GtkWidget* page_vbox;
+	GtkBox* go_up_bar;
+	GtkWidget* table;
+	GdkPixbuf* background;
+}PageData;
 
-static Group groups[]={
-	{
-	    N_("Internet"),
-        "accessibility_internet_wallpaper.jpg",
-        "Internet.png", "applications-internet",
-        NULL, net_cats, 0
-    },
-	{
-	    N_("Learn"),
-        "accessibility_learn_wallpaper.jpg",
-        "learn_sel.png", "applications-accessories",
-        NULL, learn_cats, 0
-    },
-	{
-	    N_("Work"),
-    	"accessibility_work_wallpaper.jpg",
-    	"work_sel.png", "applications-office",
-    	NULL, work_cats, 0
-    },
-	{
-	    N_("Play"),
-        "accessibility_play_wallpaper.jpg",
-        "play_sel.png", "applications-multimedia",
-         NULL, play_cats, 0
-    },
-	{
-	    N_("Settings"),
-        "accessibility_settings_wallpaper.jpg",
-        "system_sel.png", "gtk-preferences",
-        NULL, settings_cats, 0
-    },
-};
+static AppDir* app_dir_root = NULL;
 
 static void finalize_inotify();
 
-static void load_app_desktops( GHashTable* hash, const char* dir_path, const char* parent )
+static void load_app_desktops( GHashTable* app_pool_hash, const char* dir_path, const char* parent )
 {
 	GDir* dir = g_dir_open( dir_path, 0, NULL );
 	if( dir )
@@ -130,7 +105,7 @@ static void load_app_desktops( GHashTable* hash, const char* dir_path, const cha
 
 			if( g_file_test( file, G_FILE_TEST_IS_DIR ) ) // sub dir
 			{
-				load_app_desktops( hash, file, desktop_id );
+				load_app_desktops( app_pool_hash, file, desktop_id );
 			}
 			else // desktop entry file
 			{
@@ -140,34 +115,42 @@ static void load_app_desktops( GHashTable* hash, const char* dir_path, const cha
 				app_desktop = vfs_app_desktop_new( file );
 				if( ! vfs_app_desktop_is_hidden( app_desktop ) )
 				{
-					g_hash_table_replace( hash, g_strdup( desktop_id ),
+					g_hash_table_replace( app_pool_hash, g_strdup( desktop_id ),
 												 app_desktop );
 				}
 				else
 				{
-					g_hash_table_remove( hash, desktop_id );
+					g_hash_table_remove( app_pool_hash, desktop_id );
 					vfs_app_desktop_unref( app_desktop );
 				}
 			}
 
 			g_free( desktop_id );
 				g_free( file );
-			
+
 		}
 		g_dir_close( dir );
 	}
 }
 
-static void on_btn_clicked( GtkButton* btn, VFSAppDesktop* app )
+static void on_app_btn_clicked( GtkButton* btn, VFSAppDesktop* app )
 {
 	vfs_app_desktop_open_files( gdk_screen_get_default(),
 										NULL, app, NULL, NULL );
 }
 
-static gboolean is_app_in_group( VFSAppDesktop* app, Group* grp )
+static void notebook_page_chdir( PageData* data, AppDir* dir );
+
+static void on_dir_btn_clicked( GtkButton* btn, PageData* data )
+{
+    AppDir* dir = (AppDir*)g_object_get_data( btn, "dir" );
+    notebook_page_chdir( data, dir );
+}
+
+static gboolean is_app_in_cetegories( VFSAppDesktop* app, char** cats )
 {
 	char **grp_cat, **app_cat;
-	for( grp_cat=grp->categories; *grp_cat; ++grp_cat )
+	for( grp_cat=cats; *grp_cat; ++grp_cat )
 	{
 		for( app_cat=app->categories; *app_cat; ++app_cat )
 		{
@@ -178,45 +161,21 @@ static gboolean is_app_in_group( VFSAppDesktop* app, Group* grp )
 	return FALSE;
 }
 
-static void categorize_app( gpointer key, gpointer val, gpointer data )
+static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, const char* tip )
 {
-    GList** app_lists = (GList**)data;
-	int i;
-	VFSAppDesktop* app = val;
-	if( app->categories )
-	{
-		for( i = 0; i < G_N_ELEMENTS(groups); ++i )
-		{
-			if( is_app_in_group( app, &groups[i] ) )
-			{
-			    app_lists[i] = g_list_prepend(app_lists[i], app);
-			    // g_debug( "add %s to %s", app->disp_name, groups[i].title );
-				return;
-			}
-		}
-	}
-}
-
-static void add_app_btn( Group* group, VFSAppDesktop* app )
-{
-    GtkButton *btn, *box, *img, *label;
-    GtkTable* table = (GtkTable*)group->page;
+    GtkWidget *btn, *box, *img, *label;
 
     // add the app to that page
     btn = gtk_button_new();
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
-//  if( g_path_is_absolute( vfs_app_desktop_get_icon_name(app) ) )
-//  {
-        GdkPixbuf* pix = vfs_app_desktop_get_icon( app, IMG_SIZE, TRUE );
-        img = gtk_image_new_from_pixbuf( pix );
-//  }
-//  else
-//      img = gtk_image_new_from_icon_name( vfs_app_desktop_get_icon_name(app), icon_size );
+
+    img = gtk_image_new_from_pixbuf( icon );
+
     box = gtk_vbox_new( FALSE, 2 );
     gtk_box_pack_start( box, img, FALSE, TRUE, 2 );
 
-    label = gtk_label_new( vfs_app_desktop_get_disp_name(app) );
+    label = gtk_label_new( text );
     gtk_widget_show( label );
     gtk_widget_set_size_request( label, BUTTON_SIZE - 10, -1 );
     gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
@@ -229,31 +188,56 @@ static void add_app_btn( Group* group, VFSAppDesktop* app )
     gtk_widget_set_size_request( btn, BUTTON_SIZE, BUTTON_SIZE );
     gtk_widget_show_all( btn );
 
-    gtk_tooltips_set_tip( tooltips, btn, vfs_app_desktop_get_desc(app), NULL );
-
-    vfs_app_desktop_ref( app );
-    g_signal_connect( btn, "clicked", G_CALLBACK(on_btn_clicked), app );
+    if( tip )
+        gtk_tooltips_set_tip( tooltips, btn, tip, NULL );
 
     gtk_container_add( table, btn );
 
     gtk_widget_realize( btn );
     gtk_widget_set_app_paintable( btn, TRUE );
     gdk_window_set_back_pixmap( ((GtkWidget*)btn)->window, NULL, TRUE );
+    return btn;
+}
+
+static void add_dir_btn( PageData* data, AppDir* dir )
+{
+    GdkPixbuf* icon;
+    GtkWidget* btn;
+    if( dir->icon[0] == '/' )
+        icon = gdk_pixbuf_new_from_file_at_size( dir->icon, IMG_SIZE, IMG_SIZE, NULL );
+    else
+        icon = gtk_icon_theme_load_icon( gtk_icon_theme_get_default(), dir->icon, IMG_SIZE, 0, NULL );
+    btn = add_btn( data->table, dir->title, icon, dir->desc );
+    g_object_unref( icon );
+
+    g_object_set_data( btn, "dir", dir );
+    g_signal_connect( btn, "clicked", G_CALLBACK(on_dir_btn_clicked), data );
+}
+
+static void add_app_btn( GtkWidget* table, VFSAppDesktop* app )
+{
+    GdkPixbuf* pix = vfs_app_desktop_get_icon( app, IMG_SIZE, TRUE );
+    GtkWidget* btn = add_btn( table, vfs_app_desktop_get_disp_name(app),
+                              pix, vfs_app_desktop_get_desc(app) );
+    g_object_unref( pix );
+    vfs_app_desktop_ref( app );
+    g_signal_connect( btn, "clicked", G_CALLBACK(on_app_btn_clicked), app );
 }
 
 // compare func used to sort apps in lists
-static int sort_apps(VFSAppDesktop* app1, VFSAppDesktop* app2, Group* group)
+static int sort_apps(VFSAppDesktop* app1, VFSAppDesktop* app2)
 {
     return g_utf8_collate( app1->disp_name, app2->disp_name );
 }
 
+static gboolean grouping_apps( GHashTable* app_pool_hash );
+
 static void load_apps()
 {
 	char** dirs = (char**)g_get_system_data_dirs(), **dir;
-	GHashTable* hash = g_hash_table_new_full( g_str_hash, g_str_equal, g_free,
+	GHashTable* app_pool_hash = g_hash_table_new_full( g_str_hash, g_str_equal, g_free,
 														  vfs_app_desktop_unref );
     gboolean init_watch = FALSE;
-    GList* app_lists[ G_N_ELEMENTS(groups) ] = {0};
     int i;
     static int n = 0;
 
@@ -276,7 +260,7 @@ static void load_apps()
                                         IN_MODIFY|IN_CREATE|IN_DELETE );
         }
 
-		load_app_desktops( hash, dir_path, NULL );
+		load_app_desktops( app_pool_hash, dir_path, NULL );
 		g_free( dir_path );
 	}
 	// load user-specific apps
@@ -288,31 +272,14 @@ static void load_apps()
             watches[n - 2] = inotify_add_watch ( inotify_fd, dir_path,
                                         IN_MODIFY|IN_CREATE|IN_DELETE );
         }
-		load_app_desktops( hash, dir_path, NULL );
+		load_app_desktops( app_pool_hash, dir_path, NULL );
 		g_free( dir_path );
     }
 	watches[n-1] = -1;
 
-	g_hash_table_foreach( hash, categorize_app, app_lists );
+	grouping_apps( app_pool_hash );  // load the marvelous grouping rules and categorize apps.
 
-    // add the categorized apps to every pages
-    for( i = 0; i < G_N_ELEMENTS(groups); ++i )
-    {
-        GList* l;
-        // sort the apps
-        app_lists[i] = g_list_sort_with_data( app_lists[i], (GCompareDataFunc)sort_apps, &groups[i] );
-
-        // add the apps to every pages
-        for( l = app_lists[i]; l; l = l->next )
-        {
-            VFSAppDesktop* app = (VFSAppDesktop*)l->data;
-            add_app_btn( &groups[i], app );
-        }
-        
-        g_list_free( app_lists[i] );
-    }
-
-	g_hash_table_destroy( hash );
+	g_hash_table_destroy( app_pool_hash );
 }
 
 static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer data )
@@ -323,6 +290,20 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
 
     if( GTK_WIDGET_DRAWABLE(w) && evt->window == ((GtkViewport*)w)->bin_window )
     {
+        cairo_t *cr;
+        cairo_pattern_t* pat;
+        cr = gdk_cairo_create (evt->window);
+        pat = cairo_pattern_create_linear( 0, 0, 0, w->allocation.height );
+        cairo_pattern_add_color_stop_rgb( pat, 0, 1, 1, 1);
+        cairo_pattern_add_color_stop_rgb( pat, 1.0, ((gdouble)184/256), ((gdouble)215/256), ((gdouble)235/256));
+//        cairo_rectangle(cr, 0, 0, w->allocation.width, w->allocation.height );
+        cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
+        cairo_set_source(cr, pat);
+        cairo_fill(cr);
+
+        cairo_pattern_destroy(pat);
+        cairo_destroy(cr);
+/*
         GdkGC* gc = gdk_gc_new(evt->window);
 
         gdk_gc_set_tile( gc, pixmap );
@@ -332,6 +313,7 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
         gdk_draw_rectangle( evt->window, gc, TRUE, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
 
         gdk_gc_unref( gc );
+*/
     }
 
     // call handler of tha parent GtkContainer class to propagate the event to children
@@ -341,7 +323,8 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
 
 static gboolean reload_apps()
 {
-    int i;;
+    int i;
+#if 0
     for( i = 0; i < G_N_ELEMENTS(groups); ++i )
     {
         // destroy all existing buttons
@@ -352,6 +335,7 @@ static gboolean reload_apps()
     }
     // load all apps again
     load_apps();
+#endif
     reload_handler = 0;
     return FALSE;
 }
@@ -461,11 +445,253 @@ static gboolean window_delete(GtkWidget *window, gpointer data)
     return TRUE;
 }
 
+#define skip_spaces( str ) \
+    while( *str == ' ' || *str == '\t' ) ++str;
+
+static char* get_line( char** buf )
+{
+    char *ret, *pbuf;
+    ret = pbuf = *buf;
+
+    while( *pbuf && *pbuf != '\n' )
+        ++pbuf;
+    if( G_LIKELY(*pbuf == '\n') )
+    {
+        *pbuf = '\0';
+        *buf = pbuf + 1;
+    }
+    else
+        *buf = NULL;
+
+    return ret;
+}
+
+AppDir* app_dir_new(const char* name)
+{
+    static const char desktop_entry_name[] = "Desktop Entry";
+
+    AppDir* dir = g_new0( AppDir, 1 );
+    GKeyFile* kf = g_key_file_new();
+    char* fn = g_strconcat( "desktop-directories/", name, ".directory", NULL );
+
+    if( g_key_file_load_from_data_dirs( kf, fn, NULL, 0, NULL ) )
+    {
+        dir->title = g_key_file_get_locale_string( kf, desktop_entry_name, "Name", NULL, NULL );
+        dir->icon = g_key_file_get_string( kf, desktop_entry_name, "Icon", NULL );
+        dir->desc = g_key_file_get_locale_string( kf, desktop_entry_name, "Comment", NULL, NULL );
+    }
+    g_free( fn );
+    g_key_file_free( kf );
+
+    if( ! dir->title )
+        dir->title = g_strdup(name);
+    if( ! dir->icon )
+        dir->icon = g_strdup( "folder" );
+
+    return dir;
+}
+
+AppDir* app_dir_free( AppDir* dir )
+{
+    g_free(dir->title);
+    g_free(dir->icon);
+    g_free(dir);
+}
+
+struct CategorizeData
+{
+    AppDir* dir;
+    char** cats;
+};
+
+static void include_app( gpointer key, gpointer val, gpointer data )
+{
+    struct CategorizeData* cats_data= (struct CategorizeData*)data;
+	int i;
+	VFSAppDesktop* app = (VFSAppDesktop*)val;
+    AppDir* dir = cats_data->dir;
+
+	if( app->categories )
+	{
+        if( is_app_in_cetegories( app, cats_data->cats ) )
+        {
+            vfs_app_desktop_ref(app);
+            dir->items = g_list_prepend(dir->items, app );
+            return;
+        }
+	}
+}
+
+#if 0
+static print_dir_structure( AppDir* dir )
+{
+    GList* l;
+    g_debug( "app inside %s", dir->title );
+    for( l = dir->children; l; l = l->next )
+    {
+        print_dir_structure( l->data );
+    }
+    for( l = dir->items; l; l = l->next )
+    {
+        g_debug("   %s", vfs_app_desktop_get_name(l->data) );
+    }
+    g_debug("-----------------");
+}
+#endif
+
+static gboolean grouping_apps( GHashTable* app_pool_hash )
+{
+    gchar *buf, *ver;
+    char *line, *key, *value, *sep;
+    AppDir* dir;
+
+    if( ! g_file_get_contents( DATA_DIR"/launcher.rules", &buf, NULL, NULL ) )
+        return FALSE;
+
+    // start parsing
+    dir = app_dir_root = app_dir_new( NULL );
+
+    while( buf )
+    {
+        line = get_line( &buf );
+
+        skip_spaces( line );
+        if( line[0] == '#' || line[0] == '\0' )
+            continue;
+
+        key = strtok( line, " \t" );
+
+        if( strcmp( key, "dir" ) == 0 ) // start of menu
+        {
+            AppDir* new_dir;
+            char* curly;
+            value = strtok( NULL, " \t{" );
+            if( ! value )   // no dir name, error!
+                return NULL;
+/*
+            curly = strtok( NULL, " \t" );
+            if( ! curly )   // no {, error!
+                return NULL;
+*/
+            new_dir = app_dir_new(value);
+            new_dir->parent = dir;
+            dir->children = g_list_append( dir->children, new_dir );
+            dir = new_dir;
+        }
+        else if( strcmp( key, "}" ) == 0 )  // close brace
+        {
+            // sort the apps
+            dir->items = g_list_sort( dir->items, (GCompareDataFunc)sort_apps );
+
+            if( G_UNLIKELY( ! dir->parent ) )   // error
+                return NULL;
+
+            dir = dir->parent;
+        }
+        else if( strcmp( key, "include" ) == 0 ) // include apps
+        {
+            char** cats;
+            struct CategorizeData data;
+            value = strtok( NULL, "" );
+
+            cats = g_strsplit_set( value, " \t;", -1 );
+
+            data.dir = dir;
+            data.cats = cats;
+
+            // g_debug( "dir '%s' include %s", dir->title, value );
+            // scan the app pool and add every app meeting the inclusion criteria to dir.
+            g_hash_table_foreach( app_pool_hash, include_app, &data );
+
+            g_strfreev( cats );
+        }
+        else if( strcmp( key, "exclude" ) == 0 ) // exclude apps
+        {
+            GList* l, *next;
+            char** cats;
+            value = strtok( NULL, "" );
+
+            cats = g_strsplit_set( value, " \t;", -1 );
+            // remove the app from dir if it meets the exclusion criteria
+            for( l = dir->items; l; l = next )
+            {
+                VFSAppDesktop* app = (VFSAppDesktop*)l->data;
+                next = l->next;
+
+                if( is_app_in_cetegories( app, cats ) )
+                {
+                    dir->items = g_list_delete_link( dir->items, l );
+                    vfs_app_desktop_unref( app );
+                }
+            }
+            g_strfreev( cats );
+        }
+    }
+
+    // print_dir_structure(app_dir_root);
+
+    g_free( buf );
+    return FALSE;
+}
+
+static void notebook_page_chdir( PageData* data, AppDir* dir )
+{
+    GList* l;
+
+    data->dir = dir;
+
+    // destroy old buttons
+    gtk_container_foreach( data->table, gtk_widget_destroy, NULL );
+
+    gtk_container_forall( data->go_up_bar, gtk_widget_destroy, NULL );
+
+    for( l = data->dir->children; l; l = l->next )
+    {
+        VFSAppDesktop* app = (VFSAppDesktop*)l->data;
+        add_dir_btn( data, app );
+    }
+
+    for( l = dir->items; l; l = l->next )
+    {
+        VFSAppDesktop* app = (VFSAppDesktop*)l->data;
+        add_app_btn( data->table, app );
+    }
+
+    if( dir->parent != app_dir_root )   // if dir has parent, not top-level group
+    {
+        GtkWidget* label = gtk_label_new( dir->title );
+        char* text = g_strdup_printf( _("Go back to \"%s\""), dir->parent->title );
+        GtkWidget* btn = gtk_button_new_with_label( text );
+        g_free( text );
+
+        gtk_misc_set_alignment( label, 0.0, 0.5 );
+        g_object_set_data( btn, "dir", dir->parent );
+        g_signal_connect( btn, "clicked", on_dir_btn_clicked, data );
+        gtk_button_set_image( btn, gtk_image_new_from_stock( GTK_STOCK_GO_UP, GTK_ICON_SIZE_BUTTON ) );
+
+        gtk_box_pack_start( data->go_up_bar, label, TRUE, TRUE, 4 );
+        gtk_box_pack_start( data->go_up_bar, btn, FALSE, TRUE, 2 );
+        gtk_widget_show_all( data->go_up_bar );
+    }
+    else
+    {
+        gtk_widget_hide( data->go_up_bar );
+    }
+}
+
+static void page_data_free( PageData* data )
+{
+    if( data->background )
+        g_object_unref( data->background );
+    g_free( data );
+}
+
 int main(int argc, char** argv)
 {
 	int i;
 	gboolean use_asus_icons;
 	GdkRectangle working_area;
+    GList* l;
 
 #ifdef ENABLE_NLS
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -495,7 +721,7 @@ int main(int argc, char** argv)
 	gdk_window_set_type_hint( main_window->window, GDK_WINDOW_TYPE_HINT_DESKTOP );
 	gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
 	//gtk_window_set_gravity(GDK_GRAVITY_STATIC );
-	
+
     g_signal_connect(main_window, "delete-event", G_CALLBACK(window_delete), NULL);
 
     atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);;
@@ -511,16 +737,25 @@ int main(int argc, char** argv)
 
     use_asus_icons = g_file_test( ICON_DIR, G_FILE_TEST_IS_DIR );
 
-	for( i = 0; i < G_N_ELEMENTS(groups); ++i )
+	load_apps();    // find all available apps
+
+    // build pages for toplevel groups
+	for( l = app_dir_root->children; l; l = l->next )
 	{
 	    GtkWidget* *viewport;
 		GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
-		GtkWidget* page = exo_wrap_table_new(TRUE);
+		GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
+		GtkWidget* table = exo_wrap_table_new(TRUE);
 		GtkWidget* label;
 		GtkWidget* image;
+		GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
 		GdkPixbuf* pixbuf;
 		GdkPixmap* pixmap;
 		char* file;
+        AppDir* app_dir = (AppDir*)l->data;
+
+        PageData* page_data = g_new0( PageData, 1 );
+        g_object_set_data_full( page_vbox, "data", page_data, page_data_free );
 
 		label = gtk_hbox_new( FALSE, 2 );
 
@@ -529,35 +764,37 @@ int main(int argc, char** argv)
         // create label
         if( use_asus_icons ) // use the ugly asus icons
         {
-            file = g_build_filename( ICON_DIR, groups[i].icon, NULL );
+            file = g_build_filename( ICON_DIR, app_dir->icon, NULL );
             image = gtk_image_new_from_file(file);
             g_free( file );
         }
         else // use themed icon provided by icon themes
-            image = gtk_image_new_from_icon_name(groups[i].themed_icon, GTK_ICON_SIZE_MENU);
+            image = gtk_image_new_from_icon_name( app_dir->icon, GTK_ICON_SIZE_MENU );
 
 		gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
-		gtk_box_pack_start( label, gtk_label_new(_(groups[i].title)), FALSE, TRUE, 2 );
+		gtk_box_pack_start( label, gtk_label_new( app_dir->title ), FALSE, TRUE, 2 );
 		gtk_widget_show_all(label);
 
-        // gtk_container_set_border_width( page, 4 );
-        exo_wrap_table_set_col_spacing( page, 8 );
+        // gtk_container_set_border_width( page_vbox, 4 );
+        exo_wrap_table_set_col_spacing( table, 8 );
 
 		viewport = gtk_viewport_new( NULL, NULL );
-		gtk_container_add( viewport, page );
+		gtk_container_add( viewport, table );
 		gtk_container_add( scroll, viewport );
 		gtk_widget_show_all( scroll );
 
-		gtk_notebook_append_page( notebook, scroll, label );
-		groups[i].page = page;
+        gtk_box_pack_start( page_vbox, go_up_bar, FALSE, TRUE, 0 );
+        gtk_box_pack_start( page_vbox, scroll, TRUE, TRUE, 0 );
+
+		gtk_notebook_append_page( notebook, page_vbox, label );
 
         // set background
         gtk_widget_set_app_paintable( viewport, TRUE );
-
+/*
         file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
         pixbuf = gdk_pixbuf_new_from_file( file, NULL );
         g_free( file );
-
+*/
         if( pixbuf )
         {
             pixmap = gdk_pixmap_new( gdk_get_default_root_window(), gdk_pixbuf_get_width(pixbuf), gdk_pixbuf_get_height(pixbuf), -1 );
@@ -568,14 +805,15 @@ int main(int argc, char** argv)
                                     GDK_RGB_DITHER_NORMAL, 0, 0 );
             g_object_unref( pixbuf );
 
-            g_signal_connect( viewport, "expose_event", G_CALLBACK(on_viewport_expose), pixmap );
             g_object_weak_ref( viewport, (GWeakNotify)g_object_unref, pixmap );
         }
+        g_signal_connect( viewport, "expose_event", G_CALLBACK(on_viewport_expose), pixmap );
+
+        page_data->page_vbox = page_vbox;
+        page_data->go_up_bar = go_up_bar;
+        page_data->table = table;
+        notebook_page_chdir( page_data, app_dir );
 	}
-
-	gtk_notebook_reorder_child(notebook, gtk_notebook_get_nth_page(notebook, 2), 1 );
-
-	load_apps();
 
     get_working_area( gtk_widget_get_screen(main_window), &working_area );
     gtk_window_move( main_window, working_area.x, working_area.y );

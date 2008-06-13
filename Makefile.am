@@ -5,6 +5,9 @@ SUBDIRS = src po
 themedir=$(datadir)/lxlauncher
 theme_DATA=gtkrc
 
+datafiledir=$(datadir)/lxlauncher
+datafile_DATA=data/launcher.rules
+
 #backgrounddir=$(datadir)/lxlauncher/background
 #background_DATA=
 
