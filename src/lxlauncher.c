@@ -749,8 +749,9 @@ int main(int argc, char** argv)
 		GtkWidget* label;
 		GtkWidget* image;
 		GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
-		GdkPixbuf* pixbuf;
+		GdkPixbuf* pixbuf=NULL;
 		GdkPixmap* pixmap;
+		GdkGC *pixmap_gc=NULL;
 		char* file;
         AppDir* app_dir = (AppDir*)l->data;
 
@@ -798,7 +799,8 @@ int main(int argc, char** argv)
         if( pixbuf )
         {
             pixmap = gdk_pixmap_new( gdk_get_default_root_window(), gdk_pixbuf_get_width(pixbuf), gdk_pixbuf_get_height(pixbuf), -1 );
-            gdk_pixbuf_render_to_drawable(pixbuf, pixmap, scroll->style->black_gc,
+            pixmap_gc = gdk_gc_new(pixmap);
+            gdk_pixbuf_render_to_drawable(pixbuf, pixmap, pixmap_gc,
                                     0, 0, 0, 0,
                                     gdk_pixbuf_get_width(pixbuf),
                                     gdk_pixbuf_get_height(pixbuf),
@@ -806,6 +808,7 @@ int main(int argc, char** argv)
             g_object_unref( pixbuf );
 
             g_object_weak_ref( viewport, (GWeakNotify)g_object_unref, pixmap );
+            g_object_unref(pixmap_gc);
         }
         g_signal_connect( viewport, "expose_event", G_CALLBACK(on_viewport_expose), pixmap );
 
