@@ -37,10 +37,15 @@ dir Learn{
 	dir Math {
 		include Math
 	}
+	dir WebLearn {
+		include X-WebLearn
+	}
 }
 dir Play {
-	include Games; AudioVideo
-
+	include AudioVideo
+	dir Games {
+		include Game
+	}
 }
 dir Settings {
 	include Settings;System

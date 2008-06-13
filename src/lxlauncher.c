@@ -67,6 +67,7 @@ static int reload_handler = 0;
 
 typedef struct _AppDir
 {
+    char* name;
     char* title;
     char* icon;
     char* desc;
@@ -292,17 +293,22 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
     {
         cairo_t *cr;
         cairo_pattern_t* pat;
+
+        GtkWidget* scroll = gtk_widget_get_parent(w);
+        GtkAdjustment* vadj = gtk_scrolled_window_get_vadjustment(scroll);
+
         cr = gdk_cairo_create (evt->window);
-        pat = cairo_pattern_create_linear( 0, 0, 0, w->allocation.height );
+        pat = cairo_pattern_create_linear( 0, gtk_adjustment_get_value(vadj), 0, w->allocation.height + gtk_adjustment_get_value(vadj) );
         cairo_pattern_add_color_stop_rgb( pat, 0, 1, 1, 1);
         cairo_pattern_add_color_stop_rgb( pat, 1.0, ((gdouble)184/256), ((gdouble)215/256), ((gdouble)235/256));
 //        cairo_rectangle(cr, 0, 0, w->allocation.width, w->allocation.height );
+//        cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
         cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
         cairo_set_source(cr, pat);
         cairo_fill(cr);
-
         cairo_pattern_destroy(pat);
         cairo_destroy(cr);
+
 /*
         GdkGC* gc = gdk_gc_new(evt->window);
 
@@ -319,6 +325,41 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
     // call handler of tha parent GtkContainer class to propagate the event to children
     (* wc->expose_event) (w, evt);
     return TRUE;
+}
+
+static gboolean on_scroll( GtkAdjustment* adj, PageData* data )
+{
+    // Dirty hacks used to force pseudo-transparent background
+    gtk_widget_queue_draw( data->table );
+}
+
+// Dirty hacks used to reduce unnecessary redrew during scroll
+static gboolean on_scroll_change_val( GtkRange* scroll, GtkScrollType type, gdouble value, PageData* data )
+{
+    GtkAdjustment* adj = gtk_range_get_adjustment(scroll);
+
+    if( type == GTK_SCROLL_JUMP )
+    {
+        if( ABS( adj->value - value ) < BUTTON_SIZE / 2 )
+        {
+            if( adj->value > value )    // upward
+            {
+                if( (adj->value - adj->lower) < BUTTON_SIZE / 2 )
+                {
+                    gtk_adjustment_set_value( adj, adj->lower );
+                }
+            }
+            else // downward
+            {
+                if( (adj->upper - adj->value) < BUTTON_SIZE / 2 )
+                {
+                    gtk_adjustment_set_value( adj, adj->lower );
+                }
+            }
+            return TRUE;
+        }
+    }
+    return FALSE;
 }
 
 static gboolean reload_apps()
@@ -437,6 +478,10 @@ GdkFilterReturn evt_filter(GdkXEvent *xevt, GdkEvent *evt, gpointer data)
         gtk_window_move( main_window, working_area.x, working_area.y );
         gtk_window_resize( main_window, working_area.width, working_area.height );
     }
+    else if( evt->type == GDK_SCROLL )
+    {
+//        return GDK_FILTER_REMOVE;
+    }
     return GDK_FILTER_CONTINUE;
 }
 
@@ -488,13 +533,16 @@ AppDir* app_dir_new(const char* name)
     if( ! dir->icon )
         dir->icon = g_strdup( "folder" );
 
+    dir->name = g_strdup( name );
     return dir;
 }
 
 AppDir* app_dir_free( AppDir* dir )
 {
+    g_free(dir->name);
     g_free(dir->title);
     g_free(dir->icon);
+    g_free(dir->desc);
     g_free(dir);
 }
 
@@ -725,7 +773,7 @@ int main(int argc, char** argv)
     g_signal_connect(main_window, "delete-event", G_CALLBACK(window_delete), NULL);
 
     atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);;
-    XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XID(gtk_widget_get_root_window(main_window)), PropertyChangeMask);
+    XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XID(gtk_widget_get_root_window(main_window)), PropertyChangeMask );
 	gdk_window_add_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
 
 	notebook = gtk_notebook_new();
@@ -743,6 +791,7 @@ int main(int argc, char** argv)
 	for( l = app_dir_root->children; l; l = l->next )
 	{
 	    GtkWidget* *viewport;
+		GtkAdjustment* adj;
 		GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
 		GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
 		GtkWidget* table = exo_wrap_table_new(TRUE);
@@ -761,6 +810,16 @@ int main(int argc, char** argv)
 		label = gtk_hbox_new( FALSE, 2 );
 
 		gtk_scrolled_window_set_policy(scroll, GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
+
+        // Very bad dirty hacks used to force gtk+ to draw transparent background
+		GtkRange* range = gtk_scrolled_window_get_vscrollbar(scroll);
+		//gtk_range_set_update_policy( range, GTK_UPDATE_DELAYED );
+		g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
+		adj = gtk_scrolled_window_get_vadjustment(scroll);
+		adj->step_increment = BUTTON_SIZE / 3;
+		adj->page_increment = BUTTON_SIZE / 2;
+		gtk_adjustment_changed( adj );
+        g_signal_connect( adj, "value-changed", G_CALLBACK(on_scroll), page_data );
 
         // create label
         if( use_asus_icons ) // use the ugly asus icons
@@ -819,6 +878,7 @@ int main(int argc, char** argv)
 	}
 
     get_working_area( gtk_widget_get_screen(main_window), &working_area );
+    // working_area.height = 200;
     gtk_window_move( main_window, working_area.x, working_area.y );
     gtk_window_resize( main_window, working_area.width, working_area.height );
 
