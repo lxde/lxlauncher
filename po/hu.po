@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-05 14:36+0800\n"
+"POT-Creation-Date: 2008-06-14 16:07+0800\n"
 "PO-Revision-Date: 2008-05-11 19:15+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
@@ -13,23 +13,22 @@ msgstr ""
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-Country: HUNGARY\n"
 
-#: src/lxlauncher.c:74
-msgid "Internet"
-msgstr "Internet"
+#: src/lxlauncher.c:834
+#, c-format
+msgid "Go back to \"%s\""
+msgstr ""
 
-#: src/lxlauncher.c:75
-msgid "Work"
-msgstr "Munka"
+#~ msgid "Internet"
+#~ msgstr "Internet"
 
-#: src/lxlauncher.c:76
-msgid "Learn"
-msgstr "Tanulás"
+#~ msgid "Work"
+#~ msgstr "Munka"
 
-#: src/lxlauncher.c:77
-msgid "Play"
-msgstr "Játék"
+#~ msgid "Learn"
+#~ msgstr "Tanulás"
 
-#: src/lxlauncher.c:78
-msgid "Settings"
-msgstr "Beállítások"
+#~ msgid "Play"
+#~ msgstr "Játék"
 
+#~ msgid "Settings"
+#~ msgstr "Beállítások"

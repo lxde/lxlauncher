@@ -13,4 +13,5 @@ datafile_DATA=data/launcher.rules
 
 EXTRA_DIST = \
 	$(theme_DATA) \
+	$(datafile_DATA) \
 	autogen.sh
