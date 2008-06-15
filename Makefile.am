@@ -6,7 +6,14 @@ themedir=$(datadir)/lxlauncher
 theme_DATA=gtkrc
 
 datafiledir=$(datadir)/lxlauncher
-datafile_DATA=data/launcher.rules
+datafile_DATA=\
+	data/launcher.menu
+
+directorydir=$(datadir)/desktop-directories
+directory_DATA=\
+	data/Work.directory \
+	data/Learn.directory \
+	data/Play.directory
 
 #backgrounddir=$(datadir)/lxlauncher/background
 #background_DATA=
@@ -14,4 +21,5 @@ datafile_DATA=data/launcher.rules
 EXTRA_DIST = \
 	$(theme_DATA) \
 	$(datafile_DATA) \
+	$(directory_DATA) \
 	autogen.sh

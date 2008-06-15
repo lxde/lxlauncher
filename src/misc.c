@@ -1,140 +1,29 @@
 /*
-*  C Implementation: vfs-app-desktop
-*
-* Description:
-*
-*
-* Author: Hong Jen Yee (PCMan) <pcman.tw (AT) gmail.com>, (C) 2006
-*
-* Copyright: See COPYING file that comes with this distribution
-*
-*/
+ *      misc.c
+ *      
+ *      Copyright 2008 PCMan <pcman@debian>
+ *      
+ *      This program is free software; you can redistribute it and/or modify
+ *      it under the terms of the GNU General Public License as published by
+ *      the Free Software Foundation; either version 2 of the License, or
+ *      (at your option) any later version.
+ *      
+ *      This program is distributed in the hope that it will be useful,
+ *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *      GNU General Public License for more details.
+ *      
+ *      You should have received a copy of the GNU General Public License
+ *      along with this program; if not, write to the Free Software
+ *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ *      MA 02110-1301, USA.
+ */
 
-#include "vfs-app-desktop.h"
 #include <glib/gi18n.h>
-#include "glib-mem.h"
-
-#include <string.h>
-
+#include <gtk/gtk.h>
+#include "misc.h"
+#include "vfs-utils.h"
 #include "vfs-execute.h"
-
-#include "vfs-utils.h"  /* for vfs_load_icon */
-
-const char desktop_entry_name[] = "Desktop Entry";
-
-/*
-* If file_name is not a full path, this function searches default paths
-* for the desktop file.
-*/
-VFSAppDesktop* vfs_app_desktop_new( const char* file_name )
-{
-    GKeyFile* file;
-    gboolean load;
-    char* relative_path;
-
-    VFSAppDesktop* app = g_slice_new0( VFSAppDesktop );
-    app->n_ref = 1;
-
-    file = g_key_file_new();
-
-    if( !file_name )
-    {
-        g_key_file_free( file );
-        return app;
-    }
-
-    if( g_path_is_absolute( file_name ) )
-    {
-        app->file_name = g_path_get_basename( file_name );
-        load = g_key_file_load_from_file( file, file_name,
-                                          G_KEY_FILE_NONE, NULL );
-    }
-    else
-    {
-        app->file_name = g_strdup( file_name );
-        relative_path = g_build_filename( "applications",
-                                          app->file_name, NULL );
-        load = g_key_file_load_from_data_dirs( file, relative_path, NULL,
-                                               G_KEY_FILE_NONE, NULL );
-        g_free( relative_path );
-    }
-
-    if( load )
-    {
-        app->disp_name = g_key_file_get_locale_string ( file,
-                                                        desktop_entry_name,
-                                                        "Name", NULL, NULL);
-        app->comment = g_key_file_get_locale_string ( file, desktop_entry_name,
-                                                      "Comment", NULL, NULL);
-        app->exec = g_key_file_get_string ( file, desktop_entry_name,
-                                            "Exec", NULL);
-        app->icon_name = g_key_file_get_string ( file, desktop_entry_name,
-                                                 "Icon", NULL);
-        app->terminal = g_key_file_get_boolean( file, desktop_entry_name,
-                                                "Terminal", NULL );
-        app->hidden = g_key_file_get_boolean( file, desktop_entry_name,
-                                                "NoDisplay", NULL );
-                                                
-		app->categories = g_key_file_get_string_list( file, desktop_entry_name,
-												"Categories", NULL, NULL );
-    }
-
-    g_key_file_free( file );
-
-    return app;
-}
-
-static void vfs_app_desktop_free( VFSAppDesktop* app )
-{
-    g_free( app->disp_name );
-    g_free( app->comment );
-    g_free( app->exec );
-    g_free( app->icon_name );
-    g_strfreev( app->categories );
-
-    g_slice_free( VFSAppDesktop, app );
-}
-
-void vfs_app_desktop_ref( VFSAppDesktop* app )
-{
-    g_atomic_int_inc( &app->n_ref );
-}
-
-void vfs_app_desktop_unref( gpointer data )
-{
-    VFSAppDesktop* app = (VFSAppDesktop*)data;
-    if( g_atomic_int_dec_and_test(&app->n_ref) )
-        vfs_app_desktop_free( app );
-}
-
-const char* vfs_app_desktop_get_name( VFSAppDesktop* app )
-{
-    return app->file_name;
-}
-
-const char* vfs_app_desktop_get_disp_name( VFSAppDesktop* app )
-{
-    if( G_LIKELY(app->disp_name) )
-        return app->disp_name;
-    return app->file_name;
-}
-
-const char* vfs_app_desktop_get_desc( VFSAppDesktop* app )
-{
-    if( G_LIKELY(app->comment) )
-        return app->comment;
-    return vfs_app_desktop_get_disp_name(app);	
-}
-
-const char* vfs_app_desktop_get_exec( VFSAppDesktop* app )
-{
-    return app->exec;
-}
-
-const char* vfs_app_desktop_get_icon_name( VFSAppDesktop* app )
-{
-    return app->icon_name;
-}
 
 static GdkPixbuf* load_icon_file( const char* file_name, int size )
 {
@@ -153,40 +42,40 @@ static GdkPixbuf* load_icon_file( const char* file_name, int size )
     return icon;
 }
 
-GdkPixbuf* vfs_app_desktop_get_icon( VFSAppDesktop* app, int size, gboolean use_fallback )
+GdkPixbuf* lxlauncher_load_icon( const char* name, int size, gboolean use_fallback )
 {
     GtkIconTheme* theme;
     char *icon_name = NULL, *suffix;
     GdkPixbuf* icon = NULL;
 
-    if( app->icon_name )
+    if( name )
     {
-        if( g_path_is_absolute( app->icon_name) )
+        if( g_path_is_absolute( name) )
         {
-            icon = gdk_pixbuf_new_from_file_at_scale( app->icon_name,
+            icon = gdk_pixbuf_new_from_file_at_scale( name,
                                                      size, size, TRUE, NULL );
         }
         else
         {
             theme = gtk_icon_theme_get_default();
-            suffix = strchr( app->icon_name, '.' );
+            suffix = strchr( name, '.' );
             if( suffix ) /* has file extension, it's a basename of icon file */
             {
                 /* try to find it in pixmaps dirs */
-                icon = load_icon_file( app->icon_name, size );
+                icon = load_icon_file( name, size );
                 if( G_UNLIKELY( ! icon ) )  /* unfortunately, not found */
                 {
                     /* Let's remove the suffix, and see if this name can match an icon
                          in current icon theme */
-                    icon_name = g_strndup( app->icon_name,
-                                           (suffix - app->icon_name) );
+                    icon_name = g_strndup( name,
+                                           (suffix - name) );
                     icon = vfs_load_icon( theme, icon_name, size );
                     g_free( icon_name );
                 }
             }
             else  /* no file extension, it could be an icon name in the icon theme */
             {
-                icon = vfs_load_icon( theme, app->icon_name, size );
+                icon = vfs_load_icon( theme, name, size );
             }
         }
     }
@@ -202,12 +91,13 @@ GdkPixbuf* vfs_app_desktop_get_icon( VFSAppDesktop* app, int size, gboolean use_
     return icon;
 }
 
-gboolean vfs_app_desktop_open_multiple_files( VFSAppDesktop* app )
+
+static gboolean can_desktop_entry_open_multiple_files( const char* exec )
 {
     char* p;
-    if( app->exec )
+    if( exec )
     {
-        for( p = app->exec; *p; ++p )
+        for( p = exec; *p; ++p )
         {
             if( *p == '%' )
             {
@@ -229,16 +119,6 @@ gboolean vfs_app_desktop_open_multiple_files( VFSAppDesktop* app )
     return FALSE;
 }
 
-gboolean vfs_app_desktop_open_in_terminal( VFSAppDesktop* app )
-{
-    return app->terminal;
-}
-
-gboolean vfs_app_desktop_is_hidden( VFSAppDesktop* app )
-{
-    return app->hidden;
-}
-
 /*
 * Parse Exec command line of app desktop file, and translate
 * it into a real command which can be passed to g_spawn_command_line_async().
@@ -246,10 +126,9 @@ gboolean vfs_app_desktop_is_hidden( VFSAppDesktop* app )
 * paths of the files passed to app.
 * returned char* should be freed when no longer needed.
 */
-static char* translate_app_exec_to_command_line( VFSAppDesktop* app,
+static char* translate_app_exec_to_command_line( const char* pexec,
                                                  GList* file_list )
 {
-    const char* pexec = vfs_app_desktop_get_exec( app );
     char* file;
     GList* l;
     gchar *tmp;
@@ -334,15 +213,19 @@ static char* translate_app_exec_to_command_line( VFSAppDesktop* app,
                 }
                 break;
             case 'c':
+                #if 0
                 g_string_append( cmd, vfs_app_desktop_get_disp_name( app ) );
+                #endif
                 break;
             case 'i':
                 /* Add icon name */
+                #if 0
                 if( vfs_app_desktop_get_icon_name( app ) )
                 {
                     g_string_append( cmd, "--icon " );
                     g_string_append( cmd, vfs_app_desktop_get_icon_name( app ) );
                 }
+                #endif
                 break;
             case 'k':
                 /* Location of the desktop file */
@@ -380,10 +263,12 @@ _finish:
     return g_string_free( cmd, FALSE );
 }
 
-gboolean vfs_app_desktop_open_files( GdkScreen* screen,
+gboolean lxlauncher_execute_app( GdkScreen* screen,
                                      const char* working_dir,
-                                     VFSAppDesktop* app,
+                                     const char* desktop_entry_exec,
+                                     const char* app_disp_name,
                                      GList* file_paths,
+                                     gboolean in_terminal, /* not supported now */
                                      GError** err )
 {
     char* exec = NULL;
@@ -393,32 +278,32 @@ gboolean vfs_app_desktop_open_files( GdkScreen* screen,
     gint argc = 0;
     const char* sn_desc;
 
-    if( vfs_app_desktop_get_exec( app ) )
+    if( desktop_entry_exec )
     {
-        if ( ! strchr( vfs_app_desktop_get_exec( app ), '%' ) )
+        if ( ! strchr( desktop_entry_exec, '%' ) )
         { /* No filename parameters */
-            exec = g_strconcat( vfs_app_desktop_get_exec( app ), " %f", NULL );
+            exec = g_strconcat( desktop_entry_exec, " %f", NULL );
         }
         else
         {
-            exec = g_strdup( vfs_app_desktop_get_exec( app ) );
+            exec = g_strdup( desktop_entry_exec );
         }
     }
-g_debug(vfs_app_desktop_get_exec( app ));
+
     if ( exec )
     {
         if( !screen )
             screen = gdk_screen_get_default();
 
-        sn_desc = vfs_app_desktop_get_disp_name( app );
+        sn_desc = app_disp_name;
         if( !sn_desc )
             sn_desc = exec;
-        if( vfs_app_desktop_open_multiple_files( app ) )
+        if( can_desktop_entry_open_multiple_files( desktop_entry_exec ) )
         {
-            cmd = translate_app_exec_to_command_line( app, file_paths );
+            cmd = translate_app_exec_to_command_line( desktop_entry_exec, file_paths );
             if ( cmd )
             {
-                g_debug( "Execute %s\n", cmd );
+                /* g_debug( "Execute %s\n", cmd ); */
                 if( g_shell_parse_argv( cmd, &argc, &argv, NULL ) )
                 {
                     vfs_exec_on_screen( screen, NULL, argv, NULL,
@@ -431,7 +316,7 @@ g_debug(vfs_app_desktop_get_exec( app ));
             {
                 for( l = file_paths; l; l = l->next )
                 {
-                    cmd = translate_app_exec_to_command_line( app, l );
+                    cmd = translate_app_exec_to_command_line( desktop_entry_exec, l );
                     if ( cmd )
                     {
                         /* g_debug( "Execute %s\n", cmd ); */
