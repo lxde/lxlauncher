@@ -453,6 +453,9 @@ static void notebook_page_chdir( PageData* data, GMenuTreeDirectory* dir )
 
     gtk_container_forall( data->go_up_bar, gtk_widget_destroy, NULL );
 
+    if( G_UNLIKELY( !dir ) )
+        return;
+
     for( l = gmenu_tree_directory_get_contents(dir); l; l = l->next )
     {
         GMenuTreeItem* item = (GMenuTreeItem*)l->data;

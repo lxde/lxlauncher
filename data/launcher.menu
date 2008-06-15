@@ -22,6 +22,15 @@
 				<Category>Network</Category>
 			</And>
 		</Include>
+		<Menu>
+			<Name>WebMail</Name>
+			<Directory>WebMail.directory</Directory>
+			<Include>
+				<And>
+				<Category>X-WebMail</Category>
+				</And>
+			</Include>
+		</Menu>
 	</Menu>
 	<Menu>
 		<Name>Work</Name>

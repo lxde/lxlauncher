@@ -11,6 +11,7 @@ datafile_DATA=\
 
 directorydir=$(datadir)/desktop-directories
 directory_DATA=\
+	data/WebMail.directory \
 	data/Work.directory \
 	data/Learn.directory \
 	data/Play.directory \
