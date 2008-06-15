@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-06-15 23:18+0800\n"
-"PO-Revision-Date: 2008-05-11 19:15+0100\n"
+"PO-Revision-Date: 2008-06-15 20:40+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,19 +16,16 @@ msgstr ""
 #: src/lxlauncher.c:475
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "Vissza ide: \"%s\""
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
-
 #~ msgid "Work"
 #~ msgstr "Munka"
-
 #~ msgid "Learn"
 #~ msgstr "Tanulás"
-
 #~ msgid "Play"
 #~ msgstr "Játék"
-
 #~ msgid "Settings"
 #~ msgstr "Beállítások"
+
