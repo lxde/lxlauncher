@@ -60,6 +60,8 @@ static Atom atom_NET_WORKAREA = NULL;
 static GMenuTree* menu_tree = NULL;
 static GMenuTreeDirectory* root_dir = NULL;
 
+static int reload_handler = 0;
+
 typedef struct _PageData{
     GMenuTreeDirectory* dir;
 	GtkWidget* page_vbox;
@@ -334,12 +336,8 @@ static PageData* notebook_page_from_dir( GMenuTreeDirectory* dir )
     return NULL;
 }
 
-void on_menu_tree_changed( GMenuTree *tree, gpointer  user_data )
+static gboolean reload_apps()
 {
-    // some changes happened in applications dirs
-    // reload is needed
-    // g_debug( "file changed" );
-
     int i;
     PageData* page_data;
     GtkWidget* page;
@@ -385,6 +383,21 @@ void on_menu_tree_changed( GMenuTree *tree, gpointer  user_data )
         }
     }
     g_strfreev( page_paths );
+    return FALSE;
+}
+
+void on_menu_tree_changed( GMenuTree *tree, gpointer  user_data )
+{
+    // some changes happened in applications dirs
+    // reload is needed
+    // g_debug( "file changed" );
+
+    if( reload_handler )
+        g_source_remove( reload_handler );
+
+    // delay the reload deliberately to prevent frequent massive changes to the menu dirs 
+    // due to system upgrade or something.
+    reload_handler = g_timeout_add( 5000,(GSourceFunc)reload_apps, NULL );
 }
 
 GdkFilterReturn evt_filter(GdkXEvent *xevt, GdkEvent *evt, gpointer data)
@@ -397,10 +410,6 @@ GdkFilterReturn evt_filter(GdkXEvent *xevt, GdkEvent *evt, gpointer data)
         get_working_area( gdk_drawable_get_screen(evt->any.window), &working_area );
         gtk_window_move( main_window, working_area.x, working_area.y );
         gtk_window_resize( main_window, working_area.width, working_area.height );
-    }
-    else if( evt->type == GDK_SCROLL )
-    {
-//        return GDK_FILTER_REMOVE;
     }
     return GDK_FILTER_CONTINUE;
 }

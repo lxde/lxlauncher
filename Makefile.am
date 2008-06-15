@@ -13,7 +13,9 @@ directorydir=$(datadir)/desktop-directories
 directory_DATA=\
 	data/Work.directory \
 	data/Learn.directory \
-	data/Play.directory
+	data/Play.directory \
+	data/Science.directory \
+	data/Math.directory
 
 #backgrounddir=$(datadir)/lxlauncher/background
 #background_DATA=
