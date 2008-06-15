@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-14 16:07+0800\n"
+"POT-Creation-Date: 2008-06-15 23:18+0800\n"
 "PO-Revision-Date: 2008-05-11 12:02+0200\n"
 "Last-Translator: Elias Julkunen <elias.julkunen@gmail.com>\n"
 "Language-Team: fi <fi@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/lxlauncher.c:834
+#: src/lxlauncher.c:475
 #, c-format
 msgid "Go back to \"%s\""
 msgstr ""

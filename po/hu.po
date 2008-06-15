@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-14 16:07+0800\n"
+"POT-Creation-Date: 2008-06-15 23:18+0800\n"
 "PO-Revision-Date: 2008-05-11 19:15+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-Country: HUNGARY\n"
 
-#: src/lxlauncher.c:834
+#: src/lxlauncher.c:475
 #, c-format
 msgid "Go back to \"%s\""
 msgstr ""

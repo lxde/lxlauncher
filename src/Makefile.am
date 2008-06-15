@@ -14,9 +14,7 @@ lxlauncher_SOURCES = \
 	vfs-utils.c vfs-utils.h \
 	vfs-execute.c vfs-execute.h \
 	working-area.c working-area.h \
-	exo-wrap-table.c exo-wrap-table.h \
-	inotify/inotify-syscalls.h \
-	inotify/linux-inotify.h
+	exo-wrap-table.c exo-wrap-table.h
 
 lxlauncher_LDADD = @GTK_LIBS@ @SN_LIBS@ @GMENU_LIBS@ $(INTLLIBS)
 
