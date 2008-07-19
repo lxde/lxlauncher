@@ -91,9 +91,14 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
 {
     GtkWidget *btn, *box, *img, *label;
 
+	GtkSettings *settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
+	gboolean enable_key=0;
+	g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
+	
     // add the app to that page
     btn = gtk_button_new();
-    GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
+	if (!enable_key)
+    	GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
 
     img = gtk_image_new_from_pixbuf( icon );
@@ -227,15 +232,16 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
         GtkAdjustment* vadj = gtk_scrolled_window_get_vadjustment(scroll);
 
         cr = gdk_cairo_create (evt->window);
-        pat = cairo_pattern_create_linear( 0, gtk_adjustment_get_value(vadj), 0, w->allocation.height + gtk_adjustment_get_value(vadj) );
-        cairo_pattern_add_color_stop_rgb( pat, 0, 1, 1, 1);
-        cairo_pattern_add_color_stop_rgb( pat, 1.0, ((gdouble)184/256), ((gdouble)215/256), ((gdouble)235/256));
+        //pat = cairo_pattern_create_linear( 0, gtk_adjustment_get_value(vadj), 0, w->allocation.height + gtk_adjustment_get_value(vadj) );
+        //cairo_pattern_add_color_stop_rgb( pat, 0, 1, 1, 1);
+        //cairo_pattern_add_color_stop_rgb( pat, 1.0, ((gdouble)184/256), ((gdouble)215/256), ((gdouble)235/256));
 //        cairo_rectangle(cr, 0, 0, w->allocation.width, w->allocation.height );
 //        cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
         cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
-        cairo_set_source(cr, pat);
+        //cairo_set_source(cr, pat);
+        cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
         cairo_fill(cr);
-        cairo_pattern_destroy(pat);
+        //cairo_pattern_destroy(pat);
         cairo_destroy(cr);
 
 /*
@@ -606,6 +612,8 @@ int main(int argc, char** argv)
 	int i;
 	GdkRectangle working_area;
     GList* l;
+	gboolean enable_key=0;
+	GtkSettings *settings;
 
 #ifdef ENABLE_NLS
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -615,6 +623,11 @@ int main(int argc, char** argv)
 
 	gtk_init( &argc, &argv );
 
+    // Add application specific properties
+    gtk_settings_install_property(g_param_spec_boolean("lxlauncher-enable-key",
+							_("Enable key navigation"),
+							_("Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"),
+							FALSE,GTK_ARG_READWRITE));
     // set up themes for notebook
     gtk_rc_parse( PACKAGE_DATA_DIR "/lxlauncher/gtkrc" );
 
@@ -639,7 +652,11 @@ int main(int argc, char** argv)
 	gdk_window_add_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
 
 	notebook = gtk_notebook_new();
-	GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
+	settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
+	g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
+	
+	if (!enable_key)
+		GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
 	gtk_container_add( (GtkContainer*)main_window, notebook );
 
 	tooltips = gtk_tooltips_new();
