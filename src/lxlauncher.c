@@ -41,6 +41,7 @@
 
 #include "exo-wrap-table.h"
 #include "working-area.h"
+#include "misc.h"
 
 #define BUTTON_SIZE	120
 #define IMG_SIZE	48
