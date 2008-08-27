@@ -160,6 +160,11 @@
 		<Include>
 			<And>
 				<Category>System</Category>
+				<Not><Category>Game</Category></Not>
+			</And>
+		</Include>
+		<Include>
+			<And>
 				<Category>Settings</Category>
 				<Not><Category>Game</Category></Not>
 			</And>
