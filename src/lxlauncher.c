@@ -32,8 +32,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 
-#define GMENU_I_KNOW_THIS_IS_UNSTABLE
-#include <gmenu-tree.h>
+#include <menu-cache.h>
 
 #include <errno.h>
 
@@ -58,33 +57,32 @@ static GtkIconSize icon_size;
 
 static Atom atom_NET_WORKAREA = NULL;
 
-static GMenuTree* menu_tree = NULL;
-static GMenuTreeDirectory* root_dir = NULL;
+static MenuCacheDir* menu_tree = NULL;
 
 static int reload_handler = 0;
 
 typedef struct _PageData{
-    GMenuTreeDirectory* dir;
+    MenuCacheDir* dir;
 	GtkWidget* page_vbox;
 	GtkBox* go_up_bar;
 	GtkWidget* table;
 	GdkPixbuf* background;
 }PageData;
 
-static void on_app_btn_clicked( GtkButton* btn, GMenuTreeEntry* app )
+static void on_app_btn_clicked( GtkButton* btn, MenuCacheApp* app )
 {
 	lxlauncher_execute_app( gdk_screen_get_default(),
-										NULL, gmenu_tree_entry_get_exec(app), 
-										gmenu_tree_entry_get_name(app), NULL, 
-										gmenu_tree_entry_get_launch_in_terminal(app),
+										NULL, menu_cache_app_get_exec(app), 
+										menu_cache_item_get_name(app), NULL, 
+										menu_cache_app_get_use_terminal(app),
 										NULL );
 }
 
-static void notebook_page_chdir( PageData* data, GMenuTreeDirectory* dir );
+static void notebook_page_chdir( PageData* data, MenuCacheDir* dir );
 
 static void on_dir_btn_clicked( GtkButton* btn, PageData* data )
 {
-    GMenuTreeDirectory* dir = (GMenuTreeDirectory*)g_object_get_data( btn, "dir" );
+    MenuCacheDir* dir = (MenuCacheDir*)g_object_get_data( btn, "dir" );
     notebook_page_chdir( data, dir );
 }
 
@@ -182,17 +180,17 @@ GdkPixbuf* load_icon( const char* icon_name, int size, gboolean use_fallback )
 }
 #endif
 
-static void add_dir_btn( PageData* data, GMenuTreeDirectory* dir )
+static void add_dir_btn( PageData* data, MenuCacheDir* dir )
 {
     GdkPixbuf* icon;
     GtkWidget* btn;
-    const char* icon_name = gmenu_tree_directory_get_icon( dir );
+    const char* icon_name = menu_cache_item_get_icon( dir );
     if( !icon_name )
         icon_name = "folder";
 
     icon = lxlauncher_load_icon( icon_name, IMG_SIZE, TRUE );
 
-    btn = add_btn( data->table, gmenu_tree_directory_get_name(dir), icon, gmenu_tree_directory_get_comment(dir) );
+    btn = add_btn( data->table, menu_cache_item_get_name(dir), icon, menu_cache_item_get_comment(dir) );
     if( icon )
         g_object_unref( icon );
 
@@ -200,18 +198,18 @@ static void add_dir_btn( PageData* data, GMenuTreeDirectory* dir )
     g_signal_connect( btn, "clicked", G_CALLBACK(on_dir_btn_clicked), data );
 }
 
-static void add_app_btn( GtkWidget* table, GMenuTreeEntry* app )
+static void add_app_btn( GtkWidget* table, MenuCacheApp* app )
 {
     GdkPixbuf* icon;
     GtkWidget* btn;
-    const char* icon_name = gmenu_tree_entry_get_icon( app );
+    const char* icon_name = menu_cache_item_get_icon( app );
 
     if( !icon_name )
         icon_name = "application-x-executable";
 
     icon = lxlauncher_load_icon( icon_name, IMG_SIZE, TRUE );
 
-    btn = add_btn( table, gmenu_tree_entry_get_name(app), icon, gmenu_tree_entry_get_comment(app) );
+    btn = add_btn( table, menu_cache_item_get_name(app), icon, menu_cache_item_get_comment(app) );
 
     if( icon )
         g_object_unref( icon );
@@ -298,15 +296,15 @@ static gboolean on_scroll_change_val( GtkRange* scroll, GtkScrollType type, gdou
     return FALSE;
 }
 
-static char* menu_dir_to_path( GMenuTreeDirectory* dir )
+static char* menu_dir_to_path( MenuCacheDir* dir )
 {
-    if( gmenu_tree_item_get_parent(dir) == root_dir )
-        return g_strdup( gmenu_tree_directory_get_name(dir) );
+    if( menu_cache_item_get_parent(dir) == menu_tree )
+        return g_strdup( menu_cache_item_get_name(dir) );
     else
     {
-        char* parent = menu_dir_to_path( gmenu_tree_item_get_parent(dir) );
+        char* parent = menu_dir_to_path( menu_cache_item_get_parent(dir) );
         char* ret;
-        ret = g_strconcat( parent, " > ", gmenu_tree_directory_get_name(dir), NULL );
+        ret = g_strconcat( parent, " > ", menu_cache_item_get_name(dir), NULL );
         g_free( parent );
         return ret;
     }
@@ -315,27 +313,27 @@ static char* menu_dir_to_path( GMenuTreeDirectory* dir )
 
 static void create_notebook_pages();
 
-static PageData* notebook_page_from_dir( GMenuTreeDirectory* dir )
+static PageData* notebook_page_from_dir( MenuCacheDir* dir )
 {
     int i, n;
     GtkWidget* page;
-    GMenuTreeDirectory* top = dir;
+    MenuCacheDir* top = dir;
     PageData* page_data;
 
     // get toplevel parent dir
-    while( gmenu_tree_item_get_parent(top) != root_dir )
-        top = gmenu_tree_item_get_parent(top);
+    while( menu_cache_item_get_parent(top) != menu_tree )
+        top = menu_cache_item_get_parent(top);
 
     n = gtk_notebook_get_n_pages( notebook );
     for( i = 0; i < n; ++i )
     {
 
-        GMenuTreeDirectory* top2;
+        MenuCacheDir* top2;
         page = gtk_notebook_get_nth_page( notebook, i );
         page_data = (PageData*)g_object_get_data(page, "page");
         top2 = page_data->dir;
-        while( gmenu_tree_item_get_parent(top2) != root_dir )
-            top2 = gmenu_tree_item_get_parent(top2);
+        while( menu_cache_item_get_parent(top2) != menu_tree )
+            top2 = menu_cache_item_get_parent(top2);
 
         if( top == top2 )
             return page_data;
@@ -357,24 +355,23 @@ static gboolean reload_apps()
     {
         page = gtk_notebook_get_nth_page( notebook, 0 );
         page_data = (PageData*)g_object_get_data( page, "page" );
-        page_paths[i] = gmenu_tree_directory_make_path( page_data->dir, NULL);
+        page_paths[i] = menu_cache_dir_make_path( page_data->dir );
         gtk_notebook_remove_page( notebook, 0 );
     }
 
     // rebuild every pages
     create_notebook_pages();
-    root_dir = gmenu_tree_get_root_directory( menu_tree );
 
     for( i = 0; i < n; ++i )
     {
-        GMenuTreeDirectory* dir = gmenu_tree_get_directory_from_path( menu_tree, page_paths[i] );
+        MenuCacheDir* dir = menu_cache_get_dir_from_path( menu_tree, page_paths[i] );
         if( dir )
         {
-            GMenuTreeDirectory* top = dir;
+            MenuCacheDir* top = dir;
             // get toplevel parent dir
 
-            while( gmenu_tree_item_get_parent(top) != root_dir )
-                top = gmenu_tree_item_get_parent(top);
+            while( menu_cache_item_get_parent(top) != menu_tree )
+                top = menu_cache_item_get_parent(top);
 
             // find notebook page containing the top dir
             page_data = notebook_page_from_dir( top );
@@ -393,6 +390,7 @@ static gboolean reload_apps()
     return FALSE;
 }
 
+/*
 void on_menu_tree_changed( GMenuTree *tree, gpointer  user_data )
 {
     // some changes happened in applications dirs
@@ -406,6 +404,7 @@ void on_menu_tree_changed( GMenuTree *tree, gpointer  user_data )
     // due to system upgrade or something.
     reload_handler = g_timeout_add( 5000,(GSourceFunc)reload_apps, NULL );
 }
+*/
 
 GdkFilterReturn evt_filter(GdkXEvent *xevt, GdkEvent *evt, gpointer data)
 {
@@ -447,11 +446,11 @@ static char* get_line( char** buf )
     return ret;
 }
 
-static void notebook_page_chdir( PageData* data, GMenuTreeDirectory* dir )
+static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
 {
     GSList* l;
     char* dir_path;
-    GMenuTreeDirectory* parent_dir;
+    MenuCacheDir* parent_dir;
 
     data->dir = dir;
 
@@ -463,26 +462,30 @@ static void notebook_page_chdir( PageData* data, GMenuTreeDirectory* dir )
     if( G_UNLIKELY( !dir ) )
         return;
 
-    for( l = gmenu_tree_directory_get_contents(dir); l; l = l->next )
+    for( l = menu_cache_dir_get_children(dir); l; l = l->next )
     {
-        GMenuTreeItem* item = (GMenuTreeItem*)l->data;
-        GMenuTreeItemType type = gmenu_tree_item_get_type(item);
-        if( type == GMENU_TREE_ITEM_DIRECTORY )
-            add_dir_btn( data, (GMenuTreeDirectory*)item );
-        else if( type == GMENU_TREE_ITEM_ENTRY )
+        MenuCacheItem* item = (MenuCacheItem*)l->data;
+        MenuCacheType type = menu_cache_item_get_type(item);
+
+        if( type == MENU_CACHE_TYPE_DIR )
+            add_dir_btn( data, (MenuCacheDir*)item );
+        else if( type == MENU_CACHE_TYPE_APP )
         {
+			/* FIXME: */
+/*
             if( gmenu_tree_entry_get_is_nodisplay(item) || gmenu_tree_entry_get_is_excluded(item) )
                 continue;
-            add_app_btn( data->table, (GMenuTreeEntry*)item );
+*/
+            add_app_btn( data->table, (MenuCacheApp*)item );
         }
     }
 
-    parent_dir = gmenu_tree_item_get_parent((GMenuTreeItem*)dir);
+    parent_dir = menu_cache_item_get_parent((MenuCacheItem*)dir);
 
-    if( parent_dir != root_dir )   // if dir has parent, not top-level group
+    if( parent_dir != menu_tree )   // if dir has parent, not top-level group
     {
         GtkWidget* label;
-        char* text = g_strdup_printf( _("Go back to \"%s\""), gmenu_tree_directory_get_name(parent_dir) );
+        char* text = g_strdup_printf( _("Go back to \"%s\""), menu_cache_item_get_name(parent_dir) );
         GtkWidget* btn = gtk_button_new_with_label( text );
         g_free( text );
 
@@ -517,10 +520,8 @@ static void create_notebook_pages()
 {
     GSList* l;
 
-    root_dir = gmenu_tree_get_root_directory( menu_tree );
-
     // build pages for toplevel groups
-	for( l = gmenu_tree_directory_get_contents(root_dir); l; l = l->next )
+	for( l = menu_cache_dir_get_children(menu_tree); l; l = l->next )
 	{
 	    GtkWidget* *viewport;
 		GtkAdjustment* adj;
@@ -535,9 +536,9 @@ static void create_notebook_pages()
 		GdkGC *pixmap_gc=NULL;
 		char* file;
         PageData* page_data;
-		GMenuTreeDirectory* dir = (GMenuTreeDirectory*)l->data;
+		MenuCacheDir* dir = (MenuCacheDir*)l->data;
 
-		if( G_UNLIKELY( gmenu_tree_item_get_type((GMenuTreeItem*)dir) != GMENU_TREE_ITEM_DIRECTORY ) )
+		if( G_UNLIKELY( menu_cache_item_get_type((MenuCacheItem*)dir) != MENU_CACHE_TYPE_DIR ) )
 		    continue;
 
         page_data = g_new0( PageData, 1 );
@@ -558,10 +559,10 @@ static void create_notebook_pages()
         g_signal_connect( adj, "value-changed", G_CALLBACK(on_scroll), page_data );
 
         // create label
-        image = gtk_image_new_from_icon_name( gmenu_tree_directory_get_icon(dir), GTK_ICON_SIZE_MENU );
+        image = gtk_image_new_from_icon_name( menu_cache_item_get_icon(dir), GTK_ICON_SIZE_MENU );
 
 		gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
-		gtk_box_pack_start( label, gtk_label_new( gmenu_tree_directory_get_name(dir) ), FALSE, TRUE, 2 );
+		gtk_box_pack_start( label, gtk_label_new( menu_cache_item_get_name(dir) ), FALSE, TRUE, 2 );
 		gtk_widget_show_all(label);
 
         // gtk_container_set_border_width( page_vbox, 4 );
@@ -604,6 +605,7 @@ static void create_notebook_pages()
         page_data->page_vbox = page_vbox;
         page_data->go_up_bar = go_up_bar;
         page_data->table = table;
+
         notebook_page_chdir( page_data, dir );
 	}
 }
@@ -663,8 +665,12 @@ int main(int argc, char** argv)
 	tooltips = gtk_tooltips_new();
 	g_object_ref_sink( tooltips );
 
-    menu_tree = gmenu_tree_lookup( DATA_DIR"/launcher.menu", GMENU_TREE_FLAGS_NONE );
-    gmenu_tree_add_monitor( menu_tree, on_menu_tree_changed, NULL );
+//	g_spawn_command_line_sync
+
+//    menu_tree = menu_cache_new( DATA_DIR"/launcher.menu", GMENU_TREE_FLAGS_NONE );
+    menu_tree = menu_cache_new( "/home/pcman/.cache/menus/zh_TW/launcher.menu.cache", NULL, NULL );
+
+//    gmenu_tree_add_monitor( menu_tree, on_menu_tree_changed, NULL );
 
     create_notebook_pages();
 
@@ -679,8 +685,8 @@ int main(int argc, char** argv)
 
     gdk_window_remove_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
 
-    gmenu_tree_remove_monitor( menu_tree, on_menu_tree_changed, NULL );
-    gmenu_tree_unref( menu_tree );
+//    gmenu_tree_remove_monitor( menu_tree, on_menu_tree_changed, NULL );
+    menu_cache_item_unref( menu_tree );
 
 	return 0;
 }

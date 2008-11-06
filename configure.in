@@ -20,7 +20,7 @@ PKG_CHECK_MODULES(SN, [$sn_modules])
 AC_SUBST(SN_CFLAGS)
 AC_SUBST(SN_LIBS)
 
-gmenu_modules="libgnome-menu >= 2.18.0"
+gmenu_modules="libmenu-cache"
 PKG_CHECK_MODULES(GMENU, [$gmenu_modules])
 AC_SUBST(GMENU_CFLAGS)
 AC_SUBST(GMENU_LIBS)
