@@ -57,7 +57,8 @@ static GtkIconSize icon_size;
 
 static Atom atom_NET_WORKAREA = NULL;
 
-static MenuCacheDir* menu_tree = NULL;
+static MenuCache* menu_tree = NULL;
+static MenuCacheDir* root_dir = NULL;
 
 static int reload_handler = 0;
 
@@ -298,7 +299,7 @@ static gboolean on_scroll_change_val( GtkRange* scroll, GtkScrollType type, gdou
 
 static char* menu_dir_to_path( MenuCacheDir* dir )
 {
-    if( menu_cache_item_get_parent(dir) == menu_tree )
+    if( menu_cache_item_get_parent(dir) == root_dir )
         return g_strdup( menu_cache_item_get_name(dir) );
     else
     {
@@ -321,7 +322,7 @@ static PageData* notebook_page_from_dir( MenuCacheDir* dir )
     PageData* page_data;
 
     // get toplevel parent dir
-    while( menu_cache_item_get_parent(top) != menu_tree )
+    while( menu_cache_item_get_parent(top) != root_dir )
         top = menu_cache_item_get_parent(top);
 
     n = gtk_notebook_get_n_pages( notebook );
@@ -332,7 +333,7 @@ static PageData* notebook_page_from_dir( MenuCacheDir* dir )
         page = gtk_notebook_get_nth_page( notebook, i );
         page_data = (PageData*)g_object_get_data(page, "page");
         top2 = page_data->dir;
-        while( menu_cache_item_get_parent(top2) != menu_tree )
+        while( menu_cache_item_get_parent(top2) != root_dir )
             top2 = menu_cache_item_get_parent(top2);
 
         if( top == top2 )
@@ -370,7 +371,7 @@ static gboolean reload_apps()
             MenuCacheDir* top = dir;
             // get toplevel parent dir
 
-            while( menu_cache_item_get_parent(top) != menu_tree )
+            while( menu_cache_item_get_parent(top) != root_dir )
                 top = menu_cache_item_get_parent(top);
 
             // find notebook page containing the top dir
@@ -482,7 +483,7 @@ static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
 
     parent_dir = menu_cache_item_get_parent((MenuCacheItem*)dir);
 
-    if( parent_dir != menu_tree )   // if dir has parent, not top-level group
+    if( parent_dir != root_dir )   // if dir has parent, not top-level group
     {
         GtkWidget* label;
         char* text = g_strdup_printf( _("Go back to \"%s\""), menu_cache_item_get_name(parent_dir) );
@@ -521,7 +522,7 @@ static void create_notebook_pages()
     GSList* l;
 
     // build pages for toplevel groups
-	for( l = menu_cache_dir_get_children(menu_tree); l; l = l->next )
+	for( l = menu_cache_dir_get_children(root_dir); l; l = l->next )
 	{
 	    GtkWidget* *viewport;
 		GtkAdjustment* adj;
@@ -671,8 +672,8 @@ int main(int argc, char** argv)
 //	g_spawn_command_line_sync
 
 //    menu_tree = menu_cache_new( DATA_DIR"/launcher.menu", GMENU_TREE_FLAGS_NONE );
-    menu_tree = menu_cache_new( "/home/pcman/.cache/menus/zh_TW/launcher.menu.cache", NULL, NULL );
-
+    menu_tree = menu_cache_new( "/home/pcman/.cache/menus/zh_TW/lxlauncher.menu.cache", NULL, NULL );
+	root_dir = menu_cache_get_root_dir( menu_tree );
 //    gmenu_tree_add_monitor( menu_tree, on_menu_tree_changed, NULL );
 
     create_notebook_pages();
@@ -689,7 +690,7 @@ int main(int argc, char** argv)
     gdk_window_remove_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
 
 //    gmenu_tree_remove_monitor( menu_tree, on_menu_tree_changed, NULL );
-    menu_cache_item_unref( menu_tree );
+    menu_cache_unref( menu_tree );
 
 	return 0;
 }
