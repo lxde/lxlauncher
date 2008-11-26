@@ -672,7 +672,7 @@ int main(int argc, char** argv)
 //	g_spawn_command_line_sync
 
 //    menu_tree = menu_cache_new( DATA_DIR"/launcher.menu", GMENU_TREE_FLAGS_NONE );
-    menu_tree = menu_cache_new( "/home/pcman/.cache/menus/zh_TW/lxlauncher.menu.cache", NULL, NULL );
+    menu_tree = menu_cache_lookup( "lxlauncher.menu" );
 	root_dir = menu_cache_get_root_dir( menu_tree );
 //    gmenu_tree_add_monitor( menu_tree, on_menu_tree_changed, NULL );
 
