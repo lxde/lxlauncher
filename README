@@ -10,3 +10,4 @@ LXLauncher will use those background images if available.
 Also, if you put the tab icons of Asus launcher under 
 /usr/share/lxlauncher/icons, they will be used in the tabs.
 Otherwise, some icons from the gtk+ icon theme will be used instead.
+
