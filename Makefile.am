@@ -5,9 +5,9 @@ SUBDIRS = src po
 themedir=$(datadir)/lxlauncher
 theme_DATA=gtkrc
 
-datafiledir=$(datadir)/lxlauncher
-datafile_DATA=\
-	data/launcher.menu
+menufiledir=/etc/xdg/menus
+menufile_DATA=\
+	data/lxlauncher.menu
 
 directorydir=$(datadir)/desktop-directories
 directory_DATA=\
