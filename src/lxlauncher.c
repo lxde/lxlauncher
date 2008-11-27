@@ -42,8 +42,8 @@
 #include "working-area.h"
 #include "misc.h"
 
-#define BUTTON_SIZE	120
-#define IMG_SIZE	48
+#define BUTTON_SIZE    120
+#define IMG_SIZE    48
 
 #define DATA_DIR  PACKAGE_DATA_DIR"/lxlauncher"
 #define BACKGROUND_DIR  PACKAGE_DATA_DIR"/lxlauncher/background"
@@ -61,22 +61,23 @@ static MenuCache* menu_tree = NULL;
 static MenuCacheDir* root_dir = NULL;
 
 static int reload_handler = 0;
+static gpointer reload_notify_id;
 
 typedef struct _PageData{
     MenuCacheDir* dir;
-	GtkWidget* page_vbox;
-	GtkBox* go_up_bar;
-	GtkWidget* table;
-	GdkPixbuf* background;
+    GtkWidget* page_vbox;
+    GtkBox* go_up_bar;
+    GtkWidget* table;
+    GdkPixbuf* background;
 }PageData;
 
 static void on_app_btn_clicked( GtkButton* btn, MenuCacheApp* app )
 {
-	lxlauncher_execute_app( gdk_screen_get_default(),
-										NULL, menu_cache_app_get_exec(app), 
-										menu_cache_item_get_name(app), NULL, 
-										menu_cache_app_get_use_terminal(app),
-										NULL );
+    lxlauncher_execute_app( gdk_screen_get_default(),
+                                        NULL, menu_cache_app_get_exec(app), 
+                                        menu_cache_item_get_name(app), NULL, 
+                                        menu_cache_app_get_use_terminal(app),
+                                        NULL );
 }
 
 static void notebook_page_chdir( PageData* data, MenuCacheDir* dir );
@@ -91,14 +92,14 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
 {
     GtkWidget *btn, *box, *img, *label;
 
-	GtkSettings *settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
-	gboolean enable_key=0;
-	g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
-	
+    GtkSettings *settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
+    gboolean enable_key=0;
+    g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
+    
     // add the app to that page
     btn = gtk_button_new();
-	if (!enable_key)
-    	GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
+    if (!enable_key)
+        GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
 
     img = gtk_image_new_from_pixbuf( icon );
@@ -366,6 +367,7 @@ static gboolean reload_apps()
     for( i = 0; i < n; ++i )
     {
         MenuCacheDir* dir = menu_cache_get_dir_from_path( menu_tree, page_paths[i] );
+
         if( dir )
         {
             MenuCacheDir* top = dir;
@@ -391,21 +393,15 @@ static gboolean reload_apps()
     return FALSE;
 }
 
-/*
-void on_menu_tree_changed( GMenuTree *tree, gpointer  user_data )
+void on_menu_tree_changed( MenuCache *tree, gpointer  user_data )
 {
     // some changes happened in applications dirs
     // reload is needed
     // g_debug( "file changed" );
-
-    if( reload_handler )
-        g_source_remove( reload_handler );
-
-    // delay the reload deliberately to prevent frequent massive changes to the menu dirs 
-    // due to system upgrade or something.
-    reload_handler = g_timeout_add( 5000,(GSourceFunc)reload_apps, NULL );
+    menu_cache_item_unref(root_dir);
+    root_dir = menu_cache_ref(menu_cache_get_root_dir(tree));
+    reload_apps();
 }
-*/
 
 GdkFilterReturn evt_filter(GdkXEvent *xevt, GdkEvent *evt, gpointer data)
 {
@@ -472,7 +468,7 @@ static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
             add_dir_btn( data, (MenuCacheDir*)item );
         else if( type == MENU_CACHE_TYPE_APP )
         {
-			/* FIXME: */
+            /* FIXME: */
 /*
             if( gmenu_tree_entry_get_is_nodisplay(item) || gmenu_tree_entry_get_is_excluded(item) )
                 continue;
@@ -522,68 +518,68 @@ static void create_notebook_pages()
     GSList* l;
 
     // build pages for toplevel groups
-	for( l = menu_cache_dir_get_children(root_dir); l; l = l->next )
-	{
-	    GtkWidget* *viewport;
-		GtkAdjustment* adj;
-		GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
-		GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
-		GtkWidget* table = exo_wrap_table_new(TRUE);
-		GtkWidget* label;
-		GtkWidget* image;
-		GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
-		GdkPixbuf* pixbuf=NULL;
-		GdkPixmap* pixmap;
-		GdkGC *pixmap_gc=NULL;
-		char* file;
+    for( l = menu_cache_dir_get_children(root_dir); l; l = l->next )
+    {
+        GtkWidget* *viewport;
+        GtkAdjustment* adj;
+        GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
+        GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
+        GtkWidget* table = exo_wrap_table_new(TRUE);
+        GtkWidget* label;
+        GtkWidget* image;
+        GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
+        GdkPixbuf* pixbuf=NULL;
+        GdkPixmap* pixmap;
+        GdkGC *pixmap_gc=NULL;
+        char* file;
         PageData* page_data;
-		MenuCacheDir* dir = (MenuCacheDir*)l->data;
+        MenuCacheDir* dir = (MenuCacheDir*)l->data;
 
-		if( G_UNLIKELY( menu_cache_item_get_type((MenuCacheItem*)dir) != MENU_CACHE_TYPE_DIR ) )
-		    continue;
+        if( G_UNLIKELY( menu_cache_item_get_type((MenuCacheItem*)dir) != MENU_CACHE_TYPE_DIR ) )
+            continue;
 
         page_data = g_new0( PageData, 1 );
         g_object_set_data_full( page_vbox, "page", page_data, page_data_free );
 
-		label = gtk_hbox_new( FALSE, 2 );
+        label = gtk_hbox_new( FALSE, 2 );
 
-		gtk_scrolled_window_set_policy(scroll, GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
+        gtk_scrolled_window_set_policy(scroll, GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
 
         // Very bad dirty hacks used to force gtk+ to draw transparent background
-		GtkRange* range = gtk_scrolled_window_get_vscrollbar(scroll);
-		//gtk_range_set_update_policy( range, GTK_UPDATE_DELAYED );
-		g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
-		adj = gtk_scrolled_window_get_vadjustment(scroll);
-		adj->step_increment = BUTTON_SIZE / 3;
-		adj->page_increment = BUTTON_SIZE / 2;
-		gtk_adjustment_changed( adj );
+        GtkRange* range = gtk_scrolled_window_get_vscrollbar(scroll);
+        //gtk_range_set_update_policy( range, GTK_UPDATE_DELAYED );
+        g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
+        adj = gtk_scrolled_window_get_vadjustment(scroll);
+        adj->step_increment = BUTTON_SIZE / 3;
+        adj->page_increment = BUTTON_SIZE / 2;
+        gtk_adjustment_changed( adj );
         g_signal_connect( adj, "value-changed", G_CALLBACK(on_scroll), page_data );
 
         // create label
         image = gtk_image_new_from_icon_name( menu_cache_item_get_icon(dir), GTK_ICON_SIZE_MENU );
 
-		gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
-		gtk_box_pack_start( label, gtk_label_new( menu_cache_item_get_name(dir) ), FALSE, TRUE, 2 );
-		gtk_widget_show_all(label);
+        gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
+        gtk_box_pack_start( label, gtk_label_new( menu_cache_item_get_name(dir) ), FALSE, TRUE, 2 );
+        gtk_widget_show_all(label);
 
         // gtk_container_set_border_width( page_vbox, 4 );
         exo_wrap_table_set_col_spacing( table, 8 );
 
-		viewport = gtk_viewport_new( NULL, NULL );
-		gtk_container_add( viewport, table );
-		gtk_container_add( scroll, viewport );
-		gtk_widget_show_all( scroll );
+        viewport = gtk_viewport_new( NULL, NULL );
+        gtk_container_add( viewport, table );
+        gtk_container_add( scroll, viewport );
+        gtk_widget_show_all( scroll );
 
         gtk_box_pack_start( page_vbox, go_up_bar, FALSE, TRUE, 0 );
         gtk_box_pack_start( page_vbox, scroll, TRUE, TRUE, 0 );
-		gtk_widget_show_all( page_vbox );
+        gtk_widget_show_all( page_vbox );
 
-		gtk_notebook_append_page( notebook, page_vbox, label );
+        gtk_notebook_append_page( notebook, page_vbox, label );
 
         // set background
         gtk_widget_set_app_paintable( viewport, TRUE );
-		
-		g_debug( "%s: %s", menu_cache_item_get_name(dir), menu_cache_item_get_extended( MENU_CACHE_ITEM(dir), "X-Background" ) );
+        
+        g_debug( "%s: %s", menu_cache_item_get_name(dir), menu_cache_item_get_extended( MENU_CACHE_ITEM(dir), "X-Background" ) );
 
 /*
         file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
@@ -611,16 +607,16 @@ static void create_notebook_pages()
         page_data->table = table;
 
         notebook_page_chdir( page_data, dir );
-	}
+    }
 }
 
 int main(int argc, char** argv)
 {
-	int i;
-	GdkRectangle working_area;
+    int i;
+    GdkRectangle working_area;
     GList* l;
-	gboolean enable_key=0;
-	GtkSettings *settings;
+    gboolean enable_key=0;
+    GtkSettings *settings;
 
 #ifdef ENABLE_NLS
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -628,69 +624,64 @@ int main(int argc, char** argv)
     textdomain (GETTEXT_PACKAGE);
 #endif
 
-	gtk_init( &argc, &argv );
+    gtk_init( &argc, &argv );
 
     // Add application specific properties
     gtk_settings_install_property(g_param_spec_boolean("lxlauncher-enable-key",
-							_("Enable key navigation"),
-							_("Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"),
-							FALSE,GTK_ARG_READWRITE));
+                            _("Enable key navigation"),
+                            _("Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"),
+                            FALSE,GTK_ARG_READWRITE));
     // set up themes for notebook
     gtk_rc_parse( PACKAGE_DATA_DIR "/lxlauncher/gtkrc" );
 
-	icon_size = gtk_icon_size_register( "ALIcon", IMG_SIZE, IMG_SIZE );
+    icon_size = gtk_icon_size_register( "ALIcon", IMG_SIZE, IMG_SIZE );
 
-	main_window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
-	gtk_window_move( main_window, 0, 0 );
-	gtk_window_set_skip_pager_hint( main_window, TRUE );
-	gtk_window_set_skip_taskbar_hint( main_window, TRUE );
+    main_window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
+    gtk_window_move( main_window, 0, 0 );
+    gtk_window_set_skip_pager_hint( main_window, TRUE );
+    gtk_window_set_skip_taskbar_hint( main_window, TRUE );
 
     gtk_widget_realize( main_window );
-	gdk_window_set_keep_below( main_window->window, TRUE );
-	//gdk_window_set_decorations( main_window->window );
-	gdk_window_set_type_hint( main_window->window, GDK_WINDOW_TYPE_HINT_DESKTOP );
-	gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
-	//gtk_window_set_gravity(GDK_GRAVITY_STATIC );
+    gdk_window_set_keep_below( main_window->window, TRUE );
+    //gdk_window_set_decorations( main_window->window );
+    gdk_window_set_type_hint( main_window->window, GDK_WINDOW_TYPE_HINT_DESKTOP );
+    gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
+    //gtk_window_set_gravity(GDK_GRAVITY_STATIC );
 
     g_signal_connect(main_window, "delete-event", G_CALLBACK(window_delete), NULL);
 
     atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);;
     XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XID(gtk_widget_get_root_window(main_window)), PropertyChangeMask );
-	gdk_window_add_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
+    gdk_window_add_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
 
-	notebook = gtk_notebook_new();
-	settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
-	g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
-	
-	if (!enable_key)
-		GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
-	gtk_container_add( (GtkContainer*)main_window, notebook );
+    notebook = gtk_notebook_new();
+    settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
+    g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
+    
+    if (!enable_key)
+        GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
+    gtk_container_add( (GtkContainer*)main_window, notebook );
 
-	tooltips = gtk_tooltips_new();
-	g_object_ref_sink( tooltips );
+    tooltips = gtk_tooltips_new();
+    g_object_ref_sink( tooltips );
 
-//	g_spawn_command_line_sync
-
-//    menu_tree = menu_cache_new( DATA_DIR"/launcher.menu", GMENU_TREE_FLAGS_NONE );
     menu_tree = menu_cache_lookup( "lxlauncher.menu" );
-	root_dir = menu_cache_get_root_dir( menu_tree );
-//    gmenu_tree_add_monitor( menu_tree, on_menu_tree_changed, NULL );
+    reload_notify_id = menu_cache_add_reload_notify( menu_tree, on_menu_tree_changed, NULL );
+    root_dir = menu_cache_ref(menu_cache_get_root_dir( menu_tree ));
 
     create_notebook_pages();
 
     get_working_area( gtk_widget_get_screen(main_window), &working_area );
-    // working_area.width = 800;
-    // working_area.height = 480;
     gtk_window_move( main_window, working_area.x, working_area.y );
     gtk_window_resize( main_window, working_area.width, working_area.height );
 
-	gtk_widget_show_all( main_window );
-	gtk_main();
+    gtk_widget_show_all( main_window );
+    gtk_main();
 
     gdk_window_remove_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
-
-//    gmenu_tree_remove_monitor( menu_tree, on_menu_tree_changed, NULL );
+    menu_cache_remove_reload_notify( menu_tree, reload_notify_id );
+    menu_cache_item_unref( root_dir );
     menu_cache_unref( menu_tree );
 
-	return 0;
+    return 0;
 }
