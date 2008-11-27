@@ -51,7 +51,6 @@
 
 static GtkWidget* main_window;
 static GtkWidget* notebook;
-static GtkTooltips* tooltips;
 static int n_cols;
 static GtkIconSize icon_size;
 
@@ -91,13 +90,16 @@ static void on_dir_btn_clicked( GtkButton* btn, PageData* data )
 static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, const char* tip )
 {
     GtkWidget *btn, *box, *img, *label;
-
+    GtkRequisition req;
     GtkSettings *settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
     gboolean enable_key=0;
     g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
-    
-    // add the app to that page
+    GtkBorder* inner_border;
+    int w, fw, fp, btn_border;
+
+    /* add the app to that page */
     btn = gtk_button_new();
+    gtk_widget_set_size_request( btn, BUTTON_SIZE, -1 );
     if (!enable_key)
         GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
@@ -108,24 +110,46 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     gtk_box_pack_start( box, img, FALSE, TRUE, 2 );
 
     label = gtk_label_new( text );
-    gtk_widget_show( label );
-    gtk_widget_set_size_request( label, BUTTON_SIZE - 10, -1 );
-    gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
-    gtk_label_set_line_wrap( label, TRUE );
     gtk_label_set_justify( label, GTK_JUSTIFY_CENTER );
-    gtk_box_pack_start( box, label, FALSE, TRUE, 2 );
+    gtk_misc_set_alignment( label, 0.5, 0 );
+    gtk_misc_set_padding( label, 0, 0 );
+    gtk_box_pack_start( box, label, TRUE, TRUE, 0 );
+
     gtk_container_add( btn, box );
 
     gtk_button_set_relief( btn, GTK_RELIEF_NONE );
-    gtk_widget_set_size_request( btn, BUTTON_SIZE, BUTTON_SIZE );
     gtk_widget_show_all( btn );
 
-    if( tip )
-        gtk_tooltips_set_tip( tooltips, btn, tip, NULL );
-
     gtk_container_add( table, btn );
-
     gtk_widget_realize( btn );
+
+    gtk_widget_set_tooltip_text(btn, tip);
+
+    /* Adjust the size of label and set line wrapping is needed.
+     * FIXME: this is too dirty, and the effect is quite limited.
+     * However, due to the unfortunate design flaws of gtk+, the
+     * only way to overcome this might be implement our own label class.
+     */
+
+    /* get border of GtkButtons */
+    gtk_widget_style_get(btn, "focus-line-width", &fw, "focus-padding", &fp, NULL);
+    btn_border = 2 * (gtk_container_get_border_width(btn) + btn->style->xthickness + fw + fp);
+    gtk_widget_style_get(btn, "inner-border", &inner_border, NULL);
+    if( inner_border )
+        btn_border += (inner_border->left + inner_border->right);
+    /* padding of vbox should be added. */
+    btn_border += 2 * gtk_container_get_border_width(box);
+
+    gtk_widget_size_request( label, &req );
+
+    /* if the label is wider than button width, line-wrapping is needed. */
+    if( req.width > (BUTTON_SIZE - btn_border) )
+    {
+        gtk_widget_set_size_request( label, BUTTON_SIZE - btn_border, -1 );
+        gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
+        gtk_label_set_line_wrap( label, TRUE );
+    }
+
     gtk_widget_set_app_paintable( btn, TRUE );
     gdk_window_set_back_pixmap( ((GtkWidget*)btn)->window, NULL, TRUE );
     return btn;
@@ -661,9 +685,6 @@ int main(int argc, char** argv)
     if (!enable_key)
         GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
     gtk_container_add( (GtkContainer*)main_window, notebook );
-
-    tooltips = gtk_tooltips_new();
-    g_object_ref_sink( tooltips );
 
     menu_tree = menu_cache_lookup( "lxlauncher.menu" );
     reload_notify_id = menu_cache_add_reload_notify( menu_tree, on_menu_tree_changed, NULL );

@@ -6,6 +6,8 @@
 	<DefaultAppDirs/>
 	<DefaultDirectoryDirs/>
 	<DefaultMergeDirs/>
+	<MergeDir>/etc/xdg/menus/applications-merged</MergeDir>
+
 	<Layout>
 		<Merge type="menus"/>
 		<Menuname>Internet</Menuname>
@@ -16,7 +18,7 @@
 	</Layout>
 	<Menu>
 		<Name>Internet</Name>
-		<Directory>Internet.directory</Directory>
+		<Directory>Network.directory</Directory>
 		<Include>
 			<And>
 				<Category>Network</Category>
@@ -37,7 +39,7 @@
 		<Directory>Work.directory</Directory>
 		<Menu>
 			<Name>Accessories</Name>
-			<Directory>Accessories.directory</Directory>
+			<Directory>Utility.directory</Directory>
 			<Include>
 				<And>
 					<Category>Utility</Category>
@@ -140,7 +142,7 @@
 		<Directory>Play.directory</Directory>
 		<Menu>
 			<Name>Games</Name>
-			<Directory>Games.directory</Directory>
+			<Directory>Game.directory</Directory>
 			<Include>
 				<And>
 					<Category>Game</Category>
@@ -170,4 +172,42 @@
 			</And>
 		</Include>
 	</Menu>
+
+	<!-- Add some dirty hacks to map gnome categories to lxlauncher ones for merges -->
+	<Move>
+		<Old>Graphics</Old>
+		<New>Work/Graphics</New>
+	</Move>
+	<Move>
+		<Old>Accessories</Old>
+		<New>Work/Accessories</New>
+	</Move>
+	<Move>
+		<Old>Development</Old>
+		<New>Work/Development</New>
+	</Move>
+	<Move>
+		<Old>Education</Old>
+		<New>Learn</New>
+	</Move>
+	<Move>
+		<Old>Games</Old>
+		<New>Play/Games</New>
+	</Move>
+	<Move>
+		<Old>Multimedia</Old>
+		<New>Play/Multimedia</New>
+	</Move>
+	<Move>
+		<Old>Office</Old>
+		<New>Work/Office</New>
+	</Move>
+	<Move>
+		<Old>System</Old>
+		<New>Settings</New>
+	</Move>
+	<Move>
+		<Old>Other</Old>
+		<New>Work</New>
+	</Move>
 </Menu>
