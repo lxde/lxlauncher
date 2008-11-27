@@ -155,57 +155,6 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     return btn;
 }
 
-#if 0
-GdkPixbuf* load_icon( const char* icon_name, int size, gboolean use_fallback )
-{
-    GtkIconTheme* theme;
-    char *_icon_name = NULL, *suffix;
-    GdkPixbuf* icon = NULL;
-
-    if( app->icon_name )
-    {
-        if( g_path_is_absolute( app->icon_name) )
-        {
-            icon = gdk_pixbuf_new_from_file_at_scale( app->icon_name,
-                                                     size, size, TRUE, NULL );
-        }
-        else
-        {
-            theme = gtk_icon_theme_get_default();
-            suffix = strchr( app->icon_name, '.' );
-            if( suffix ) /* has file extension, it's a basename of icon file */
-            {
-                /* try to find it in pixmaps dirs */
-                icon = load_icon_file( app->icon_name, size );
-                if( G_UNLIKELY( ! icon ) )  /* unfortunately, not found */
-                {
-                    /* Let's remove the suffix, and see if this name can match an icon
-                         in current icon theme */
-                    _icon_name = g_strndup( app->icon_name,
-                                           (suffix - app->icon_name) );
-                    icon = vfs_load_icon( theme, _icon_name, size );
-                    g_free( _icon_name );
-                }
-            }
-            else  /* no file extension, it could be an icon name in the icon theme */
-            {
-                icon = vfs_load_icon( theme, app->icon_name, size );
-            }
-        }
-    }
-    if( G_UNLIKELY( ! icon ) && use_fallback )  /* fallback to generic icon */
-    {
-        theme = gtk_icon_theme_get_default();
-        icon = vfs_load_icon( theme, "application-x-executable", size );
-        if( G_UNLIKELY( ! icon ) )  /* fallback to generic icon */
-        {
-            icon = vfs_load_icon( theme, "gnome-mime-application-x-executable", size );
-        }
-    }
-    return icon;
-}
-#endif
-
 static void add_dir_btn( PageData* data, MenuCacheDir* dir )
 {
     GdkPixbuf* icon;

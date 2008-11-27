@@ -59,7 +59,10 @@ GdkPixbuf* lxlauncher_load_icon( const char* name, int size, gboolean use_fallba
         {
             theme = gtk_icon_theme_get_default();
             suffix = strchr( name, '.' );
-            if( suffix ) /* has file extension, it's a basename of icon file */
+            if( suffix
+                && (0 == g_strcasecmp(++suffix, "png")
+                || 0 == g_strcasecmp(suffix, "svg")
+                || 0 == g_strcasecmp(suffix, "xpm")) ) /* has file extension, it's a basename of icon file */
             {
                 /* try to find it in pixmaps dirs */
                 icon = load_icon_file( name, size );
