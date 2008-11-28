@@ -71,7 +71,7 @@ GdkPixbuf* lxlauncher_load_icon( const char* name, int size, gboolean use_fallba
                     /* Let's remove the suffix, and see if this name can match an icon
                          in current icon theme */
                     icon_name = g_strndup( name,
-                                           (suffix - name + 1) );
+                                           (suffix - name - 1) );
                     icon = vfs_load_icon( theme, icon_name, size );
                     g_free( icon_name );
                 }
