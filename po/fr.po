@@ -1,0 +1,35 @@
+# French Translation of lxlauncher-gmenu.
+# Copyright (C) 2008 洪任諭 (Hon Jen Yee, aka PCMan)
+# This file is distributed under the same license as the lxlauncher-gmenu package.
+#
+# Robert-André Mauchin <zebob.m@pengzone.org>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lxlauncher-gmenu r844\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-06 20:27+0200\n"
+"PO-Revision-Date: 2008-09-05 18:57+0200\n"
+"Last-Translator: Robert-André Mauchin <zebob.m@pengzone.org>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../src/lxlauncher.c:458
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Retourner vers « %s »"
+
+#: ../src/lxlauncher.c:604
+msgid "Enable key navigation"
+msgstr "Activer la navigation au clavier"
+
+#: ../src/lxlauncher.c:605
+msgid ""
+"Allow users to use up/down/left/right/tabe/enter keys to operate the "
+"lxlaucher"
+msgstr ""
+"Permettre aux utilisateurs d'utiliser les touches haut/bas/gauche/droite/"
+"entrée pour agir sur lxlauncher"
