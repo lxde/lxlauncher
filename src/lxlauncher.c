@@ -64,6 +64,7 @@ static gpointer reload_notify_id;
 
 typedef struct _PageData{
     MenuCacheDir* dir;
+    char* dir_path;
     GtkWidget* page_vbox;
     GtkBox* go_up_bar;
     GtkWidget* table;
@@ -330,7 +331,7 @@ static gboolean reload_apps()
     {
         page = gtk_notebook_get_nth_page( notebook, 0 );
         page_data = (PageData*)g_object_get_data( page, "page" );
-        page_paths[i] = menu_cache_dir_make_path( page_data->dir );
+        page_paths[i] = g_strdup(page_data->dir_path);
         gtk_notebook_remove_page( notebook, 0 );
     }
 
@@ -422,7 +423,11 @@ static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
     char* dir_path;
     MenuCacheDir* parent_dir;
 
-    data->dir = dir;
+    if(data->dir)
+        menu_cache_item_unref(data->dir);
+    data->dir = menu_cache_item_ref(dir);
+    g_free(data->dir_path);
+    data->dir_path = menu_cache_dir_make_path( dir );
 
     // destroy old buttons
     gtk_container_foreach( data->table, gtk_widget_destroy, NULL );
@@ -483,6 +488,9 @@ static void page_data_free( PageData* data )
 {
     if( data->background )
         g_object_unref( data->background );
+    if(data->dir)
+        menu_cache_item_unref( data->dir );
+    g_free(data->dir_path);
     g_free( data );
 }
 
