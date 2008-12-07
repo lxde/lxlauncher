@@ -32,7 +32,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 
-#include <menu-cache.h>
+#include <menu-cache/menu-cache.h>
 
 #include <errno.h>
 
@@ -551,9 +551,6 @@ static void create_notebook_pages()
 
         // set background
         gtk_widget_set_app_paintable( viewport, TRUE );
-        
-        g_debug( "%s: %s", menu_cache_item_get_name(dir), menu_cache_item_get_extended( MENU_CACHE_ITEM(dir), "X-Background" ) );
-
 /*
         file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
         pixbuf = gdk_pixbuf_new_from_file( file, NULL );

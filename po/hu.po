@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-15 23:18+0800\n"
+"POT-Creation-Date: 2008-12-02 16:48+0800\n"
 "PO-Revision-Date: 2008-06-15 20:40+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
@@ -13,19 +13,32 @@ msgstr ""
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-Country: HUNGARY\n"
 
-#: src/lxlauncher.c:475
+#: src/lxlauncher.c:458
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Vissza ide: \"%s\""
 
+#: src/lxlauncher.c:604
+msgid "Enable key navigation"
+msgstr ""
+
+#: src/lxlauncher.c:605
+msgid ""
+"Allow users to use up/down/left/right/tabe/enter keys to operate the "
+"lxlaucher"
+msgstr ""
+
 #~ msgid "Internet"
 #~ msgstr "Internet"
+
 #~ msgid "Work"
 #~ msgstr "Munka"
+
 #~ msgid "Learn"
 #~ msgstr "Tanulás"
+
 #~ msgid "Play"
 #~ msgstr "Játék"
+
 #~ msgid "Settings"
 #~ msgstr "Beállítások"
-

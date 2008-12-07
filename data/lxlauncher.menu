@@ -45,6 +45,7 @@
 					<Category>Utility</Category>
 					<Not><Category>Accessibility</Category></Not>
 					<Not><Category>System</Category></Not>
+					<Not><Category>PackageManager</Category></Not>
 				</And>
 			</Include>
 		</Menu>
@@ -162,6 +163,7 @@
 		<Include>
 			<And>
 				<Category>System</Category>
+				<Category>PackageManager</Category>
 				<Not><Category>Game</Category></Not>
 			</And>
 		</Include>

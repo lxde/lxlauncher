@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-26 15:53+0200\n"
+"POT-Creation-Date: 2008-12-02 16:48+0800\n"
 "PO-Revision-Date: 2008-11-26 15:54+0200\n"
 "Last-Translator: Elias Julkunen <elias.julkunen@gmail.com>\n"
 "Language-Team: fi <fi@li.org>\n"
@@ -15,27 +15,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/lxlauncher.c:489
+#: src/lxlauncher.c:458
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Siirry takaisin kohtaan \"%s\""
 
-#: ../src/lxlauncher.c:635
+#: src/lxlauncher.c:604
 msgid "Enable key navigation"
 msgstr "Salli näppäinkomennot"
 
-#: ../src/lxlauncher.c:636
-msgid "Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"
-msgstr "Sallii ylös/alas/vasen/oikea/tabulaattori/enter-näppäimien käytön LXLauncherissa"
+#: src/lxlauncher.c:605
+msgid ""
+"Allow users to use up/down/left/right/tabe/enter keys to operate the "
+"lxlaucher"
+msgstr ""
+"Sallii ylös/alas/vasen/oikea/tabulaattori/enter-näppäimien käytön "
+"LXLauncherissa"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
+
 #~ msgid "Work"
 #~ msgstr "Työskentele"
+
 #~ msgid "Learn"
 #~ msgstr "Opi"
+
 #~ msgid "Play"
 #~ msgstr "Pelaa"
+
 #~ msgid "Settings"
 #~ msgstr "Asetukset"
-
