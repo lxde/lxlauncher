@@ -32,7 +32,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 
-#include <menu-cache/menu-cache.h>
+#include <menu-cache.h>
 
 #include <errno.h>
 
@@ -446,11 +446,8 @@ static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
             add_dir_btn( data, (MenuCacheDir*)item );
         else if( type == MENU_CACHE_TYPE_APP )
         {
-            /* FIXME: */
-/*
-            if( gmenu_tree_entry_get_is_nodisplay(item) || gmenu_tree_entry_get_is_excluded(item) )
+            if( ! menu_cache_app_get_is_visible(item, SHOW_IN_LXDE) )
                 continue;
-*/
             add_app_btn( data->table, (MenuCacheApp*)item );
         }
     }
