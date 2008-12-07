@@ -80,6 +80,63 @@ static void on_app_btn_clicked( GtkButton* btn, MenuCacheApp* app )
                                         NULL );
 }
 
+static void on_menu_item_properties(GtkMenuItem* item, MenuCacheApp* app)
+{
+    /* FIXME: if the source desktop is in AppDir other then default
+     * applications dirs, where should we store the user-specific file?
+    */
+    char* ifile = menu_cache_item_get_file_path(app);
+    char* ofile = g_build_filename(g_get_user_data_dir(), "applications",
+                                  menu_cache_item_get_file_basename(app), NULL);
+    char** argv[] = {
+        "lxshortcut",
+        "-i",
+        NULL,
+        "-o",
+        NULL,
+        NULL};
+    argv[2] = ifile;
+    argv[4] = ofile;
+    g_spawn_async( NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL );
+    g_free( ifile );
+    g_free( ofile );
+}
+
+static gboolean on_app_btn_press_event(GtkWidget* btn, GdkEventButton* evt, MenuCacheApp* app)
+{
+    if( evt->button == 3 )  /* right */
+    {
+        char* tmp;
+        GtkWidget* item;
+        GtkMenu* p = gtk_menu_new();
+        tmp = g_find_program_in_path("lxshortcut");
+        if( tmp )
+        {
+            /*
+            item = gtk_separator_menu_item_new();
+            gtk_menu_shell_append(p, item);
+            */
+            item = gtk_menu_item_new_with_mnemonic(_("_Customize"));
+            g_signal_connect(item, "activate", G_CALLBACK(on_menu_item_properties), app);
+            gtk_menu_shell_append(p, item);
+            g_free(tmp);
+        }
+        else
+        {
+            /* FIXME: since currently Properties is the only menu item,
+             *        we don't popup the menu if it's empty */
+            gtk_widget_destroy(p);
+            return FALSE;
+        }
+        g_signal_connect(p, "selection-done", G_CALLBACK(gtk_widget_destroy), NULL);
+
+        gtk_widget_show_all(p);
+        gtk_menu_popup(p, NULL, NULL, NULL, NULL, NULL, evt->time);
+        return TRUE;
+    }
+    return FALSE;
+}
+
 static void notebook_page_chdir( PageData* data, MenuCacheDir* dir );
 
 static void on_dir_btn_clicked( GtkButton* btn, PageData* data )
@@ -190,6 +247,7 @@ static void add_app_btn( GtkWidget* table, MenuCacheApp* app )
     if( icon )
         g_object_unref( icon );
     g_signal_connect( btn, "clicked", G_CALLBACK(on_app_btn_clicked), app );
+    g_signal_connect( btn, "button-press-event", G_CALLBACK(on_app_btn_press_event), app );
 }
 
 static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer data )
