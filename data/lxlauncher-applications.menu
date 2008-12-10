@@ -6,7 +6,6 @@
 	<DefaultAppDirs/>
 	<DefaultDirectoryDirs/>
 	<DefaultMergeDirs/>
-	<MergeDir>/etc/xdg/menus/applications-merged</MergeDir>
 
 	<Layout>
 		<Merge type="menus"/>

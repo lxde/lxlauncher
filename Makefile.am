@@ -7,7 +7,7 @@ theme_DATA=gtkrc
 
 menufiledir=/etc/xdg/menus
 menufile_DATA=\
-	data/lxlauncher.menu
+	data/lxlauncher-applications.menu
 
 directorydir=$(datadir)/desktop-directories
 directory_DATA=\
@@ -22,6 +22,7 @@ directory_DATA=\
 #background_DATA=
 
 EXTRA_DIST = \
+	$(menufile_DATA) \
 	$(theme_DATA) \
 	$(datafile_DATA) \
 	$(directory_DATA) \

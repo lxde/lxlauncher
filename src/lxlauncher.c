@@ -695,7 +695,8 @@ int main(int argc, char** argv)
         GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
     gtk_container_add( (GtkContainer*)main_window, notebook );
 
-    menu_tree = menu_cache_lookup( "lxlauncher.menu" );
+    g_setenv("XDG_MENU_PREFIX", "lxlauncher-", TRUE);
+    menu_tree = menu_cache_lookup( "applications.menu" );
     reload_notify_id = menu_cache_add_reload_notify( menu_tree, on_menu_tree_changed, NULL );
     root_dir = menu_cache_ref(menu_cache_get_root_dir( menu_tree ));
 
