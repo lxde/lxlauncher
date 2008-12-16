@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Marcus Schulderinsky <Marcus.Schulderinsky@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: src/lxlauncher.c:119
+msgid "_Customize"
+msgstr "_Anpassen"
+
+#: src/lxlauncher.c:518
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Gehe zurück zu \"%s\""
+
+#: src/lxlauncher.c:664
+msgid "Enable key navigation"
+msgstr "Aktiviere Tasten Navigation"
+
+#: src/lxlauncher.c:665
+msgid "Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"
+msgstr "Erlaube Nutzern die hoch/runter/links/rechts/Tab/Enter Tasten zum navigieren zu nutzen"
+
