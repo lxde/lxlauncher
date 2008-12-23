@@ -1,8 +1,8 @@
 <!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
  "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
 <Menu>
-	<Name>Launcher</Name>
-	<Directory>lxde-applications.directory</Directory>
+	<Name>Applications</Name>
+	<Directory>lxde-menu-applications.directory</Directory>
 	<DefaultAppDirs/>
 	<DefaultDirectoryDirs/>
 	<DefaultMergeDirs/>
@@ -210,5 +210,10 @@
 	<Move>
 		<Old>Other</Old>
 		<New>Work</New>
+	</Move>
+
+	<Move>
+		<Old>wine-wine</Old>
+		<New>Work/wine-wine</New>
 	</Move>
 </Menu>
