@@ -11,12 +11,12 @@ menufile_DATA=\
 
 directorydir=$(datadir)/desktop-directories
 directory_DATA=\
-	data/WebMail.directory \
-	data/Work.directory \
-	data/Learn.directory \
-	data/Play.directory \
-	data/Science.directory \
-	data/Math.directory
+	data/lxde-webmail.directory \
+	data/lxde-work.directory \
+	data/lxde-learn.directory \
+	data/lxde-play.directory \
+	data/lxde-science.directory \
+	data/lxde-math.directory
 
 #backgrounddir=$(datadir)/lxlauncher/background
 #background_DATA=
