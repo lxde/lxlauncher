@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-10 15:35+0800\n"
-"PO-Revision-Date: 2008-06-15 20:40+0100\n"
+"PO-Revision-Date: 2008-12-26 11:19+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #.
 #: src/lxlauncher.c:119
 msgid "_Customize"
-msgstr ""
+msgstr "Testreszab"
 
 #: src/lxlauncher.c:518
 #, c-format
@@ -28,25 +28,20 @@ msgstr "Vissza ide: \"%s\""
 
 #: src/lxlauncher.c:664
 msgid "Enable key navigation"
-msgstr ""
+msgstr "Billentyű irányítás engedélyezése"
 
 #: src/lxlauncher.c:665
-msgid ""
-"Allow users to use up/down/left/right/tabe/enter keys to operate the "
-"lxlaucher"
-msgstr ""
+msgid "Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"
+msgstr "Az lxlauncher a fel/le/balra/jobbra/tab/enter billentyűkkel vezérelhető"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
-
 #~ msgid "Work"
 #~ msgstr "Munka"
-
 #~ msgid "Learn"
 #~ msgstr "Tanulás"
-
 #~ msgid "Play"
 #~ msgstr "Játék"
-
 #~ msgid "Settings"
 #~ msgstr "Beállítások"
+
