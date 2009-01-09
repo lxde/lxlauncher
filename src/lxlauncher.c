@@ -662,7 +662,7 @@ int main(int argc, char** argv)
     // Add application specific properties
     gtk_settings_install_property(g_param_spec_boolean("lxlauncher-enable-key",
                             _("Enable key navigation"),
-                            _("Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"),
+                            _("Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"),
                             FALSE,GTK_ARG_READWRITE));
     // set up themes for notebook
     gtk_rc_parse( PACKAGE_DATA_DIR "/lxlauncher/gtkrc" );

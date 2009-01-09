@@ -1,0 +1,5 @@
+2009-01-05 Og Maciel <ogmaciel@gnome.org>
+
+	* LINGUAS: Added list of available languages.
+	* pt_BR.po: Updated Brazilian Portuguese translation by
+	Og Maciel.
