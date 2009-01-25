@@ -1,0 +1,69 @@
+# Translation of lxlauncher to Swedish
+# Copyright (C) 2009 Martin Bagge <brother@bsnet.se>
+# This file is distributed under the same license as the lxlauncher package.
+#
+# Martin Bagge <brother@bsnet.se>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: lxlauncher\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-05 01:31+0100\n"
+"PO-Revision-Date: 2009-01-06 01:09+0100\n"
+"Last-Translator: Martin Bagge <brother@bsnet.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Swedish\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:119
+msgid "_Customize"
+msgstr "_Anpassa"
+
+#: ../src/lxlauncher.c:518
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Gå tillbaka till \"%s\""
+
+#: ../src/lxlauncher.c:664
+msgid "Enable key navigation"
+msgstr "Aktivera tangentnavigering"
+
+# mailade pcman.tw@gmail.com om felstavningen till tab i den engelska versionen
+#: ../src/lxlauncher.c:665
+msgid "Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"
+msgstr "Tillåter användning av tangenterna upp/ner/vänster/höger/tab/enter för att styra lxlauncher"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "Kolumnavstånd"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "Anger mellanrummet mellan två kolumner"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "Radavstånd"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "Anger mellanrummet mellan två rader"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "Enhetlig"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "Anger om alla element ska ha samma storlek"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "Kunde inte hitta kommando"
+
