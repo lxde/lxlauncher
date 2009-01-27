@@ -1,0 +1,69 @@
+# Arabic translations for PACKAGE package.
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# أحمد فرغل <ahmad.farghal@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LXLauncher\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-27 14:45+0200\n"
+"PO-Revision-Date: 2009-01-27 14:52+0200\n"
+"Last-Translator: Ahmad Farghal <ahmad.farghal@gmail.com>\n"
+"Language-Team: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:119
+msgid "_Customize"
+msgstr "_خصص"
+
+#: ../src/lxlauncher.c:518
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "عد إلى \"%s\""
+
+#: ../src/lxlauncher.c:664
+msgid "Enable key navigation"
+msgstr "مكّن الملاحة بلوحة المفاتيح"
+
+#: ../src/lxlauncher.c:665
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr "اسمح للمستخدمين باستخدام أزرار أعلى/أسفل/يسار/يمين/لسان/أدخِل للتعامل مع lxlauncher"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "المسافة بين العواميد"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "مقدار المسافة بين كل عمود والذي يليه"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "المسافة بين الصفوف"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "مقدار المسافة بين كل صف والذي يليه"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "متجانس"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "جعل العناصر الفرعية كلها بنفس الحجم أم لا"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "الأمر غير موجود"
+
+
+ 	  	 
