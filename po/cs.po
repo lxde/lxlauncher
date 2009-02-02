@@ -1,0 +1,39 @@
+# Czech translations for lxlauncher package.
+# Copyright (C) 2009 THE lxlauncher'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lxlauncher package.
+# Michal Várady <miko.vaji@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lxlauncher 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-05 21:29-0500\n"
+"PO-Revision-Date: 2009-02-02 01:39+0100\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
+"Language-Team: Czech\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:119
+msgid "_Customize"
+msgstr "_Přizpůsobit"
+
+#: ../src/lxlauncher.c:518
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Přejít zpět k \"%s\""
+
+#: ../src/lxlauncher.c:664
+msgid "Enable key navigation"
+msgstr "Povolit navigaci klávesami"
+
+#: ../src/lxlauncher.c:665
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr "Povolí uživatelům použití kláves šipka nahoru, dolů, doleva a doprava, tabulátor a enter k ovládání aplikace lxlauncher"
+
