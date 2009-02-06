@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-05 21:29-0500\n"
+"POT-Creation-Date: 2009-02-06 23:41+0100\n"
 "PO-Revision-Date: 2009-02-02 01:39+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech\n"
@@ -34,6 +34,37 @@ msgid "Enable key navigation"
 msgstr "Povolit navigaci klávesami"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "Povolí uživatelům použití kláves šipka nahoru, dolů, doleva a doprava, tabulátor a enter k ovládání aplikace lxlauncher"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Povolí uživatelům použití kláves šipka nahoru, dolů, doleva a doprava, "
+"tabulátor a enter k ovládání aplikace lxlauncher"
 
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr ""
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr ""

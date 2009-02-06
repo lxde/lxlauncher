@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-02 02:34+0100\n"
+"POT-Creation-Date: 2009-02-06 23:41+0100\n"
 "PO-Revision-Date: 2009-02-02 02:34+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -36,8 +36,11 @@ msgstr "Aktivera tangentnavigering"
 
 # mailade pcman.tw@gmail.com om felstavningen till tab i den engelska versionen
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "Tillåt användare att använda tangenterna upp/ner/vänster/höger/tabb/enter för att styra lxlauncher"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Tillåt användare att använda tangenterna upp/ner/vänster/höger/tabb/enter "
+"för att styra lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -67,4 +70,3 @@ msgstr "Anger om alla element ska ha samma storlek"
 #, c-format
 msgid "Command not found"
 msgstr "Kunde inte hitta kommando"
-

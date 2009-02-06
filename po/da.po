@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-03 00:43+0100\n"
+"POT-Creation-Date: 2009-02-06 23:41+0100\n"
 "PO-Revision-Date: 2009-02-03 00:46+0100\n"
 "Last-Translator: Martin Bagge <brother@bsnet.se>\n"
 "Language-Team: Danish\n"
@@ -35,6 +35,35 @@ msgid "Enable key navigation"
 msgstr "Aktiver navigering med tastatur"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
 msgstr "Tillad brugere at anvende piltastene i lxlaucher"
 
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr ""
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr ""

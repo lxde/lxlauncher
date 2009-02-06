@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher-gmenu r844\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-10 15:35+0800\n"
+"POT-Creation-Date: 2009-02-06 23:41+0100\n"
 "PO-Revision-Date: 2008-09-05 18:57+0200\n"
 "Last-Translator: Robert-André Mauchin <zebob.m@pengzone.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -21,23 +21,52 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: src/lxlauncher.c:119
+#: ../src/lxlauncher.c:119
 msgid "_Customize"
 msgstr ""
 
-#: src/lxlauncher.c:518
+#: ../src/lxlauncher.c:518
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Retourner vers « %s »"
 
-#: src/lxlauncher.c:664
+#: ../src/lxlauncher.c:664
 msgid "Enable key navigation"
 msgstr "Activer la navigation au clavier"
 
-#: src/lxlauncher.c:665
+#: ../src/lxlauncher.c:665
+#, fuzzy
 msgid ""
-"Allow users to use up/down/left/right/tabe/enter keys to operate the "
-"lxlaucher"
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
 msgstr ""
 "Permettre aux utilisateurs d'utiliser les touches haut/bas/gauche/droite/"
 "entrée pour agir sur lxlauncher"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr ""
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr ""

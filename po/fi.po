@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-10 15:49+0200\n"
+"POT-Creation-Date: 2009-02-06 23:41+0100\n"
 "PO-Revision-Date: 2008-12-10 15:49+0200\n"
 "Last-Translator: Elias Julkunen <elias.julkunen@gmail.com>\n"
 "Language-Team: fi <fi@li.org>\n"
@@ -33,17 +33,53 @@ msgid "Enable key navigation"
 msgstr "Salli näppäinkomennot"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tabe/enter keys to operate the lxlaucher"
-msgstr "Sallii ylös/alas/vasen/oikea/tabulaattori/enter-näppäimien käytön LXLauncherissa"
+#, fuzzy
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Sallii ylös/alas/vasen/oikea/tabulaattori/enter-näppäimien käytön "
+"LXLauncherissa"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr ""
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr ""
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr ""
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
+
 #~ msgid "Work"
 #~ msgstr "Työskentele"
+
 #~ msgid "Learn"
 #~ msgstr "Opi"
+
 #~ msgid "Play"
 #~ msgstr "Pelaa"
+
 #~ msgid "Settings"
 #~ msgstr "Asetukset"
-

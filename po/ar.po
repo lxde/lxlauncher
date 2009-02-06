@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXLauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 14:45+0200\n"
+"POT-Creation-Date: 2009-02-06 23:40+0100\n"
 "PO-Revision-Date: 2009-01-27 14:52+0200\n"
 "Last-Translator: Ahmad Farghal <ahmad.farghal@gmail.com>\n"
 "Language-Team: Arabic\n"
@@ -33,8 +33,11 @@ msgid "Enable key navigation"
 msgstr "مكّن الملاحة بلوحة المفاتيح"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "اسمح للمستخدمين باستخدام أزرار أعلى/أسفل/يسار/يمين/لسان/أدخِل للتعامل مع lxlauncher"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"اسمح للمستخدمين باستخدام أزرار أعلى/أسفل/يسار/يمين/لسان/أدخِل للتعامل مع "
+"lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -64,6 +67,3 @@ msgstr "جعل العناصر الفرعية كلها بنفس الحجم أم �
 #, c-format
 msgid "Command not found"
 msgstr "الأمر غير موجود"
-
-
- 	  	 
