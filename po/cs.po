@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-06 23:41+0100\n"
+"POT-Creation-Date: 2009-02-09 00:55+0100\n"
 "PO-Revision-Date: 2009-02-07 17:35+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech\n"
@@ -34,8 +34,11 @@ msgid "Enable key navigation"
 msgstr "Povolit navigaci klávesami"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "Povolí uživatelům použití kláves šipka nahoru, dolů, doleva a doprava, tabulátor a enter k ovládání aplikace lxlauncher"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Povolí uživatelům použití kláves šipka nahoru, dolů, doleva a doprava, "
+"tabulátor a enter k ovládání aplikace lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -65,4 +68,3 @@ msgstr "Určuje, zda bude potomek zdědí stejnou velikost"
 #, c-format
 msgid "Command not found"
 msgstr "Příkaz nenalezen"
-
