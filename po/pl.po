@@ -1,20 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# translation of pl.po to Polish
+# Copyright (C) 2006 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+#
+# Artur Kruszewski <mazdac@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-09 00:55+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-02-16 00:28-0000\n"
+"Last-Translator: Artur Kruszewski <mazdac@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -22,47 +23,47 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:119
 msgid "_Customize"
-msgstr ""
+msgstr "Dostosuj"
 
 #: ../src/lxlauncher.c:518
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "Powróć do \"%s\""
 
 #: ../src/lxlauncher.c:664
 msgid "Enable key navigation"
-msgstr ""
+msgstr "Włącz nawigację za pomocą klawiszy"
 
 #: ../src/lxlauncher.c:665
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr ""
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr "Pozwól użytkownikom na uzycie klawiszy w górę/w dół/w lewo/w prawo/tab/enter do obsługiwania lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Odstęp między kolumnami"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "Ilość przesrzeni między kolejnymi kolumnami"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Odstęp między wierszami"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "Ilość przesrzeni między "
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Homogeniczne"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Czy dzieci powinny być takich samych rozmiarów"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Polecenie nieznane"
+
