@@ -3,12 +3,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-09 00:55+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Marcus Schulderinsky <Marcus.Schulderinsky@gmail.com>\n"
+"PO-Revision-Date: 2009-02-25 02:40+0100\n"
+"Last-Translator: Christoph Wickert <christoph.wickert@googlemail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
 
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -26,45 +27,47 @@ msgstr "_Anpassen"
 #: ../src/lxlauncher.c:518
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Gehe zurück zu \"%s\""
+msgstr "Gehe zurÃ¼ck zu \"%s\""
 
 #: ../src/lxlauncher.c:664
 msgid "Enable key navigation"
-msgstr "Aktiviere Tasten Navigation"
+msgstr "Aktiviere Navigation mit Tasten"
 
 #: ../src/lxlauncher.c:665
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
 msgstr ""
-"Erlaube Nutzern die hoch/runter/links/rechts/Tab/Enter Tasten zum navigieren "
-"zu nutzen"
+"Nutzern erlauben, die Tasten Auf, Ab, Links, Rechts, Tabulator und Eingabe "
+"zum Navigieren zu nutzen"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Spaltenabstand"
 
 #: ../src/exo-wrap-table.c:167
+#, fuzzy
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "Die Menge an Platz zwischen zwei aufeinander folgenden Spalten"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Zeilenabstand"
 
 #: ../src/exo-wrap-table.c:182
+#, fuzzy
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "Die Menge an Platz zwischen zwei aufeinander folgenden Zeilen"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Gleichmäßig"
 
 #: ../src/exo-wrap-table.c:197
+#, fuzzy
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Legt fest, ob alle EintrÃ¤ge die gleiche GrÃ¶Ãe haben"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Befehl nicht gefunden"
