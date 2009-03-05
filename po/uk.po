@@ -1,20 +1,23 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: lxlauncher\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-14 16:07+0800\n"
+"PO-Revision-Date: 2009-03-04 22:48+0100\n"
+"Last-Translator: Y P <yupadmin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 1.1.0\n"
+
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-09 00:55+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -22,47 +25,50 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:119
 msgid "_Customize"
-msgstr ""
+msgstr "_Налаштувати"
 
-#: ../src/lxlauncher.c:518
+#: src/lxlauncher.c:834
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "Повернутися до \"%s\""
 
 #: ../src/lxlauncher.c:664
 msgid "Enable key navigation"
-msgstr ""
+msgstr "Дозволити навігацію клавішами"
 
 #: ../src/lxlauncher.c:665
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
 msgstr ""
+"Дозволити користувачам використовувати вверх/вниз/вліво/вправо/таб/ввід "
+"клавіші для праці з lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Відстань між колонками"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "Відстань між двома послідовними колонками"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Міжрядкова відстань"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "Відстань між двома послідовними рядками"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Однорідно"
 
 #: ../src/exo-wrap-table.c:197
+#, fuzzy
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Whether the children should be all the same size"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Команду не знайдено"
