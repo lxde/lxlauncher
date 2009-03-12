@@ -1,15 +1,16 @@
 # Portuguese translations for lxlauncher package.
-# Copyright (C) 2009 THE lxlauncher'S COPYRIGHT HOLDER
+# Copyright (C) 2009 The lxlauncher'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the lxlauncher package.
 # Og Maciel <ogmaciel@gnome.org>, 2009.
+# Henrique P. Machado <zehrique@gmail.com>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-09 00:55+0100\n"
-"PO-Revision-Date: 2009-01-05 21:22-0500\n"
-"Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
+"PO-Revision-Date: 2009-03-11 18:34-0300\n"
+"Last-Translator: Henrique P. Machado <zehrique@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -42,29 +43,29 @@ msgstr ""
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Espaçamento de colunas"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "A quantidade de espaço entre duas colunas consecutivas"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Espaçamento de linhas"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "A quantidade de espaço entre duas linhas consecutivas"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Homogêneo"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Se os filhos devem ter todos o mesmo tamanho"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Comando não encontrado"
