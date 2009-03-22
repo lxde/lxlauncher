@@ -9,13 +9,14 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-09 00:55+0100\n"
-"PO-Revision-Date: 2008-12-09 21:24-0500\n"
-"Last-Translator: Julio Napurí Carlos <julionc@gmail.com>\n"
+"PO-Revision-Date: 2009-03-22 00:01+0100\n"
+"Last-Translator: Guillermo Iguaran <johnnyprez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.1.0\n"
 "X-Poedit-Language: Spanish\n"
 
 #.
@@ -36,38 +37,37 @@ msgid "Enable key navigation"
 msgstr "Activar teclas de navegación"
 
 #: ../src/lxlauncher.c:665
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
 msgstr ""
-"Permitir a los usuarios usar las teclas arriba/abajo/izquierda/derecha/tab/"
-"enter para controlar lxlaucher"
+"Permitir a los usuarios usar las teclas "
+"arriba/abajo/izquierda/derecha/tab/retorno para controlar lxlaucher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Espaciado de columnas"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "La cantidad de espacio entre dos columnas consecutivas"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Espaciado de filas"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "La cantidad de espacio entre dos filas consecutivas"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Homogéneo"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Si los descendientes deben tener todos el mismo tamaño"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Comando no encontrado"
