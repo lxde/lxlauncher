@@ -3,18 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-09 00:55+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-04-06 10:33+0200\n"
+"Last-Translator: Anony mous <zadintuvas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -22,47 +22,49 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:119
 msgid "_Customize"
-msgstr ""
+msgstr "_Derinti"
 
 #: ../src/lxlauncher.c:518
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "Grįžti į \"%s\""
 
 #: ../src/lxlauncher.c:664
 msgid "Enable key navigation"
-msgstr ""
+msgstr "Įjungti navigaciją klavišais"
 
 #: ../src/lxlauncher.c:665
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
 msgstr ""
+"Leisti vartotojams valdyti lxlaucher auštyn/žemyn/į kairę/į dešinę/tab/enter "
+"klavišais"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Tarpas tarp stulpelių"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "Atskirti gretimus stulpelius nurodytais tarpais"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Tarpas tarp eilučių"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "Atskirti gretimas eilutes nurodytais tarpais"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Vienarūšis"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Ar vaikai turėtų būti to pačio dydžio"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Komanda nerasta"
