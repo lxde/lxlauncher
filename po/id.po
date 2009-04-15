@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-09 00:55+0100\n"
+"POT-Creation-Date: 2009-04-15 19:31+0200\n"
 "PO-Revision-Date: 2009-03-04 22:11+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -33,8 +33,11 @@ msgid "Enable key navigation"
 msgstr "Aktifkan navigasi kunci"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "Izinkan pengguna untuk menggunakan kunci atas/bawah/kiri/kanan/tab/enter untuk mengoperasikan lxlauncher"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Izinkan pengguna untuk menggunakan kunci atas/bawah/kiri/kanan/tab/enter "
+"untuk mengoperasikan lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -64,6 +67,3 @@ msgstr "Apakah anak harus berukuran sama semua"
 #, c-format
 msgid "Command not found"
 msgstr "Perintah tak ditemukan"
-
-
- 	  	 

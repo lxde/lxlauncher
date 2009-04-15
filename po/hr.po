@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-09 00:55+0100\n"
+"POT-Creation-Date: 2009-04-15 19:31+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Boljsa <asjlob AT vip.hr>\n"
 "Language-Team:  <asjlob AT vip.hr>\n"
@@ -30,8 +30,11 @@ msgid "Enable key navigation"
 msgstr "Omoguæi navigaciju tipkama"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "Dopusti korisnicima kori¹tenje gore/dolje/lijevo/desno/tab/enter tipaka za upravljenje lxlauncher-om"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Dopusti korisnicima kori¹tenje gore/dolje/lijevo/desno/tab/enter tipaka za "
+"upravljenje lxlauncher-om"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -61,4 +64,3 @@ msgstr "Trebaju li djeca biti iste velièine"
 #, c-format
 msgid "Command not found"
 msgstr "Naredba nije pronaðena"
-

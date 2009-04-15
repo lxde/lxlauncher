@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-09 00:55+0100\n"
+"POT-Creation-Date: 2009-04-15 19:31+0200\n"
 "PO-Revision-Date: 2009-02-24 15:28+0100\n"
 "Last-Translator: Carlo Stemberger <carlo[dot]stemberger[at]gmail[dot]com>\n"
 "Language-Team: \n"
@@ -37,8 +37,11 @@ msgid "Enable key navigation"
 msgstr "Attiva navigazione a tasti"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "Permetti agli utenti di usare i tasti su/giù/sinistra/destra/tab/invio per gestire LXLauncher"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Permetti agli utenti di usare i tasti su/giù/sinistra/destra/tab/invio per "
+"gestire LXLauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -69,6 +72,3 @@ msgstr ""
 #, c-format
 msgid "Command not found"
 msgstr "Comando non trovato"
-
-
- 	  	 

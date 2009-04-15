@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-09 00:55+0100\n"
+"POT-Creation-Date: 2009-04-15 19:31+0200\n"
 "PO-Revision-Date: 2009-02-13 15:42+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -33,8 +33,11 @@ msgid "Enable key navigation"
 msgstr "Zapnúť navigáciu pomocou kláves"
 
 #: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "Umožniť používateľom na ovládanie lxlaucher používať klávesy šípok, tab a enter"
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Umožniť používateľom na ovládanie lxlaucher používať klávesy šípok, tab a "
+"enter"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -64,4 +67,3 @@ msgstr "Či majú byť všetky podradené položky rovnakej veľkosti"
 #, c-format
 msgid "Command not found"
 msgstr "Príkaz nebol nájdený"
-
