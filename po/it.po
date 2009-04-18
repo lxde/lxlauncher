@@ -8,12 +8,13 @@ msgstr ""
 "Project-Id-Version: lxlauncher 0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-15 19:31+0200\n"
-"PO-Revision-Date: 2009-02-24 15:28+0100\n"
-"Last-Translator: Carlo Stemberger <carlo[dot]stemberger[at]gmail[dot]com>\n"
+"PO-Revision-Date: 2009-04-17 19:33+0200\n"
+"Last-Translator: Alessandro Pellizzari <alex@amiran.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 
@@ -32,7 +33,6 @@ msgid "Go back to \"%s\""
 msgstr "Torna a \"%s\""
 
 #: ../src/lxlauncher.c:664
-#, fuzzy
 msgid "Enable key navigation"
 msgstr "Attiva navigazione a tasti"
 
@@ -40,7 +40,7 @@ msgstr "Attiva navigazione a tasti"
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
 msgstr ""
-"Permetti agli utenti di usare i tasti su/giù/sinistra/destra/tab/invio per "
+"Permetti agli utenti di usare i tasti su/giÃ¹/sinistra/destra/tab/invio per "
 "gestire LXLauncher"
 
 #: ../src/exo-wrap-table.c:166
@@ -60,13 +60,12 @@ msgid "The amount of space between two consecutive rows"
 msgstr "La distanza tra due righe consecutive"
 
 #: ../src/exo-wrap-table.c:196
-#, fuzzy
 msgid "Homogeneous"
 msgstr "Omogeneo"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Se i figli devono avere tutti la stessa dimensione"
 
 #: ../src/misc.c:344
 #, c-format

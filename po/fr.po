@@ -9,13 +9,14 @@ msgstr ""
 "Project-Id-Version: lxlauncher-gmenu r844\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-15 19:31+0200\n"
-"PO-Revision-Date: 2008-09-05 18:57+0200\n"
-"Last-Translator: Robert-André Mauchin <zebob.m@pengzone.org>\n"
+"PO-Revision-Date: 2009-04-16 10:24+0200\n"
+"Last-Translator: Cilyan Olowen <gaknar@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -23,7 +24,7 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:119
 msgid "_Customize"
-msgstr ""
+msgstr "_Personnaliser"
 
 #: ../src/lxlauncher.c:518
 #, c-format
@@ -35,38 +36,37 @@ msgid "Enable key navigation"
 msgstr "Activer la navigation au clavier"
 
 #: ../src/lxlauncher.c:665
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
 msgstr ""
-"Permettre aux utilisateurs d'utiliser les touches haut/bas/gauche/droite/"
-"entrée pour agir sur lxlauncher"
+"Permettre aux utilisateurs d'utiliser les touches "
+"haut/bas/gauche/droite/tabulation/entrée pour agir sur lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Espacement entre les colonnes"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "Taille de l'espace entre deux colonnes consécutives"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Espacement entre les lignes"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "Taille de l'espace entre deux lignes consécutives"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Homogène"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Si oui ou non les enfants devraient tous être de la même taille"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Commande non trouvée"
