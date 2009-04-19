@@ -652,21 +652,25 @@ static void create_notebook_pages()
     }
 }
 
-gboolean load_config_file_from_dirs(const char **search_dirs) {
-    gchar *full_path;
-    GError *error = NULL;
-    gboolean ret = g_key_file_load_from_dirs(key_file,
-					     CONFIG_FILE,
-					     search_dirs,
-					     &full_path,
-					     G_KEY_FILE_NONE,
-					     &error);
-    if (ret == TRUE) {
-	    printf("Loaded %s\n", full_path);
-    } else {
-	    perror("Error loading " CONFIG_FILE);
+gchar* get_xdg_config_file(const char *name) {
+    const gchar *user_dir = g_get_user_config_dir();
+    const gchar **system_dirs = g_get_system_config_dirs();
+    const gchar **dir;
+    gchar *file;
+
+    file = g_build_filename(user_dir, name, NULL);
+    if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE) {
+	return file;
     }
-    return ret;
+    free(file);
+
+    for (dir = system_dirs; *dir; ++dir ) {
+	file = g_build_filename(*dir, name, NULL);
+	if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE) {
+	    return file;
+	}
+	free(file);
+    }
 }
 
 int main(int argc, char** argv)
@@ -683,13 +687,21 @@ int main(int argc, char** argv)
     textdomain (GETTEXT_PACKAGE);
 #endif
 
-    const gchar *user_dir = g_get_user_config_dir();
-    const gchar *user_dirs[] = { user_dir, NULL };
-    const gchar **system_dirs = g_get_system_config_dirs();
     key_file = g_key_file_new();
-    if (load_config_file_from_dirs(user_dirs) != TRUE) {
-	load_config_file_from_dirs(system_dirs);
+
+    GError *error = NULL;
+    gchar *config_file = get_xdg_config_file(CONFIG_FILE);
+    if (config_file &&
+	g_key_file_load_from_file(key_file,
+				  config_file,
+				  G_KEY_FILE_NONE,
+				  &error)) {
+	printf("Loaded %s\n", config_file);
+    } else {
+	perror("Error loading " CONFIG_FILE);
     }
+    if (config_file)
+	free(config_file);
 
     gtk_init( &argc, &argv );
 
