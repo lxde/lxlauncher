@@ -44,9 +44,6 @@
 
 #define CONFIG_FILE "lxlauncher/settings.conf"
 
-#define BUTTON_SIZE    120
-#define IMG_SIZE    48
-
 #define DATA_DIR  PACKAGE_DATA_DIR"/lxlauncher"
 #define BACKGROUND_DIR  PACKAGE_DATA_DIR"/lxlauncher/background"
 #define ICON_DIR        PACKAGE_DATA_DIR"/lxlauncher/icons"
@@ -65,6 +62,9 @@ static int reload_handler = 0;
 static gpointer reload_notify_id;
 
 static GKeyFile *key_file;
+
+static gint button_size;
+static gint img_size;
 
 typedef struct _PageData{
     MenuCacheDir* dir;
@@ -161,7 +161,7 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
 
     /* add the app to that page */
     btn = gtk_button_new();
-    gtk_widget_set_size_request( btn, BUTTON_SIZE, -1 );
+    gtk_widget_set_size_request( btn, button_size, -1 );
     if (!enable_key)
         GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
@@ -172,6 +172,10 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     gtk_box_pack_start( box, img, FALSE, TRUE, 2 );
 
     label = gtk_label_new( text );
+    gtk_widget_show( label );
+    gtk_widget_set_size_request( label, button_size - 10, -1 );
+    gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
+    gtk_label_set_line_wrap( label, TRUE );
     gtk_label_set_justify( label, GTK_JUSTIFY_CENTER );
     gtk_misc_set_alignment( label, 0.5, 0 );
     gtk_misc_set_padding( label, 0, 0 );
@@ -180,6 +184,7 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     gtk_container_add( btn, box );
 
     gtk_button_set_relief( btn, GTK_RELIEF_NONE );
+    gtk_widget_set_size_request( btn, button_size, button_size );
     gtk_widget_show_all( btn );
 
     gtk_container_add( table, btn );
@@ -205,9 +210,9 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     gtk_widget_size_request( label, &req );
 
     /* if the label is wider than button width, line-wrapping is needed. */
-    if( req.width > (BUTTON_SIZE - btn_border) )
+    if( req.width > (button_size - btn_border) )
     {
-        gtk_widget_set_size_request( label, BUTTON_SIZE - btn_border, -1 );
+        gtk_widget_set_size_request( label, button_size - btn_border, -1 );
         gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
         gtk_label_set_line_wrap( label, TRUE );
     }
@@ -225,7 +230,7 @@ static void add_dir_btn( PageData* data, MenuCacheDir* dir )
     if( !icon_name )
         icon_name = "folder";
 
-    icon = lxlauncher_load_icon( icon_name, IMG_SIZE, TRUE );
+    icon = lxlauncher_load_icon( icon_name, img_size, TRUE );
 
     btn = add_btn( data->table, menu_cache_item_get_name(dir), icon, menu_cache_item_get_comment(dir) );
     if( icon )
@@ -244,7 +249,7 @@ static void add_app_btn( GtkWidget* table, MenuCacheApp* app )
     if( !icon_name )
         icon_name = "application-x-executable";
 
-    icon = lxlauncher_load_icon( icon_name, IMG_SIZE, TRUE );
+    icon = lxlauncher_load_icon( icon_name, img_size, TRUE );
 
     btn = add_btn( table, menu_cache_item_get_name(app), icon, menu_cache_item_get_comment(app) );
 
@@ -312,18 +317,18 @@ static gboolean on_scroll_change_val( GtkRange* scroll, GtkScrollType type, gdou
 
     if( type == GTK_SCROLL_JUMP )
     {
-        if( ABS( adj->value - value ) < BUTTON_SIZE / 2 )
+        if( ABS( adj->value - value ) < button_size / 2 )
         {
             if( adj->value > value )    // upward
             {
-                if( (adj->value - adj->lower) < BUTTON_SIZE / 2 )
+                if( (adj->value - adj->lower) < button_size / 2 )
                 {
                     gtk_adjustment_set_value( adj, adj->lower );
                 }
             }
             else // downward
             {
-                if( (adj->upper - adj->value) < BUTTON_SIZE / 2 )
+                if( (adj->upper - adj->value) < button_size / 2 )
                 {
                     gtk_adjustment_set_value( adj, adj->lower );
                 }
@@ -590,8 +595,8 @@ static void create_notebook_pages()
         //gtk_range_set_update_policy( range, GTK_UPDATE_DELAYED );
         g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
         adj = gtk_scrolled_window_get_vadjustment(scroll);
-        adj->step_increment = BUTTON_SIZE / 3;
-        adj->page_increment = BUTTON_SIZE / 2;
+        adj->step_increment = button_size / 3;
+        adj->page_increment = button_size / 2;
         gtk_adjustment_changed( adj );
         g_signal_connect( adj, "value-changed", G_CALLBACK(on_scroll), page_data );
 
@@ -686,7 +691,9 @@ int main(int argc, char** argv)
     // set up themes for notebook
     gtk_rc_parse( PACKAGE_DATA_DIR "/lxlauncher/gtkrc" );
 
-    icon_size = gtk_icon_size_register( "ALIcon", IMG_SIZE, IMG_SIZE );
+    button_size = g_key_file_get_integer(key_file, "Main", "BUTTON_SIZE", NULL);
+    img_size = g_key_file_get_integer(key_file, "Main", "IMG_SIZE", NULL);
+    icon_size = gtk_icon_size_register( "ALIcon", img_size, img_size );
 
     main_window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
     gtk_window_move( main_window, 0, 0 );
