@@ -683,9 +683,13 @@ int main(int argc, char** argv)
     textdomain (GETTEXT_PACKAGE);
 #endif
 
+    const gchar *user_dir = g_get_user_config_dir();
+    const gchar *user_dirs[] = { user_dir, NULL };
     const gchar **system_dirs = g_get_system_config_dirs();
     key_file = g_key_file_new();
-    load_config_file_from_dirs(system_dirs);
+    if (load_config_file_from_dirs(user_dirs) != TRUE) {
+	load_config_file_from_dirs(system_dirs);
+    }
 
     gtk_init( &argc, &argv );
 
