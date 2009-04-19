@@ -6,7 +6,7 @@ confdir=$(sysconfdir)/xdg/lxlauncher
 conf_in_files=settings.conf.in
 conf_DATA=$(conf_in_files:.conf.in=.conf)
 
-themedir=$(datadir)/lxlauncher
+themedir=$(confdir)
 theme_DATA=gtkrc
 
 menufiledir=/etc/xdg/menus

@@ -711,7 +711,11 @@ int main(int argc, char** argv)
                             _("Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"),
                             FALSE,GTK_ARG_READWRITE));
     // set up themes for notebook
-    gtk_rc_parse( PACKAGE_DATA_DIR "/lxlauncher/gtkrc" );
+    gchar* gtkrc_file = get_xdg_config_file("lxlauncher/gtkrc");
+    gtk_rc_parse(gtkrc_file);
+    if (gtkrc_file) {
+	free(gtkrc_file);
+    }
 
     button_size = g_key_file_get_integer(key_file, "Main", "BUTTON_SIZE", NULL);
     img_size = g_key_file_get_integer(key_file, "Main", "IMG_SIZE", NULL);
