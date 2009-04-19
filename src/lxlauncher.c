@@ -42,6 +42,8 @@
 #include "working-area.h"
 #include "misc.h"
 
+#define CONFIG_FILE "lxlauncher/settings.conf"
+
 #define BUTTON_SIZE    120
 #define IMG_SIZE    48
 
@@ -61,6 +63,8 @@ static MenuCacheDir* root_dir = NULL;
 
 static int reload_handler = 0;
 static gpointer reload_notify_id;
+
+static GKeyFile *key_file;
 
 typedef struct _PageData{
     MenuCacheDir* dir;
@@ -656,6 +660,21 @@ int main(int argc, char** argv)
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
 #endif
+
+    const gchar **search_dirs = g_get_system_config_dirs();
+    gchar *full_path;
+    GError *error = NULL;
+    key_file = g_key_file_new();
+    if (g_key_file_load_from_dirs(key_file,
+				  CONFIG_FILE,
+				  search_dirs,
+				  &full_path,
+				  G_KEY_FILE_NONE,
+				  &error) == TRUE) {
+	    printf("Loaded %s\n", full_path);
+    } else {
+	    perror("Error loading " CONFIG_FILE);
+    }
 
     gtk_init( &argc, &argv );
 

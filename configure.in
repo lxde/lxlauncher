@@ -36,6 +36,7 @@ AM_GLIB_GNU_GETTEXT
 
 AC_OUTPUT([
 Makefile
+settings.conf
 src/Makefile
 po/Makefile.in
 ])

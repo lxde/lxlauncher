@@ -2,6 +2,10 @@
 
 SUBDIRS = src po
 
+confdir=$(sysconfdir)/xdg/lxlauncher
+conf_in_files=settings.conf.in
+conf_DATA=$(conf_in_files:.conf.in=.conf)
+
 themedir=$(datadir)/lxlauncher
 theme_DATA=gtkrc
 
@@ -23,6 +27,7 @@ directory_DATA=\
 
 EXTRA_DIST = \
 	$(menufile_DATA) \
+	$(conf_in_files) \
 	$(theme_DATA) \
 	$(datafile_DATA) \
 	$(directory_DATA) \
