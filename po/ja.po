@@ -1,17 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Japanese translations for lxlauncher package
+# lxlauncher パッケージに対する日本語訳
+# Copyright (C) 2008-2009 THE lxlauncher'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lxlauncher package.
+# Hironao Komatsu <hironao@users.sourceforge.net>, 2009.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: lxlauncher 0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-15 19:31+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-05-01 18:28+0900\n"
+"Last-Translator: Hironao Komatsu <hironao@users.sourceforge.net>\n"
+"Language-Team: ja_JP <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,47 +22,47 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:119
 msgid "_Customize"
-msgstr ""
+msgstr "カスタマイズ(_C)"
 
 #: ../src/lxlauncher.c:518
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "\"%s\" に戻る"
 
 #: ../src/lxlauncher.c:664
 msgid "Enable key navigation"
-msgstr ""
+msgstr "キー操作を有効にする"
 
 #: ../src/lxlauncher.c:665
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr ""
+msgstr "キーボードのカーソル、タブ、Enterでlxlauncherを操作できるようにする"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "カラムの空白"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "隣り合うカラムの間の空白"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "行の空白"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "隣り合う行の間の空白"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "均質"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "子がすべて同じサイズになるかどうか"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "コマンドが見つかりません"
