@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-15 19:31+0200\n"
-"PO-Revision-Date: 2009-04-25 07:23+0200\n"
+"PO-Revision-Date: 2009-05-03 11:28+0200\n"
 "Last-Translator: Александр Голубев <ag@lhp.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -57,8 +57,9 @@ msgid "The amount of space between two consecutive rows"
 msgstr ""
 
 #: ../src/exo-wrap-table.c:196
+#, fuzzy
 msgid "Homogeneous"
-msgstr ""
+msgstr "Однородные"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
@@ -67,4 +68,4 @@ msgstr ""
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Команда не найдена"
