@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-15 19:31+0200\n"
+"PO-Revision-Date: 2009-05-18 21:47+0200\n"
+"Last-Translator: F Wolff <friedel@translate.org.za>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:119
+msgid "_Customize"
+msgstr "_Pasmaak"
+
+#: ../src/lxlauncher.c:518
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Gaan terug na \"%s\""
+
+#: ../src/lxlauncher.c:664
+msgid "Enable key navigation"
+msgstr "Aktiveer sleutelnavigasie"
+
+#: ../src/lxlauncher.c:665
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr ""
+"Laat gebruikers toe om die sleutels op/af/links/regs/tab/enter te gebruik om "
+"lxlauncher te beheer"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "Kolomspasiëring"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "Die hoeveelheid spasie tussen twee opeenvolgende kolomme"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "Ryspasiëring"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "Die hoeveelheid spasie tussen twee opeenvolgende rye"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "Homogeen"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "Of kinders alles die selfde grootte moet wees"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "Opdrag nie gevind nie"
