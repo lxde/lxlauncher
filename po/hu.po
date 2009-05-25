@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-15 19:31+0200\n"
-"PO-Revision-Date: 2008-12-26 11:19+0100\n"
+"PO-Revision-Date: 2009-05-25 15:53+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,52 +31,46 @@ msgid "Enable key navigation"
 msgstr "Billentyű irányítás engedélyezése"
 
 #: ../src/lxlauncher.c:665
-#, fuzzy
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr ""
-"Az lxlauncher a fel/le/balra/jobbra/tab/enter billentyűkkel vezérelhető"
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr "Az lxlauncher a fel/le/balra/jobbra/tab/enter billentyűkkel vezérelhető"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Oszloptáv"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "A szomszédos oszlopok közti táv"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Sortáv"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "A szomszédos sorok közti táv"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Homogén"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "A gyermekek ugyanakkorák legyenek-e"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "A parancs nem található"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
-
 #~ msgid "Work"
 #~ msgstr "Munka"
-
 #~ msgid "Learn"
 #~ msgstr "Tanulás"
-
 #~ msgid "Play"
 #~ msgstr "Játék"
-
 #~ msgid "Settings"
 #~ msgstr "Beállítások"
+
