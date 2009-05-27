@@ -48,6 +48,9 @@
 #define BACKGROUND_DIR  PACKAGE_DATA_DIR"/lxlauncher/background"
 #define ICON_DIR        PACKAGE_DATA_DIR"/lxlauncher/icons"
 
+#define BUTTON_SIZE_FALLBACK 120
+#define IMG_SIZE_FALLBACK 48
+
 static GtkWidget* main_window;
 static GtkWidget* notebook;
 static int n_cols;
@@ -719,6 +722,11 @@ int main(int argc, char** argv)
 
     button_size = g_key_file_get_integer(key_file, "Main", "BUTTON_SIZE", NULL);
     img_size = g_key_file_get_integer(key_file, "Main", "IMG_SIZE", NULL);
+
+    // to prevent from going without configure file
+    if(!button_size) button_size = BUTTON_SIZE_FALLBACK;
+    if(!img_size) img_size = IMG_SIZE_FALLBACK;
+
     icon_size = gtk_icon_size_register( "ALIcon", img_size, img_size );
 
     main_window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
