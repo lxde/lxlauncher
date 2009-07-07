@@ -56,7 +56,7 @@ static GtkWidget* notebook;
 static int n_cols;
 static GtkIconSize icon_size;
 
-static Atom atom_NET_WORKAREA = NULL;
+static Atom atom_NET_WORKAREA = None;
 
 static MenuCache* menu_tree = NULL;
 static MenuCacheDir* root_dir = NULL;
