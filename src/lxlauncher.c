@@ -311,6 +311,7 @@ static gboolean on_scroll( GtkAdjustment* adj, PageData* data )
 {
     // Dirty hacks used to force pseudo-transparent background
     gtk_widget_queue_draw( data->table );
+    return TRUE;
 }
 
 // Dirty hacks used to reduce unnecessary redrew during scroll
@@ -674,6 +675,7 @@ gchar* get_xdg_config_file(const char *name) {
 	}
 	free(file);
     }
+    return NULL;
 }
 
 int main(int argc, char** argv)
