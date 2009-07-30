@@ -37,7 +37,10 @@ GdkPixbuf* vfs_load_icon( GtkIconTheme* theme, const char* icon_name, int size )
     if( G_LIKELY( file ) )
         icon = gdk_pixbuf_new_from_file_at_scale( file, size, size, TRUE, NULL );
     else
+    {
         icon = gtk_icon_info_get_builtin_pixbuf( inf );
+        g_object_ref(icon);
+    }
     gtk_icon_info_free( inf );
 
     if( G_LIKELY( icon ) )  /* scale down the icon if it's too big */
