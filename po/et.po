@@ -1,7 +1,7 @@
 # lxlauncheri eesti keele tõlge
 # Estonian translation of lxlauncher
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2009 LXDE
+# This file is distributed under the same license as the lxlauncher package.
 # Mattias Põldaru <mahfiaz gmail com>, 2009.
 #
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-15 19:31+0200\n"
-"PO-Revision-Date: 2009-01-19 09:16+0300\n"
+"PO-Revision-Date: 2009-08-23 17:40+0300\n"
 "Last-Translator: Mattias Põldaru <mahfiaz gmail com>\n"
 "Language-Team: Gnome Estonian Translation Team <gnome-et linux ee>\n"
 "MIME-Version: 1.0\n"
@@ -34,37 +34,35 @@ msgid "Enable key navigation"
 msgstr "Klahvidega liikumise lubamine"
 
 #: ../src/lxlauncher.c:665
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr ""
-"Kasutajal lxlauncheris üles/alla/vasakule/paremale/tab/enter klahvide "
-"kasutamise lubamine"
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+msgstr "Kasutajal lxlauncheris üles/alla/vasakule/paremale/tab/enter klahvide kasutamise lubamine"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Tulba vahe"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "Ruum kahe kõrvuti asuva tulba vahel"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Rea vahe"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "Ruum kahe kohakuti asuva rea vahel"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Sama suured"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Kas kõik lapsed peaksid olema sama suured"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Käsku ei leitud"
+
