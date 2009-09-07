@@ -8,12 +8,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-05-04 18:22+0100\n"
-"Last-Translator: Sander De Voogdt <celettu@gmal.com>\n"
+"PO-Revision-Date: 2009-05-29 01:34+0200\n"
+"Last-Translator: Payne Samad Loh <sploh77@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -21,16 +22,16 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:126
 msgid "_Customize"
-msgstr "Aanpassen"
+msgstr "_Meresamkan"
 
 #: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Terug naar \"%s\""
+msgstr "Kembali ke \"%s\""
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
-msgstr "Schakel toetsnavigatie in"
+msgstr "Membolehkan kunci navigasi"
 
 #: ../src/lxlauncher.c:716
 #, fuzzy
@@ -38,34 +39,34 @@ msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Gebruikers toestaan om de lxlauncher te bedienen met de boven/onder/links/"
-"rechts/tab/enter toetsen"
+"Membenarkan penguna untuk menggunakan kunci naik/turun/kiri/kanan/tab/enter "
+"untuk mengoperasikan lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr "Ruimte tussen de kolommen"
+msgstr "Jarakkan lajur"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr "De ruimte tussen twee opeenvolgende kolommen"
+msgstr "Jumlah ruang diantara dua lajur berturut"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr "Ruimte tussen de rijen"
+msgstr "Jarak baris"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr "De ruimte tussen twee opeenvolgende rijen"
+msgstr "Jumlah ruang antara dua leretan berturut "
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr "Homogeen"
+msgstr "Homogen"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr "Moeten alle kinderen dezelfde grootte zijn"
+msgstr "Sama ada kanak-kanak itu semua seharusnya sama saiz "
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Commando niet gevonden"
+msgstr "Arahan tidak dijumpai"

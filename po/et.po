@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 19:31+0200\n"
+"POT-Creation-Date: 2009-09-07 23:51+0200\n"
 "PO-Revision-Date: 2009-08-23 17:40+0300\n"
 "Last-Translator: Mattias Põldaru <mahfiaz gmail com>\n"
 "Language-Team: Gnome Estonian Translation Team <gnome-et linux ee>\n"
@@ -20,22 +20,27 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:119
+#: ../src/lxlauncher.c:126
 msgid "_Customize"
 msgstr "_Kohanda"
 
-#: ../src/lxlauncher.c:518
+#: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Mine tagasi \"%s\"-le"
 
-#: ../src/lxlauncher.c:664
+#: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
 msgstr "Klahvidega liikumise lubamine"
 
-#: ../src/lxlauncher.c:665
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
-msgstr "Kasutajal lxlauncheris üles/alla/vasakule/paremale/tab/enter klahvide kasutamise lubamine"
+#: ../src/lxlauncher.c:716
+#, fuzzy
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Kasutajal lxlauncheris üles/alla/vasakule/paremale/tab/enter klahvide "
+"kasutamise lubamine"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -65,4 +70,3 @@ msgstr "Kas kõik lapsed peaksid olema sama suured"
 #, c-format
 msgid "Command not found"
 msgstr "Käsku ei leitud"
-

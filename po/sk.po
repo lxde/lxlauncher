@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 19:31+0200\n"
+"POT-Creation-Date: 2009-09-07 23:51+0200\n"
 "PO-Revision-Date: 2009-02-13 15:42+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -19,22 +19,24 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:119
+#: ../src/lxlauncher.c:126
 msgid "_Customize"
 msgstr "_Prispôsobiť"
 
-#: ../src/lxlauncher.c:518
+#: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Späť na „%s“"
 
-#: ../src/lxlauncher.c:664
+#: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
 msgstr "Zapnúť navigáciu pomocou kláves"
 
-#: ../src/lxlauncher.c:665
+#: ../src/lxlauncher.c:716
+#, fuzzy
 msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
 msgstr ""
 "Umožniť používateľom na ovládanie lxlaucher používať klávesy šípok, tab a "
 "enter"

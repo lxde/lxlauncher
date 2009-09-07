@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXLauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 19:31+0200\n"
+"POT-Creation-Date: 2009-09-07 23:51+0200\n"
 "PO-Revision-Date: 2009-01-27 14:52+0200\n"
 "Last-Translator: Ahmad Farghal <ahmad.farghal@gmail.com>\n"
 "Language-Team: Arabic\n"
@@ -19,22 +19,24 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:119
+#: ../src/lxlauncher.c:126
 msgid "_Customize"
 msgstr "_خصص"
 
-#: ../src/lxlauncher.c:518
+#: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "عد إلى \"%s\""
 
-#: ../src/lxlauncher.c:664
+#: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
 msgstr "مكّن الملاحة بلوحة المفاتيح"
 
-#: ../src/lxlauncher.c:665
+#: ../src/lxlauncher.c:716
+#, fuzzy
 msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the lxlaucher"
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
 msgstr ""
 "اسمح للمستخدمين باستخدام أزرار أعلى/أسفل/يسار/يمين/لسان/أدخِل للتعامل مع "
 "lxlauncher"
