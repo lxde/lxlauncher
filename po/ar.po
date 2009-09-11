@@ -8,12 +8,13 @@ msgstr ""
 "Project-Id-Version: LXLauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-01-27 14:52+0200\n"
+"PO-Revision-Date: 2009-09-10 22:48+0200\n"
 "Last-Translator: Ahmad Farghal <ahmad.farghal@gmail.com>\n"
 "Language-Team: Arabic\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -33,7 +34,6 @@ msgid "Enable key navigation"
 msgstr "مكّن الملاحة بلوحة المفاتيح"
 
 #: ../src/lxlauncher.c:716
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
