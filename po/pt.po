@@ -2,13 +2,13 @@
 # Copyright (C) 2009 THE lxlauncher'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the lxlauncher package.
 # <alvarommorais@gmail.com>, 2009
-#
+# Sérgio Marques <smarquespt@gmail.com>, 2009
 msgid ""
 msgstr ""
-"Project-Id-Version: lxlauncher 0.2\n"
+"Project-Id-Version: lxlauncher 0.2.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-05-05 17:10-0000\n"
+"PO-Revision-Date: 2009-09-09 17:21-0000\n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese PT <alvarommorais@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -36,13 +36,8 @@ msgid "Enable key navigation"
 msgstr "Activar navegação por teclas"
 
 #: ../src/lxlauncher.c:716
-#, fuzzy
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the "
-"lxlauncher"
-msgstr ""
-"Permitir que os utilizadores usem as teclas cima/baixo/esquerdadireita/tab/"
-"enter para operar com lxlauncher"
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr "Permitir que os utilizadores usem as teclas cima/baixo/esquerda/direita/tab/enter para operar com lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -72,3 +67,4 @@ msgstr "Se as crianças dever ser todas do mesmo tamanho"
 #, c-format
 msgid "Command not found"
 msgstr "Comando não encontrado"
+
