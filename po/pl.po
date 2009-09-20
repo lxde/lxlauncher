@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-02-16 00:28-0000\n"
+"PO-Revision-Date: 2009-09-18 16:40+0200\n"
 "Last-Translator: Artur Kruszewski <mazdac@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -36,7 +37,6 @@ msgid "Enable key navigation"
 msgstr "Włącz nawigację za pomocą klawiszy"
 
 #: ../src/lxlauncher.c:716
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
