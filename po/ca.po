@@ -1,0 +1,68 @@
+# lxlauncher.po CATALAN TRANSLATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-22 22:47+0200\n"
+"PO-Revision-Date: 2009-09-07 22:29 UTC+2\n"
+"Last-Translator: Josep Sànchez Mesegué <josep.sanchez@ubuntu.cat>\n"
+"Language-Team: LXDE Catalan translators group\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:119
+msgid "_Customize"
+msgstr "Personalitza"
+
+#: ../src/lxlauncher.c:518
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Torna a \"%s\" "
+
+#: ../src/lxlauncher.c:664
+msgid "Enable key navigation"
+msgstr "Habilita la navegació amb teclat"
+
+#: ../src/lxlauncher.c:665
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr ""
+"Permet emprar als usuaris les tecles amunt/avall/esquerra/dreta/tabulador/intro per a treballar amb lxlauncher"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "Espaiat de columnes"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "L'espai entre dues columnes consecutives"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "Espaiat de files"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "L'espai entre dues files consecutives"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "Homogeni"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "Si els fills han de ser de la mateixa mida"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "No s'ha localitzat l'ordre"
