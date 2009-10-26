@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lxlauncher 0.3\n"
+"Project-Id-Version: lxlauncher 0.2.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-05-01 18:28+0900\n"
+"POT-Creation-Date: 2009-10-24 14:45+0900\n"
+"PO-Revision-Date: 2009-09-29 20:59+0900\n"
 "Last-Translator: Hironao Komatsu <hironao@users.sourceforge.net>\n"
 "Language-Team: ja_JP <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,11 +34,10 @@ msgid "Enable key navigation"
 msgstr "キー操作を有効にする"
 
 #: ../src/lxlauncher.c:716
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
-msgstr "キーボードのカーソル、タブ、Enterでlxlauncherを操作できるようにする"
+msgstr "カーソルキーやタブ、Enterキーでlxlauncherを操作できるようにする"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
