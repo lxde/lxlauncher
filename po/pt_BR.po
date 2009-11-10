@@ -9,13 +9,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-03-11 18:34-0300\n"
-"Last-Translator: Henrique P. Machado <zehrique@gmail.com>\n"
+"PO-Revision-Date: 2009-11-06 15:18+0100\n"
+"Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -35,13 +36,12 @@ msgid "Enable key navigation"
 msgstr "Habilitar navegação pelo teclado"
 
 #: ../src/lxlauncher.c:716
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permitir que o usuário use as teclas acima/abaixo/esquerda/direita/tab/enter "
-"para operar o lxlauncher"
+"Permitir que os usuários usem as teclas "
+"acima/abaixo/esquerda/direita/tab/enter para operar o lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
