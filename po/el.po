@@ -8,12 +8,13 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-06-30 14:36+0200\n"
-"Last-Translator: George Vasilakos <forfolias@gmail.com>\n"
+"PO-Revision-Date: 2009-12-27 21:47+0100\n"
+"Last-Translator: George Vasilakos <forfolias@linuxteam.cs.teilar.gr>\n"
 "Language-Team: Greek <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
 "X-Poedit-Language: Greek\n"
 "X-Poedit-Country: Greece\n"
 
@@ -35,7 +36,6 @@ msgid "Enable key navigation"
 msgstr "Ενεργοποίηση πλήκτρου πλοήγησης"
 
 #: ../src/lxlauncher.c:716
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
