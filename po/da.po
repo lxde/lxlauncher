@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: lxlauncher VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-03-10 14:51+0100\n"
+"PO-Revision-Date: 2009-12-30 10:18+0100\n"
 "Last-Translator: Vidar Jon Bauge <vidarjb@gmail.com>\n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,6 @@ msgid "Enable key navigation"
 msgstr "Aktiver navigering med tastatur"
 
 #: ../src/lxlauncher.c:716
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
