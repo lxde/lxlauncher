@@ -1,0 +1,74 @@
+# Spanish translation of lxlauncher
+# Copyright (C) 2008 THE lxlauncher'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lxlauncher package.
+#
+# Julio Napurí Carlos <julionc@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lxlauncher\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"PO-Revision-Date: 2009-09-20 14:09+0200\n"
+"Last-Translator: Hugo Florentino <sysadmin@cips.cu>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.1.0\n"
+"X-Poedit-Language: Spanish\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:126
+msgid "_Customize"
+msgstr "_Personalizar"
+
+#: ../src/lxlauncher.c:531
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Volver a \"%s\""
+
+#: ../src/lxlauncher.c:715
+msgid "Enable key navigation"
+msgstr "Activar teclas de navegación"
+
+#: ../src/lxlauncher.c:716
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Permite operar lxlauncher con las teclas "
+"arriba/abajo/izquierda/derecha/tabulador/retorno"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "Espaciado de columnas"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "La cantidad de espacio entre dos columnas consecutivas"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "Espaciado de filas"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "La cantidad de espacio entre dos filas consecutivas"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "Homogéneo"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "Si los descendientes deben tener todos el mismo tamaño"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "Comando no encontrado"
