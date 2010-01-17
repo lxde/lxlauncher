@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-05-25 15:53+0100\n"
+"PO-Revision-Date: 2010-01-17 18:26+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,12 +31,8 @@ msgid "Enable key navigation"
 msgstr "Billentyű irányítás engedélyezése"
 
 #: ../src/lxlauncher.c:716
-#, fuzzy
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the "
-"lxlauncher"
-msgstr ""
-"Az lxlauncher a fel/le/balra/jobbra/tab/enter billentyűkkel vezérelhető"
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr "Az lxlauncher a fel/le/balra/jobbra/tab/enter billentyűkkel vezérelhető"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -69,15 +65,12 @@ msgstr "A parancs nem található"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
-
 #~ msgid "Work"
 #~ msgstr "Munka"
-
 #~ msgid "Learn"
 #~ msgstr "Tanulás"
-
 #~ msgid "Play"
 #~ msgstr "Játék"
-
 #~ msgid "Settings"
 #~ msgstr "Beállítások"
+
