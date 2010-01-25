@@ -3,18 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-01-25 15:48+0200\n"
+"Last-Translator: Hamidreza <n3gb0y@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.0.1\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -22,48 +24,55 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:126
 msgid "_Customize"
-msgstr ""
+msgstr "ـ سفارشی"
 
 #: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "برگشت به \"%$\""
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
-msgstr ""
+msgstr "فعال سازی کلید جهت یاب(مکان نما)"
 
+# I could't translate "tab" key into persian
 #: ../src/lxlauncher.c:716
+#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
+"اجازه به کاربران برای استفاده از کلیدهای بالا/پایین/چپ/راست/تب/ورود برای عمل "
+"در lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "فضاگذاری ستونی"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "مقدار فضا بین دو ستون ‌پیاپی"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "فضاگذاری سطری"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "مقدار فضا بین دو سطر پیاپی"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "همگن ها"
 
+# والله منم نفهمیدم این چه ربطی داره !‌:))
+# چرا باید یک اندازه باشند ؟
 #: ../src/exo-wrap-table.c:197
+#, fuzzy
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "اینکه کودکان باید همگی هم اندازه باشند"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "دستور پیدا نشد"

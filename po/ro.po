@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LXDE\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"PO-Revision-Date: 2010-01-24 11:10-0800\n"
+"Last-Translator: alexxed <alexxed@gmail.com>\n"
+"Language-Team: Romanian <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Narro 0.9.4 on http://tradu.softwareliber.ro\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:126
+msgid "_Customize"
+msgstr "_Personalizează..."
+
+#: ../src/lxlauncher.c:531
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Înapoi la „%s”"
+
+#: ../src/lxlauncher.c:715
+msgid "Enable key navigation"
+msgstr "Activează navigarea cu tastele"
+
+#: ../src/lxlauncher.c:716
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr ""
+"Permite utilizatorilor sa folosească tastele sus/jos/stanga/dreapta/tab/enter "
+"pentru a lucra cu lxlauncher"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "Spațiere coloane"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "Spațiul între două coloane consecutive"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "Spațiere rânduri"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "Spațiul între două rânduri consecutive"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "Omogen"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "Oricare dintre ferestrele copil ar trebuii să aibă aceeași mărime"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "Comandă negăsită"
