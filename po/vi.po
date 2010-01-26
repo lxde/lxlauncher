@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2010-01-25 19:32+0200\n"
+"PO-Revision-Date: 2010-01-26 11:53+0200\n"
 "Last-Translator: Hiếu <scamemiv@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: vi\n"
@@ -49,7 +49,7 @@ msgstr "Khoảng cách cột"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "Khoảng cách giữa hai hàng liên tiếp"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
