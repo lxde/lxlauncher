@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the lxlauncher package.
 # Vidar Jon Bauge <vidarjb@gmail.com>, 2009.
 # Keld Simonsen <keld@dkuug.dk>, 2009.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-02-13 04:08+0000\n"
 "PO-Revision-Date: 2009-12-30 10:18+0100\n"
 "Last-Translator: Vidar Jon Bauge <vidarjb@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -18,13 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#.
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
-#.
+#. 
 #: ../src/lxlauncher.c:126
 msgid "_Customize"
-msgstr "Tilpas"
+msgstr "_Tilpas"
 
 #: ../src/lxlauncher.c:531
 #, c-format
@@ -36,9 +35,7 @@ msgid "Enable key navigation"
 msgstr "Aktiver navigering med tastatur"
 
 #: ../src/lxlauncher.c:716
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the "
-"lxlauncher"
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
 msgstr "Tillad brugere at anvende piltastene i lxlaucher"
 
 #: ../src/exo-wrap-table.c:166
