@@ -36,7 +36,7 @@ msgstr "Aktiver navigering med tastatur"
 
 #: ../src/lxlauncher.c:716
 msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Tillad brugere at anvende piltastene i lxlaucher"
+msgstr "Tillad brugere at anvende piletastene i lxlaucher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
