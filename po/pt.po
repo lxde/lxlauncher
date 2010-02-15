@@ -5,11 +5,11 @@
 # Sérgio Marques <smarquespt@gmail.com>, 2009
 msgid ""
 msgstr ""
-"Project-Id-Version: lxlauncher 0.2.1\n"
+"Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-09-09 17:21-0000\n"
-"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
+"POT-Creation-Date: 2010-02-15 04:05+0000\n"
+"PO-Revision-Date: 2010-02-15 15:20-0000\n"
+"Last-Translator: Sergio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese PT <alvarommorais@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -37,7 +37,7 @@ msgstr "Activar navegação por teclas"
 
 #: ../src/lxlauncher.c:716
 msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Permitir que os utilizadores usem as teclas cima/baixo/esquerda/direita/tab/enter para operar com lxlauncher"
+msgstr "Permitir a utilização das teclas cima/baixo/esquerda/direita/tab/enter para operar com lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -45,7 +45,7 @@ msgstr "Espaçamento entre colunas"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr "O espaço entre duas colunas consecutivas"
+msgstr "O espaço existente entre duas colunas consecutivas"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
@@ -53,7 +53,7 @@ msgstr "Espaçamento entre linhas"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr "O espaço entre duas linhas consecutivas"
+msgstr "O espaço existente entre duas linhas consecutivas"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
