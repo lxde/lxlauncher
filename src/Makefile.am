@@ -9,12 +9,10 @@ bin_PROGRAMS = lxlauncher
 
 lxlauncher_SOURCES = \
 	lxlauncher.c \
+        app-view.c app-view.h \
 	misc.c misc.h \
-	glib-mem.h \
 	vfs-utils.c vfs-utils.h \
-	vfs-execute.c vfs-execute.h \
-	working-area.c working-area.h \
-	exo-wrap-table.c exo-wrap-table.h
+	working-area.c working-area.h
 
 lxlauncher_LDADD = @GTK_LIBS@ @SN_LIBS@ @GMENU_LIBS@ $(INTLLIBS)
 

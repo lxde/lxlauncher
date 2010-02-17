@@ -15,5 +15,5 @@ style "launcher-nb" = "launcher-fg" { #for the notebook
 widget_class "*<GtkNotebook>" style "launcher-nb"
 widget_class "*<GtkNotebook><GtkHBox><GtkLabel>" style "launcher-nb"
 widget "GtkWindow" style "launcher-bg"
-widget_class "*<ExoWrapTable><GtkButton>*<GtkLabel>" style "launcher-fg"
+widget_class "*<AppView>" style "launcher-fg"
 widget_class "*<GtkVBox><GtkHBox><GtkLabel>" style "launcher-fg"

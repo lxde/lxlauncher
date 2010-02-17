@@ -26,14 +26,6 @@
 
 G_BEGIN_DECLS
 
-gboolean lxlauncher_execute_app( GdkScreen* screen,
-                                     const char* working_dir,
-                                     const char* desktop_entry_exec,
-                                     const char* app_disp_name,
-                                     GList* file_paths,
-                                     gboolean in_terminal, /* not supported now */
-                                     GError** err );
-
 GdkPixbuf* lxlauncher_load_icon( const char* name, int size, gboolean use_fallback );
 
 G_END_DECLS

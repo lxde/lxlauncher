@@ -1,7 +1,7 @@
 /*
  *      lxlauncher.c - Open source replace for EeePC Asus Launcher
  *
- *      Copyright 2008 PCMan <pcman.tw@gmail.com>
+ *      Copyright 2008-2009 Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
  *
  *      This program is free software; you can redistribute it and/or modify
  *      it under the terms of the GNU General Public License as published by
@@ -25,20 +25,20 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <cairo.h>
 
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 
+#include <gio/gdesktopappinfo.h>
+
 #include <menu-cache.h>
 
-#include <errno.h>
-
-#include <cairo.h>
-
-#include "exo-wrap-table.h"
+#include "app-view.h"
 #include "working-area.h"
 #include "misc.h"
 
@@ -73,19 +73,13 @@ typedef struct _PageData{
     MenuCacheDir* dir;
     char* dir_path;
     GtkWidget* page_vbox;
+    GtkWidget* page_scrollbar;
     GtkBox* go_up_bar;
-    GtkWidget* table;
+    GtkWidget* app_view;
     GdkPixbuf* background;
 }PageData;
 
-static void on_app_btn_clicked( GtkButton* btn, MenuCacheApp* app )
-{
-    lxlauncher_execute_app( gdk_screen_get_default(),
-                                        NULL, menu_cache_app_get_exec(app), 
-                                        menu_cache_item_get_name(app), NULL, 
-                                        menu_cache_app_get_use_terminal(app),
-                                        NULL );
-}
+static void on_btn_clicked(AppView* av, int mouse_btn, AppBtn* btn, PageData* data);
 
 static void on_menu_item_properties(GtkMenuItem* item, MenuCacheApp* app)
 {
@@ -109,239 +103,7 @@ static void on_menu_item_properties(GtkMenuItem* item, MenuCacheApp* app)
     g_free( ofile );
 }
 
-static gboolean on_app_btn_press_event(GtkWidget* btn, GdkEventButton* evt, MenuCacheApp* app)
-{
-    if( evt->button == 3 )  /* right */
-    {
-        char* tmp;
-        GtkWidget* item;
-        GtkMenu* p = gtk_menu_new();
-        tmp = g_find_program_in_path("lxshortcut");
-        if( tmp )
-        {
-            /*
-            item = gtk_separator_menu_item_new();
-            gtk_menu_shell_append(p, item);
-            */
-            item = gtk_menu_item_new_with_mnemonic(_("_Customize"));
-            g_signal_connect(item, "activate", G_CALLBACK(on_menu_item_properties), app);
-            gtk_menu_shell_append(p, item);
-            g_free(tmp);
-        }
-        else
-        {
-            /* FIXME: since currently Properties is the only menu item,
-             *        we don't popup the menu if it's empty */
-            gtk_widget_destroy(p);
-            return FALSE;
-        }
-        g_signal_connect(p, "selection-done", G_CALLBACK(gtk_widget_destroy), NULL);
-
-        gtk_widget_show_all(p);
-        gtk_menu_popup(p, NULL, NULL, NULL, NULL, NULL, evt->time);
-        return TRUE;
-    }
-    return FALSE;
-}
-
 static void notebook_page_chdir( PageData* data, MenuCacheDir* dir );
-
-static void on_dir_btn_clicked( GtkButton* btn, PageData* data )
-{
-    MenuCacheDir* dir = (MenuCacheDir*)g_object_get_data( btn, "dir" );
-    notebook_page_chdir( data, dir );
-}
-
-static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, const char* tip )
-{
-    GtkWidget *btn, *box, *img, *label;
-    GtkRequisition req;
-    GtkSettings *settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
-    gboolean enable_key=0;
-    g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
-    GtkBorder* inner_border;
-    int w, fw, fp, btn_border;
-
-    /* add the app to that page */
-    btn = gtk_button_new();
-    gtk_widget_set_size_request( btn, button_size, -1 );
-    if (!enable_key)
-        GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
-    GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
-
-    img = gtk_image_new_from_pixbuf( icon );
-
-    box = gtk_vbox_new( FALSE, 2 );
-    gtk_box_pack_start( box, img, FALSE, TRUE, 2 );
-
-    label = gtk_label_new( text );
-    gtk_widget_show( label );
-    gtk_widget_set_size_request( label, button_size - 10, -1 );
-    gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
-    gtk_label_set_line_wrap( label, TRUE );
-    gtk_label_set_justify( label, GTK_JUSTIFY_CENTER );
-    gtk_misc_set_alignment( label, 0.5, 0 );
-    gtk_misc_set_padding( label, 0, 0 );
-    gtk_box_pack_start( box, label, TRUE, TRUE, 0 );
-
-    gtk_container_add( btn, box );
-
-    gtk_button_set_relief( btn, GTK_RELIEF_NONE );
-    gtk_widget_set_size_request( btn, button_size, button_size );
-    gtk_widget_show_all( btn );
-
-    gtk_container_add( table, btn );
-    gtk_widget_realize( btn );
-
-    gtk_widget_set_tooltip_text(btn, tip);
-
-    /* Adjust the size of label and set line wrapping is needed.
-     * FIXME: this is too dirty, and the effect is quite limited.
-     * However, due to the unfortunate design flaws of gtk+, the
-     * only way to overcome this might be implement our own label class.
-     */
-
-    /* get border of GtkButtons */
-    gtk_widget_style_get(btn, "focus-line-width", &fw, "focus-padding", &fp, NULL);
-    btn_border = 2 * (gtk_container_get_border_width(btn) + btn->style->xthickness + fw + fp);
-    gtk_widget_style_get(btn, "inner-border", &inner_border, NULL);
-    if( inner_border )
-        btn_border += (inner_border->left + inner_border->right);
-    /* padding of vbox should be added. */
-    btn_border += 2 * gtk_container_get_border_width(box);
-
-    gtk_widget_size_request( label, &req );
-
-    /* if the label is wider than button width, line-wrapping is needed. */
-    if( req.width > (button_size - btn_border) )
-    {
-        gtk_widget_set_size_request( label, button_size - btn_border, -1 );
-        gtk_label_set_line_wrap_mode( label, PANGO_WRAP_WORD_CHAR );
-        gtk_label_set_line_wrap( label, TRUE );
-    }
-
-    gtk_widget_set_app_paintable( btn, TRUE );
-    gdk_window_set_back_pixmap( ((GtkWidget*)btn)->window, NULL, TRUE );
-    return btn;
-}
-
-static void add_dir_btn( PageData* data, MenuCacheDir* dir )
-{
-    GdkPixbuf* icon;
-    GtkWidget* btn;
-    const char* icon_name = menu_cache_item_get_icon( dir );
-    if( !icon_name )
-        icon_name = "folder";
-
-    icon = lxlauncher_load_icon( icon_name, img_size, TRUE );
-
-    btn = add_btn( data->table, menu_cache_item_get_name(dir), icon, menu_cache_item_get_comment(dir) );
-    if( icon )
-        g_object_unref( icon );
-
-    g_object_set_data( btn, "dir", dir );
-    g_signal_connect( btn, "clicked", G_CALLBACK(on_dir_btn_clicked), data );
-}
-
-static void add_app_btn( GtkWidget* table, MenuCacheApp* app )
-{
-    GdkPixbuf* icon;
-    GtkWidget* btn;
-    const char* icon_name = menu_cache_item_get_icon( app );
-
-    if( !icon_name )
-        icon_name = "application-x-executable";
-
-    icon = lxlauncher_load_icon( icon_name, img_size, TRUE );
-
-    btn = add_btn( table, menu_cache_item_get_name(app), icon, menu_cache_item_get_comment(app) );
-
-    if( icon )
-        g_object_unref( icon );
-    g_signal_connect( btn, "clicked", G_CALLBACK(on_app_btn_clicked), app );
-    g_signal_connect( btn, "button-press-event", G_CALLBACK(on_app_btn_press_event), app );
-}
-
-static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer data )
-{
-    GObjectClass* oc = G_OBJECT_GET_CLASS(w);
-    GtkWidgetClass* wc = (GtkWidgetClass*)g_type_class_peek_parent( oc );
-    GdkPixmap* pixmap = (GdkPixmap*)data;
-
-    if( GTK_WIDGET_DRAWABLE(w) && evt->window == ((GtkViewport*)w)->bin_window )
-    {
-        cairo_t *cr;
-        cairo_pattern_t* pat;
-
-        GtkWidget* scroll = gtk_widget_get_parent(w);
-        GtkAdjustment* vadj = gtk_scrolled_window_get_vadjustment(scroll);
-
-        cr = gdk_cairo_create (evt->window);
-        //pat = cairo_pattern_create_linear( 0, gtk_adjustment_get_value(vadj), 0, w->allocation.height + gtk_adjustment_get_value(vadj) );
-        //cairo_pattern_add_color_stop_rgb( pat, 0, 1, 1, 1);
-        //cairo_pattern_add_color_stop_rgb( pat, 1.0, ((gdouble)184/256), ((gdouble)215/256), ((gdouble)235/256));
-//        cairo_rectangle(cr, 0, 0, w->allocation.width, w->allocation.height );
-//        cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
-        cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
-        //cairo_set_source(cr, pat);
-        cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
-        cairo_fill(cr);
-        //cairo_pattern_destroy(pat);
-        cairo_destroy(cr);
-
-/*
-        GdkGC* gc = gdk_gc_new(evt->window);
-
-        gdk_gc_set_tile( gc, pixmap );
-        gdk_gc_set_fill( gc, GDK_TILED );
-        gdk_gc_set_ts_origin( gc, 0, 0 );
-
-        gdk_draw_rectangle( evt->window, gc, TRUE, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
-
-        gdk_gc_unref( gc );
-*/
-    }
-
-    // call handler of tha parent GtkContainer class to propagate the event to children
-    (* wc->expose_event) (w, evt);
-    return TRUE;
-}
-
-static gboolean on_scroll( GtkAdjustment* adj, PageData* data )
-{
-    // Dirty hacks used to force pseudo-transparent background
-    gtk_widget_queue_draw( data->table );
-    return TRUE;
-}
-
-// Dirty hacks used to reduce unnecessary redrew during scroll
-static gboolean on_scroll_change_val( GtkRange* scroll, GtkScrollType type, gdouble value, PageData* data )
-{
-    GtkAdjustment* adj = gtk_range_get_adjustment(scroll);
-
-    if( type == GTK_SCROLL_JUMP )
-    {
-        if( ABS( adj->value - value ) < button_size / 2 )
-        {
-            if( adj->value > value )    // upward
-            {
-                if( (adj->value - adj->lower) < button_size / 2 )
-                {
-                    gtk_adjustment_set_value( adj, adj->lower );
-                }
-            }
-            else // downward
-            {
-                if( (adj->upper - adj->value) < button_size / 2 )
-                {
-                    gtk_adjustment_set_value( adj, adj->lower );
-                }
-            }
-            return TRUE;
-        }
-    }
-    return FALSE;
-}
 
 static char* menu_dir_to_path( MenuCacheDir* dir )
 {
@@ -374,7 +136,6 @@ static PageData* notebook_page_from_dir( MenuCacheDir* dir )
     n = gtk_notebook_get_n_pages( notebook );
     for( i = 0; i < n; ++i )
     {
-
         MenuCacheDir* top2;
         page = gtk_notebook_get_nth_page( notebook, i );
         page_data = (PageData*)g_object_get_data(page, "page");
@@ -488,6 +249,12 @@ static char* get_line( char** buf )
     return ret;
 }
 
+static void on_go_up(GtkWidget* go_up_btn, PageData* data )
+{
+    MenuCacheDir* dir = MENU_CACHE_DIR(g_object_get_data(go_up_btn, "dir"));
+    notebook_page_chdir( data, dir );
+}
+
 static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
 {
     GSList* l;
@@ -501,7 +268,7 @@ static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
     data->dir_path = menu_cache_dir_make_path( dir );
 
     // destroy old buttons
-    gtk_container_foreach( data->table, gtk_widget_destroy, NULL );
+    app_view_remove_all(data->app_view);
 
     gtk_container_forall( data->go_up_bar, gtk_widget_destroy, NULL );
 
@@ -513,14 +280,12 @@ static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
         MenuCacheItem* item = (MenuCacheItem*)l->data;
         MenuCacheType type = menu_cache_item_get_type(item);
 
-        if( type == MENU_CACHE_TYPE_DIR )
-            add_dir_btn( data, (MenuCacheDir*)item );
-        else if( type == MENU_CACHE_TYPE_APP )
+        if( type == MENU_CACHE_TYPE_APP )
         {
             if( ! menu_cache_app_get_is_visible(item, SHOW_IN_LXDE) )
                 continue;
-            add_app_btn( data->table, (MenuCacheApp*)item );
         }
+        app_view_add_button(data->app_view, item);
     }
 
     parent_dir = menu_cache_item_get_parent((MenuCacheItem*)dir);
@@ -539,7 +304,7 @@ static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
 
         gtk_misc_set_alignment( label, 0.0, 0.5 );
         g_object_set_data( btn, "dir", parent_dir );
-        g_signal_connect( btn, "clicked", on_dir_btn_clicked, data );
+        g_signal_connect( btn, "clicked", on_go_up, data );
         gtk_button_set_image( btn, gtk_image_new_from_stock( GTK_STOCK_GO_UP, GTK_ICON_SIZE_BUTTON ) );
 
         gtk_box_pack_start( data->go_up_bar, label, TRUE, TRUE, 4 );
@@ -562,6 +327,79 @@ static void page_data_free( PageData* data )
     g_free( data );
 }
 
+void on_btn_clicked(AppView* av, int mouse_btn, AppBtn* btn, PageData* data)
+{
+    GtkWidget* widget = (GtkWidget*)av;
+    if( mouse_btn == 1 ) /* left click */
+    {
+        if( menu_cache_item_get_type(btn->item) == MENU_CACHE_TYPE_APP )
+        {
+            GDesktopAppInfo* app;
+            GdkAppLaunchContext* ctx;
+            char* file = menu_cache_item_get_file_path(btn->item);
+            app = g_desktop_app_info_new_from_filename(file);
+            g_free(file);
+
+            gtk_widget_queue_draw_area(widget, btn->box.x, btn->box.y, btn->box.width, btn->box.height);
+
+            ctx = gdk_app_launch_context_new();
+            gdk_app_launch_context_set_screen(ctx, gtk_widget_get_screen(widget));
+            /* FIXME: should we pass time to "clicked" handler? */
+            gdk_app_launch_context_set_timestamp(ctx, gtk_get_current_event_time());
+
+            g_app_info_launch(app, NULL, ctx, NULL);
+            g_object_unref(app);
+
+            g_object_unref(ctx);
+        }
+        else /* dir */
+        {
+            notebook_page_chdir( data, MENU_CACHE_DIR(btn->item) );
+        }
+    }
+    else if( mouse_btn == 3 ) /* right click */
+    {
+        if( menu_cache_item_get_type(btn->item) == MENU_CACHE_TYPE_APP )
+        {
+            char* tmp;
+            GtkWidget* item;
+            GtkMenu* p = gtk_menu_new();
+            tmp = g_find_program_in_path("lxshortcut");
+            if( tmp )
+            {
+                /*
+                item = gtk_separator_menu_item_new();
+                gtk_menu_shell_append(p, item);
+                */
+                item = gtk_menu_item_new_with_mnemonic(_("_Customize"));
+                g_signal_connect(item, "activate", G_CALLBACK(on_menu_item_properties), btn->item);
+                gtk_menu_shell_append(p, item);
+                g_free(tmp);
+            }
+            else
+            {
+                /* FIXME: since currently Properties is the only menu item,
+                 *        we don't popup the menu if it's empty */
+                gtk_widget_destroy(p);
+                return FALSE;
+            }
+            g_signal_connect(p, "selection-done", G_CALLBACK(gtk_widget_destroy), NULL);
+g_debug("HERE");
+            gtk_widget_show_all(p);
+            gtk_menu_popup(p, NULL, NULL, NULL, NULL, NULL, gtk_get_current_event_time());
+        }
+    }
+}
+
+static void on_adjustment_changed(GtkAdjustment* adj, GtkWidget* scroll)
+{
+	if(adj->upper > adj->page_size)
+		gtk_widget_show(scroll);
+	else
+		gtk_widget_hide(scroll);
+}
+
+
 static void create_notebook_pages()
 {
     GSList* l;
@@ -571,11 +409,12 @@ static void create_notebook_pages()
     {
         GtkWidget* *viewport;
         GtkAdjustment* adj;
-        GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
         GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
-        GtkWidget* table = exo_wrap_table_new(TRUE);
+		GtkWidget* page_hbox = gtk_hbox_new(FALSE, 0);
+        GtkWidget* app_view;
         GtkWidget* label;
         GtkWidget* image;
+		GtkWidget* scrollbar;
         GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
         GdkPixbuf* pixbuf=NULL;
         GdkPixmap* pixmap;
@@ -587,71 +426,44 @@ static void create_notebook_pages()
         if( G_UNLIKELY( menu_cache_item_get_type((MenuCacheItem*)dir) != MENU_CACHE_TYPE_DIR ) )
             continue;
 
+        app_view = app_view = app_view_new();
+
         page_data = g_new0( PageData, 1 );
         g_object_set_data_full( page_vbox, "page", page_data, page_data_free );
 
+        g_signal_connect(app_view, "clicked", G_CALLBACK(on_btn_clicked), page_data );
+
         label = gtk_hbox_new( FALSE, 2 );
 
-        gtk_scrolled_window_set_policy(scroll, GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
-
-        // Very bad dirty hacks used to force gtk+ to draw transparent background
-        GtkRange* range = gtk_scrolled_window_get_vscrollbar(scroll);
-        //gtk_range_set_update_policy( range, GTK_UPDATE_DELAYED );
-        g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
-        adj = gtk_scrolled_window_get_vadjustment(scroll);
-        adj->step_increment = button_size / 3;
-        adj->page_increment = button_size / 2;
-        gtk_adjustment_changed( adj );
-        g_signal_connect( adj, "value-changed", G_CALLBACK(on_scroll), page_data );
-
-        // create label
+        /* create tab label for notebook page */
         image = gtk_image_new_from_icon_name( menu_cache_item_get_icon(dir), GTK_ICON_SIZE_MENU );
-
         gtk_box_pack_start( label, image, FALSE, TRUE, 2 );
         gtk_box_pack_start( label, gtk_label_new( menu_cache_item_get_name(dir) ), FALSE, TRUE, 2 );
         gtk_widget_show_all(label);
 
-        // gtk_container_set_border_width( page_vbox, 4 );
-        exo_wrap_table_set_col_spacing( table, 8 );
+		/* app view is packed together with a vscrollbar in hbox */
+        gtk_box_pack_start( page_hbox, app_view, TRUE, TRUE, 0 );
+		scrollbar = gtk_vscrollbar_new(NULL);
+		gtk_range_set_adjustment(scrollbar, app_view_get_adjustment(app_view));
+		gtk_widget_show(scrollbar);
+        gtk_box_pack_start( page_hbox, scrollbar, FALSE, TRUE, 0 );
+		g_signal_connect(app_view_get_adjustment(app_view), "changed", G_CALLBACK(on_adjustment_changed), scrollbar);
 
-        viewport = gtk_viewport_new( NULL, NULL );
-        gtk_container_add( viewport, table );
-        gtk_container_add( scroll, viewport );
-        gtk_widget_show_all( scroll );
-
+		/* pack the go up bar and app view into the notebook page */
         gtk_box_pack_start( page_vbox, go_up_bar, FALSE, TRUE, 0 );
-        gtk_box_pack_start( page_vbox, scroll, TRUE, TRUE, 0 );
+        gtk_box_pack_start( page_vbox, page_hbox, TRUE, TRUE, 0 );
         gtk_widget_show_all( page_vbox );
 
+		/* add the newly created page to notebook */
         gtk_notebook_append_page( notebook, page_vbox, label );
 
-        // set background
-        gtk_widget_set_app_paintable( viewport, TRUE );
-/*
-        file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
-        pixbuf = gdk_pixbuf_new_from_file( file, NULL );
-        g_free( file );
-*/
-        if( pixbuf )
-        {
-            pixmap = gdk_pixmap_new( gdk_get_default_root_window(), gdk_pixbuf_get_width(pixbuf), gdk_pixbuf_get_height(pixbuf), -1 );
-            pixmap_gc = gdk_gc_new(pixmap);
-            gdk_pixbuf_render_to_drawable(pixbuf, pixmap, pixmap_gc,
-                                    0, 0, 0, 0,
-                                    gdk_pixbuf_get_width(pixbuf),
-                                    gdk_pixbuf_get_height(pixbuf),
-                                    GDK_RGB_DITHER_NORMAL, 0, 0 );
-            g_object_unref( pixbuf );
-
-            g_object_weak_ref( viewport, (GWeakNotify)g_object_unref, pixmap );
-            g_object_unref(pixmap_gc);
-        }
-        g_signal_connect( viewport, "expose_event", G_CALLBACK(on_viewport_expose), pixmap );
-
         page_data->page_vbox = page_vbox;
+		page_data->page_scrollbar = scrollbar;
         page_data->go_up_bar = go_up_bar;
-        page_data->table = table;
+        page_data->app_view = app_view;
 
+		/* chdir to load the apps in this page */
+		/* FIXME: do this in a async fashion to speed app startup. */
         notebook_page_chdir( page_data, dir );
     }
 }
@@ -758,6 +570,10 @@ int main(int argc, char** argv)
     gtk_window_set_skip_pager_hint( main_window, TRUE );
     gtk_window_set_skip_taskbar_hint( main_window, TRUE );
 
+    get_working_area( gtk_widget_get_screen(main_window), &working_area );
+	gtk_widget_set_size_request( main_window, working_area.width, working_area.height );
+    gtk_window_move( main_window, working_area.x, working_area.y );
+
     gtk_widget_realize( main_window );
     gdk_window_set_keep_below( main_window->window, TRUE );
     //gdk_window_set_decorations( main_window->window );
@@ -767,14 +583,14 @@ int main(int argc, char** argv)
 
     g_signal_connect(main_window, "delete-event", G_CALLBACK(window_delete), NULL);
 
-    atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);;
+    atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);
     XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XID(gtk_widget_get_root_window(main_window)), PropertyChangeMask );
     gdk_window_add_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
 
     notebook = gtk_notebook_new();
     settings = gtk_widget_get_settings(GTK_WIDGET(main_window));
     g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
-    
+
     if (!enable_key)
         GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
     gtk_container_add( (GtkContainer*)main_window, notebook );
@@ -790,10 +606,6 @@ int main(int argc, char** argv)
     reload_notify_id = menu_cache_add_reload_notify( menu_tree, on_menu_tree_changed, NULL );
 
     create_notebook_pages();
-
-    get_working_area( gtk_widget_get_screen(main_window), &working_area );
-    gtk_window_move( main_window, working_area.x, working_area.y );
-    gtk_window_resize( main_window, working_area.width, working_area.height );
 
     gtk_widget_show_all( main_window );
     gtk_main();
