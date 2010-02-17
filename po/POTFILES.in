@@ -1,5 +1,4 @@
 # List of source files containing translatable strings.
 
 src/lxlauncher.c
-src/exo-wrap-table.c
 src/misc.c

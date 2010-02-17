@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-02-18 00:36+0800\n"
 "PO-Revision-Date: 2009-09-08 13:55+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -15,53 +15,48 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
-#: ../src/lxlauncher.c:126
-msgid "_Customize"
-msgstr "_Prispôsobiť"
-
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:296
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Späť na „%s“"
 
-#: ../src/lxlauncher.c:715
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:374
+msgid "_Customize"
+msgstr "_Prispôsobiť"
+
+#: ../src/lxlauncher.c:547
 msgid "Enable key navigation"
 msgstr "Zapnúť navigáciu pomocou kláves"
 
-#: ../src/lxlauncher.c:716
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Umožniť používateľom na ovládanie lxlaucher používať klávesy šípok, tab a enter"
+#: ../src/lxlauncher.c:548
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Umožniť používateľom na ovládanie lxlaucher používať klávesy šípok, tab a "
+"enter"
 
-#: ../src/exo-wrap-table.c:166
-msgid "Column spacing"
-msgstr "Rozostupy stĺpcov"
+#~ msgid "Column spacing"
+#~ msgstr "Rozostupy stĺpcov"
 
-#: ../src/exo-wrap-table.c:167
-msgid "The amount of space between two consecutive columns"
-msgstr "Miesto medzi dvomi po sebe idúcimi stĺpcami"
+#~ msgid "The amount of space between two consecutive columns"
+#~ msgstr "Miesto medzi dvomi po sebe idúcimi stĺpcami"
 
-#: ../src/exo-wrap-table.c:181
-msgid "Row spacing"
-msgstr "Rozostupy riadkov"
+#~ msgid "Row spacing"
+#~ msgstr "Rozostupy riadkov"
 
-#: ../src/exo-wrap-table.c:182
-msgid "The amount of space between two consecutive rows"
-msgstr "Miesto medzi dvomi po sebe idúcimi riadkami"
+#~ msgid "The amount of space between two consecutive rows"
+#~ msgstr "Miesto medzi dvomi po sebe idúcimi riadkami"
 
-#: ../src/exo-wrap-table.c:196
-msgid "Homogeneous"
-msgstr "Homogénne"
+#~ msgid "Homogeneous"
+#~ msgstr "Homogénne"
 
-#: ../src/exo-wrap-table.c:197
-msgid "Whether the children should be all the same size"
-msgstr "Či majú byť všetky podradené položky rovnakej veľkosti"
+#~ msgid "Whether the children should be all the same size"
+#~ msgstr "Či majú byť všetky podradené položky rovnakej veľkosti"
 
-#: ../src/misc.c:344
-#, c-format
-msgid "Command not found"
-msgstr "Príkaz nebol nájdený"
-
+#~ msgid "Command not found"
+#~ msgstr "Príkaz nebol nájdený"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-02-18 00:36+0800\n"
 "PO-Revision-Date: 2009-07-27 11:38+0200\n"
 "Last-Translator: Sankarshan <sankarshan.mukhopadhyay@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,24 +16,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
-#: ../src/lxlauncher.c:126
-msgid "_Customize"
-msgstr ""
-
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:296
 #, c-format
 msgid "Go back to \"%s\""
 msgstr " \"%s\" এ ফিরে যান"
 
-#: ../src/lxlauncher.c:715
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:374
+msgid "_Customize"
+msgstr ""
+
+#: ../src/lxlauncher.c:547
 msgid "Enable key navigation"
 msgstr "কী-এর সাহায্যে চালনা সক্রীয় করুন"
 
-#: ../src/lxlauncher.c:716
+#: ../src/lxlauncher.c:548
 #, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
@@ -42,31 +42,20 @@ msgstr ""
 "lxlauncher ব্যবহার করার জন্য ব্যবহারকারীদের up/down/left/right/tab/enter কী "
 "ব্যবহার করতে অনুমতি দিন"
 
-#: ../src/exo-wrap-table.c:166
-msgid "Column spacing"
-msgstr "দুটি কলামের মাঝের প্রস্থ"
+#~ msgid "Column spacing"
+#~ msgstr "দুটি কলামের মাঝের প্রস্থ"
 
-#: ../src/exo-wrap-table.c:167
-msgid "The amount of space between two consecutive columns"
-msgstr "দুটি কলামের মাঝের প্রস্থ"
+#~ msgid "The amount of space between two consecutive columns"
+#~ msgstr "দুটি কলামের মাঝের প্রস্থ"
 
-#: ../src/exo-wrap-table.c:181
-msgid "Row spacing"
-msgstr "দুটি সারির মাঝের প্রস্থ"
+#~ msgid "Row spacing"
+#~ msgstr "দুটি সারির মাঝের প্রস্থ"
 
-#: ../src/exo-wrap-table.c:182
-msgid "The amount of space between two consecutive rows"
-msgstr "দুটি সারির মাঝের প্রস্থ"
+#~ msgid "The amount of space between two consecutive rows"
+#~ msgstr "দুটি সারির মাঝের প্রস্থ"
 
-#: ../src/exo-wrap-table.c:196
-msgid "Homogeneous"
-msgstr "একাকার"
+#~ msgid "Homogeneous"
+#~ msgstr "একাকার"
 
-#: ../src/exo-wrap-table.c:197
-msgid "Whether the children should be all the same size"
-msgstr ""
-
-#: ../src/misc.c:344
-#, c-format
-msgid "Command not found"
-msgstr "কম্যান্ড অনুপস্থিত"
+#~ msgid "Command not found"
+#~ msgstr "কম্যান্ড অনুপস্থিত"

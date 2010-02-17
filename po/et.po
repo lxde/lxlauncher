@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-02-18 00:36+0800\n"
 "PO-Revision-Date: 2009-09-14 19:18+0300\n"
 "Last-Translator: Mattias Põldaru <mahfiaz gmail com>\n"
 "Language-Team: Gnome Estonian Translation Team <gnome-et linux ee>\n"
@@ -16,53 +16,48 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
-#: ../src/lxlauncher.c:126
-msgid "_Customize"
-msgstr "_Kohanda"
-
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:296
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Mine tagasi \"%s\"-le"
 
-#: ../src/lxlauncher.c:715
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:374
+msgid "_Customize"
+msgstr "_Kohanda"
+
+#: ../src/lxlauncher.c:547
 msgid "Enable key navigation"
 msgstr "Klahvidega liikumise lubamine"
 
-#: ../src/lxlauncher.c:716
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Kasutajal lxlauncheri juhtimiseks üles/alla/vasakule/paremale/tab/enter klahvide kasutamise lubamine"
+#: ../src/lxlauncher.c:548
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Kasutajal lxlauncheri juhtimiseks üles/alla/vasakule/paremale/tab/enter "
+"klahvide kasutamise lubamine"
 
-#: ../src/exo-wrap-table.c:166
-msgid "Column spacing"
-msgstr "Tulba vahe"
+#~ msgid "Column spacing"
+#~ msgstr "Tulba vahe"
 
-#: ../src/exo-wrap-table.c:167
-msgid "The amount of space between two consecutive columns"
-msgstr "Ruum kahe kõrvuti asuva tulba vahel"
+#~ msgid "The amount of space between two consecutive columns"
+#~ msgstr "Ruum kahe kõrvuti asuva tulba vahel"
 
-#: ../src/exo-wrap-table.c:181
-msgid "Row spacing"
-msgstr "Rea vahe"
+#~ msgid "Row spacing"
+#~ msgstr "Rea vahe"
 
-#: ../src/exo-wrap-table.c:182
-msgid "The amount of space between two consecutive rows"
-msgstr "Ruum kahe kohakuti asuva rea vahel"
+#~ msgid "The amount of space between two consecutive rows"
+#~ msgstr "Ruum kahe kohakuti asuva rea vahel"
 
-#: ../src/exo-wrap-table.c:196
-msgid "Homogeneous"
-msgstr "Sama suured"
+#~ msgid "Homogeneous"
+#~ msgstr "Sama suured"
 
-#: ../src/exo-wrap-table.c:197
-msgid "Whether the children should be all the same size"
-msgstr "Kas kõik lapsed peaksid olema sama suured"
+#~ msgid "Whether the children should be all the same size"
+#~ msgstr "Kas kõik lapsed peaksid olema sama suured"
 
-#: ../src/misc.c:344
-#, c-format
-msgid "Command not found"
-msgstr "Käsku ei leitud"
-
+#~ msgid "Command not found"
+#~ msgstr "Käsku ei leitud"

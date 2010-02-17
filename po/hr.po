@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-02-18 00:36+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Boljsa <asjlob AT vip.hr>\n"
 "Language-Team:  <asjlob AT vip.hr>\n"
@@ -12,24 +12,24 @@ msgstr ""
 "X-Poedit-Language: Croatian\n"
 "X-Poedit-Country: CROATIA\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
-#: ../src/lxlauncher.c:126
-msgid "_Customize"
-msgstr "_Prilagodba"
-
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:296
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Vrati se na \"%s\""
 
-#: ../src/lxlauncher.c:715
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:374
+msgid "_Customize"
+msgstr "_Prilagodba"
+
+#: ../src/lxlauncher.c:547
 msgid "Enable key navigation"
 msgstr "Omoguæi navigaciju tipkama"
 
-#: ../src/lxlauncher.c:716
+#: ../src/lxlauncher.c:548
 #, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
@@ -38,31 +38,23 @@ msgstr ""
 "Dopusti korisnicima kori¹tenje gore/dolje/lijevo/desno/tab/enter tipaka za "
 "upravljenje lxlauncher-om"
 
-#: ../src/exo-wrap-table.c:166
-msgid "Column spacing"
-msgstr "Razmak meðu stupcima"
+#~ msgid "Column spacing"
+#~ msgstr "Razmak meðu stupcima"
 
-#: ../src/exo-wrap-table.c:167
-msgid "The amount of space between two consecutive columns"
-msgstr "Kolièina prostora izmeðu dva uzastopna stupca"
+#~ msgid "The amount of space between two consecutive columns"
+#~ msgstr "Kolièina prostora izmeðu dva uzastopna stupca"
 
-#: ../src/exo-wrap-table.c:181
-msgid "Row spacing"
-msgstr "Razmak izmeðu redova"
+#~ msgid "Row spacing"
+#~ msgstr "Razmak izmeðu redova"
 
-#: ../src/exo-wrap-table.c:182
-msgid "The amount of space between two consecutive rows"
-msgstr "Kolièina prostora izmeðu dva uzastopna reda"
+#~ msgid "The amount of space between two consecutive rows"
+#~ msgstr "Kolièina prostora izmeðu dva uzastopna reda"
 
-#: ../src/exo-wrap-table.c:196
-msgid "Homogeneous"
-msgstr "Istovrstan"
+#~ msgid "Homogeneous"
+#~ msgstr "Istovrstan"
 
-#: ../src/exo-wrap-table.c:197
-msgid "Whether the children should be all the same size"
-msgstr "Trebaju li djeca biti iste velièine"
+#~ msgid "Whether the children should be all the same size"
+#~ msgstr "Trebaju li djeca biti iste velièine"
 
-#: ../src/misc.c:344
-#, c-format
-msgid "Command not found"
-msgstr "Naredba nije pronaðena"
+#~ msgid "Command not found"
+#~ msgstr "Naredba nije pronaðena"

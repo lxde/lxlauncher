@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-02-18 00:36+0800\n"
 "PO-Revision-Date: 2009-09-08 21:39+0200\n"
 "Last-Translator: Julius Vitkauskas <zadintuvas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,24 +16,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
-#: ../src/lxlauncher.c:126
-msgid "_Customize"
-msgstr "_Derinti"
-
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:296
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Grįžti į \"%s\""
 
-#: ../src/lxlauncher.c:715
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:374
+msgid "_Customize"
+msgstr "_Derinti"
+
+#: ../src/lxlauncher.c:547
 msgid "Enable key navigation"
 msgstr "Įjungti navigaciją klavišais"
 
-#: ../src/lxlauncher.c:716
+#: ../src/lxlauncher.c:548
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -41,31 +41,23 @@ msgstr ""
 "Leisti vartotojams valdyti lxlaucher auštyn/žemyn/į kairę/į dešinę/tab/enter "
 "klavišais"
 
-#: ../src/exo-wrap-table.c:166
-msgid "Column spacing"
-msgstr "Tarpas tarp stulpelių"
+#~ msgid "Column spacing"
+#~ msgstr "Tarpas tarp stulpelių"
 
-#: ../src/exo-wrap-table.c:167
-msgid "The amount of space between two consecutive columns"
-msgstr "Atskirti gretimus stulpelius nurodytais tarpais"
+#~ msgid "The amount of space between two consecutive columns"
+#~ msgstr "Atskirti gretimus stulpelius nurodytais tarpais"
 
-#: ../src/exo-wrap-table.c:181
-msgid "Row spacing"
-msgstr "Tarpas tarp eilučių"
+#~ msgid "Row spacing"
+#~ msgstr "Tarpas tarp eilučių"
 
-#: ../src/exo-wrap-table.c:182
-msgid "The amount of space between two consecutive rows"
-msgstr "Atskirti gretimas eilutes nurodytais tarpais"
+#~ msgid "The amount of space between two consecutive rows"
+#~ msgstr "Atskirti gretimas eilutes nurodytais tarpais"
 
-#: ../src/exo-wrap-table.c:196
-msgid "Homogeneous"
-msgstr "Vienarūšis"
+#~ msgid "Homogeneous"
+#~ msgstr "Vienarūšis"
 
-#: ../src/exo-wrap-table.c:197
-msgid "Whether the children should be all the same size"
-msgstr "Ar vaikai turėtų būti to pačio dydžio"
+#~ msgid "Whether the children should be all the same size"
+#~ msgstr "Ar vaikai turėtų būti to pačio dydžio"
 
-#: ../src/misc.c:344
-#, c-format
-msgid "Command not found"
-msgstr "Komanda nerasta"
+#~ msgid "Command not found"
+#~ msgstr "Komanda nerasta"

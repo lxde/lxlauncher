@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-02-18 00:36+0800\n"
 "PO-Revision-Date: 2009-10-27 15:17+0100\n"
 "Last-Translator: Indalecio Freiría Santos <ifreiria@gmail.com>\n"
 "Language-Team: Proxecto Trasno <proxecto@trasno.net>\n"
@@ -16,56 +16,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
-#: ../src/lxlauncher.c:126
-msgid "_Customize"
-msgstr "_Personalizar"
-
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:296
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Volver a \"%s\""
 
-#: ../src/lxlauncher.c:715
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:374
+msgid "_Customize"
+msgstr "_Personalizar"
+
+#: ../src/lxlauncher.c:547
 msgid "Enable key navigation"
 msgstr "Activar as teclas de navegación"
 
-#: ../src/lxlauncher.c:716
+#: ../src/lxlauncher.c:548
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permite operar a lxlauncher coas teclas "
-"arriba/abaixo/esquerda/dereita/tabulador/retorno"
+"Permite operar a lxlauncher coas teclas arriba/abaixo/esquerda/dereita/"
+"tabulador/retorno"
 
-#: ../src/exo-wrap-table.c:166
-msgid "Column spacing"
-msgstr "Espaciado de columnas"
+#~ msgid "Column spacing"
+#~ msgstr "Espaciado de columnas"
 
-#: ../src/exo-wrap-table.c:167
-msgid "The amount of space between two consecutive columns"
-msgstr "A cantidade de espacio entre dúas columnas consecutivas"
+#~ msgid "The amount of space between two consecutive columns"
+#~ msgstr "A cantidade de espacio entre dúas columnas consecutivas"
 
-#: ../src/exo-wrap-table.c:181
-msgid "Row spacing"
-msgstr "Espaciado de filas"
+#~ msgid "Row spacing"
+#~ msgstr "Espaciado de filas"
 
-#: ../src/exo-wrap-table.c:182
-msgid "The amount of space between two consecutive rows"
-msgstr "A cantidade de espacio entre dúas filas consecutivas"
+#~ msgid "The amount of space between two consecutive rows"
+#~ msgstr "A cantidade de espacio entre dúas filas consecutivas"
 
-#: ../src/exo-wrap-table.c:196
-msgid "Homogeneous"
-msgstr "Homoxéneo"
+#~ msgid "Homogeneous"
+#~ msgstr "Homoxéneo"
 
-#: ../src/exo-wrap-table.c:197
-msgid "Whether the children should be all the same size"
-msgstr "Se os descendentes deben ter todos o mesmo tamaño"
+#~ msgid "Whether the children should be all the same size"
+#~ msgstr "Se os descendentes deben ter todos o mesmo tamaño"
 
-#: ../src/misc.c:344
-#, c-format
-msgid "Command not found"
-msgstr "Orde non atopada"
+#~ msgid "Command not found"
+#~ msgstr "Orde non atopada"

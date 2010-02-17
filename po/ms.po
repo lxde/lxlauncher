@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-02-18 00:36+0800\n"
 "PO-Revision-Date: 2009-05-29 01:34+0200\n"
 "Last-Translator: Payne Samad Loh <sploh77@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,24 +16,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
-#: ../src/lxlauncher.c:126
-msgid "_Customize"
-msgstr "_Meresamkan"
-
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:296
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Kembali ke \"%s\""
 
-#: ../src/lxlauncher.c:715
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:374
+msgid "_Customize"
+msgstr "_Meresamkan"
+
+#: ../src/lxlauncher.c:547
 msgid "Enable key navigation"
 msgstr "Membolehkan kunci navigasi"
 
-#: ../src/lxlauncher.c:716
+#: ../src/lxlauncher.c:548
 #, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
@@ -42,31 +42,23 @@ msgstr ""
 "Membenarkan penguna untuk menggunakan kunci naik/turun/kiri/kanan/tab/enter "
 "untuk mengoperasikan lxlauncher"
 
-#: ../src/exo-wrap-table.c:166
-msgid "Column spacing"
-msgstr "Jarakkan lajur"
+#~ msgid "Column spacing"
+#~ msgstr "Jarakkan lajur"
 
-#: ../src/exo-wrap-table.c:167
-msgid "The amount of space between two consecutive columns"
-msgstr "Jumlah ruang diantara dua lajur berturut"
+#~ msgid "The amount of space between two consecutive columns"
+#~ msgstr "Jumlah ruang diantara dua lajur berturut"
 
-#: ../src/exo-wrap-table.c:181
-msgid "Row spacing"
-msgstr "Jarak baris"
+#~ msgid "Row spacing"
+#~ msgstr "Jarak baris"
 
-#: ../src/exo-wrap-table.c:182
-msgid "The amount of space between two consecutive rows"
-msgstr "Jumlah ruang antara dua leretan berturut "
+#~ msgid "The amount of space between two consecutive rows"
+#~ msgstr "Jumlah ruang antara dua leretan berturut "
 
-#: ../src/exo-wrap-table.c:196
-msgid "Homogeneous"
-msgstr "Homogen"
+#~ msgid "Homogeneous"
+#~ msgstr "Homogen"
 
-#: ../src/exo-wrap-table.c:197
-msgid "Whether the children should be all the same size"
-msgstr "Sama ada kanak-kanak itu semua seharusnya sama saiz "
+#~ msgid "Whether the children should be all the same size"
+#~ msgstr "Sama ada kanak-kanak itu semua seharusnya sama saiz "
 
-#: ../src/misc.c:344
-#, c-format
-msgid "Command not found"
-msgstr "Arahan tidak dijumpai"
+#~ msgid "Command not found"
+#~ msgstr "Arahan tidak dijumpai"
