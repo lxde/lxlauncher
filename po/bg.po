@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-10-08 11:49+0200\n"
-"Last-Translator: Rossen Karpuzov <gustav cointech net>\n"
-"Language-Team: Mandriva User Group - Bulgaria <mandriva-bg@googlegroups.com>\n"
-"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2010-03-31 00:20+0200\n"
+"Last-Translator: Радослав Иванов <rec_ku@hotmail.com>\n"
+"Language-Team: MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 1.1.0\n"
 "X-Poedit-Language: Bulgarian\n"
 "X-Poedit-Country: BULGARIA\n"
+"MIME-Version: 1.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -23,7 +24,7 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:126
 msgid "_Customize"
-msgstr "Персона&лизиране"
+msgstr "_Персонализиране"
 
 #: ../src/lxlauncher.c:531
 #, c-format
@@ -32,11 +33,11 @@ msgstr "Връща се обратно на \"%s\""
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
-msgstr "Включване на _навигационните клавиши"
+msgstr "Включване на навигационните клавиши"
 
 #: ../src/lxlauncher.c:716
 msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Позволява на потребителите да ползват нагоре/наолу/ляв/десен/tab/enter клавиши, за да оперират в lxlauncher"
+msgstr "Позволява на потребителите да ползват горе/долу/ляв/десен/tab/enter клавиши, за да оперират в lxlauncher"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -65,5 +66,5 @@ msgstr "Дали дъщерните елементи да имат еднакъ�
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Командата не е налична"
+msgstr "Командата не е открита"
 
