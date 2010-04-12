@@ -94,7 +94,10 @@ gf_display_get_workarea(GdkScreen* g_screen, GdkRectangle *rect) {
 	if(!data)
 		return FALSE;
 
-	current = *(guint32 *)data;
+	if (len == 0)
+		current = 0;
+	else
+		current = *(guint32 *)data;
 	XFree(data);
 
 	/* find the _NET_WORKAREA atom */
