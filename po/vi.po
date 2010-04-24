@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2010-04-22 10:09+0200\n"
+"PO-Revision-Date: 2010-04-24 12:07+0200\n"
 "Last-Translator: Mario <mb@mariobehling.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: vi\n"
@@ -64,7 +64,6 @@ msgid "Homogeneous"
 msgstr "Thuần nhất"
 
 #: ../src/exo-wrap-table.c:197
-#, fuzzy
 msgid "Whether the children should be all the same size"
 msgstr "Dùng chung kích thước cho các đối tượng"
 
