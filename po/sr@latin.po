@@ -1,0 +1,67 @@
+# Serbian translation for LXLauncher package
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the LXLauncher package.
+# Jay A. Fleming <tito.nehru.naser@gmail.com>, 2009.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: LXLauncher 0.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-27 04:21+0000\n"
+"PO-Revision-Date: 2009-09-02 12:24+0100\n"
+"Last-Translator: Jay A. Fleming <tito.nehru.naser@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#. 
+#: ../src/lxlauncher.c:126
+msgid "_Customize"
+msgstr "_Prilagodi"
+
+#: ../src/lxlauncher.c:531
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Idi nazad do „%s“"
+
+#: ../src/lxlauncher.c:735
+msgid "Enable key navigation"
+msgstr "Uključi navigaciju tasterima"
+
+#: ../src/lxlauncher.c:736
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr "Dozvoli korisnicima da koriste dugmad gore-dole-levo-desno-tab-enter u radu sa lxlaucher-om"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "Razmak između kolona"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "Veličina prostora između dve uzastopne kolone"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "Razmak između redova"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "Veličina prostora između dva uzastopna reda"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "Istorodni"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "Da li da svi potomci budu iste veličine"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "Nije pronađena ova naredba"
