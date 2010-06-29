@@ -32,7 +32,6 @@ msgid "Enable key navigation"
 msgstr "Salli näppäinkomennot"
 
 #: ../src/lxlauncher.c:736
-#, fuzzy
 msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
 msgstr "Sallii ylös/alas/vasen/oikea/tabulaattori/enter-näppäimien käytön LXLauncherissa"
 
