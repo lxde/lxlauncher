@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2010-01-25 19:55+0200\n"
+"PO-Revision-Date: 2010-07-06 13:07+0200\n"
 "Last-Translator: Hamidreza <n3gb0y@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fa\n"
@@ -29,7 +29,7 @@ msgstr "ـ سفارشی"
 #: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "برگشت به \"%$\""
+msgstr "برگشت به \"%s\""
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
