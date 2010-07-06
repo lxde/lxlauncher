@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2010-07-06 13:07+0200\n"
+"PO-Revision-Date: 2010-07-06 19:06+0200\n"
 "Last-Translator: Hamidreza <n3gb0y@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fa\n"
@@ -67,9 +67,8 @@ msgstr "همگن ها"
 # والله منم نفهمیدم این چه ربطی داره !‌:))
 # چرا باید یک اندازه باشند ؟
 #: ../src/exo-wrap-table.c:197
-#, fuzzy
 msgid "Whether the children should be all the same size"
-msgstr "اینکه کودکان باید همگی هم اندازه باشند"
+msgstr "حتی اگر کودکان باید همگی هم اندازه باشند"
 
 #: ../src/misc.c:344
 #, c-format
