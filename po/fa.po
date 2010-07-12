@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2010-07-06 19:06+0200\n"
+"PO-Revision-Date: 2010-07-11 17:49+0200\n"
 "Last-Translator: Hamidreza <n3gb0y@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fa\n"
@@ -33,7 +33,7 @@ msgstr "برگشت به \"%s\""
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
-msgstr "فعال سازی کلید جهت یاب(مکان نما)"
+msgstr "فعال سازی کلید جهت یاب"
 
 # I could't translate "tab" key into persian
 #: ../src/lxlauncher.c:716
