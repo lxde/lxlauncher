@@ -6,8 +6,17 @@ confdir=$(sysconfdir)/xdg/lxlauncher
 conf_in_files=settings.conf.in
 conf_DATA=$(conf_in_files:.conf.in=.conf)
 
-themedir=$(confdir)
-theme_DATA=gtkrc
+themedir=$(datadir)/lxlauncher/themes/Default
+theme_DATA= \
+	data/Default/gtkrc \
+	data/Default/theme.rc
+themeimagedir=$(datadir)/lxlauncher/themes/Default/images
+themeimage_DATA= \
+	data/Default/images/internet.png \
+	data/Default/images/graphic.png \
+	data/Default/images/work.png \
+	data/Default/images/play.png \
+	data/Default/images/system.png
 
 menufiledir=/etc/xdg/menus
 menufile_DATA=\
@@ -29,6 +38,7 @@ EXTRA_DIST = \
 	$(menufile_DATA) \
 	$(conf_in_files) \
 	$(theme_DATA) \
+	$(themeimage_DATA) \
 	$(datafile_DATA) \
 	$(directory_DATA) \
 	autogen.sh

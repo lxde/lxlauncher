@@ -77,12 +77,12 @@ G_DEFINE_TYPE (AppView, app_view, GTK_TYPE_WIDGET)
 
 static void app_view_class_init(AppViewClass *klass)
 {
-	GObjectClass *g_object_class = G_OBJECT_CLASS(klass);
+    GObjectClass *g_object_class = G_OBJECT_CLASS(klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	g_object_class->finalize = app_view_finalize;
+    g_object_class->finalize = app_view_finalize;
 
-	parent_class = (GtkWidgetClass*)g_type_class_peek(GTK_TYPE_WIDGET);
+    parent_class = (GtkWidgetClass*)g_type_class_peek(GTK_TYPE_WIDGET);
 
     widget_class->realize = app_view_realize;
     widget_class->unrealize = app_view_unrealize;
@@ -111,34 +111,37 @@ static void app_view_class_init(AppViewClass *klass)
 
 static void app_view_init(AppView *self)
 {
-	self->adj = gtk_adjustment_new(0, 0, 0, 1, 1, 1);
+    self->adj = gtk_adjustment_new(0, 0, 0, 1, 1, 1);
     self->btn_size = 120;
     self->icon_size = 64;
     gtk_widget_set_has_tooltip((GtkWidget*)self, TRUE);
-	g_signal_connect(self->adj, "value-changed", G_CALLBACK(on_scroll), self);
+    g_signal_connect(self->adj, "value-changed", G_CALLBACK(on_scroll), self);
 }
 
 
 GtkWidget* app_view_new(void)
 {
-	return (GtkWidget*)g_object_new(APP_VIEW_TYPE, NULL);
+    return (GtkWidget*)g_object_new(APP_VIEW_TYPE, NULL);
 }
 
 
 static void app_view_finalize(GObject *object)
 {
-	AppView *self;
+    AppView *self;
 
-	g_return_if_fail(object != NULL);
-	g_return_if_fail(IS_APP_VIEW(object));
+    g_return_if_fail(object != NULL);
+    g_return_if_fail(IS_APP_VIEW(object));
 
-	self = APP_VIEW(object);
-	
-	if(self->adj)
-		g_object_unref(self->adj);
+    self = APP_VIEW(object);
 
-	if (G_OBJECT_CLASS(parent_class)->finalize)
-		(* G_OBJECT_CLASS(parent_class)->finalize)(object);
+    if(self->pixbuf)
+        g_object_unref(self->pixbuf);
+
+    if(self->adj)
+        g_object_unref(self->adj);
+
+    if (G_OBJECT_CLASS(parent_class)->finalize)
+        (* G_OBJECT_CLASS(parent_class)->finalize)(object);
 }
 
 
@@ -188,7 +191,7 @@ app_view_unrealize (GtkWidget *widget)
 
 static void
 app_view_size_request (GtkWidget      *widget,
-			    GtkRequisition *requisition)
+                GtkRequisition *requisition)
 {
     AppView* av = (AppView*)widget;
     requisition->width = av->btn_size;
@@ -197,8 +200,9 @@ app_view_size_request (GtkWidget      *widget,
 
 static void
 app_view_size_allocate (GtkWidget     *widget,
-			     GtkAllocation *allocation)
+                 GtkAllocation *allocation)
 {
+    AppView* av = (AppView*)widget;
     widget->allocation = *allocation;
     if (GTK_WIDGET_REALIZED (widget))
     {
@@ -209,6 +213,12 @@ app_view_size_allocate (GtkWidget     *widget,
                     allocation->height);
     }
     app_view_relayout((AppView*)widget);
+
+    if(av->pixbuf)
+    {
+        g_object_unref(av->pixbuf);
+        av->pixbuf = NULL;
+    }
 }
 
 
@@ -265,22 +275,38 @@ static gint app_view_expose(GtkWidget *widget, GdkEventExpose *evt)
     if (GTK_WIDGET_DRAWABLE (widget))
     {
         GList* l;
-        cairo_t *cr;
-        cairo_pattern_t* pat;
-
-        cr = gdk_cairo_create (widget->window);
-
-        pat = cairo_pattern_create_linear( 0, 0, 0, widget->allocation.height );
-        cairo_pattern_add_color_stop_rgb( pat, 0, 1.0, 1.0, 1.0);
-        cairo_pattern_add_color_stop_rgb( pat, 1.0, ((gdouble)184/256), ((gdouble)215/256), ((gdouble)235/256));
-
-        cairo_set_source(cr, pat);
-
+        cairo_t *cr = gdk_cairo_create (widget->window);
+        /* set the area to paint */
         cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height);
 
-        cairo_fill(cr);
-        cairo_pattern_destroy(pat);
+        if(av->background)
+        {
+            if(!av->pixbuf)
+            {
+                /* render the background with lxlauncher theme */
+                av->pixbuf = lxlauncher_background_render(av->background,
+                                            widget->allocation.width,
+                                            widget->allocation.height);
+            }
 
+            if(av->pixbuf)
+            {
+                GdkGC* gc = gdk_gc_new(widget->window);
+                gdk_draw_pixbuf(widget->window, gc, av->pixbuf,
+                                evt->area.x, evt->area.y,
+                                evt->area.x, evt->area.y,
+                                evt->area.width, evt->area.height,
+                                GDK_RGB_DITHER_NORMAL, 0, 0);
+                g_object_unref(gc);
+            }
+        }
+        else
+        {
+            gdk_cairo_set_source_color(cr, &widget->style->bg[GTK_STATE_NORMAL]);
+            cairo_fill(cr);
+        }
+
+        /* paint items */
         for( l = av->first_visible; l; l = l->next )
         {
             AppBtn* btn = (AppBtn*)l->data;
@@ -305,17 +331,17 @@ AppBtn* hit_test(AppView* av, long x, long y)
     l = g_list_nth(av->btns, y * (w->allocation.width / av->btn_size) + x );
     return l ? (AppBtn*)l->data : NULL;
 */
-	/* FIXME: iterate all btns is not efficient. */
-	for(l=av->first_visible; l; l=l->next)
-	{
-		AppBtn* btn = (AppBtn*)l->data;
-		if( btn->box.x < x && x < (btn->box.x + btn->box.width) )
-		{
-			if( btn->box.y < y && y < (btn->box.y + btn->box.height) )
-				return btn;
-		}
-	}
-	return NULL;
+    /* FIXME: iterate all btns is not efficient. */
+    for(l=av->first_visible; l; l=l->next)
+    {
+        AppBtn* btn = (AppBtn*)l->data;
+        if( btn->box.x < x && x < (btn->box.x + btn->box.width) )
+        {
+            if( btn->box.y < y && y < (btn->box.y + btn->box.height) )
+                return btn;
+        }
+    }
+    return NULL;
 }
 
 gboolean app_view_enter_notify(GtkWidget* widget, GdkEventCrossing* evt)
@@ -449,7 +475,7 @@ void app_view_remove_all(AppView* av)
 
 GtkAdjustment* app_view_get_adjustment(AppView* av)
 {
-	return av->adj;
+    return av->adj;
 }
 
 void app_view_set_button_size(AppView* av, int size)
@@ -473,18 +499,18 @@ void app_view_set_icon_size(AppView* av, int size)
 static void app_view_update_y_pos(AppView* av)
 {
     GList* l;
-	int col = 0;
-	int y = -av->y_off;
+    int col = 0;
+    int y = -av->y_off;
     for( l = av->btns; l; l = l->next )
     {
         AppBtn* btn = (AppBtn*)l->data;
-		btn->box.y = y;
-		++col;
-		if( col >= av->n_cols )
-		{
-			col = 0;
-			y += av->btn_size;
-		}
+        btn->box.y = y;
+        ++col;
+        if( col >= av->n_cols )
+        {
+            col = 0;
+            y += av->btn_size;
+        }
     }
 }
 
@@ -494,10 +520,10 @@ void app_view_relayout(AppView* av)
     GList* l;
     GtkWidget* w = (GtkWidget*)av;
     int x = 0, y = 0;
-	guint page_size;
+    guint page_size;
 
     av->n_cols = w->allocation.width / av->btn_size;
-	av->n_rows = 1;
+    av->n_rows = 1;
 
     for( l = av->btns; l; l = l->next )
     {
@@ -518,21 +544,27 @@ void app_view_relayout(AppView* av)
         btn->box.y = y;
         x = x + av->btn_size;
     }
-	page_size = w->allocation.height / av->btn_size;
-	g_debug("page_size = %d, n_rows = %d", page_size, av->n_rows);
-	if( page_size < av->n_rows )
-		gtk_adjustment_configure(av->adj, 0, 0, av->n_rows/* - page_size*/, 1, page_size, page_size);
-	else
-		gtk_adjustment_configure(av->adj, 0, 0, 0, 0, 0, 0);
-	on_scroll(av->adj, av);
+    page_size = w->allocation.height / av->btn_size;
+    g_debug("page_size = %d, n_rows = %d", page_size, av->n_rows);
+    if( page_size < av->n_rows )
+        gtk_adjustment_configure(av->adj, 0, 0, av->n_rows/* - page_size*/, 1, page_size, page_size);
+    else
+        gtk_adjustment_configure(av->adj, 0, 0, 0, 0, 0, 0);
+    on_scroll(av->adj, av);
 }
 
 void on_scroll(GtkAdjustment* adj, AppView* av)
 {
-	av->first_row = (guint)gtk_adjustment_get_value(adj);
-	av->first_visible = g_list_nth(av->btns, av->first_row * av->n_cols);
-	av->y_off = av->first_row * av->btn_size;
-	app_view_update_y_pos(av);
-	gtk_widget_queue_draw((GtkWidget*)av);
+    av->first_row = (guint)gtk_adjustment_get_value(adj);
+    av->first_visible = g_list_nth(av->btns, av->first_row * av->n_cols);
+    av->y_off = av->first_row * av->btn_size;
+    app_view_update_y_pos(av);
+    gtk_widget_queue_draw((GtkWidget*)av);
 }
 
+void app_view_set_background(AppView* av, LXLauncherBackground* background)
+{
+    av->background = background;
+    if(GTK_WIDGET_VISIBLE(av))
+        gtk_widget_queue_draw(GTK_WIDGET(av));
+}

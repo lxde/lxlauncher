@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 00:36+0800\n"
+"POT-Creation-Date: 2010-08-19 01:37+0800\n"
 "PO-Revision-Date: 2009-11-06 15:18+0100\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#: ../src/lxlauncher.c:296
+#: ../src/lxlauncher.c:300
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Voltar para \"%s\""
@@ -27,15 +27,15 @@ msgstr "Voltar para \"%s\""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:374
+#: ../src/lxlauncher.c:386
 msgid "_Customize"
 msgstr "_Personalizar"
 
-#: ../src/lxlauncher.c:547
+#: ../src/lxlauncher.c:560
 msgid "Enable key navigation"
 msgstr "Habilitar navegação pelo teclado"
 
-#: ../src/lxlauncher.c:548
+#: ../src/lxlauncher.c:561
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"

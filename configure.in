@@ -23,10 +23,10 @@ PKG_CHECK_MODULES(SN, [$sn_modules])
 AC_SUBST(SN_CFLAGS)
 AC_SUBST(SN_LIBS)
 
-gmenu_modules="libmenu-cache"
-PKG_CHECK_MODULES(GMENU, [$gmenu_modules])
-AC_SUBST(GMENU_CFLAGS)
-AC_SUBST(GMENU_LIBS)
+menu_cache_modules="libmenu-cache"
+PKG_CHECK_MODULES(MENU_CACHE, [$menu_cache_modules])
+AC_SUBST(MENU_CACHE_CFLAGS)
+AC_SUBST(MENU_CACHE_LIBS)
 
 GETTEXT_PACKAGE=lxlauncher
 AC_SUBST(GETTEXT_PACKAGE)

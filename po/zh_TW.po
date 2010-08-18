@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 00:36+0800\n"
+"POT-Creation-Date: 2010-08-19 01:37+0800\n"
 "PO-Revision-Date: 2010-02-18 00:36+0800\n"
 "Last-Translator: 洪任諭 <pcman.tw@gmail.com>\n"
 "Language-Team: zh_TW <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#: ../src/lxlauncher.c:296
+#: ../src/lxlauncher.c:300
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "回到\"%s\""
@@ -25,40 +25,52 @@ msgstr "回到\"%s\""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:374
+#: ../src/lxlauncher.c:386
 msgid "_Customize"
 msgstr "客制化"
 
-#: ../src/lxlauncher.c:547
+#: ../src/lxlauncher.c:560
 msgid "Enable key navigation"
 msgstr "讓瀏覽鍵生效"
 
-#: ../src/lxlauncher.c:548
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+#: ../src/lxlauncher.c:561
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
 msgstr "允許使用者使用 上/下/左/右/空格/進入鍵來操作lxlaucher"
 
 #~ msgid "Column spacing"
 #~ msgstr "欄的空間"
+
 #~ msgid "The amount of space between two consecutive columns"
 #~ msgstr "在兩個接續欄位之間的空間"
+
 #~ msgid "Row spacing"
 #~ msgstr "列的空間"
+
 #~ msgid "The amount of space between two consecutive rows"
 #~ msgstr "在兩個接續列之間的空間"
+
 #~ msgid "Homogeneous"
 #~ msgstr "同質的"
+
 #~ msgid "Whether the children should be all the same size"
 #~ msgstr "是否這些子代都要用同樣的尺寸"
+
 #~ msgid "Command not found"
 #~ msgstr "沒找到這個指令"
+
 #~ msgid "Internet"
 #~ msgstr "網際網路"
+
 #~ msgid "Work"
 #~ msgstr "工作"
+
 #~ msgid "Learn"
 #~ msgstr "學習"
+
 #~ msgid "Play"
 #~ msgstr "娛樂"
+
 #~ msgid "Settings"
 #~ msgstr "設定"
-

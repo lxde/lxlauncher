@@ -26,21 +26,22 @@
 #include <gtk/gtk.h>
 #include <menu-cache.h>
 
+#include "theme.h"
 
 G_BEGIN_DECLS
 
-#define APP_VIEW_TYPE				(app_view_get_type())
-#define APP_VIEW(obj)				(G_TYPE_CHECK_INSTANCE_CAST((obj),\
-			APP_VIEW_TYPE, AppView))
-#define APP_VIEW_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST((klass),\
-			APP_VIEW_TYPE, AppViewClass))
-#define IS_APP_VIEW(obj)			(G_TYPE_CHECK_INSTANCE_TYPE((obj),\
-			APP_VIEW_TYPE))
-#define IS_APP_VIEW_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE((klass),\
-			APP_VIEW_TYPE))
+#define APP_VIEW_TYPE               (app_view_get_type())
+#define APP_VIEW(obj)               (G_TYPE_CHECK_INSTANCE_CAST((obj),\
+            APP_VIEW_TYPE, AppView))
+#define APP_VIEW_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST((klass),\
+            APP_VIEW_TYPE, AppViewClass))
+#define IS_APP_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_TYPE((obj),\
+            APP_VIEW_TYPE))
+#define IS_APP_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE((klass),\
+            APP_VIEW_TYPE))
 
-typedef struct _AppView			AppView;
-typedef struct _AppViewClass		AppViewClass;
+typedef struct _AppView         AppView;
+typedef struct _AppViewClass        AppViewClass;
 typedef struct _AppBtn AppBtn;
 
 struct _AppBtn
@@ -54,10 +55,10 @@ struct _AppBtn
 
 struct _AppView
 {
-	GtkWidget parent;
+    GtkWidget parent;
 
     /* private: */
-	GList* btns;
+    GList* btns;
     AppBtn* cur_btn;
 
     guint icon_size;
@@ -68,20 +69,23 @@ struct _AppView
 
     PangoFontDescription* font;
     GtkAdjustment* adj;
-	
-	guint first_row;
-	guint y_off;
-	GList* first_visible;
+
+    guint first_row;
+    guint y_off;
+    GList* first_visible;
+
+    LXLauncherBackground* background;
+    GdkPixbuf* pixbuf;
 };
 
 struct _AppViewClass
 {
-	GtkWidgetClass parent_class;
+    GtkWidgetClass parent_class;
     void (*clicked)(int mouse_btn, AppBtn* item);
 };
 
-GType		app_view_get_type		(void);
-GtkWidget*	app_view_new			(void);
+GType       app_view_get_type       (void);
+GtkWidget*  app_view_new            (void);
 
 AppBtn* app_view_add_button(AppView* av, MenuCacheItem* item);
 void app_view_remove_button(AppView* av, AppBtn* btn);
@@ -92,6 +96,7 @@ GtkAdjustment* app_view_get_adjustment(AppView* av);
 void app_view_set_button_size(AppView* av, int size);
 void app_view_set_icon_size(AppView* av, int size);
 
+void app_view_set_background(AppView* av, LXLauncherBackground* background);
 
 G_END_DECLS
 

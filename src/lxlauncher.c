@@ -41,6 +41,7 @@
 #include "app-view.h"
 #include "working-area.h"
 #include "misc.h"
+#include "theme.h"
 
 #define CONFIG_FILE "lxlauncher/settings.conf"
 
@@ -68,6 +69,9 @@ static GKeyFile *key_file;
 
 static gint button_size;
 static gint img_size;
+
+static char* theme_name = NULL;
+static LXLauncherTheme* theme = NULL;
 
 typedef struct _PageData{
     MenuCacheDir* dir;
@@ -315,6 +319,14 @@ static void notebook_page_chdir( PageData* data, MenuCacheDir* dir )
     {
         gtk_widget_hide( data->go_up_bar );
     }
+
+    if(theme)
+    {
+        LXLauncherBackground* background = lxlauncher_theme_get_background(theme,
+                menu_cache_item_get_id(MENU_CACHE_ITEM(dir)));
+        g_debug("page id: %s", menu_cache_item_get_id(MENU_CACHE_ITEM(dir)));
+        app_view_set_background(data->app_view, background);
+    }
 }
 
 static void page_data_free( PageData* data )
@@ -393,10 +405,10 @@ g_debug("HERE");
 
 static void on_adjustment_changed(GtkAdjustment* adj, GtkWidget* scroll)
 {
-	if(adj->upper > adj->page_size)
-		gtk_widget_show(scroll);
-	else
-		gtk_widget_hide(scroll);
+    if(adj->upper > adj->page_size)
+        gtk_widget_show(scroll);
+    else
+        gtk_widget_hide(scroll);
 }
 
 
@@ -410,11 +422,11 @@ static void create_notebook_pages()
         GtkWidget* *viewport;
         GtkAdjustment* adj;
         GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
-		GtkWidget* page_hbox = gtk_hbox_new(FALSE, 0);
+        GtkWidget* page_hbox = gtk_hbox_new(FALSE, 0);
         GtkWidget* app_view;
         GtkWidget* label;
         GtkWidget* image;
-		GtkWidget* scrollbar;
+        GtkWidget* scrollbar;
         GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
         GdkPixbuf* pixbuf=NULL;
         GdkPixmap* pixmap;
@@ -441,29 +453,29 @@ static void create_notebook_pages()
         gtk_box_pack_start( label, gtk_label_new( menu_cache_item_get_name(dir) ), FALSE, TRUE, 2 );
         gtk_widget_show_all(label);
 
-		/* app view is packed together with a vscrollbar in hbox */
+        /* app view is packed together with a vscrollbar in hbox */
         gtk_box_pack_start( page_hbox, app_view, TRUE, TRUE, 0 );
-		scrollbar = gtk_vscrollbar_new(NULL);
-		gtk_range_set_adjustment(scrollbar, app_view_get_adjustment(app_view));
-		gtk_widget_show(scrollbar);
+        scrollbar = gtk_vscrollbar_new(NULL);
+        gtk_range_set_adjustment(scrollbar, app_view_get_adjustment(app_view));
+        gtk_widget_show(scrollbar);
         gtk_box_pack_start( page_hbox, scrollbar, FALSE, TRUE, 0 );
-		g_signal_connect(app_view_get_adjustment(app_view), "changed", G_CALLBACK(on_adjustment_changed), scrollbar);
+        g_signal_connect(app_view_get_adjustment(app_view), "changed", G_CALLBACK(on_adjustment_changed), scrollbar);
 
-		/* pack the go up bar and app view into the notebook page */
+        /* pack the go up bar and app view into the notebook page */
         gtk_box_pack_start( page_vbox, go_up_bar, FALSE, TRUE, 0 );
         gtk_box_pack_start( page_vbox, page_hbox, TRUE, TRUE, 0 );
         gtk_widget_show_all( page_vbox );
 
-		/* add the newly created page to notebook */
+        /* add the newly created page to notebook */
         gtk_notebook_append_page( notebook, page_vbox, label );
 
         page_data->page_vbox = page_vbox;
-		page_data->page_scrollbar = scrollbar;
+        page_data->page_scrollbar = scrollbar;
         page_data->go_up_bar = go_up_bar;
         page_data->app_view = app_view;
 
-		/* chdir to load the apps in this page */
-		/* FIXME: do this in a async fashion to speed app startup. */
+        /* chdir to load the apps in this page */
+        /* FIXME: do this in a async fashion to speed app startup. */
         notebook_page_chdir( page_data, dir );
     }
 }
@@ -476,14 +488,14 @@ gchar* get_xdg_config_file(const char *name) {
 
     file = g_build_filename(user_dir, name, NULL);
     if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
-    	return file;
+        return file;
     free(file);
 
     for (dir = system_dirs; *dir; ++dir ) {
         file = g_build_filename(*dir, name, NULL);
         if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
             return file;
-	    free(file);
+        free(file);
     }
     return NULL;
 }
@@ -516,6 +528,7 @@ int main(int argc, char** argv)
     GList* l;
     gboolean enable_key=0;
     GtkSettings *settings;
+    gboolean test_mode = (argc == 2 && g_strcmp0(argv[1], "--test") == 0);
 
 #ifdef ENABLE_NLS
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -532,13 +545,13 @@ int main(int argc, char** argv)
                       config_file,
                       G_KEY_FILE_NONE,
                       &error)) {
-    	printf("Loaded %s\n", config_file);
+        printf("Loaded %s\n", config_file);
     }
     else {
-    	perror("Error loading " CONFIG_FILE);
+        perror("Error loading " CONFIG_FILE);
     }
     if (config_file)
-	free(config_file);
+    free(config_file);
 
     gtk_init( &argc, &argv );
 
@@ -547,12 +560,6 @@ int main(int argc, char** argv)
                             _("Enable key navigation"),
                             _("Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"),
                             FALSE,GTK_ARG_READWRITE));
-    // set up themes for notebook
-    gchar* gtkrc_file = get_xdg_config_file("lxlauncher/gtkrc");
-    gtk_rc_parse(gtkrc_file);
-    if (gtkrc_file) {
-    	free(gtkrc_file);
-    }
 
     button_size = g_key_file_get_integer(key_file, "Main", "BUTTON_SIZE", NULL);
     img_size = g_key_file_get_integer(key_file, "Main", "IMG_SIZE", NULL);
@@ -565,22 +572,44 @@ int main(int argc, char** argv)
 
     icon_size = gtk_icon_size_register( "ALIcon", img_size, img_size );
 
+    theme_name = g_key_file_get_string(key_file, "Main", "theme", NULL);
+    if(!theme_name)
+        theme_name = g_strdup("Default");
+
+    g_key_file_free(key_file);
+
+    /* load theme */
+    theme = lxlauncher_theme_new(theme_name);
+
+    // set up themes with gtkrc
+    if(theme)
+    {
+        gchar* gtkrc_file = lxlauncher_theme_get_gtkrc(theme);
+        gtk_rc_parse(gtkrc_file);
+        free(gtkrc_file);
+    }
+
     main_window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
     gtk_window_move( main_window, 0, 0 );
-    gtk_window_set_skip_pager_hint( main_window, TRUE );
-    gtk_window_set_skip_taskbar_hint( main_window, TRUE );
+    if(!test_mode)
+    {
+        gtk_window_set_skip_pager_hint( main_window, TRUE );
+        gtk_window_set_skip_taskbar_hint( main_window, TRUE );
+    }
 
     get_working_area( gtk_widget_get_screen(main_window), &working_area );
-	gtk_widget_set_size_request( main_window, working_area.width, working_area.height );
+    gtk_widget_set_size_request( main_window, working_area.width, working_area.height );
     gtk_window_move( main_window, working_area.x, working_area.y );
 
     gtk_widget_realize( main_window );
-    gdk_window_set_keep_below( main_window->window, TRUE );
-    //gdk_window_set_decorations( main_window->window );
-    gdk_window_set_type_hint( main_window->window, GDK_WINDOW_TYPE_HINT_DESKTOP );
-    gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
-    //gtk_window_set_gravity(GDK_GRAVITY_STATIC );
-
+    if(!test_mode)
+    {
+        gdk_window_set_keep_below( main_window->window, TRUE );
+        //gdk_window_set_decorations( main_window->window );
+        gdk_window_set_type_hint( main_window->window, GDK_WINDOW_TYPE_HINT_DESKTOP );
+        gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
+        //gtk_window_set_gravity(GDK_GRAVITY_STATIC );
+    }
     g_signal_connect(main_window, "delete-event", G_CALLBACK(window_delete), NULL);
 
     atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);

@@ -1,0 +1,66 @@
+[Theme]
+Name=Default Theme
+Backgrounds=Default;Internet;Work;Play;
+DefaultBackground=Default
+
+[Pages]
+#Internet
+Internet=Internet
+WebMail=Internet
+#Work
+Work=Work
+Graphics=Work
+Office=Work
+Accessibility=Work
+Development=Work
+#Learn
+Learn=Learn
+Science=Learn
+Math=Learn
+Language=Learn
+#Play
+Play=Play
+Games=Play
+#Settings
+Settings=Default
+
+# Gradient
+# 0: no gradient (default)
+# 1: horizontal
+# 2: vertival
+# 3: left top to right bottom
+# 4: right top to left bottom
+
+# ImageMode:
+# 0: stretch (default)
+# 1: fit the screen <-- not supported yet
+# 2: tile <-- not supported yet
+
+[Background Default]
+Image=images/system.png
+Gradient=2
+Color1=#ffffff
+Color2=#b8d7eb
+Alpha=0.4
+
+[Background Internet]
+Image=images/internet.png
+Gradient=2
+Color1=#ffffff
+Color2=#b8d7eb
+Alpha=0.4
+
+[Background Work]
+Image=images/work.png
+Gradient=2
+Color1=#ffffff
+Color2=#b8d7eb
+Alpha=0.4
+
+[Background Play]
+Image=images/play.png
+Gradient=2
+Color1=#ffffff
+Color2=#b8d7eb
+Alpha=0.4
+
