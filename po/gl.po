@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2010-09-03 05:43+0000\n"
 "PO-Revision-Date: 2009-10-27 15:17+0100\n"
 "Last-Translator: Indalecio Freiría Santos <ifreiria@gmail.com>\n"
 "Language-Team: Proxecto Trasno <proxecto@trasno.net>\n"
@@ -16,10 +16,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#.
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
-#.
+#. 
 #: ../src/lxlauncher.c:126
 msgid "_Customize"
 msgstr "_Personalizar"
@@ -27,19 +26,15 @@ msgstr "_Personalizar"
 #: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Volver a \"%s\""
+msgstr "Volver a «%s»"
 
-#: ../src/lxlauncher.c:715
+#: ../src/lxlauncher.c:735
 msgid "Enable key navigation"
 msgstr "Activar as teclas de navegación"
 
-#: ../src/lxlauncher.c:716
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the "
-"lxlauncher"
-msgstr ""
-"Permite operar a lxlauncher coas teclas "
-"arriba/abaixo/esquerda/dereita/tabulador/retorno"
+#: ../src/lxlauncher.c:736
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr "Permitelle aos usuarios manexar lxlauncher coas teclas arriba/abaixo/esquerda/dereita/tabulador/retorno"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
