@@ -1,0 +1,72 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# A S Alam <aalam@users.sf.net>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-09 06:03+0000\n"
+"PO-Revision-Date: 2010-10-10 08:00+0530\n"
+"Last-Translator: A S Alam <aalam@users.sf.net>\n"
+"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:126
+msgid "_Customize"
+msgstr "ਪਸੰਦੀਦਾ(_C)"
+
+#: ../src/lxlauncher.c:531
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "\"%s\" ਉੱਤੇ ਵਾਪਸ ਜਾਓ"
+
+#: ../src/lxlauncher.c:735
+msgid "Enable key navigation"
+msgstr "ਕੁੰਜੀ ਨੇਵੀਗੇਸ਼ਨ ਚਾਲੂ"
+
+#: ../src/lxlauncher.c:736
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"ਯੂਜ਼ਰ ਨੂੰ lxlauncher ਚਲਾਉਣ ਲਈ up/down/left/right/tab/enter ਸਵਿੱਚ ਵਰਤਣ "
+"ਦਿਓ"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "ਕਾਲਮ ਖਾਲੀ ਥਾਂ"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "ਖਾਲੀ ਥਾਂ, ਦੋ ਲਗਾਤਾਰ ਕਾਲਮਾਂ ਵਿਚਕਾਰ"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "ਕਤਾਰ ਫਾਸਲਾ"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "ਖਾਲੀ ਥਾਂ, ਦੋ ਲਗਾਤਾਰ ਕਤਾਰਾਂ ਵਿੱਚ"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "ਸਮਰੂਪ"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "ਕੀ ਚੈਲਡਰਨ ਇੱਕੋ ਆਕਾਰ ਦੇ ਹੋਣ"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "ਕਮਾਂਡ ਨਹੀਂ ਲੱਭੀ।"
+
