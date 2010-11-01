@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"PO-Revision-Date: 2010-11-01 15:27+0200\n"
+"Last-Translator: kizito <kbirabwa@yahoo.co.uk>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: lg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:126
+msgid "_Customize"
+msgstr "_Nteekateeka eyiyo"
+
+#: ../src/lxlauncher.c:531
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "Dda ku \"%s\""
+
+#: ../src/lxlauncher.c:715
+msgid "Enable key navigation"
+msgstr "Lambuza mapeesa"
+
+#: ../src/lxlauncher.c:716
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr "lxlauncher ekolere ku mapeesa aga yambuka/kka/kkono/ddyo/luseetuka/enta"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "Kwesulaŋana kw'ebikumbo"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "Ekibangirizi wakati w'ebikumbo bibiri"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "Kwesulaŋana kw'ennyiriri"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "Ekibangirizi wakati w'ennyiriri bbiri"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "Mwenkanankano"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "Salawo oba ebikoledwawo byonna byenkanankane"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "Ekiragiro ekyo tekizuuse"
