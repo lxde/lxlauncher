@@ -3,18 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-11-04 10:35+0200\n"
+"Last-Translator: Sam <wilsonsamm@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -22,26 +24,28 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:126
 msgid "_Customize"
-msgstr ""
+msgstr "_Tilpass"
 
 #: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "Tilbake til «%s»"
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
-msgstr ""
+msgstr "Bruk tastaturnavigering"
 
 #: ../src/lxlauncher.c:716
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
+"Tillat brukere styre »lxlauncher« ved hjelp av tastene «Opp»/«Ned»/«Pil "
+"venstre»/«Pil høyre»/«Tabulator»/«Enter»"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
-msgstr ""
+msgstr "Kolonnemellomrom"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
@@ -49,7 +53,7 @@ msgstr ""
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
-msgstr ""
+msgstr "Radmellomrom"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
@@ -57,13 +61,13 @@ msgstr ""
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr ""
+msgstr "Homogen"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Om barneelementene skal ha lik størrelse"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Fant ikke kommandoen"
