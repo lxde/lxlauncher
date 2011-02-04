@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: LXLauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-12-10 12:11+0100\n"
-"Last-Translator: Matej <paxmanpwnz@gmail.com>\n"
+"PO-Revision-Date: 2011-02-04 18:38+0200\n"
+"Last-Translator: Klemen <klemen913@gmail.com>\n"
 "Language-Team: Slovenian <paxmanpwnz@gmail.com>\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
-"X-Generator: Pootle 1.1.0\n"
+"X-Generator: Pootle 2.0.5\n"
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-Country: SLOVENIA\n"
 
@@ -21,23 +22,23 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:126
 msgid "_Customize"
-msgstr "_Prikroji"
+msgstr "_Prilagodi"
 
 #: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Pojdi nazaj na \"%s\""
+msgstr "Vrni se na \"%s\""
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
-msgstr "Omogoči navigacijo s tipkami"
+msgstr "Omogoči krmarjenje s tipkovnico"
 
 #: ../src/lxlauncher.c:716
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Pri upravljanju LXLauncherja dovoli uporabnikom uporabo tipk "
+"Pri upravljanju programa LXLauncher dovoli uporabnikom uporabo tipk "
 "gor/dol/levo/desno/tab/enter"
 
 #: ../src/exo-wrap-table.c:166
@@ -46,7 +47,7 @@ msgstr "Razmik med stolpci"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr "Presledek med dvema zaporednima stolpcema"
+msgstr "Razmik med dvema zaporednima stolpcema"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
@@ -54,17 +55,17 @@ msgstr "Razmik med vrsticami"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr "Presledek med dvema zaporednima vrsticama"
+msgstr "Razmik med dvema zaporednima vrsticama"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
-msgstr "Homogen"
+msgstr "Homogeno"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr "Ali naj bodo potomci enake velikosti"
+msgstr "Ali naj bodo podrejeni elementi enake velikosti"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Ukaza ni bilo najdenega"
+msgstr "Ukaza ni mogoče najti"
