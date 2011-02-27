@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"PO-Revision-Date: 2011-02-27 08:19+0200\n"
+"Last-Translator: Danishka <danishka@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: si\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
+
+#.
+#. item = gtk_separator_menu_item_new();
+#. gtk_menu_shell_append(p, item);
+#.
+#: ../src/lxlauncher.c:126
+msgid "_Customize"
+msgstr "රිසිකරණය (_C)"
+
+#: ../src/lxlauncher.c:531
+#, c-format
+msgid "Go back to \"%s\""
+msgstr "ආපසු \"%s\" වෙත යන්න"
+
+#: ../src/lxlauncher.c:715
+msgid "Enable key navigation"
+msgstr "යතුරු සැරිසරණය සක්‍රීය කරන්න"
+
+#: ../src/lxlauncher.c:716
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"පරිශීලකයාට lxlauncher මෙහෙය වීම සඳහා ඉහළ/පහළ/වම/දකුණ/ටැබ්/එන්ටර් යතුරු භාවිත "
+"කිරීමට ඉඩ දෙන්න"
+
+#: ../src/exo-wrap-table.c:166
+msgid "Column spacing"
+msgstr "තීරු අතර ඉඩ"
+
+#: ../src/exo-wrap-table.c:167
+msgid "The amount of space between two consecutive columns"
+msgstr "අනුගාමී තීරු දෙකක් අතර ඉඩ"
+
+#: ../src/exo-wrap-table.c:181
+msgid "Row spacing"
+msgstr "පේළි අතර ඉඩ"
+
+#: ../src/exo-wrap-table.c:182
+msgid "The amount of space between two consecutive rows"
+msgstr "අනුගාමී පේළි දෙකක් අතර ඉඩ"
+
+#: ../src/exo-wrap-table.c:196
+msgid "Homogeneous"
+msgstr "සමජාතීය"
+
+#: ../src/exo-wrap-table.c:197
+msgid "Whether the children should be all the same size"
+msgstr "උප-වස්තු සියල්ල සමාන ප්‍රමාණයේ බව"
+
+#: ../src/misc.c:344
+#, c-format
+msgid "Command not found"
+msgstr "විධානය හමු නොවිණි"
