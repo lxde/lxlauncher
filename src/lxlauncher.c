@@ -765,6 +765,13 @@ int main(int argc, char** argv)
     gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
     //gtk_window_set_gravity(GDK_GRAVITY_STATIC );
 
+    /* Remove resize grip with GTK3
+    */
+#if GTK_CHECK_VERSION(3, 0, 0)
+    gtk_window_set_has_resize_grip(GTK_WINDOW(main_window), FALSE);
+#else
+#endif
+
     g_signal_connect(main_window, "delete-event", G_CALLBACK(window_delete), NULL);
 
     atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);;
