@@ -704,6 +704,7 @@ int main(int argc, char** argv)
     GList* l;
     gboolean enable_key=0;
     GtkSettings *settings;
+    const gchar* prefix = g_getenv("XDG_MENU_PREFIX");
 
 #ifdef ENABLE_NLS
     bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -785,8 +786,16 @@ int main(int argc, char** argv)
     if (!enable_key)
         GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
     gtk_container_add( (GtkContainer*)main_window, notebook );
+    
+    if (prefix == NULL)
+    {
+      g_setenv("XDG_MENU_PREFIX", "lxlauncher-", TRUE);
+    }
+    else if (prefix == "lxde-")
+    {
+      g_setenv("XDG_MENU_PREFIX", "lxlauncher-", TRUE);
+    }
 
-    g_setenv("XDG_MENU_PREFIX", "lxlauncher-", TRUE);
     menu_tree = _menu_cache_lookup_sync( "applications.menu" );
     if(!menu_tree)
     {
