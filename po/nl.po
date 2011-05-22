@@ -8,13 +8,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 23:51+0200\n"
-"PO-Revision-Date: 2009-10-26 21:35+0100\n"
-"Last-Translator: Sander De Voogdt <celettu@gmail.com>\n"
+"PO-Revision-Date: 2011-05-18 21:08+0200\n"
+"Last-Translator: Pjotr <pliniusminor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -22,12 +24,12 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:126
 msgid "_Customize"
-msgstr "Aanpassen"
+msgstr "_Aanpassen"
 
 #: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Terug naar \"%s\""
+msgstr "Ga terug naar \"%s\""
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
@@ -38,8 +40,8 @@ msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Gebruikers toestaan om de lxlauncher te bedienen met de boven/onder/links/"
-"rechts/tab/enter toetsen"
+"Gebruikers toestaan om de lxlauncher te bedienen met de toetsen voor "
+"boven/onder/links/rechts/tab/enter"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
@@ -47,7 +49,7 @@ msgstr "Ruimte tussen de kolommen"
 
 #: ../src/exo-wrap-table.c:167
 msgid "The amount of space between two consecutive columns"
-msgstr "De ruimte tussen twee opeenvolgende kolommen"
+msgstr "De hoeveelheid ruimte tussen twee opeenvolgende kolommen"
 
 #: ../src/exo-wrap-table.c:181
 msgid "Row spacing"
@@ -55,7 +57,7 @@ msgstr "Ruimte tussen de rijen"
 
 #: ../src/exo-wrap-table.c:182
 msgid "The amount of space between two consecutive rows"
-msgstr "De ruimte tussen twee opeenvolgende rijen"
+msgstr "De hoeveelheid ruimte tussen twee opeenvolgende rijen"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Homogeneous"
@@ -63,9 +65,9 @@ msgstr "Homogeen"
 
 #: ../src/exo-wrap-table.c:197
 msgid "Whether the children should be all the same size"
-msgstr "Moeten alle kinderen dezelfde grootte zijn"
+msgstr "Of de \"kinderen\" allemaal dezelfde grootte zouden moeten hebben"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Commando niet gevonden"
+msgstr "Opdracht niet gevonden"
