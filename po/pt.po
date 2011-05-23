@@ -8,13 +8,15 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-15 04:05+0000\n"
-"PO-Revision-Date: 2010-02-15 15:20-0000\n"
-"Last-Translator: Sergio Marques <smarquespt@gmail.com>\n"
+"PO-Revision-Date: 2011-05-14 02:07+0200\n"
+"Last-Translator: Sérgio <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese PT <alvarommorais@gmail.com>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-Country: PORTUGAL\n"
 
@@ -29,7 +31,7 @@ msgstr "_Personalizar"
 #: ../src/lxlauncher.c:531
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Voltar para  \"%s\""
+msgstr "Voltar para \"%s\""
 
 #: ../src/lxlauncher.c:715
 msgid "Enable key navigation"
@@ -67,4 +69,3 @@ msgstr "Se as crianças dever ser todas do mesmo tamanho"
 #, c-format
 msgid "Command not found"
 msgstr "Comando não encontrado"
-
