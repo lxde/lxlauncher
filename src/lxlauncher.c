@@ -608,8 +608,13 @@ static void create_notebook_pages()
         //gtk_range_set_update_policy( range, GTK_UPDATE_DELAYED );
         g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
         adj = gtk_scrolled_window_get_vadjustment(scroll);
+#if GTK_CHECK_VERSION(2, 14, 0)
+        gtk_adjustment_get_step_increment(adj) = button_size / 3;
+        gtk_adjustment_get_page_increment(adj) = button_size / 2;
+#else
         adj->step_increment = button_size / 3;
         adj->page_increment = button_size / 2;
+#endif
         gtk_adjustment_changed( adj );
         g_signal_connect( adj, "value-changed", G_CALLBACK(on_scroll), page_data );
 
