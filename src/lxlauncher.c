@@ -274,8 +274,9 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
 {
     GObjectClass* oc = G_OBJECT_GET_CLASS(w);
     GtkWidgetClass* wc = (GtkWidgetClass*)g_type_class_peek_parent( oc );
+/*
     GdkPixmap* pixmap = (GdkPixmap*)data;
-
+*/
     if( GTK_WIDGET_DRAWABLE(w) && evt->window == ((GtkViewport*)w)->bin_window )
     {
         cairo_t *cr;
