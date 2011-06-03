@@ -166,9 +166,13 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     btn = gtk_button_new();
     gtk_widget_set_size_request( btn, button_size, -1 );
     if (!enable_key)
+#if GTK_CHECK_VERSION(2, 18, 0)
+        gtk_widget_set_can_focus(btn, FALSE );
+    gtk_window_set_default(btn, FALSE );
+#else
         GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
-
+#endif
     img = gtk_image_new_from_pixbuf( icon );
 
     box = gtk_vbox_new( FALSE, 2 );
