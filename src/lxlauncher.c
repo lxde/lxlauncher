@@ -277,7 +277,11 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
 /*
     GdkPixmap* pixmap = (GdkPixmap*)data;
 */
+#if GTK_CHECK_VERSION(2, 20, 0)
+    if( GTK_WIDGET_DRAWABLE(w) && evt->window == gtk_viewport_get_bin_window(((GtkViewport*)w)) )
+#else
     if( GTK_WIDGET_DRAWABLE(w) && evt->window == ((GtkViewport*)w)->bin_window )
+#endif
     {
         cairo_t *cr;
         cairo_pattern_t* pat;
