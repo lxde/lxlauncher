@@ -774,9 +774,15 @@ int main(int argc, char** argv)
     gtk_window_set_skip_taskbar_hint( main_window, TRUE );
 
     gtk_widget_realize( main_window );
+#if GTK_CHECK_VERSION(2, 14, 0)
+    gdk_window_set_keep_below( gtk_widget_get_window(main_window), TRUE );
+    //gdk_window_set_decorations( main_window->window );
+    gdk_window_set_type_hint( gtk_widget_get_window(main_window), GDK_WINDOW_TYPE_HINT_DESKTOP );
+#else
     gdk_window_set_keep_below( main_window->window, TRUE );
     //gdk_window_set_decorations( main_window->window );
     gdk_window_set_type_hint( main_window->window, GDK_WINDOW_TYPE_HINT_DESKTOP );
+#endif
     gtk_window_set_position( main_window, GTK_WIN_POS_NONE );
     //gtk_window_set_gravity(GDK_GRAVITY_STATIC );
 
@@ -798,7 +804,11 @@ int main(int argc, char** argv)
     g_object_get(settings, "lxlauncher-enable-key", &enable_key,NULL);
     
     if (!enable_key)
+#if GTK_CHECK_VERSION(2, 18, 0)
+        gtk_widget_set_can_focus(notebook, FALSE );
+#else
         GTK_WIDGET_UNSET_FLAGS(notebook, GTK_CAN_FOCUS );
+#endif
     gtk_container_add( (GtkContainer*)main_window, notebook );
     
     if (prefix == NULL)
