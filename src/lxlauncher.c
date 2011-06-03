@@ -207,7 +207,7 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
 
     /* get border of GtkButtons */
     gtk_widget_style_get(btn, "focus-line-width", &fw, "focus-padding", &fp, NULL);
-    btn_border = 2 * (gtk_container_get_border_width(btn) + btn->style->xthickness + fw + fp);
+    btn_border = 2 * (gtk_container_get_border_width(btn) + gtk_widget_get_style(btn)->xthickness + fw + fp);
     gtk_widget_style_get(btn, "inner-border", &inner_border, NULL);
     if( inner_border )
         btn_border += (inner_border->left + inner_border->right);
@@ -225,7 +225,11 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     }
 
     gtk_widget_set_app_paintable( btn, TRUE );
+#if GTK_CHECK_VERSION(2, 14, 0)
+    gdk_window_set_back_pixmap( gtk_widget_get_window((GtkWidget*)btn), NULL, TRUE );
+#else
     gdk_window_set_back_pixmap( ((GtkWidget*)btn)->window, NULL, TRUE );
+#endif
     return btn;
 }
 
@@ -321,24 +325,25 @@ static gboolean on_scroll( GtkAdjustment* adj, PageData* data )
 // Dirty hacks used to reduce unnecessary redrew during scroll
 static gboolean on_scroll_change_val( GtkRange* scroll, GtkScrollType type, gdouble value, PageData* data )
 {
+
     GtkAdjustment* adj = gtk_range_get_adjustment(scroll);
 
     if( type == GTK_SCROLL_JUMP )
     {
-        if( ABS( adj->value - value ) < button_size / 2 )
+        if( ABS( gtk_adjustment_get_value(adj) - value ) < button_size / 2 )
         {
-            if( adj->value > value )    // upward
+            if( gtk_adjustment_get_value(adj) > value )    // upward
             {
-                if( (adj->value - adj->lower) < button_size / 2 )
+                if( (gtk_adjustment_get_value(adj) - gtk_adjustment_get_lower(adj)) < button_size / 2 )
                 {
-                    gtk_adjustment_set_value( adj, adj->lower );
+                    gtk_adjustment_set_value( adj, gtk_adjustment_get_lower(adj) );
                 }
             }
             else // downward
             {
-                if( (adj->upper - adj->value) < button_size / 2 )
+                if( (gtk_adjustment_get_upper(adj) - gtk_adjustment_get_value(adj)) < button_size / 2 )
                 {
-                    gtk_adjustment_set_value( adj, adj->lower );
+                    gtk_adjustment_set_value( adj, gtk_adjustment_get_lower(adj) );
                 }
             }
             return TRUE;
