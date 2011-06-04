@@ -325,9 +325,17 @@ exo_wrap_table_size_request (GtkWidget      *widget,
   /* check if we have any visible children */
   if (G_LIKELY (num_children > 0))
     {
-      num_cols = exo_wrap_table_get_num_fitting (widget->allocation.width
-                                                 - GTK_CONTAINER (widget)->border_width * 2,
+#if GTK_CHECK_VERSION(2,18,0)
+      GtkAllocation *allocation;
+      gtk_widget_set_allocation(widget, allocation);
+      num_cols = exo_wrap_table_get_num_fitting (allocation->width
+                                                 - gtk_container_get_border_width(GTK_CONTAINER (widget)) * 2,
                                                  table->priv->col_spacing, max_width);
+#else
+      num_cols = exo_wrap_table_get_num_fitting (widget->allocation.width
+                                                 - gtk_container_get_border_width(GTK_CONTAINER (widget)) * 2,
+                                                 table->priv->col_spacing, max_width);
+#endif
       num_rows = num_children / num_cols;
       num_rows = MAX (num_rows, 1);
 
@@ -337,7 +345,7 @@ exo_wrap_table_size_request (GtkWidget      *widget,
       requisition->width = -1;
       requisition->height = (num_rows * max_height)
                          + (num_rows - 1) * table->priv->col_spacing
-                         + GTK_CONTAINER (widget)->border_width * 2;
+                         + gtk_container_get_border_width(GTK_CONTAINER (widget)) * 2;
     }
   else
     {
@@ -355,7 +363,11 @@ exo_wrap_table_size_allocate (GtkWidget     *widget,
   ExoWrapTable *table = EXO_WRAP_TABLE (widget);
 
   /* setup the new allocation */
+#if GTK_CHECK_VERSION(2,18,0)
+  gtk_widget_set_allocation(widget, allocation);
+#else
   widget->allocation = *allocation;
+#endif
 
   /* layout the children */
   exo_wrap_table_layout (table);
@@ -450,6 +462,10 @@ exo_wrap_table_layout (ExoWrapTable *table)
   gint           num_cols;
   gint           max_height;
   gint           max_width;
+#if GTK_CHECK_VERSION(2,18,0)
+  GtkAllocation *allocation;
+  gtk_widget_set_allocation(GTK_WIDGET(table), allocation);
+#endif
 
   /* determine the number of visible children and the max size */
   num_children = exo_wrap_table_get_max_child_size (table, &max_width, &max_height);
@@ -457,9 +473,15 @@ exo_wrap_table_layout (ExoWrapTable *table)
     return;
 
   /* determine the number of columns */
+#if GTK_CHECK_VERSION(2,18,0)
+  num_cols = exo_wrap_table_get_num_fitting (allocation->width
+                                             - gtk_container_get_border_width(GTK_CONTAINER (table)) * 2,
+                                             table->priv->col_spacing, max_width);
+#else
   num_cols = exo_wrap_table_get_num_fitting (GTK_WIDGET (table)->allocation.width
                                              - GTK_CONTAINER (table)->border_width * 2,
                                              table->priv->col_spacing, max_width);
+#endif
 
   /* verify that the number of columns match */
   if (G_UNLIKELY (num_cols != table->priv->num_cols))
@@ -470,12 +492,21 @@ exo_wrap_table_layout (ExoWrapTable *table)
     }
 
   /* determine the horizontal bounds */
+#if GTK_CHECK_VERSION(2,18,0)
+  x0 = allocation->x + gtk_container_get_border_width(GTK_CONTAINER (table));
+  x1 = x0 + allocation->width - gtk_container_get_border_width(GTK_CONTAINER (table));
+#else
   x0 = GTK_WIDGET (table)->allocation.x + GTK_CONTAINER (table)->border_width;
   x1 = x0 + GTK_WIDGET (table)->allocation.width - GTK_CONTAINER (table)->border_width;
+#endif
 
   /* initialize the position */
   x = x0;
+#if GTK_CHECK_VERSION(2,18,0)
+  y = allocation->y + gtk_container_get_border_width(GTK_CONTAINER (table));
+#else
   y = GTK_WIDGET (table)->allocation.y + GTK_CONTAINER (table)->border_width;
+#endif
 
   /* allocate space to all visible children */
   for (lp = table->priv->children; lp != NULL; lp = lp->next)
