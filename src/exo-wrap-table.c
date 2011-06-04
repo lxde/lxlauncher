@@ -239,7 +239,11 @@ exo_wrap_table_init (ExoWrapTable *table)
   table->priv = EXO_WRAP_TABLE_GET_PRIVATE (table);
 
   /* we don't provide our own window */
+#if GTK_CHECK_VERSION(2, 18, 0)
+  gtk_widget_set_has_window(table, FALSE);
+#else
   GTK_WIDGET_SET_FLAGS (table, GTK_NO_WINDOW);
+#endif
 }
 
 
