@@ -100,6 +100,32 @@ struct _ExoWrapTablePrivate
 static GObjectClass *exo_wrap_table_parent_class;
 
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+static void
+exo_wrap_table_get_preferred_width (GtkWidget *widget,
+                               gint      *minimal_width,
+                               gint      *natural_width)
+{
+  GtkRequisition requisition;
+
+  exo_wrap_table_size_request (widget, &requisition);
+
+  *minimal_width = *natural_width = requisition.width;
+}
+
+static void
+exo_wrap_table_get_preferred_height (GtkWidget *widget,
+                                gint      *minimal_height,
+                                gint      *natural_height)
+{
+  GtkRequisition requisition;
+
+  exo_wrap_table_size_request (widget, &requisition);
+
+  *minimal_height = *natural_height = requisition.height;
+}
+#endif
+
 
 GType
 exo_wrap_table_get_type (void)
@@ -141,9 +167,13 @@ exo_wrap_table_class_init (ExoWrapTableClass *klass)
   gobject_class->set_property = exo_wrap_table_set_property;
 */
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
+#if GTK_CHECK_VERSION(3, 0, 0)
+  gtkwidget_class->get_preferred_width = exo_wrap_table_get_preferred_width;
+  gtkwidget_class->get_preferred_height = exo_wrap_table_get_preferred_height;
+#else
   gtkwidget_class->size_request = exo_wrap_table_size_request;
+#endif
   gtkwidget_class->size_allocate = exo_wrap_table_size_allocate;
-
   gtkcontainer_class = GTK_CONTAINER_CLASS (klass);
   gtkcontainer_class->add = exo_wrap_table_add;
   gtkcontainer_class->remove = exo_wrap_table_remove;
