@@ -824,8 +824,8 @@ int main(int argc, char** argv)
 
     g_signal_connect(main_window, "delete-event", G_CALLBACK(window_delete), NULL);
 
-    atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY(), "_NET_WORKAREA", True);;
-    XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XID(gtk_widget_get_root_window(main_window)), PropertyChangeMask );
+    atom_NET_WORKAREA = XInternAtom( GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "_NET_WORKAREA", True);
+    XSelectInput(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), GDK_WINDOW_XID(gtk_widget_get_root_window(main_window)), PropertyChangeMask );
     gdk_window_add_filter( gtk_widget_get_root_window(main_window), evt_filter, NULL );
 
     notebook = gtk_notebook_new();
