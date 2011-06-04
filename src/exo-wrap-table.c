@@ -388,6 +388,17 @@ exo_wrap_table_add (GtkContainer *container,
   table->priv->children = g_list_append (table->priv->children, widget);
 
   /* realize the widget if required */
+#if GTK_CHECK_VERSION(2,20,0)
+  if (gtk_widget_get_realized(container))
+    gtk_widget_realize (widget);
+
+  /* map the widget if required */
+  if (gtk_widget_get_visible(container) && gtk_widget_get_visible(widget))
+    {
+      if (gtk_widget_get_mapped(container))
+        gtk_widget_map (widget);
+    }
+#else
   if (GTK_WIDGET_REALIZED (container))
     gtk_widget_realize (widget);
 
@@ -397,6 +408,7 @@ exo_wrap_table_add (GtkContainer *container,
       if (GTK_WIDGET_MAPPED (container))
         gtk_widget_map (widget);
     }
+#endif
 
   /* queue a resize on the table */
   gtk_widget_queue_resize (GTK_WIDGET (container));
@@ -412,7 +424,11 @@ exo_wrap_table_remove (GtkContainer *container,
   gboolean      widget_was_visible;
 
   /* check if the widget was visible */
+#if GTK_CHECK_VERSION(2,18,0)
+  widget_was_visible = gtk_widget_get_visible(widget);
+#else
   widget_was_visible = GTK_WIDGET_VISIBLE (widget);
+#endif
 
   /* unparent and remove the widget */
   gtk_widget_unparent (widget);
@@ -513,7 +529,11 @@ exo_wrap_table_layout (ExoWrapTable *table)
     {
       /* allocate space only for visible children */
       child = GTK_WIDGET (lp->data);
+#if GTK_CHECK_VERSION(2,18,0)
+      if (G_UNLIKELY (!gtk_widget_get_visible(child)))
+#else
       if (G_UNLIKELY (!GTK_WIDGET_VISIBLE (child)))
+#endif
         continue;
 
       /* initialize the child position */
@@ -584,7 +604,11 @@ exo_wrap_table_get_max_child_size (const ExoWrapTable *table,
   for (lp = table->priv->children; lp != NULL; lp = lp->next)
     {
       child = GTK_WIDGET (lp->data);
+#if GTK_CHECK_VERSION(2,18,0)
+      if (gtk_widget_get_visible(child))
+#else
       if (GTK_WIDGET_VISIBLE (child))
+#endif
         {
           gtk_widget_size_request (child, &child_requisition);
           if (child_requisition.width > max_width)
