@@ -471,7 +471,7 @@ void on_menu_tree_changed( MenuCache *tree, gpointer  user_data )
     // reload is needed
     // g_debug( "file changed" );
     menu_cache_item_unref(MENU_CACHE_ITEM(root_dir));
-    root_dir = menu_cache_ref(MENU_CACHE(menu_cache_get_root_dir(tree)));
+    root_dir = menu_cache_ref(menu_cache_get_root_dir(tree));
     reload_apps();
 }
 
