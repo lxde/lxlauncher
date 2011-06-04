@@ -225,8 +225,10 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     }
 
     gtk_widget_set_app_paintable( btn, TRUE );
-#if GTK_CHECK_VERSION(2, 14, 0)
-    gdk_window_set_back_pixmap( gtk_widget_get_window((GtkWidget*)btn), NULL, TRUE );
+#if GTK_CHECK_VERSION(3, 0, 0)
+    const GdkRGBA *color;
+    gdk_rgba_parse(color, (0,0,0,0));
+    gtk_widget_override_background_color ((GtkWidget*)btn, GTK_STATE_FLAG_NORMAL, color);
 #else
     gdk_window_set_back_pixmap( ((GtkWidget*)btn)->window, NULL, TRUE );
 #endif
