@@ -773,10 +773,12 @@ int main(int argc, char** argv)
     gtk_init( &argc, &argv );
 
     // Add application specific properties
-    gtk_settings_install_property(g_param_spec_boolean("lxlauncher-enable-key",
+    gtk_settings_install_property(
+                             g_param_spec_boolean("lxlauncher-enable-key",
                             _("Enable key navigation"),
                             _("Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"),
-                            FALSE,GTK_ARG_READWRITE));
+                            FALSE,
+                            G_PARAM_READWRITE));
     // set up themes for notebook
     gchar* gtkrc_file = get_xdg_config_file("lxlauncher/gtkrc");
     gtk_rc_parse(gtkrc_file);
