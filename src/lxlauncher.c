@@ -270,6 +270,19 @@ static void add_app_btn( GtkWidget* table, MenuCacheApp* app )
     g_signal_connect( btn, "button-press-event", G_CALLBACK(on_app_btn_press_event), app );
 }
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+static gboolean on_viewport_draw( GtkWidget* w, cairo_t *cr, gpointer data )
+{
+    GtkWidget* scroll = gtk_widget_get_parent(w);
+	GtkStyleContext *style = gtk_widget_get_style_context(scroll);
+
+	gtk_render_background(style,cr,0,0,
+			gtk_widget_get_allocated_width(scroll),
+			gtk_widget_get_allocated_height(scroll));
+    return FALSE;
+
+}
+#else
 static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer data )
 {
     GObjectClass* oc = G_OBJECT_GET_CLASS(w);
@@ -277,11 +290,7 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
 /*
     GdkPixmap* pixmap = (GdkPixmap*)data;
 */
-#if GTK_CHECK_VERSION(2, 20, 0)
-    if( GTK_WIDGET_DRAWABLE(w) && evt->window == gtk_viewport_get_bin_window(((GtkViewport*)w)) )
-#else
     if( GTK_WIDGET_DRAWABLE(w) && evt->window == ((GtkViewport*)w)->bin_window )
-#endif
     {
         cairo_t *cr;
         cairo_pattern_t* pat;
@@ -316,9 +325,11 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
     }
 
     // call handler of tha parent GtkContainer class to propagate the event to children
+
     (* wc->expose_event) (w, evt);
     return TRUE;
 }
+#endif
 
 static gboolean on_scroll( GtkAdjustment* adj, PageData* data )
 {
@@ -592,8 +603,6 @@ static void create_notebook_pages()
         GtkWidget* image;
         GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
         GdkPixbuf* pixbuf=NULL;
-        GdkPixmap* pixmap;
-        GdkGC *pixmap_gc=NULL;
         char* file;
         PageData* page_data;
         MenuCacheDir* dir = (MenuCacheDir*)l->data;
@@ -614,8 +623,8 @@ static void create_notebook_pages()
         g_signal_connect( range, "change-value", G_CALLBACK(on_scroll_change_val), page_data );
         adj = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(scroll));
 #if GTK_CHECK_VERSION(2, 14, 0)
-        gtk_adjustment_get_step_increment(adj) = button_size / 3;
-        gtk_adjustment_get_page_increment(adj) = button_size / 2;
+        gtk_adjustment_set_step_increment(adj, button_size / 3);
+        gtk_adjustment_set_page_increment(adj, button_size / 2);
 #else
         adj->step_increment = button_size / 3;
         adj->page_increment = button_size / 2;
@@ -646,11 +655,23 @@ static void create_notebook_pages()
 
         // set background
         gtk_widget_set_app_paintable( GTK_WIDGET(viewport), TRUE );
+#if GTK_CHECK_VERSION(3, 0, 0)
+        cairo_t *cr;
+
+        cr = gdk_cairo_create (viewport);
+        cairo_rectangle(cr, 0, 0, 0, 0 );
+        cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
+        cairo_fill(cr);
+        g_signal_connect( viewport, "draw", G_CALLBACK(on_viewport_draw), cr );
+        cairo_destroy(cr);
+#else
 /*
         file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
         pixbuf = gdk_pixbuf_new_from_file( file, NULL );
         g_free( file );
 */
+        GdkPixmap* pixmap;
+        GdkGC *pixmap_gc=NULL;
         if( pixbuf )
         {
             pixmap = gdk_pixmap_new( gdk_get_default_root_window(), gdk_pixbuf_get_width(pixbuf), gdk_pixbuf_get_height(pixbuf), -1 );
@@ -666,6 +687,7 @@ static void create_notebook_pages()
             g_object_unref(pixmap_gc);
         }
         g_signal_connect( viewport, "expose_event", G_CALLBACK(on_viewport_expose), pixmap );
+#endif
 
         page_data->page_vbox = page_vbox;
         page_data->go_up_bar = go_up_bar;
