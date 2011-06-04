@@ -482,7 +482,7 @@ GdkFilterReturn evt_filter(GdkXEvent *xevt, GdkEvent *evt, gpointer data)
     if(xev->type == PropertyNotify && xev->xproperty.atom == atom_NET_WORKAREA )
     {
         GdkRectangle working_area;
-        get_working_area( gdk_drawable_get_screen(evt->any.window), &working_area );
+        get_working_area( gdk_window_get_screen(evt->any.window), &working_area );
         gtk_window_move( GTK_WINDOW(main_window), working_area.x, working_area.y );
         gtk_window_resize( GTK_WINDOW(main_window), working_area.width, working_area.height );
     }
