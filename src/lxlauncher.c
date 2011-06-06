@@ -168,7 +168,7 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     if (!enable_key)
 #if GTK_CHECK_VERSION(2, 18, 0)
         gtk_widget_set_can_focus(btn, FALSE );
-    gtk_widget_set_can_default(GTK_WINDOW(btn), FALSE );
+    gtk_widget_set_can_default(GTK_WIDGET(btn), FALSE );
 #else
         GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
