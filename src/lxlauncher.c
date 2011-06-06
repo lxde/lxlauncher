@@ -168,7 +168,7 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     if (!enable_key)
 #if GTK_CHECK_VERSION(2, 18, 0)
         gtk_widget_set_can_focus(btn, FALSE );
-    gtk_window_set_default(GTK_WINDOW(btn), FALSE );
+    gtk_widget_set_can_default(GTK_WINDOW(btn), FALSE );
 #else
         GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_FOCUS );
     GTK_WIDGET_UNSET_FLAGS(btn, GTK_CAN_DEFAULT );
@@ -226,9 +226,11 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
 
     gtk_widget_set_app_paintable( btn, TRUE );
 #if GTK_CHECK_VERSION(3, 0, 0)
+/*
     const GdkRGBA *color;
-    gdk_rgba_parse(color, (0,0,0,0));
+    gdk_rgba_parse(color, "none");
     gtk_widget_override_background_color ((GtkWidget*)btn, GTK_STATE_FLAG_NORMAL, color);
+*/
 #else
     gdk_window_set_back_pixmap( ((GtkWidget*)btn)->window, NULL, TRUE );
 #endif
@@ -273,14 +275,24 @@ static void add_app_btn( GtkWidget* table, MenuCacheApp* app )
 }
 
 #if GTK_CHECK_VERSION(3, 0, 0)
-static gboolean on_viewport_draw( GtkWidget* w, cairo_t *cr, gpointer data )
+static gboolean on_viewport_draw( GtkWidget* w, cairo_t *cr1, gpointer data )
 {
     GtkWidget* scroll = gtk_widget_get_parent(w);
 	GtkStyleContext *style = gtk_widget_get_style_context(scroll);
 
+    cairo_t *cr;
+
+    cr = gdk_cairo_create (gtk_widget_get_window(w));
+    cairo_rectangle(cr, 0, 0, 0, 0 );
+    cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
+    cairo_fill(cr);
+
 	gtk_render_background(style,cr,0,0,
 			gtk_widget_get_allocated_width(scroll),
 			gtk_widget_get_allocated_height(scroll));
+
+
+    cairo_destroy(cr);
     return FALSE;
 
 }
@@ -658,14 +670,7 @@ static void create_notebook_pages()
         // set background
         gtk_widget_set_app_paintable( GTK_WIDGET(viewport), TRUE );
 #if GTK_CHECK_VERSION(3, 0, 0)
-        cairo_t *cr;
-
-        cr = gdk_cairo_create (viewport);
-        cairo_rectangle(cr, 0, 0, 0, 0 );
-        cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
-        cairo_fill(cr);
-        g_signal_connect( viewport, "draw", G_CALLBACK(on_viewport_draw), cr );
-        cairo_destroy(cr);
+        g_signal_connect( viewport, "draw", G_CALLBACK(on_viewport_draw), NULL );
 #else
 /*
         file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
@@ -783,8 +788,8 @@ int main(int argc, char** argv)
                             G_PARAM_READWRITE));
     // set up themes for notebook
     gchar* gtkrc_file = get_xdg_config_file("lxlauncher/gtkrc");
-    gtk_rc_parse(gtkrc_file);
     if (gtkrc_file) {
+        gtk_rc_parse(gtkrc_file);
     	free(gtkrc_file);
     }
 
