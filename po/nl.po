@@ -1,4 +1,4 @@
-# Dutch translation of the lxlauncher package.
+# Dutch translation for the lxlauncher package.
 # Copyright (C) the author of the lxlauncher package.
 # This file is distributed under the same license as the 
 # lxlauncher package.
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
+"Language: nl (Dutch)\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #.
@@ -41,7 +41,7 @@ msgid ""
 "lxlauncher"
 msgstr ""
 "Gebruikers toestaan om de lxlauncher te bedienen met de toetsen voor "
-"boven/onder/links/rechts/tab/enter"
+"omhoog/omlaag/links/rechts/tab/enter"
 
 #: ../src/exo-wrap-table.c:166
 msgid "Column spacing"
