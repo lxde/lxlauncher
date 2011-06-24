@@ -1,0 +1,22 @@
+Source: lxlauncher
+Section: x11
+Priority: extra
+Maintainer: Debian LXDE Packaging Team <pkg-lxde-maintainers@lists.alioth.debian.org> 
+Uploaders: Andrew Lee (李健秋) <ajqlee@debian.org>
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev, libgtk2.0-dev (>= 2.6.0), libstartup-notification0-dev, libmenu-cache1-dev (>= 0.3.2), intltool, autoconf
+Standards-Version: 3.8.4
+Homepage: http://lxde.org
+Vcs-Git: git://git.debian.org/git/collab-maint/lxlauncher.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/lxlauncher.git;a=summary
+
+Package: lxlauncher
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, lxmenu-data
+Recommends: gnome-icon-theme
+Description: Easy-Mode launcher for subnotebook like EeePC
+ LXLauncher is a lightweight GTK+ 2.x based Easy-Mode launcher for
+ subnotebook like EeePC.
+ .
+ It is standard-compliant and desktop-independent. It follows 
+ freedesktop.org specs, so newly added applications will automatically
+ show up in the launcher, and vice versa for the removed ones.

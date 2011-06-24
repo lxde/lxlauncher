@@ -1,0 +1,75 @@
+lxlauncher (0.2.1-3) unstable; urgency=low
+
+  * Applied 03_libmenu-cache-0.3-series.dpatch
+  * debian/control:
+    - Minor fix in description (Closes:#534190)
+    - Team maintainer: Debian LXDE Packaging Team
+    - Added Vcs-Git and Vcs-Browser tags
+    - Build-depends on libmenu-cache1-dev (>= 0.3.2) (Closes:#577336)
+  * Bumpped Standard-Version to 3.8.4
+  * Switch to dpkg-source 3.0 (quilt) format
+  * Set urgency=high for unblock transition on LXDE packages.
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Thu, 15 Apr 2010 00:03:44 +0800
+
+lxlauncher (0.2.1-2) unstable; urgency=low
+
+  * Applied 01_fix_infinite_loop.dpatch (Closes:#537404)
+  * debian/control:
+    - build-depends on intltool, autoconf
+
+ -- Andrew Lee <andrew@linux.org.tw>  Sat, 18 Jul 2009 21:55:01 +0200
+
+lxlauncher (0.2.1-1) unstable; urgency=low
+
+  * New upstream release
+    - Supports configuation file in /etc/xdg/lxlauncher/settings.conf 
+      Now button and image size are configurable
+    - Load gtkrc file from XDG config dirs
+    - Updated translations
+  * Drop patches already included in upstream:
+    - 01_lxlauncher-missing-include.dpatch
+    - 03_scale-icons.dpatch
+    - 04_update-translations.dpatch
+  * debian/control:
+    - Build-depends on libmenu-cache-dev
+    - Depends on lxmenu
+  * debian/rules:
+    - Aded --sysconfdir=/etc
+  * Updated debian/copyright
+  * Bumpped Standard-Version to 3.8.2
+
+ -- Andrew Lee <andrew@linux.org.tw>  Sat, 11 Jul 2009 19:22:54 +0800
+
+lxlauncher (0.2-3) unstable; urgency=low
+
+  * Applied 02_lxlauncher-matchbox.dpatch (Closes: #498601)
+    Thanks to Enrico Zini <enrico@debian.org> for the patch.
+  * Applied 03_scale-icons.dpatch to make different icons looks all in 
+    equal size.
+  * Updated translations. (Closes: #509758)
+
+ -- Andrew Lee <andrew@linux.org.tw>  Sat, 31 Jan 2009 22:51:20 +0800
+
+lxlauncher (0.2-2) unstable; urgency=low
+
+  * Applied 01_lxlauncher-missing-include.dpatch (Closes: #488727)
+    Thanks to dann frazier <dannf@debian.org> for the patch.
+
+ -- Andrew Lee <andrew@linux.org.tw>  Tue, 01 Jul 2008 17:14:34 +0800
+
+lxlauncher (0.2-1) unstable; urgency=low
+
+  * New upstream release (Closes: #487986)
+    - Supports sub-menus
+    - Uses cairo to draw backgrounds
+  * Bumped Standards-Version to 3.8.0.0
+    - Supporting the standardized environment variable `DEB_BUILD_OPTIONS'
+
+ -- Andrew Lee <andrew@linux.org.tw>  Mon, 30 Jun 2008 04:31:12 +0800
+
+lxlauncher (0.1.6-1) unstable; urgency=low
+
+  * Initial release (Closes: #482169)
+
+ -- Andrew Lee <andrew@linux.org.tw>  Sun, 25 May 2008 14:59:10 +0800
