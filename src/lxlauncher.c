@@ -96,15 +96,13 @@ static void on_menu_item_properties(GtkMenuItem* item, MenuCacheApp* app)
     char* ifile = menu_cache_item_get_file_path(MENU_CACHE_ITEM(app));
     char* ofile = g_build_filename(g_get_user_data_dir(), "applications",
                                   menu_cache_item_get_file_basename(MENU_CACHE_ITEM(app)), NULL);
-    char** argv[] = {
+    char* argv[] = {
         "lxshortcut",
         "-i",
-        NULL,
+        ifile,
         "-o",
-        NULL,
+        ofile,
         NULL};
-    argv[2] = ifile;
-    argv[4] = ofile;
     g_spawn_async( NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL );
     g_free( ifile );
     g_free( ofile );
