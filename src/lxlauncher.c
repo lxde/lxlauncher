@@ -114,7 +114,7 @@ static gboolean on_app_btn_press_event(GtkWidget* btn, GdkEventButton* evt, Menu
     {
         char* tmp;
         GtkWidget* item;
-        GtkMenu* p = gtk_menu_new();
+        GtkWidget* p = gtk_menu_new();
         tmp = g_find_program_in_path("lxshortcut");
         if( tmp )
         {
@@ -137,7 +137,7 @@ static gboolean on_app_btn_press_event(GtkWidget* btn, GdkEventButton* evt, Menu
         g_signal_connect(p, "selection-done", G_CALLBACK(gtk_widget_destroy), NULL);
 
         gtk_widget_show_all(GTK_WIDGET(p));
-        gtk_menu_popup(p, NULL, NULL, NULL, NULL, NULL, evt->time);
+        gtk_menu_popup(GTK_MENU(p), NULL, NULL, NULL, NULL, NULL, evt->time);
         return TRUE;
     }
     return FALSE;
