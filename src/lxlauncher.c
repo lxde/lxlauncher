@@ -846,14 +846,8 @@ int main(int argc, char** argv)
 #endif
     gtk_container_add( (GtkContainer*)main_window, notebook );
     
-    if (prefix == NULL)
-    {
-      g_setenv("XDG_MENU_PREFIX", "lxlauncher-", TRUE);
-    }
-    else if (prefix == "lxde-")
-    {
-      g_setenv("XDG_MENU_PREFIX", "lxlauncher-", TRUE);
-    }
+    if ((prefix == NULL) || (strcmp(prefix, "lxde-") == 0))
+        g_setenv("XDG_MENU_PREFIX", "lxlauncher-", TRUE);
 
     menu_tree = _menu_cache_lookup_sync( "applications.menu" );
     if(!menu_tree)
