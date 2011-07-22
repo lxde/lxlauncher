@@ -7,59 +7,64 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2011-07-22 21:19+0200\n"
 "PO-Revision-Date: 2010-03-31 00:20+0200\n"
 "Last-Translator: Радослав Иванов <rec_ku@hotmail.com>\n"
 "Language-Team: MIME-Version: 1.0\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 "X-Poedit-Language: Bulgarian\n"
 "X-Poedit-Country: BULGARIA\n"
-"MIME-Version: 1.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:126
+#: ../src/lxlauncher.c:125
 msgid "_Customize"
 msgstr "_Персонализиране"
 
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Връща се обратно на \"%s\""
 
-#: ../src/lxlauncher.c:715
+#: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
 msgstr "Включване на навигационните клавиши"
 
-#: ../src/lxlauncher.c:716
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Позволява на потребителите да ползват горе/долу/ляв/десен/tab/enter клавиши, за да оперират в lxlauncher"
+#: ../src/lxlauncher.c:783
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Позволява на потребителите да ползват горе/долу/ляв/десен/tab/enter клавиши, "
+"за да оперират в lxlauncher"
 
-#: ../src/exo-wrap-table.c:166
+#: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
 msgstr "Разредка между колони"
 
-#: ../src/exo-wrap-table.c:167
+#: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
 msgstr "Разстоянието между две съседни колони"
 
-#: ../src/exo-wrap-table.c:181
+#: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
 msgstr "Разредка между редове"
 
-#: ../src/exo-wrap-table.c:182
+#: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
 msgstr "Интервалът между два съседни реда"
 
-#: ../src/exo-wrap-table.c:196
+#: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
 msgstr "Еднакво големи"
 
-#: ../src/exo-wrap-table.c:197
+#: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
 msgstr "Дали дъщерните елементи да имат еднакъв размер"
 
@@ -67,4 +72,3 @@ msgstr "Дали дъщерните елементи да имат еднакъ�
 #, c-format
 msgid "Command not found"
 msgstr "Командата не е открита"
-

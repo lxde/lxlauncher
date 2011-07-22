@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-08 04:11+0000\n"
+"POT-Creation-Date: 2011-07-22 21:19+0200\n"
 "PO-Revision-Date: 2010-05-08 16:17+0100\n"
 "Last-Translator: astur <malditoastur@gmail.com>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
+"Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,44 +24,48 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:126
+#: ../src/lxlauncher.c:125
 msgid "_Customize"
 msgstr "_Personalizar"
 
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Volver a \"%s\""
 
-#: ../src/lxlauncher.c:735
+#: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
 msgstr "Activar tecles de navegación"
 
-#: ../src/lxlauncher.c:736
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Permite operar lxlauncher coles tecles arriba/abaxo/esquierda/drecha/tabulador/retornu"
+#: ../src/lxlauncher.c:783
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Permite operar lxlauncher coles tecles arriba/abaxo/esquierda/drecha/"
+"tabulador/retornu"
 
-#: ../src/exo-wrap-table.c:166
+#: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
 msgstr "Espaciáu de columnes"
 
-#: ../src/exo-wrap-table.c:167
+#: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
 msgstr "La cantidá d'espaciu ente dos columnes consecutives"
 
-#: ../src/exo-wrap-table.c:181
+#: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
 msgstr "Espaciáu de fileres"
 
-#: ../src/exo-wrap-table.c:182
+#: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
 msgstr "La cantidá d'espaciu ente dos fileres consecutives"
 
-#: ../src/exo-wrap-table.c:196
+#: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
 msgstr "Homoxéneu"
 
-#: ../src/exo-wrap-table.c:197
+#: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
 msgstr "Si los descendientes tienen de tener toos el mesmu tamañu"
 
@@ -68,4 +73,3 @@ msgstr "Si los descendientes tienen de tener toos el mesmu tamañu"
 #, c-format
 msgid "Command not found"
 msgstr "Comandu non alcontráu"
-

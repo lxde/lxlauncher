@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 23:51+0200\n"
+"POT-Creation-Date: 2011-07-22 21:19+0200\n"
 "PO-Revision-Date: 2009-07-26 09:00+0200\n"
 "Last-Translator: 羅廷中 <timloo0710@gmail.com>\n"
 "Language-Team: zh_TW <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,47 +21,47 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:126
+#: ../src/lxlauncher.c:125
 msgid "_Customize"
 msgstr "客制化"
 
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "回到\"%s\""
 
-#: ../src/lxlauncher.c:715
+#: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
 msgstr "讓瀏覽鍵生效"
 
-#: ../src/lxlauncher.c:716
+#: ../src/lxlauncher.c:783
 #, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr "允許使用者使用 上/下/左/右/空格/進入鍵來操作lxlaucher"
 
-#: ../src/exo-wrap-table.c:166
+#: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
 msgstr "欄的空間"
 
-#: ../src/exo-wrap-table.c:167
+#: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
 msgstr "在兩個接續欄位之間的空間"
 
-#: ../src/exo-wrap-table.c:181
+#: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
 msgstr "列的空間"
 
-#: ../src/exo-wrap-table.c:182
+#: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
 msgstr "在兩個接續列之間的空間"
 
-#: ../src/exo-wrap-table.c:196
+#: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
 msgstr "同質的"
 
-#: ../src/exo-wrap-table.c:197
+#: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
 msgstr "是否這些子代都要用同樣的尺寸"
 

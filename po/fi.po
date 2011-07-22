@@ -2,60 +2,66 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Elias Julkunen <elias.julkunen@gmail.com>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-26 06:55+0000\n"
+"POT-Creation-Date: 2011-07-22 21:19+0200\n"
 "PO-Revision-Date: 2008-12-10 15:49+0200\n"
 "Last-Translator: Elias Julkunen <elias.julkunen@gmail.com>\n"
 "Language-Team: fi <fi@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#.
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
-#. 
-#: ../src/lxlauncher.c:126
+#.
+#: ../src/lxlauncher.c:125
 msgid "_Customize"
 msgstr "_Mukauta"
 
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Siirry takaisin kohtaan \"%s\""
 
-#: ../src/lxlauncher.c:735
+#: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
 msgstr "Salli näppäinkomennot"
 
-#: ../src/lxlauncher.c:736
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Sallii ylös/alas/vasen/oikea/tabulaattori/enter-näppäimien käytön LXLauncherissa"
+#: ../src/lxlauncher.c:783
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Sallii ylös/alas/vasen/oikea/tabulaattori/enter-näppäimien käytön "
+"LXLauncherissa"
 
-#: ../src/exo-wrap-table.c:166
+#: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
 msgstr "Sarakkeiden väli"
 
-#: ../src/exo-wrap-table.c:167
+#: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
 msgstr "Tyhjän tilan määrä kahden peräkkäisen sarakkeen välillä"
 
-#: ../src/exo-wrap-table.c:181
+#: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
 msgstr "Rivien väli"
 
-#: ../src/exo-wrap-table.c:182
+#: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
 msgstr "Tyhjän tilan määrä kahden peräkkäisen rivin välillä"
 
-#: ../src/exo-wrap-table.c:196
+#: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
 msgstr "Yhtenäinen"
 
-#: ../src/exo-wrap-table.c:197
+#: ../src/exo-wrap-table.c:227
 #, fuzzy
 msgid "Whether the children should be all the same size"
 msgstr "Pitäisikö kaikkien lapsi-ikkunoiden olla saman kokoisia"

@@ -2,62 +2,69 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the LXLauncher package.
 # Jay A. Fleming <tito.nehru.naser@gmail.com>, 2009.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: LXLauncher 0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-27 04:21+0000\n"
+"POT-Creation-Date: 2011-07-22 21:19+0200\n"
 "PO-Revision-Date: 2009-09-02 12:24+0100\n"
 "Last-Translator: Jay A. Fleming <tito.nehru.naser@gmail.com>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#.
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
-#. 
-#: ../src/lxlauncher.c:126
+#.
+#: ../src/lxlauncher.c:125
 msgid "_Customize"
 msgstr "_Прилагоди"
 
-#: ../src/lxlauncher.c:531
+#: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Иди назад до „%s“"
 
-#: ../src/lxlauncher.c:735
+#: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
 msgstr "Укључи навигацију тастерима"
 
-#: ../src/lxlauncher.c:736
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Дозволи корисницима да користе дугмад горе-доле-лево-десно-таб-ентер у раду са lxlaucher-ом"
+#: ../src/lxlauncher.c:783
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Дозволи корисницима да користе дугмад горе-доле-лево-десно-таб-ентер у раду "
+"са lxlaucher-ом"
 
-#: ../src/exo-wrap-table.c:166
+#: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
 msgstr "Размак између колона"
 
-#: ../src/exo-wrap-table.c:167
+#: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
 msgstr "Величина простора између две узастопне колоне"
 
-#: ../src/exo-wrap-table.c:181
+#: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
 msgstr "Размак између редова"
 
-#: ../src/exo-wrap-table.c:182
+#: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
 msgstr "Величина простора између два узастопна реда"
 
-#: ../src/exo-wrap-table.c:196
+#: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
 msgstr "Истородни"
 
-#: ../src/exo-wrap-table.c:197
+#: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
 msgstr "Да ли да сви потомци буду исте величине"
 
