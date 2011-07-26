@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: 2011-07-22 09:47+0200\n"
+"PO-Revision-Date: 2011-07-26 11:33+0200\n"
 "Last-Translator: Ainur <ainur.shakirov.tt@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tt_RU\n"
@@ -24,7 +24,7 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:125
 msgid "_Customize"
-msgstr "_Үзгәртү"
+msgstr "_Көйләү"
 
 #: ../src/lxlauncher.c:567
 #, c-format
