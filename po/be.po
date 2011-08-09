@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: 2010-08-25 12:54+0200\n"
-"Last-Translator: Анік <xabzan9tka@gmail.com>\n"
+"PO-Revision-Date: 2011-08-07 16:43+0200\n"
+"Last-Translator: Мікалай <crom-a@tut.by>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pootle 2.0.5\n"
 
 #.
@@ -25,7 +25,7 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:125
 msgid "_Customize"
-msgstr "_Наладзіць"
+msgstr "_Наставіць"
 
 #: ../src/lxlauncher.c:567
 #, c-format
@@ -45,19 +45,19 @@ msgstr ""
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
-msgstr "Шырыня слупка"
+msgstr "Водступ паміж слупкамі"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
-msgstr "Прамежак паміж слупкамі"
+msgstr "Велічыня прамежка паміж суседнімі слупкамі"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
-msgstr "Шырыня радка"
+msgstr "Водступ паміж радкамі"
 
 #: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
-msgstr "Прамежак паміж радкамі"
+msgstr "Велічыня прамежкк паміж суседнімі радкамі"
 
 #: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
@@ -66,9 +66,9 @@ msgstr "Аднародна"
 # нейкая лухта =)
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr "Адзіны памер для ўсіх дзяце?"
+msgstr "Ці мусяць нашчадкі быць такіх жа памераў"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Загад не знойдзен"
+msgstr "Загад не знойдзены"
