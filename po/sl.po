@@ -1,20 +1,21 @@
+# Slovenian translation of lxlauncher.
+# Copyright (C) 2011 Free Software Foundation, Inc.
+# This file is distributed under the same license as the lxlauncher package.
+# Klemen Košir <klemen.kosir@gmx.com>, 2011.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: LXLauncher\n"
+"Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: 2011-02-14 15:09+0200\n"
-"Last-Translator: Klemen <klemen.kosir@gmx.com>\n"
-"Language-Team: Slovenian <paxmanpwnz@gmail.com>\n"
+"PO-Revision-Date: 2011-11-19 23:17+0100\n"
+"Last-Translator: Klemen Košir <klemen.kosir@gmx.com>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Pootle 2.0.5\n"
-"X-Poedit-Language: Slovenian\n"
-"X-Poedit-Country: SLOVENIA\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0)\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -27,19 +28,15 @@ msgstr "_Prilagodi"
 #: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Vrni se na \"%s\""
+msgstr "Vrni se v »%s«"
 
 #: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
 msgstr "Omogoči krmarjenje s tipkovnico"
 
 #: ../src/lxlauncher.c:783
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the "
-"lxlauncher"
-msgstr ""
-"Pri upravljanju programa LXLauncher dovoli uporabnikom uporabo tipk gor/dol/"
-"levo/desno/tab/enter"
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr "LXLauncher za krmarjenje dovoljuje uporabo tipk Gor/Dol/Levo/Desno/Tab/Enter"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -59,13 +56,14 @@ msgstr "Razmik med dvema zaporednima vrsticama"
 
 #: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
-msgstr "Homogeno"
+msgstr "Homogenost"
 
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr "Ali naj bodo podrejeni elementi enake velikosti"
+msgstr "Ali naj so podrejeni predmeti enake velikosti"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Ukaz ni bil najden"
+msgstr "Ukaza ni mogoče najti."
+
