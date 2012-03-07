@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: LXDE\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: 2010-01-24 11:10-0800\n"
-"Last-Translator: alexxed <alexxed@gmail.com>\n"
+"PO-Revision-Date: 2012-03-07 19:17+0200\n"
+"Last-Translator: Mișu <dumol@l10n.ro>\n"
 "Language-Team: Romanian <LL@li.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
-"X-Generator: Narro 0.9.4 on http://tradu.softwareliber.ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -20,7 +20,7 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:125
 msgid "_Customize"
-msgstr "_Personalizează..."
+msgstr "_Personalizare"
 
 #: ../src/lxlauncher.c:567
 #, c-format
@@ -29,15 +29,15 @@ msgstr "Înapoi la „%s”"
 
 #: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
-msgstr "Activează navigarea cu tastele"
+msgstr "Activează navigarea cu taste"
 
 #: ../src/lxlauncher.c:783
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permite utilizatorilor sa folosească tastele sus/jos/stanga/dreapta/tab/"
-"enter pentru a lucra cu lxlauncher"
+"Permite utilizatorilor sa folosească tastele "
+"sus/jos/stanga/dreapta/tab/enter în utilizarea lxlauncher"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -57,13 +57,13 @@ msgstr "Spațiul între două rânduri consecutive"
 
 #: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
-msgstr "Omogen"
+msgstr "Omogene"
 
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr "Oricare dintre ferestrele copil ar trebuii să aibă aceeași mărime"
+msgstr "Specifică dacă ferestrele generate ar trebui să aibă aceeași mărime"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Comandă negăsită"
+msgstr "Comanda nu a fost găsită"
