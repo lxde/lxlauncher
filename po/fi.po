@@ -8,13 +8,15 @@ msgstr ""
 "Project-Id-Version: lxlauncher 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: 2008-12-10 15:49+0200\n"
-"Last-Translator: Elias Julkunen <elias.julkunen@gmail.com>\n"
+"PO-Revision-Date: 2012-03-10 20:30+0200\n"
+"Last-Translator: Juhani <juhaninumminen0@gmail.com>\n"
 "Language-Team: fi <fi@li.org>\n"
-"Language: \n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -39,7 +41,7 @@ msgid ""
 "lxlauncher"
 msgstr ""
 "Sallii ylös/alas/vasen/oikea/tabulaattori/enter-näppäimien käytön "
-"LXLauncherissa"
+"lxlauncherissa"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -62,7 +64,6 @@ msgid "Homogeneous"
 msgstr "Yhtenäinen"
 
 #: ../src/exo-wrap-table.c:227
-#, fuzzy
 msgid "Whether the children should be all the same size"
 msgstr "Pitäisikö kaikkien lapsi-ikkunoiden olla saman kokoisia"
 
