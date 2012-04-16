@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: 2012-04-14 07:55+0200\n"
+"PO-Revision-Date: 2012-04-16 05:36+0200\n"
 "Last-Translator: Walter <wwycheuk@gmail.com>\n"
 "Language-Team: zh_TW <LL@li.org>\n"
 "Language: zh_TW\n"
@@ -24,12 +24,12 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:125
 msgid "_Customize"
-msgstr "客制化(_C)"
+msgstr "自訂(_C)"
 
 #: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "回到\"%s\""
+msgstr "回到 \"%s\""
 
 #: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
