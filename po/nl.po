@@ -29,7 +29,7 @@ msgstr "_Aanpassen"
 #: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Ga terug naar \"%s\""
+msgstr "Ga terug naar '%s'"
 
 #: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
@@ -40,8 +40,8 @@ msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Gebruikers toestaan om de lxlauncher te bedienen met de toetsen voor omhoog/"
-"omlaag/links/rechts/tab/enter"
+"Gebruikers toestaan om de lxlauncher te bedienen met de toetsen voor "
+"omhoog/omlaag/links/rechts/tab/enter"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -65,7 +65,7 @@ msgstr "Homogeen"
 
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr "Of de \"kinderen\" allemaal dezelfde grootte zouden moeten hebben"
+msgstr "Of de 'kinderen' allemaal dezelfde grootte zouden moeten hebben"
 
 #: ../src/misc.c:344
 #, c-format
