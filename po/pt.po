@@ -2,15 +2,15 @@
 # Copyright (C) 2009 THE lxlauncher'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the lxlauncher package.
 # <alvarommorais@gmail.com>, 2009
-# Sérgio Marques <smarquespt@gmail.com>, 2009
+# Sérgio Marques <smarquespt@gmail.com>, 2009-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: 2011-05-14 02:07+0200\n"
-"Last-Translator: Sérgio <smarquespt@gmail.com>\n"
-"Language-Team: Portuguese PT <alvarommorais@gmail.com>\n"
+"PO-Revision-Date: 2012-05-18 11:32-0000\n"
+"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
+"Language-Team: \n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -35,19 +35,15 @@ msgstr "Voltar para \"%s\""
 
 #: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
-msgstr "Activar navegação por teclas"
+msgstr "Ativar navegação por teclas"
 
 #: ../src/lxlauncher.c:783
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the "
-"lxlauncher"
-msgstr ""
-"Permitir a utilização das teclas cima/baixo/esquerda/direita/tab/enter para "
-"operar com lxlauncher"
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr "Permitir a utilização das teclas cima/baixo/esquerda/direita/tab/enter para operar com o lxlauncher"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
-msgstr "Espaçamento entre colunas"
+msgstr "Espaço entre colunas"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
@@ -55,7 +51,7 @@ msgstr "O espaço existente entre duas colunas consecutivas"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
-msgstr "Espaçamento entre linhas"
+msgstr "Espaço entre linhas"
 
 #: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
@@ -73,3 +69,4 @@ msgstr "Se as crianças dever ser todas do mesmo tamanho"
 #, c-format
 msgid "Command not found"
 msgstr "Comando não encontrado"
+
