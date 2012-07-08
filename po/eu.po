@@ -3,13 +3,15 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Alain Mendizabal <alainmendi@gmail.com>\n"
+"PO-Revision-Date: 2012-07-08 14:15+0200\n"
+"Last-Translator: Asier_Iturralde_Sarasola <asier.iturralde@gmail.com>\n"
 "Language-Team: Basque <alainmendi@gmail.com>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.0.5\n"
 "X-Poedit-Language: Basque\n"
 
 #.
@@ -23,20 +25,19 @@ msgstr "_Pertsonalizatu"
 #: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Joan  \"%s\"-ra atzera"
+msgstr "Joan atzera \"%s\"-(e)ra"
 
 #: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
-msgstr "Gaitu gako bidezko nabigazioa"
+msgstr "Gaitu tekla bidezko nabigazioa"
 
 #: ../src/lxlauncher.c:783
-#, fuzzy
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
 "Baimendu erabiltzaileei gora/behera/ezkerrera/eskuinera/tabulatzailea/sartu "
-"teklak erabiltzea"
+"teklak erabiltzea lxlauncher maneiatzeko"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -44,7 +45,7 @@ msgstr "Zutabeen arteko tartea"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
-msgstr "Jarraian dauden bi zutabeen arteko tartea"
+msgstr "Jarraian dauden bi zutaberen arteko tartea"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
@@ -60,7 +61,7 @@ msgstr "Homogeneoa"
 
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr "Ume guztiek tamaina berdinekoak izan behar duten"
+msgstr "Ume guztiek tamaina berdinekoak izan behar duten ala ez"
 
 #: ../src/misc.c:344
 #, c-format
