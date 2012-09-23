@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXDE\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-22 21:19+0200\n"
+"POT-Creation-Date: 2012-09-23 15:07+0200\n"
 "PO-Revision-Date: 2012-03-07 19:17+0200\n"
 "Last-Translator: Mișu <dumol@l10n.ro>\n"
 "Language-Team: Romanian <LL@li.org>\n"
@@ -22,22 +22,22 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Personalizare"
 
-#: ../src/lxlauncher.c:567
+#: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Înapoi la „%s”"
 
-#: ../src/lxlauncher.c:782
+#: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
 msgstr "Activează navigarea cu taste"
 
-#: ../src/lxlauncher.c:783
+#: ../src/lxlauncher.c:787
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permite utilizatorilor sa folosească tastele "
-"sus/jos/stanga/dreapta/tab/enter în utilizarea lxlauncher"
+"Permite utilizatorilor sa folosească tastele sus/jos/stanga/dreapta/tab/"
+"enter în utilizarea lxlauncher"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"

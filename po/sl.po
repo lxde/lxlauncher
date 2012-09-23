@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-22 21:19+0200\n"
+"POT-Creation-Date: 2012-09-23 15:07+0200\n"
 "PO-Revision-Date: 2011-11-24 22:07+0200\n"
 "Last-Translator: Klemen <klemen.kosir@gmx.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);;\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);;\n"
 "X-Generator: Pootle 2.0.5\n"
 
 #.
@@ -27,18 +27,21 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Prilagodi"
 
-#: ../src/lxlauncher.c:567
+#: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Nazaj v »%s«"
 
-#: ../src/lxlauncher.c:782
+#: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
 msgstr "Omogoči krmarjenje s tipkovnico"
 
-#: ../src/lxlauncher.c:783
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "LXLauncher za krmarjenje dovoljuje uporabo tipk Gor/Dol/Levo/Desno/Tab/Enter"
+#: ../src/lxlauncher.c:787
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"LXLauncher za krmarjenje dovoljuje uporabo tipk Gor/Dol/Levo/Desno/Tab/Enter"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"

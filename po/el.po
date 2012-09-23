@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-22 21:19+0200\n"
+"POT-Creation-Date: 2012-09-23 15:07+0200\n"
 "PO-Revision-Date: 2010-04-08 22:50+0200\n"
 "Last-Translator:  <edhunter@sidux.com>\n"
 "Language-Team: Greek <LL@li.org>\n"
@@ -28,16 +28,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Τροποποίηση"
 
-#: ../src/lxlauncher.c:567
+#: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Πήγαινε πίσω στο \"%s\""
 
-#: ../src/lxlauncher.c:782
+#: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
 msgstr "Ενεργοποίηση πλήκτρου πλοήγησης"
 
-#: ../src/lxlauncher.c:783
+#: ../src/lxlauncher.c:787
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"

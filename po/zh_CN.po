@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-22 21:19+0200\n"
+"POT-Creation-Date: 2012-09-23 15:07+0200\n"
 "PO-Revision-Date: 2011-05-19 09:37+0200\n"
 "Last-Translator: Yinghua_Wang <wantinghard@gmail.com>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -26,16 +26,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "自定义(_C)"
 
-#: ../src/lxlauncher.c:567
+#: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "返回到 “%s”"
 
-#: ../src/lxlauncher.c:782
+#: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
 msgstr "启用键盘导航"
 
-#: ../src/lxlauncher.c:783
+#: ../src/lxlauncher.c:787
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"

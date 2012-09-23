@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-22 21:19+0200\n"
+"POT-Creation-Date: 2012-09-23 15:07+0200\n"
 "PO-Revision-Date: 2010-10-10 08:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -25,16 +25,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "ਪਸੰਦੀਦਾ(_C)"
 
-#: ../src/lxlauncher.c:567
+#: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "\"%s\" ਉੱਤੇ ਵਾਪਸ ਜਾਓ"
 
-#: ../src/lxlauncher.c:782
+#: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
 msgstr "ਕੁੰਜੀ ਨੇਵੀਗੇਸ਼ਨ ਚਾਲੂ"
 
-#: ../src/lxlauncher.c:783
+#: ../src/lxlauncher.c:787
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-22 21:19+0200\n"
+"POT-Creation-Date: 2012-09-23 15:07+0200\n"
 "PO-Revision-Date: 2012-05-01 15:01+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -27,18 +27,22 @@ msgstr ""
 msgid "_Customize"
 msgstr "Ба_птау"
 
-#: ../src/lxlauncher.c:567
+#: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "\"%s\" жеріне қайту"
 
-#: ../src/lxlauncher.c:782
+#: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
 msgstr "Пернелермен навигацияны іске қосу"
 
-#: ../src/lxlauncher.c:783
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "Пайдаланушыға жоғары/төмен/сол жақ/оң жақ/табуляция/енгізу батырмаларын lxlauncher-ді басқару үшін қолдануға мүмкін қылу"
+#: ../src/lxlauncher.c:787
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"Пайдаланушыға жоғары/төмен/сол жақ/оң жақ/табуляция/енгізу батырмаларын "
+"lxlauncher-ді басқару үшін қолдануға мүмкін қылу"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -68,4 +72,3 @@ msgstr "Ұрпақтар бірдей өлшемді болу керек пе, �
 #, c-format
 msgid "Command not found"
 msgstr "Команда табылмады"
-

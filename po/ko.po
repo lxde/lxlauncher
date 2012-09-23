@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-22 21:19+0200\n"
+"POT-Creation-Date: 2012-09-23 15:07+0200\n"
 "PO-Revision-Date: 2012-04-06 06:21+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: \n"
@@ -24,18 +24,21 @@ msgstr ""
 msgid "_Customize"
 msgstr "사용자 정의(_C)"
 
-#: ../src/lxlauncher.c:567
+#: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "\"%s\"(으)로 되돌아 가기"
 
-#: ../src/lxlauncher.c:782
+#: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
 msgstr "키 탐색 활성화"
 
-#: ../src/lxlauncher.c:783
-msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
-msgstr "lxlauncher를 실행하기 위해 위/아래/왼쪽/오른쪽/탭/엔터키의 사용을 허용합니다"
+#: ../src/lxlauncher.c:787
+msgid ""
+"Allow users to use up/down/left/right/tab/enter keys to operate the "
+"lxlauncher"
+msgstr ""
+"lxlauncher를 실행하기 위해 위/아래/왼쪽/오른쪽/탭/엔터키의 사용을 허용합니다"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -65,4 +68,3 @@ msgstr "하위요소들이 모두 동일한 크기여야 하는지에 대한 여
 #, c-format
 msgid "Command not found"
 msgstr "명령을 찾을 수 없습니다"
-
