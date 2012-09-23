@@ -1,18 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Korean translation for the lxlauncher package.
+# Copyright (C) 2009-2012 Free software foundation Inc.
+# This file is distributed under the same license as the lxlauncher package.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2012.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: lxlauncher.master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-22 21:19+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-04-06 06:21+0900\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
+"Language-Team: \n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,48 +22,47 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:125
 msgid "_Customize"
-msgstr ""
+msgstr "사용자 정의(_C)"
 
 #: ../src/lxlauncher.c:567
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "\"%s\"(으)로 되돌아 가기"
 
 #: ../src/lxlauncher.c:782
 msgid "Enable key navigation"
-msgstr ""
+msgstr "키 탐색 활성화"
 
 #: ../src/lxlauncher.c:783
-msgid ""
-"Allow users to use up/down/left/right/tab/enter keys to operate the "
-"lxlauncher"
-msgstr ""
+msgid "Allow users to use up/down/left/right/tab/enter keys to operate the lxlauncher"
+msgstr "lxlauncher를 실행하기 위해 위/아래/왼쪽/오른쪽/탭/엔터키의 사용을 허용합니다"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
-msgstr ""
+msgstr "열 간격"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "두 개의 연속 열 사이 공간의 크기입니다"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
-msgstr ""
+msgstr "행 간격"
 
 #: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "두개의 연속 행 사이 공간의 크기입니다"
 
 #: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
-msgstr ""
+msgstr "동질성"
 
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "하위요소들이 모두 동일한 크기여야 하는지에 대한 여부"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "명령을 찾을 수 없습니다"
+
