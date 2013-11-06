@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-23 15:07+0200\n"
-"PO-Revision-Date: 2010-01-26 15:32+0200\n"
-"Last-Translator: Kılıç <kilickoken@gmail.com>\n"
+"PO-Revision-Date: 2013-11-06 21:33+0000\n"
+"Last-Translator: vgezer <volkangezer@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.0.1\n"
+"X-Generator: Pootle 2.5.0\n"
+"X-POOTLE-MTIME: 1383773586.0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -29,7 +30,7 @@ msgstr "_Kişiselleştir"
 #: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "\"%s\"'ye geri dön"
+msgstr "\"%s\" geri dön"
 
 #: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
