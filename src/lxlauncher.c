@@ -177,8 +177,8 @@ static GtkWidget* add_btn( GtkWidget* table, const char* text, GdkPixbuf* icon, 
     gtk_box_pack_start( GTK_BOX(box), img, FALSE, TRUE, 2 );
 
     label = gtk_label_new( text );
-    gtk_widget_show( label );
-    gtk_widget_set_size_request( label, button_size - 10, -1 );
+    //gtk_widget_show( label );
+    //gtk_widget_set_size_request( label, button_size - 10, -1 );
     gtk_label_set_line_wrap_mode( GTK_LABEL(label), PANGO_WRAP_WORD_CHAR );
     gtk_label_set_line_wrap( GTK_LABEL(label), TRUE );
     gtk_label_set_justify( GTK_LABEL(label), GTK_JUSTIFY_CENTER );
