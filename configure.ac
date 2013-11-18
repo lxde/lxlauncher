@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(configure.in)
-AM_INIT_AUTOMAKE(lxlauncher, 0.2.2)
+AC_INIT(lxlauncher, 0.2.2, http://lxde.org)
+AM_INIT_AUTOMAKE([foreign])
 AM_CONFIG_HEADER(config.h)
 # Support silent build rules. Disable by either passing --disable-silent-rules
 # to configure or passing V=1 to make
