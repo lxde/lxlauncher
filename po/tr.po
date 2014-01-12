@@ -2,7 +2,6 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -41,8 +40,8 @@ msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Kullanıcıların, lxlauncher uygulamasını çalıştırmak için yukarı/aşağı/sol/"
-"sağ/sekme/enter tuşlarını kullanmalarına olanak ver"
+"Kullanıcıların, lxlauncher uygulamasını çalıştırmak için "
+"yukarı/aşağı/sol/sağ/sekme/enter tuşlarını kullanmalarına olanak ver"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
