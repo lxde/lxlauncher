@@ -11,3 +11,21 @@ Also, if you put the tab icons of Asus launcher under
 /usr/share/lxlauncher/icons, they will be used in the tabs.
 Otherwise, some icons from the gtk+ icon theme will be used instead.
 
+The LXLauncher has two configuration files to be tuned by users:
+
+1) ~/.config/lxlauncher/settings.conf which is an init-style file with
+contents defaults as below:
+
+[Main]
+BUTTON_SIZE = 120
+IMG_SIZE = 48
+
+2) ~/.config/lxlauncher/gtkrc which is an RC file with custom style.  
+
+Also one additional setting can be set in global GTK settings:
+
+lxlauncher-enable-key
+
+which is a boolean parameter that allows users if set to true to use
+up/down/left/right/tab/enter keys to operate the lxlauncher. Default
+value for it is false.
