@@ -88,5 +88,6 @@ Makefile
 settings.conf
 src/Makefile
 po/Makefile.in
+data/lxlauncher.1
 ])
 

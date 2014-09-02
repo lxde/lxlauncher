@@ -9,9 +9,11 @@ conf_DATA=$(conf_in_files:.conf.in=.conf)
 themedir=$(confdir)
 theme_DATA=gtkrc
 
-menufiledir=/etc/xdg/menus
+menufiledir=$(sysconfdir)/xdg/menus
 menufile_DATA=\
 	data/lxlauncher-applications.menu
+
+man_MANS = data/lxlauncher.1
 
 directorydir=$(datadir)/desktop-directories
 directory_DATA=\
