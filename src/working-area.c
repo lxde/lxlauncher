@@ -22,18 +22,22 @@
   This piece of code detecting working area is got from Guifications, a plug-in for Gaim.
 */
 
+#include "working-area.h"
+
 # include <gdk/gdk.h>
 # include <gdk/gdkx.h>
 # include <X11/Xlib.h>
 # include <X11/Xutil.h>
 # include <X11/Xatom.h>
 
-gboolean
+static gboolean
 gf_display_get_workarea(GdkScreen* g_screen, GdkRectangle *rect) {
-	Atom xa_desktops, xa_current, xa_workarea, xa_type;
+//	Atom xa_desktops, xa_current, xa_workarea, xa_type;
+	Atom xa_current, xa_workarea, xa_type;
 	Display *x_display;
 	Window x_root;
-	guint32 desktops = 0, current = 0;
+//	guint32 desktops = 0;
+	guint32 current = 0;
 	gulong *workareas, len, fill;
 	guchar *data;
 	gint format;
@@ -60,23 +64,23 @@ gf_display_get_workarea(GdkScreen* g_screen, GdkRectangle *rect) {
 	x_root = XRootWindowOfScreen(x_screen);
 
 	/* find the _NET_NUMBER_OF_DESKTOPS atom */
-	xa_desktops = XInternAtom(x_display, "_NET_NUMBER_OF_DESKTOPS", True);
-	if(xa_desktops == None)
-		return FALSE;
+//	xa_desktops = XInternAtom(x_display, "_NET_NUMBER_OF_DESKTOPS", True);
+//	if(xa_desktops == None)
+//		return FALSE;
 
 	/* get the number of desktops */
-	if(XGetWindowProperty(x_display, x_root, xa_desktops, 0, 1, False,
-						  XA_CARDINAL, &xa_type, &format, &len, &fill,
-						  &data) != Success)
-	{
-		return FALSE;
-	}
+//	if(XGetWindowProperty(x_display, x_root, xa_desktops, 0, 1, False,
+//						  XA_CARDINAL, &xa_type, &format, &len, &fill,
+//						  &data) != Success)
+//	{
+//		return FALSE;
+//	}
 
-	if(!data)
-		return FALSE;
+//	if(!data)
+//		return FALSE;
 
-	desktops = *(guint32 *)data;
-	XFree(data);
+//	desktops = *(guint32 *)data;
+//	XFree(data);
 
 	/* find the _NET_CURRENT_DESKTOP atom */
 	xa_current = XInternAtom(x_display, "_NET_CURRENT_DESKTOP", True);

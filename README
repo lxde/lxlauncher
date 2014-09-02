@@ -20,7 +20,7 @@ contents defaults as below:
 BUTTON_SIZE = 120
 IMG_SIZE = 48
 
-2) ~/.config/lxlauncher/gtkrc which is an RC file with custom style.  
+2) ~/.config/lxlauncher/gtkrc which is an RC file with custom style.
 
 Also one additional setting can be set in global GTK settings:
 

@@ -51,14 +51,14 @@ enum
 
 static void exo_wrap_table_class_init         (ExoWrapTableClass  *klass);
 static void exo_wrap_table_init               (ExoWrapTable       *table);
-static void exo_wrap_table_get_property       (GObject            *object,
-                                               guint               prop_id,
-                                               GValue             *value,
-                                               GParamSpec         *pspec);
-static void exo_wrap_table_set_property       (GObject            *object,
-                                               guint               prop_id,
-                                               const GValue       *value,
-                                               GParamSpec         *pspec);
+//static void exo_wrap_table_get_property       (GObject            *object,
+//                                               guint               prop_id,
+//                                               GValue             *value,
+//                                               GParamSpec         *pspec);
+//static void exo_wrap_table_set_property       (GObject            *object,
+//                                               guint               prop_id,
+//                                               const GValue       *value,
+//                                               GParamSpec         *pspec);
 static void exo_wrap_table_size_request       (GtkWidget          *widget,
                                                GtkRequisition     *requisition);
 static void exo_wrap_table_size_allocate      (GtkWidget          *widget,
@@ -138,9 +138,9 @@ exo_wrap_table_get_type (void)
       type = g_type_register_static_simple (GTK_TYPE_CONTAINER,
                                           "ExoWrapTable",
                                           sizeof (ExoWrapTableClass),
-                                          exo_wrap_table_class_init,
+                                          (GClassInitFunc)exo_wrap_table_class_init,
                                           sizeof (ExoWrapTable),
-                                          exo_wrap_table_init, 0);
+                                          (GInstanceInitFunc)exo_wrap_table_init, 0);
     }
 
   return type;
@@ -153,7 +153,7 @@ exo_wrap_table_class_init (ExoWrapTableClass *klass)
 {
   GtkContainerClass *gtkcontainer_class;
   GtkWidgetClass    *gtkwidget_class;
-  GObjectClass      *gobject_class;
+//  GObjectClass      *gobject_class;
 
   /* add our private data to the class */
   g_type_class_add_private (klass, sizeof (ExoWrapTablePrivate));
@@ -161,8 +161,8 @@ exo_wrap_table_class_init (ExoWrapTableClass *klass)
   /* determine our parent type class */
   exo_wrap_table_parent_class = g_type_class_peek_parent (klass);
 
-  gobject_class = G_OBJECT_CLASS (klass);
 /*
+  gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->get_property = exo_wrap_table_get_property;
   gobject_class->set_property = exo_wrap_table_set_property;
 */
@@ -240,7 +240,7 @@ exo_wrap_table_init (ExoWrapTable *table)
 
   /* we don't provide our own window */
 #if GTK_CHECK_VERSION(2, 18, 0)
-  gtk_widget_set_has_window(table, FALSE);
+  gtk_widget_set_has_window(GTK_WIDGET(table), FALSE);
 #else
   GTK_WIDGET_SET_FLAGS (table, GTK_NO_WINDOW);
 #endif
@@ -384,22 +384,23 @@ exo_wrap_table_add (GtkContainer *container,
                     GtkWidget    *widget)
 {
   ExoWrapTable *table = EXO_WRAP_TABLE (container);
+  GtkWidget *w = GTK_WIDGET (container);
 
   /* take over ownership */
-  gtk_widget_set_parent (widget, GTK_WIDGET (table));
+  gtk_widget_set_parent (widget, w);
 
   /* add the child to our internal list */
   table->priv->children = g_list_append (table->priv->children, widget);
 
   /* realize the widget if required */
 #if GTK_CHECK_VERSION(2,20,0)
-  if (gtk_widget_get_realized(container))
+  if (gtk_widget_get_realized(w))
     gtk_widget_realize (widget);
 
   /* map the widget if required */
-  if (gtk_widget_get_visible(container) && gtk_widget_get_visible(widget))
+  if (gtk_widget_get_visible(w) && gtk_widget_get_visible(widget))
     {
-      if (gtk_widget_get_mapped(container))
+      if (gtk_widget_get_mapped(w))
         gtk_widget_map (widget);
     }
 #else
@@ -415,7 +416,7 @@ exo_wrap_table_add (GtkContainer *container,
 #endif
 
   /* queue a resize on the table */
-  gtk_widget_queue_resize (GTK_WIDGET (container));
+  gtk_widget_queue_resize (w);
 }
 
 

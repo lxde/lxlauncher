@@ -51,6 +51,11 @@ gmenu_modules="libmenu-cache"
 PKG_CHECK_MODULES(GMENU, [$gmenu_modules])
 AC_SUBST(GMENU_CFLAGS)
 AC_SUBST(GMENU_LIBS)
+dnl check for menu-cache versions 0.4.x
+LIBS_save="${LIBS}"
+LIBS="${LIBS} ${GMENU_LIBS}"
+AC_CHECK_FUNCS(menu_cache_dir_list_children)
+LIBS="${LIBS_save}"
 
 x11_modules="x11"
 PKG_CHECK_MODULES(X11, [x11])
