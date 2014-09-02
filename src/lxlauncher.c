@@ -788,11 +788,21 @@ int main(int argc, char** argv)
                             FALSE,
                             G_PARAM_READWRITE));
     // set up themes for notebook
-    gchar* gtkrc_file = get_xdg_config_file("lxlauncher/gtkrc");
-    if (gtkrc_file) {
-        gtk_rc_parse(gtkrc_file);
-    	free(gtkrc_file);
+    const gchar **system_dirs = g_get_system_config_dirs();
+    gchar *file;
+
+    i = g_strv_length(system_dirs);
+    while (i > 0)
+    {
+        file = g_build_filename(system_dirs[--i], "lxlauncher/gtkrc", NULL);
+        if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
+            gtk_rc_parse(file);
+        free(file);
     }
+    file = g_build_filename(g_get_user_config_dir(), "lxlauncher/gtkrc", NULL);
+    if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
+        gtk_rc_parse(file);
+    free(file);
 
     button_size = g_key_file_get_integer(key_file, "Main", "BUTTON_SIZE", NULL);
     img_size = g_key_file_get_integer(key_file, "Main", "IMG_SIZE", NULL);
