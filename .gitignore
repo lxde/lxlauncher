@@ -52,3 +52,4 @@ src/xml-purge
 settings.conf
 src/lxlauncher
 data/lxlauncher.1
+data/lxde-*.directory
