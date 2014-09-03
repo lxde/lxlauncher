@@ -1,0 +1,28 @@
+.\" -*-nroff-*-
+.TH LXLAUNCHER 1 "September 2014" "@PACKAGE@ @VERSION@" "lxlauncher manual"
+.SH NAME
+lxlauncher \- launcher for applications optimized for the 7-10.2" screens
+.SH SYNOPSIS
+.B lxlauncher
+.SH DESCRIPTION
+LXLauncher is an open source clone of Asus launcher for EeePC.
+It outperforms the original launcher developed by Xandros.
+
+LXLauncher enables the LXDE desktop to be a topic oriented grouping
+specific application programs to one view under tabs.
+.SH FILES
+.PD 0
+.TP
+.I ~/.config/lxlauncher/settings.conf
+An init-style file with display settings
+.TP
+.I ~/.config/lxlauncher/gtkrc
+A GTK+ RC file with style definitions
+.SH AUTHOR
+lxlauncher was written by Hong Jen Yee <pcman.tw@gmail.com>.
+Some code was taken from guification plugin of gaim/pidgin and
+some from libexo.
+
+.PP
+This manual page was written by Andriy Grytsenko <andrej@rep.kiev.ua>
+for the Debian project (and may be used by others).

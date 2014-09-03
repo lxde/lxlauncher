@@ -9,18 +9,24 @@ conf_DATA=$(conf_in_files:.conf.in=.conf)
 themedir=$(confdir)
 theme_DATA=gtkrc
 
-menufiledir=/etc/xdg/menus
+menufiledir=$(sysconfdir)/xdg/menus
 menufile_DATA=\
 	data/lxlauncher-applications.menu
 
+man_MANS = data/lxlauncher.1
+
 directorydir=$(datadir)/desktop-directories
-directory_DATA=\
-	data/lxde-webmail.directory \
-	data/lxde-work.directory \
-	data/lxde-learn.directory \
-	data/lxde-play.directory \
-	data/lxde-science.directory \
-	data/lxde-math.directory
+directory_in_files=\
+	data/lxde-webmail.directory.in \
+	data/lxde-work.directory.in \
+	data/lxde-learn.directory.in \
+	data/lxde-play.directory.in \
+	data/lxde-science.directory.in \
+	data/lxde-math.directory.in
+directory_files = $(directory_in_files:.directory.in=.directory)
+directory_DATA = $(directory_files)
+
+@INTLTOOL_DIRECTORY_RULE@
 
 #backgrounddir=$(datadir)/lxlauncher/background
 #background_DATA=
@@ -30,5 +36,6 @@ EXTRA_DIST = \
 	$(conf_in_files) \
 	$(theme_DATA) \
 	$(datafile_DATA) \
+	$(directory_in_files) \
 	$(directory_DATA) \
 	autogen.sh

@@ -25,6 +25,7 @@
 
 #include <time.h>
 
+extern char **environ;
 
 gboolean vfs_exec( const char* work_dir,
                    char** argv, char** envp,
@@ -109,8 +110,7 @@ gboolean vfs_exec_on_screen( GdkScreen* screen,
     SnLauncherContext * ctx = NULL;
     SnDisplay* display;
     gboolean ret;
-    GSpawnChildSetupFunc setup_func = NULL;
-    extern char **environ;
+//    GSpawnChildSetupFunc setup_func = NULL;
     char** new_env = envp;
     int i, n_env = 0;
     char* display_name;
@@ -159,7 +159,7 @@ gboolean vfs_exec_on_screen( GdkScreen* screen,
         sn_launcher_context_initiate( ctx, g_get_prgname(),
                                       argv[ 0 ], gtk_get_current_event_time() /*cur_time*/ );
 
-        setup_func = (GSpawnChildSetupFunc) sn_launcher_context_setup_child_process;
+//        setup_func = (GSpawnChildSetupFunc) sn_launcher_context_setup_child_process;
         if( startup_id_index >= 0 )
             g_free( new_env[i] );
         else
