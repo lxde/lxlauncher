@@ -2,14 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-03 04:32+0300\n"
-"PO-Revision-Date: 2009-09-08 22:45+0200\n"
-"Last-Translator: Y P <yupadmin@gmail.com>\n"
+"PO-Revision-Date: 2014-09-03 02:29+0000\n"
+"Last-Translator: Andriy Grytsenko <andrej@rep.kiev.ua>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 1.1.0\n"
+"X-Generator: Pootle 2.6.0-rc1\n"
+"X-POOTLE-MTIME: 1409711371.000000\n"
 
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -81,24 +81,24 @@ msgstr "Команду не знайдено"
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"
-msgstr ""
+msgstr "Навчання"
 
 #: ../data/lxde-math.directory.in.h:1
 msgid "Math"
-msgstr ""
+msgstr "Математика"
 
 #: ../data/lxde-play.directory.in.h:1
 msgid "Play"
-msgstr ""
+msgstr "Грати"
 
 #: ../data/lxde-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Наука"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr ""
+msgstr "Тенета й Пошта"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
-msgstr ""
+msgstr "Робота"
