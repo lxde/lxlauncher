@@ -54,7 +54,6 @@
 
 static GtkWidget* main_window;
 static GtkWidget* notebook;
-//static int n_cols;
 static GtkIconSize icon_size;
 
 static Atom atom_NET_WORKAREA = None;
@@ -275,15 +274,34 @@ static void add_app_btn( GtkWidget* table, MenuCacheApp* app )
 static gboolean on_viewport_draw( GtkWidget* w, cairo_t *cr1, gpointer data )
 {
     GtkWidget* scroll = gtk_widget_get_parent(w);
-	GtkStyleContext *style = gtk_widget_get_style_context(scroll);
-
+    GtkStyleContext *style = gtk_widget_get_style_context(scroll);
     cairo_t *cr;
+    GdkPixbuf* pixbuf = g_object_get_data(G_OBJECT(w), "LXLauncher:background");
 
     cr = gdk_cairo_create (gtk_widget_get_window(w));
     cairo_rectangle(cr, 0, 0, 0, 0 );
-    cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
-    cairo_fill(cr);
+    if (pixbuf)
+    {
+        gint src_w = gdk_pixbuf_get_width(pixbuf);
+        gint src_h = gdk_pixbuf_get_height(pixbuf);
+        GtkAllocation alloc;
 
+        gtk_widget_get_allocation(w, &alloc);
+        if (src_w != alloc.width && src_h != alloc.height)
+        {
+            pixbuf = gdk_pixbuf_scale_simple(pixbuf, alloc.width, alloc.height,
+                                             GDK_INTERP_BILINEAR);
+            g_object_set_data_full(G_OBJECT(w), "LXLauncher:background",
+                                   pixbuf, g_object_unref);
+        }
+        gdk_cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
+        cairo_paint(cr);
+    }
+    else
+    {
+        cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
+        cairo_fill(cr);
+    }
 	gtk_render_background(style,cr,0,0,
 			gtk_widget_get_allocated_width(scroll),
 			gtk_widget_get_allocated_height(scroll));
@@ -291,16 +309,14 @@ static gboolean on_viewport_draw( GtkWidget* w, cairo_t *cr1, gpointer data )
 
     cairo_destroy(cr);
     return FALSE;
-
 }
 #else
 static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer data )
 {
     GObjectClass* oc = G_OBJECT_GET_CLASS(w);
     GtkWidgetClass* wc = (GtkWidgetClass*)g_type_class_peek_parent( oc );
-/*
-    GdkPixmap* pixmap = (GdkPixmap*)data;
-*/
+    GdkPixbuf* pixbuf = g_object_get_data(G_OBJECT(w), "LXLauncher:background");
+
 #if GTK_CHECK_VERSION(2, 20, 0)
     if( gtk_widget_is_drawable(w) && evt->window == ((GtkViewport*)w)->bin_window )
 #else
@@ -308,35 +324,32 @@ static gboolean on_viewport_expose( GtkWidget* w, GdkEventExpose* evt, gpointer 
 #endif
     {
         cairo_t *cr;
-//        cairo_pattern_t* pat;
-
-//        GtkWidget* scroll = gtk_widget_get_parent(w);
-//        GtkAdjustment* vadj = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(scroll));
 
         cr = gdk_cairo_create (evt->window);
-        //pat = cairo_pattern_create_linear( 0, gtk_adjustment_get_value(vadj), 0, w->allocation.height + gtk_adjustment_get_value(vadj) );
-        //cairo_pattern_add_color_stop_rgb( pat, 0, 1, 1, 1);
-        //cairo_pattern_add_color_stop_rgb( pat, 1.0, ((gdouble)184/256), ((gdouble)215/256), ((gdouble)235/256));
-//        cairo_rectangle(cr, 0, 0, w->allocation.width, w->allocation.height );
-//        cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
         cairo_rectangle(cr, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
-        //cairo_set_source(cr, pat);
-        cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
-        cairo_fill(cr);
-        //cairo_pattern_destroy(pat);
+        if (pixbuf)
+        {
+            gint src_w = gdk_pixbuf_get_width(pixbuf);
+            gint src_h = gdk_pixbuf_get_height(pixbuf);
+            GtkAllocation alloc;
+
+            gtk_widget_get_allocation(w, &alloc);
+            if (src_w != alloc.width && src_h != alloc.height)
+            {
+                pixbuf = gdk_pixbuf_scale_simple(pixbuf, alloc.width, alloc.height,
+                                                 GDK_INTERP_BILINEAR);
+                g_object_set_data_full(G_OBJECT(w), "LXLauncher:background",
+                                       pixbuf, g_object_unref);
+            }
+            gdk_cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
+            cairo_paint(cr);
+        }
+        else
+        {
+            cairo_set_source_rgb(cr, 184.0/256, 215.0/256, 235.0/256);
+            cairo_fill(cr);
+        }
         cairo_destroy(cr);
-
-/*
-        GdkGC* gc = gdk_gc_new(evt->window);
-
-        gdk_gc_set_tile( gc, pixmap );
-        gdk_gc_set_fill( gc, GDK_TILED );
-        gdk_gc_set_ts_origin( gc, 0, 0 );
-
-        gdk_draw_rectangle( evt->window, gc, TRUE, evt->area.x, evt->area.y, evt->area.width, evt->area.height );
-
-        gdk_gc_unref( gc );
-*/
     }
 
     // call handler of tha parent GtkContainer class to propagate the event to children
@@ -681,24 +694,28 @@ static void create_notebook_pages()
     {
         GtkWidget* viewport;
         GtkAdjustment* adj;
-        GtkWidget* scroll = gtk_scrolled_window_new(NULL, NULL);
-        GtkWidget* page_vbox = gtk_vbox_new(FALSE, 0);
-        GtkWidget* table = exo_wrap_table_new(TRUE);
+        GtkWidget* scroll;
+        GtkWidget* page_vbox;
+        GtkWidget* table;
         GtkWidget* label;
         GtkWidget* image;
-        GtkWidget* go_up_bar = gtk_hbox_new( FALSE, 2 );
+        GtkWidget* go_up_bar;
         GdkPixbuf* pixbuf=NULL;
-//        char* file;
+        char* file;
         PageData* page_data;
         MenuCacheDir* dir = (MenuCacheDir*)l->data;
 
         if( G_UNLIKELY( menu_cache_item_get_type((MenuCacheItem*)dir) != MENU_CACHE_TYPE_DIR ) )
             continue;
 
+        scroll = gtk_scrolled_window_new(NULL, NULL);
+        page_vbox = gtk_vbox_new(FALSE, 0);
+        table = exo_wrap_table_new(TRUE);
+        label = gtk_hbox_new( FALSE, 2 );
+        go_up_bar = gtk_hbox_new( FALSE, 2 );
+
         page_data = g_new0( PageData, 1 );
         g_object_set_data_full( G_OBJECT(page_vbox), "page", page_data, page_data_free );
-
-        label = gtk_hbox_new( FALSE, 2 );
 
         gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scroll), GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC );
 
@@ -740,28 +757,20 @@ static void create_notebook_pages()
 
         // set background
         gtk_widget_set_app_paintable( GTK_WIDGET(viewport), TRUE );
-#if GTK_CHECK_VERSION(3, 0, 0)
-        g_signal_connect( viewport, "draw", G_CALLBACK(on_viewport_draw), NULL );
-#else
-/*
-        file = g_build_filename( BACKGROUND_DIR, groups[i].background, NULL );
+
+        file = g_strdup_printf(BACKGROUND_DIR "/%s.png",
+                               menu_cache_item_get_id(MENU_CACHE_ITEM(dir)));
         pixbuf = gdk_pixbuf_new_from_file( file, NULL );
         g_free( file );
-*/
-        if( pixbuf )
-        {
-            GdkPixmap *pixmap = gdk_pixmap_new( gdk_get_default_root_window(), gdk_pixbuf_get_width(pixbuf), gdk_pixbuf_get_height(pixbuf), -1 );
-            cairo_t *cr = gdk_cairo_create(pixmap);
-            gdk_cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
-            cairo_paint(cr);
-            cairo_destroy(cr);
-            g_object_unref( pixbuf );
 
-            g_object_weak_ref( G_OBJECT(viewport), (GWeakNotify)g_object_unref, pixmap );
-            g_signal_connect(viewport, "expose_event", G_CALLBACK(on_viewport_expose), pixmap);
-        }
-        else
-            g_signal_connect(viewport, "expose_event", G_CALLBACK(on_viewport_expose), NULL);
+        if (pixbuf)
+            g_object_set_data_full(G_OBJECT(viewport), "LXLauncher:background",
+                                   pixbuf, g_object_unref);
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+        g_signal_connect(viewport, "draw", G_CALLBACK(on_viewport_draw), NULL);
+#else
+        g_signal_connect(viewport, "expose_event", G_CALLBACK(on_viewport_expose), NULL);
 #endif
 
         page_data->page_vbox = page_vbox;
@@ -825,7 +834,6 @@ int main(int argc, char** argv)
 {
     int i;
     GdkRectangle working_area;
-//    GList* l;
     gboolean enable_key=0;
     GtkSettings *settings;
     const gchar* prefix = g_getenv("XDG_MENU_PREFIX");
