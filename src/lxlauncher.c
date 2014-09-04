@@ -677,6 +677,18 @@ static void page_data_free( gpointer user_data )
     g_free( data );
 }
 
+static struct _images_subst {
+    const char *tab;
+    const char *file;
+} _asus_images[] = {
+    { "Internet", "accessibility_internet_wallpaper.jpg" },
+    { "Learn", "accessibility_learn_wallpaper.jpg" },
+    { "Work", "accessibility_work_wallpaper.jpg" },
+    { "Play", "accessibility_play_wallpaper.jpg" },
+    { "Settings", "accessibility_settings_wallpaper.jpg" },
+    { NULL, NULL }
+};
+
 static void create_notebook_pages()
 {
 #ifdef HAVE_MENU_CACHE_DIR_LIST_CHILDREN /* menu-cache 0.4.0 or newer */
@@ -685,6 +697,8 @@ static void create_notebook_pages()
     GSList* l;
 
     // build pages for toplevel groups
+    if (root_dir == NULL)
+        return;
 #ifdef HAVE_MENU_CACHE_DIR_LIST_CHILDREN /* menu-cache 0.4.0 or newer */
     children = menu_cache_dir_list_children(root_dir);
     for( l = children; l; l = l->next )
@@ -758,9 +772,29 @@ static void create_notebook_pages()
         // set background
         gtk_widget_set_app_paintable( GTK_WIDGET(viewport), TRUE );
 
-        file = g_strdup_printf(BACKGROUND_DIR "/%s.png",
+        file = g_strdup_printf(BACKGROUND_DIR "/%s.jpg",
                                menu_cache_item_get_id(MENU_CACHE_ITEM(dir)));
-        pixbuf = gdk_pixbuf_new_from_file( file, NULL );
+        if (g_file_test(file, G_FILE_TEST_IS_REGULAR))
+            pixbuf = gdk_pixbuf_new_from_file( file, NULL );
+        else
+        {
+            struct _images_subst *ptr;
+
+            /* use ASUS file names as fallbacks */
+            g_free(file);
+            for (ptr = _asus_images; ptr->tab != NULL; ptr++)
+            {
+                file = (char *)ptr->file;
+                if (strcmp(menu_cache_item_get_id(MENU_CACHE_ITEM(dir)), ptr->tab) == 0)
+                    break;
+                file = NULL;
+            }
+            if (file != NULL)
+            {
+                file = g_strdup_printf(BACKGROUND_DIR "/%s", file);
+                pixbuf = gdk_pixbuf_new_from_file(file, NULL);
+            }
+        }
         g_free( file );
 
         if (pixbuf)

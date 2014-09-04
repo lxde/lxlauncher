@@ -88,6 +88,14 @@
 				<Filename>emacs.desktop</Filename>
 			</Include>
 		</Menu>
+		<Menu>
+			<Name>Other</Name>
+			<!-- Just a stub for movement, see below -->
+		</Menu>
+		<Menu>
+			<Name>wine-wine</Name>
+			<!-- Just a stub for movement, see below -->
+		</Menu>
 		<OnlyUnallocated/>
 		<Include>
 			<And>
@@ -150,6 +158,10 @@
 				</And>
 			</Include>
 		</Menu>
+		<Menu>
+			<Name>Multimedia</Name>
+			<!-- Just a stub for movement, see below -->
+		</Menu>
 		<Include>
 			<And>
 				<Category>AudioVideo</Category>
@@ -209,7 +221,7 @@
 	</Move>
 	<Move>
 		<Old>Other</Old>
-		<New>Work</New>
+		<New>Work/Other</New>
 	</Move>
 
 	<Move>
