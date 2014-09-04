@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 23:50+0100\n"
-"PO-Revision-Date: 2009-09-11 02:03+0200\n"
-"Last-Translator: Rahman Yusri Aftian <aftian@yahoo.com>\n"
+"PO-Revision-Date: 2014-09-04 14:06+0000\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.6.0-rc1\n"
+"X-POOTLE-MTIME: 1409839600.000000\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -44,19 +46,19 @@ msgstr ""
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
-msgstr "Jarak Kolom"
+msgstr "Sela kolom"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
-msgstr "Jumlah jarak antara dua kolom berurutan"
+msgstr "Banyaknya ruang di antara dua kolom berturutan"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
-msgstr "Jarak baris"
+msgstr "Sela baris"
 
 #: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
-msgstr "Jumlah jarak antara dua baris berurutan"
+msgstr "Banyaknya ruang di antara dua baris berturutan"
 
 #: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
