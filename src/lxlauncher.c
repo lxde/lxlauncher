@@ -697,6 +697,8 @@ static void create_notebook_pages()
     GSList* l;
 
     // build pages for toplevel groups
+    if (root_dir == NULL)
+        return;
 #ifdef HAVE_MENU_CACHE_DIR_LIST_CHILDREN /* menu-cache 0.4.0 or newer */
     children = menu_cache_dir_list_children(root_dir);
     for( l = children; l; l = l->next )
