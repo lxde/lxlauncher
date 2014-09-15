@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	$(GTK_CFLAGS) $(SN_CFLAGS) $(GMENU_CFLAGS) $(X11_CFLAGS) $(ADDITIONAL_FLAGS)
