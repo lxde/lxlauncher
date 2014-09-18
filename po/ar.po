@@ -1,21 +1,24 @@
 # Arabic translations for PACKAGE package.
 # Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# أحمد فرغل <ahmad.farghal@gmail.com>, 2009.
 #
+# أحمد فرغل <ahmad.farghal@gmail.com>, 2009.
+# Safa Alfulaij <safa1996alfulaij@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: LXLauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 23:50+0100\n"
-"PO-Revision-Date: 2009-09-10 22:48+0200\n"
-"Last-Translator: Ahmad Farghal <ahmad.farghal@gmail.com>\n"
-"Language-Team: Arabic\n"
-"Language: \n"
+"PO-Revision-Date: 2014-07-11 11:53+0300\n"
+"Last-Translator: Safa Alfulaij <safa1996alfulaij@gmail.com>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Pootle 1.1.0\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && "
+"n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -23,12 +26,12 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:125
 msgid "_Customize"
-msgstr "_خصص"
+msgstr "_خصّص"
 
 #: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "عد إلى \"%s\""
+msgstr "عُد إلى \"%s\""
 
 #: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
@@ -39,24 +42,24 @@ msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"اسمح للمستخدمين باستخدام أزرار أعلى/أسفل/يسار/يمين/لسان/أدخِل للتعامل مع "
+"اسمح للمستخدِمين باستخدام أزرار أعلى/أسفل/يسار/يمين/tab/enter للتعامل مع "
 "lxlauncher"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
-msgstr "المسافة بين العواميد"
+msgstr "تباعد الأعمدة"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
-msgstr "مقدار المسافة بين كل عمود والذي يليه"
+msgstr "مقدار الفراغة بين عمودين متتاليين"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
-msgstr "المسافة بين الصفوف"
+msgstr "تباعد الصفوف"
 
 #: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
-msgstr "مقدار المسافة بين كل صف والذي يليه"
+msgstr "مقدار الفراغ بين صفين متتاليين"
 
 #: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
@@ -64,9 +67,11 @@ msgstr "متجانس"
 
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr "جعل العناصر الفرعية كلها بنفس الحجم أم لا"
+msgstr "ما إذا سيكون كل الأبناء بنفس الحجم"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "الأمر غير موجود"
+msgstr "لم يُعثر على الأمر"
+
+
