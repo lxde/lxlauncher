@@ -1,16 +1,15 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Max <mpui@tut.by>, 2010
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 23:50+0100\n"
-"PO-Revision-Date: 2010-05-25 18:17+0200\n"
-"Last-Translator: Max <mpui@tut.by>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2014-10-19 21:01+0300\n"
+"PO-Revision-Date: 2014-10-19 21:05+0300\n"
+"Last-Translator: Andrej Gritsenko <andrej@rep.kiev.ua>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -23,20 +22,20 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:125
+#: ../src/lxlauncher.c:124
 msgid "_Customize"
 msgstr "_Настроить"
 
-#: ../src/lxlauncher.c:571
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Вернуться к \"%s\""
 
-#: ../src/lxlauncher.c:786
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Разрешить навигацию с клавиатуры"
 
-#: ../src/lxlauncher.c:787
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -71,3 +70,27 @@ msgstr "Единый размер для потомков"
 #, c-format
 msgid "Command not found"
 msgstr "Команда не найдена"
+
+#: ../data/lxde-learn.directory.in.h:1
+msgid "Learn"
+msgstr "Обучение"
+
+#: ../data/lxde-math.directory.in.h:1
+msgid "Math"
+msgstr "Математика"
+
+#: ../data/lxde-play.directory.in.h:1
+msgid "Play"
+msgstr "Забавы"
+
+#: ../data/lxde-science.directory.in.h:1
+msgid "Science"
+msgstr "Наука"
+
+#: ../data/lxde-webmail.directory.in.h:1
+msgid "Web Mail"
+msgstr "Сеть, Почта"
+
+#: ../data/lxde-work.directory.in.h:1
+msgid "Work"
+msgstr "Работа"
