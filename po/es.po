@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 23:50+0100\n"
-"PO-Revision-Date: 2014-10-19 20:28+0000\n"
+"PO-Revision-Date: 2014-10-19 20:29+0000\n"
 "Last-Translator: jcsl <trcs@gmx.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -18,14 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.6.0-rc2\n"
-"X-POOTLE-MTIME: 1413750523.000000\n"
+"X-POOTLE-MTIME: 1413750555.000000\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
 #: ../src/lxlauncher.c:125
-#, fuzzy
 msgid "_Customize"
 msgstr "_Personalizar"
 
