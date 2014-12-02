@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 23:50+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2014-12-02 14:33+0000\n"
+"Last-Translator: Sveinn í Felli  <sveinki@nett.is>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.10.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.6.0-rc2\n"
+"X-POOTLE-MTIME: 1417530836.000000\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -23,48 +25,50 @@ msgstr ""
 #.
 #: ../src/lxlauncher.c:125
 msgid "_Customize"
-msgstr ""
+msgstr "_Sérsníða"
 
 #: ../src/lxlauncher.c:571
 #, c-format
 msgid "Go back to \"%s\""
-msgstr ""
+msgstr "Fara aftur í \"%s\""
 
 #: ../src/lxlauncher.c:786
 msgid "Enable key navigation"
-msgstr ""
+msgstr "Virkja flakk með lyklaborði"
 
 #: ../src/lxlauncher.c:787
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
+"Leyfir notendum að nota lykla eins og upp/niður/vinstri/hægri/tab/enter til "
+"að stjórna lxlauncher"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
-msgstr ""
+msgstr "Bil milli dálka"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
-msgstr ""
+msgstr "Stærð bils milli tveggja aðliggjandi dálka"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
-msgstr ""
+msgstr "Bil milli raða"
 
 #: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
-msgstr ""
+msgstr "Stærð bils milli tveggja aðliggjandi raða"
 
 #: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
-msgstr ""
+msgstr "Allt eins"
 
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr ""
+msgstr "Hvort afleiður skuli vera af sömu stærð"
 
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr ""
+msgstr "Skipun fannst ekki"
