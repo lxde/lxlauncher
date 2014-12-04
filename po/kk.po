@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 23:50+0100\n"
+"POT-Creation-Date: 2014-09-03 04:32+0300\n"
 "PO-Revision-Date: 2012-05-01 15:01+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -23,20 +23,20 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:125
+#: ../src/lxlauncher.c:124
 msgid "_Customize"
 msgstr "Ба_птау"
 
-#: ../src/lxlauncher.c:571
+#: ../src/lxlauncher.c:640
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "\"%s\" жеріне қайту"
 
-#: ../src/lxlauncher.c:786
+#: ../src/lxlauncher.c:870
 msgid "Enable key navigation"
 msgstr "Пернелермен навигацияны іске қосу"
 
-#: ../src/lxlauncher.c:787
+#: ../src/lxlauncher.c:871
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -72,3 +72,27 @@ msgstr "Ұрпақтар бірдей өлшемді болу керек пе, �
 #, c-format
 msgid "Command not found"
 msgstr "Команда табылмады"
+
+#: ../data/lxde-learn.directory.in.h:1
+msgid "Learn"
+msgstr ""
+
+#: ../data/lxde-math.directory.in.h:1
+msgid "Math"
+msgstr ""
+
+#: ../data/lxde-play.directory.in.h:1
+msgid "Play"
+msgstr ""
+
+#: ../data/lxde-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../data/lxde-webmail.directory.in.h:1
+msgid "Web Mail"
+msgstr ""
+
+#: ../data/lxde-work.directory.in.h:1
+msgid "Work"
+msgstr ""

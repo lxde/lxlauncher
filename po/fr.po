@@ -40,8 +40,8 @@ msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permettre aux utilisateurs d'utiliser les touches "
-"haut/bas/gauche/droite/tabulation/entrée pour agir sur lxlauncher"
+"Permettre aux utilisateurs d'utiliser les touches haut/bas/gauche/droite/"
+"tabulation/entrée pour agir sur lxlauncher"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"

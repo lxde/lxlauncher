@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 23:50+0100\n"
+"POT-Creation-Date: 2014-09-03 04:32+0300\n"
 "PO-Revision-Date: 2010-09-03 07:37+0200\n"
 "Last-Translator: SatyaN <satyathavy@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,20 +22,20 @@ msgstr ""
 #. item = gtk_separator_menu_item_new();
 #. gtk_menu_shell_append(p, item);
 #.
-#: ../src/lxlauncher.c:125
+#: ../src/lxlauncher.c:124
 msgid "_Customize"
 msgstr "_ប្តូរតាមបំណង"
 
-#: ../src/lxlauncher.c:571
+#: ../src/lxlauncher.c:640
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "ត្រលប់ទៅកាន់ \"%s\""
 
-#: ../src/lxlauncher.c:786
+#: ../src/lxlauncher.c:870
 msgid "Enable key navigation"
 msgstr ""
 
-#: ../src/lxlauncher.c:787
+#: ../src/lxlauncher.c:871
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -69,3 +69,27 @@ msgstr ""
 #, c-format
 msgid "Command not found"
 msgstr "បញ្ជាមិនត្រូវបានរកឃើញ"
+
+#: ../data/lxde-learn.directory.in.h:1
+msgid "Learn"
+msgstr ""
+
+#: ../data/lxde-math.directory.in.h:1
+msgid "Math"
+msgstr ""
+
+#: ../data/lxde-play.directory.in.h:1
+msgid "Play"
+msgstr ""
+
+#: ../data/lxde-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../data/lxde-webmail.directory.in.h:1
+msgid "Web Mail"
+msgstr ""
+
+#: ../data/lxde-work.directory.in.h:1
+msgid "Work"
+msgstr ""

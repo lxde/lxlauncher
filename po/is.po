@@ -93,4 +93,3 @@ msgstr "Vefpóstur"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Vinna"
-

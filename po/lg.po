@@ -39,7 +39,8 @@ msgstr "Lambuza mapeesa"
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
-msgstr "lxlauncher ekolere ku mapeesa aga yambuka/kka/kkono/ddyo/luseetuka/enta"
+msgstr ""
+"lxlauncher ekolere ku mapeesa aga yambuka/kka/kkono/ddyo/luseetuka/enta"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"

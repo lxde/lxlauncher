@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-19 21:01+0300\n"
+"POT-Creation-Date: 2014-09-03 04:32+0300\n"
 "PO-Revision-Date: 2014-10-19 21:05+0300\n"
 "Last-Translator: Andrej Gritsenko <andrej@rep.kiev.ua>\n"
 "Language: ru\n"
@@ -26,16 +26,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Настроить"
 
-#: ../src/lxlauncher.c:641
+#: ../src/lxlauncher.c:640
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Вернуться к \"%s\""
 
-#: ../src/lxlauncher.c:903
+#: ../src/lxlauncher.c:870
 msgid "Enable key navigation"
 msgstr "Разрешить навигацию с клавиатуры"
 
-#: ../src/lxlauncher.c:904
+#: ../src/lxlauncher.c:871
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
