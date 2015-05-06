@@ -7,16 +7,18 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-03 04:32+0300\n"
-"PO-Revision-Date: 2013-07-09 11:37+0000\n"
-"Last-Translator: Miguel Anxo <mbouzada@gmail.com>\n"
+"PO-Revision-Date: 2015-04-12 15:13+0000\n"
+"Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: proxecto@trasno.net\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.5.0\n"
-"X-POOTLE-MTIME: 1373369833.0\n"
+"X-Generator: Pootle 2.7.0-alpha1\n"
+"X-POOTLE-MTIME: 1428851580.000000\n"
+"X-Pootle-Path: /gl/lxlauncher/po/gl.po\n"
+"X-Pootle-Revision: 673\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -49,7 +51,7 @@ msgstr "Espazado de columnas"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
-msgstr "A cantidade de espazo entre dúas columnas consecutivas"
+msgstr "O espazo entre dúas columnas consecutivas"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
@@ -57,7 +59,7 @@ msgstr "Espazado de filas"
 
 #: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
-msgstr "A cantidade de espazo entre dúas filas consecutivas"
+msgstr "O espazo entre dúas filas consecutivas"
 
 #: ../src/exo-wrap-table.c:226
 msgid "Homogeneous"
@@ -70,28 +72,28 @@ msgstr "Se os descendentes deben ter todos o mesmo tamaño"
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Orde non atopada"
+msgstr "A orde non foi atopada"
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"
-msgstr ""
+msgstr "Aprender"
 
 #: ../data/lxde-math.directory.in.h:1
 msgid "Math"
-msgstr ""
+msgstr "Matemáticas"
 
 #: ../data/lxde-play.directory.in.h:1
 msgid "Play"
-msgstr ""
+msgstr "Xogar"
 
 #: ../data/lxde-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Ciencias"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr ""
+msgstr "Correo web"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
-msgstr ""
+msgstr "Traballo"

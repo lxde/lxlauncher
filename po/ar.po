@@ -20,6 +20,8 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Pootle 2.6.0-rc2\n"
 "X-POOTLE-MTIME: 1417154738.000000\n"
+"X-Pootle-Path: /ar/lxlauncher/po/ar.po\n"
+"X-Pootle-Revision: 0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();

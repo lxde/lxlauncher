@@ -7,16 +7,18 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-03 04:32+0300\n"
-"PO-Revision-Date: 2013-11-06 21:33+0000\n"
-"Last-Translator: vgezer <volkangezer@gmail.com>\n"
+"PO-Revision-Date: 2014-12-12 23:31+0000\n"
+"Last-Translator: <necdetyucel@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.5.0\n"
-"X-POOTLE-MTIME: 1383773586.0\n"
+"X-Generator: Pootle 2.6.0-rc2\n"
+"X-POOTLE-MTIME: 1418427067.000000\n"
+"X-Pootle-Path: /tr/lxlauncher/po/tr.po\n"
+"X-Pootle-Revision: 0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -40,8 +42,8 @@ msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Kullanıcıların, lxlauncher uygulamasını çalıştırmak için yukarı/aşağı/sol/"
-"sağ/sekme/enter tuşlarını kullanmalarına olanak ver"
+"Kullanıcıların, lxlauncher uygulamasını çalıştırmak için "
+"yukarı/aşağı/sol/sağ/sekme/enter tuşlarını kullanmalarına olanak ver"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -74,24 +76,24 @@ msgstr "Komut bulunamadı"
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"
-msgstr ""
+msgstr "Öğren"
 
 #: ../data/lxde-math.directory.in.h:1
 msgid "Math"
-msgstr ""
+msgstr "Matematik"
 
 #: ../data/lxde-play.directory.in.h:1
 msgid "Play"
-msgstr ""
+msgstr "Oyna"
 
 #: ../data/lxde-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Bilim"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr ""
+msgstr "Web Posta"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
-msgstr ""
+msgstr "Çalış"

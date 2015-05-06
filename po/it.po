@@ -18,6 +18,8 @@ msgstr ""
 "X-Generator: Pootle 1.1.0\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
+"X-Pootle-Path: /it/lxlauncher/po/it.po\n"
+"X-Pootle-Revision: 0\n"
 
 #
 #.

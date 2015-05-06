@@ -1,24 +1,24 @@
 # Spanish translation of lxlauncher
 # Copyright (C) 2008 THE lxlauncher'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the lxlauncher package.
-#
 # Julio Napurí Carlos <julionc@gmail.com>, 2008.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-03 04:32+0300\n"
-"PO-Revision-Date: 2014-10-19 20:29+0000\n"
-"Last-Translator: jcsl <trcs@gmx.com>\n"
+"PO-Revision-Date: 2015-03-27 20:32+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.6.0-rc2\n"
-"X-POOTLE-MTIME: 1413750555.000000\n"
+"X-Generator: Pootle 2.7.0-alpha1\n"
+"X-POOTLE-MTIME: 1427488345.000000\n"
+"X-Pootle-Path: /es/lxlauncher/po/es.po\n"
+"X-Pootle-Revision: 202\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -31,23 +31,23 @@ msgstr "_Personalizar"
 #: ../src/lxlauncher.c:640
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Volver a \"%s\""
+msgstr "Volver a «%s»"
 
 #: ../src/lxlauncher.c:870
 msgid "Enable key navigation"
-msgstr "Activar teclas de navegación"
+msgstr "Activar navegación mediante teclado"
 
 #: ../src/lxlauncher.c:871
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permite operar lxlauncher con las teclas arriba/abajo/izquierda/derecha/"
-"tabulador/retorno"
+"Permite operar lxlauncher con las teclas "
+"arriba/abajo/izquierda/derecha/tabulador/retorno"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
-msgstr "Espaciado de columnas"
+msgstr "Espacio entre columnas"
 
 #: ../src/exo-wrap-table.c:197
 msgid "The amount of space between two consecutive columns"
@@ -55,7 +55,7 @@ msgstr "La cantidad de espacio entre dos columnas consecutivas"
 
 #: ../src/exo-wrap-table.c:211
 msgid "Row spacing"
-msgstr "Espaciado de filas"
+msgstr "Espacio entre filas"
 
 #: ../src/exo-wrap-table.c:212
 msgid "The amount of space between two consecutive rows"
@@ -72,28 +72,28 @@ msgstr "Si los descendientes deben tener todos el mismo tamaño"
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "Comando no encontrado"
+msgstr "No se encontró la orden"
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"
-msgstr ""
+msgstr "Aprendizaje"
 
 #: ../data/lxde-math.directory.in.h:1
 msgid "Math"
-msgstr ""
+msgstr "Matemáticas"
 
 #: ../data/lxde-play.directory.in.h:1
 msgid "Play"
-msgstr ""
+msgstr "Juegos"
 
 #: ../data/lxde-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Ciencias"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr ""
+msgstr "Correo web"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
-msgstr ""
+msgstr "Trabajo"

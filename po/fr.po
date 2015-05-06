@@ -17,6 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 2.6.0-rc1\n"
 "X-POOTLE-MTIME: 1411918472.000000\n"
+"X-Pootle-Path: /fr/lxlauncher/po/fr.po\n"
+"X-Pootle-Revision: 0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -40,8 +42,8 @@ msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permettre aux utilisateurs d'utiliser les touches haut/bas/gauche/droite/"
-"tabulation/entrée pour agir sur lxlauncher"
+"Permettre aux utilisateurs d'utiliser les touches "
+"haut/bas/gauche/droite/tabulation/entrée pour agir sur lxlauncher"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"

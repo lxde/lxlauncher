@@ -8,14 +8,18 @@ msgstr ""
 "Project-Id-Version: lxlauncher 0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-03 04:32+0300\n"
-"PO-Revision-Date: 2009-12-09 18:03+0100\n"
-"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
+"PO-Revision-Date: 2015-02-19 07:47+0000\n"
+"Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech\n"
-"Language: \n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Pootle 2.7.0-alpha1\n"
+"X-POOTLE-MTIME: 1424332033.000000\n"
+"X-Pootle-Path: /cs/lxlauncher/po/cs.po\n"
+"X-Pootle-Revision: 0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -73,24 +77,24 @@ msgstr "Příkaz nenalezen"
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"
-msgstr ""
+msgstr "Učení"
 
 #: ../data/lxde-math.directory.in.h:1
 msgid "Math"
-msgstr ""
+msgstr "Matematika"
 
 #: ../data/lxde-play.directory.in.h:1
 msgid "Play"
-msgstr ""
+msgstr "Hra"
 
 #: ../data/lxde-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Věda"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr ""
+msgstr "Pošta"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
-msgstr ""
+msgstr "Práce"

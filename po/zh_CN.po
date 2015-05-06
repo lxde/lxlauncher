@@ -17,6 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pootle 2.6.0-rc2\n"
 "X-POOTLE-MTIME: 1417571101.000000\n"
+"X-Pootle-Path: /zh_CN/lxlauncher/po/zh_CN.po\n"
+"X-Pootle-Revision: 0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();

@@ -12,6 +12,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED KINGDOM\n"
+"X-Pootle-Path: /en_GB/lxlauncher/po/en_GB.po\n"
+"X-Pootle-Revision: 0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();

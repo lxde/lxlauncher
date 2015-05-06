@@ -18,6 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Pootle 1.1.0\n"
 "X-Poedit-Language: Swedish\n"
+"X-Pootle-Path: /sv/lxlauncher/po/sv.po\n"
+"X-Pootle-Revision: 0\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
