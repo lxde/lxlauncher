@@ -16,7 +16,7 @@ Also, if you put the tab icons of Asus launcher under
 /usr/share/lxlauncher/icons, they will be used in the tabs.
 Otherwise, some icons from the gtk+ icon theme will be used instead.
 
-The LXLauncher has two configuration files to be tuned by users:
+The LXLauncher has three configuration files to be tuned by users:
 
 1) ~/.config/lxlauncher/settings.conf which is an init-style file with
 contents defaults as below:
@@ -25,7 +25,9 @@ contents defaults as below:
 BUTTON_SIZE = 120
 IMG_SIZE = 48
 
-2) ~/.config/lxlauncher/gtkrc which is an RC file with custom style.
+2) ~/.config/lxlauncher/gtkrc which is a GTK+ 2 RC file with custom style.
+
+3) ~/.config/lxlauncher/gtk.css which is a GTK+ 3 CSS file with custom style.
 
 Also one additional setting can be set in global GTK settings:
 

@@ -7,7 +7,9 @@ conf_in_files=settings.conf.in
 conf_DATA=$(conf_in_files:.conf.in=.conf)
 
 themedir=$(confdir)
-theme_DATA=gtkrc
+theme_DATA=\
+	gtkrc \
+	gtk.css
 
 menufiledir=$(sysconfdir)/xdg/menus
 menufile_DATA=\

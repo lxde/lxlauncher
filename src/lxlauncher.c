@@ -909,6 +909,31 @@ int main(int argc, char** argv)
     gchar *file;
 
     i = g_strv_length((char **)system_dirs);
+#if GTK_CHECK_VERSION(3,0,0)
+    while (i > 0)
+    {
+        file=g_build_filename(system_dirs[--i], "lxlauncher/gtk.css", NULL);
+        if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
+        {
+            GtkCssProvider *css = gtk_css_provider_new();
+            gtk_css_provider_load_from_path(css, file, NULL);
+            gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                    GTK_STYLE_PROVIDER(css),
+                    GTK_STYLE_PROVIDER_PRIORITY_USER);
+        }
+        free(file);
+    }
+    file=g_build_filename(g_get_user_config_dir(), "lxlauncher/gtk.css", NULL);
+    if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
+    {
+        GtkCssProvider *css = gtk_css_provider_new();
+        gtk_css_provider_load_from_path(css, file, NULL);
+        gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                GTK_STYLE_PROVIDER(css),
+                GTK_STYLE_PROVIDER_PRIORITY_USER);
+    }
+    free(file);
+#else
     while (i > 0)
     {
         file = g_build_filename(system_dirs[--i], "lxlauncher/gtkrc", NULL);
@@ -920,6 +945,7 @@ int main(int argc, char** argv)
     if (g_file_test(file, G_FILE_TEST_EXISTS) == TRUE)
         gtk_rc_parse(file);
     free(file);
+#endif
 
     button_size = g_key_file_get_integer(key_file, "Main", "BUTTON_SIZE", NULL);
     img_size = g_key_file_get_integer(key_file, "Main", "IMG_SIZE", NULL);

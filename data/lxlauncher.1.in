@@ -17,7 +17,10 @@ specific application programs to one view under tabs.
 An init-style file with display settings
 .TP
 .I ~/.config/lxlauncher/gtkrc
-A GTK+ RC file with style definitions
+A GTK+ 2 RC file with style definitions
+.TP
+.I ~/.config/lxlauncher/gtk.css
+A GTK+ 3 CSS file with style definitions
 .SH AUTHOR
 lxlauncher was written by Hong Jen Yee <pcman.tw@gmail.com>.
 Some code was taken from guification plugin of gaim/pidgin and

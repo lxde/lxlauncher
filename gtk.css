@@ -1,0 +1,26 @@
+GtkViewport {
+	background: none;
+}
+
+.notebook {
+	background: #3675AD;
+	font: Sans Bold 11;
+}
+
+.notebook > .frame,
+.notebook > .vertical {
+	background: #B7D6EA;
+}
+
+.notebook > .horizontal .label {
+	color: #B7D6EA;
+}
+
+.notebook > .horizontal.active-page .label {
+	color: #FFFFFF;
+}
+
+.notebook > .vertical .label,
+.button .label {
+	color: #3675AD;
+}
