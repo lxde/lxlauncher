@@ -3,9 +3,3 @@
 src/lxlauncher.c
 src/exo-wrap-table.c
 src/misc.c
-data/lxde-learn.directory.in
-data/lxde-math.directory.in
-data/lxde-play.directory.in
-data/lxde-science.directory.in
-data/lxde-webmail.directory.in
-data/lxde-work.directory.in
