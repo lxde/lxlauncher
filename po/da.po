@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: lxlauncher VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-03 04:32+0300\n"
-"PO-Revision-Date: 2017-05-22 22:57+0000\n"
+"PO-Revision-Date: 2017-05-24 10:39+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish\n"
 "Language: da\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.8\n"
-"X-POOTLE-MTIME: 1495493825.348192\n"
+"X-POOTLE-MTIME: 1495622357.330701\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -91,7 +91,7 @@ msgstr "Videnskab"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr "Webmail"
+msgstr "Webpost"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
