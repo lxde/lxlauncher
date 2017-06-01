@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-03 04:32+0300\n"
-"PO-Revision-Date: 2015-08-17 01:29+0000\n"
-"Last-Translator: Anonymous Pootle User\n"
+"PO-Revision-Date: 2017-05-31 22:10+0000\n"
+"Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.7\n"
-"X-POOTLE-MTIME: 1439774953.639344\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1496268624.066278\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -34,15 +34,15 @@ msgstr "Grįžti į \"%s\""
 
 #: ../src/lxlauncher.c:870
 msgid "Enable key navigation"
-msgstr "Įjungti navigaciją klavišais"
+msgstr "Įjungti naršymą klavišais"
 
 #: ../src/lxlauncher.c:871
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Leisti vartotojams valdyti lxlaucher auštyn/žemyn/į kairę/į dešinę/tab/enter "
-"klavišais"
+"Leisti naudotojams valdyti lxlaucher, naudojant "
+"aukštyn/žemyn/kairėn/dešinėn/tab/enter klavišus"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -66,7 +66,7 @@ msgstr "Vienarūšis"
 
 #: ../src/exo-wrap-table.c:227
 msgid "Whether the children should be all the same size"
-msgstr "Ar vaikai turėtų būti to pačio dydžio"
+msgstr "Ar pavaldieji turėtų būti visi to pačio dydžio"
 
 #: ../src/misc.c:344
 #, c-format
@@ -75,24 +75,24 @@ msgstr "Komanda nerasta"
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"
-msgstr ""
+msgstr "Mokymasis"
 
 #: ../data/lxde-math.directory.in.h:1
 msgid "Math"
-msgstr ""
+msgstr "Matematika"
 
 #: ../data/lxde-play.directory.in.h:1
 msgid "Play"
-msgstr ""
+msgstr "Groti"
 
 #: ../data/lxde-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Mokslas"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr ""
+msgstr "Saityno paštas"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
-msgstr ""
+msgstr "Darbas"
