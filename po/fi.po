@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: lxlauncher 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-03 04:32+0300\n"
-"PO-Revision-Date: 2014-08-31 19:41+0000\n"
-"Last-Translator: system user <>\n"
+"PO-Revision-Date: 2017-07-19 16:43+0000\n"
+"Last-Translator: Juhani Numminen <juhaninumminen0@gmail.com>\n"
 "Language-Team: fi <fi@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.7\n"
-"X-POOTLE-MTIME: 1409514064.000000\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1500482627.520214\n"
 
 #.
 #. item = gtk_separator_menu_item_new();
@@ -79,7 +79,7 @@ msgstr "Opi"
 
 #: ../data/lxde-math.directory.in.h:1
 msgid "Math"
-msgstr ""
+msgstr "Matematiikka"
 
 #: ../data/lxde-play.directory.in.h:1
 msgid "Play"
@@ -87,11 +87,11 @@ msgstr "Pelaa"
 
 #: ../data/lxde-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Tiede"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr ""
+msgstr "Web-sähköposti"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
