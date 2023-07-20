@@ -21,6 +21,7 @@ directorydir=$(datadir)/desktop-directories
 directory_in_files=\
 	data/lxde-webmail.directory.in \
 	data/lxde-work.directory.in \
+	data/lxde-language.directory.in \
 	data/lxde-learn.directory.in \
 	data/lxde-play.directory.in \
 	data/lxde-science.directory.in \
