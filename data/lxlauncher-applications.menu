@@ -70,7 +70,7 @@
 		</Menu>
 		<Menu>
 			<Name>Accessibility</Name>
-			<Directory>lxde-accessibility.directory</Directory>
+			<Directory>lxde-utility-accessibility.directory</Directory>
 			<Include>
 				<And>
 					<Category>Accessibility</Category>
