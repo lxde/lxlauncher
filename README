@@ -7,6 +7,8 @@ hence not included in this package.
 Notes for compilation: it requires intltool, GTK+ 2.12 or newer,
 libstartup-notification and libmenu-cache for compilation.
 
+It requires lxmenu-data at run time.
+
 Please put the images in /usr/share/lxlauncher/background/.
 LXLauncher will use those background images if available for any page
 which has appropriate ID - the image name should be <ID>.jpg, for
