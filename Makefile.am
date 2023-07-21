@@ -24,7 +24,6 @@ directory_in_files=\
 	data/lxde-language.directory.in \
 	data/lxde-learn.directory.in \
 	data/lxde-play.directory.in \
-	data/lxde-science.directory.in \
 	data/lxde-math.directory.in
 directory_files = $(directory_in_files:.directory.in=.directory)
 directory_DATA = $(directory_files)
