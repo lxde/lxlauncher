@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2017-05-22 21:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "ה_תאמה אישית"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "חזרה אל \"%s\""
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "הפעלת ניווט באמצעות לחצנים"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -85,10 +85,6 @@ msgstr "מתמטיקה"
 msgid "Play"
 msgstr "משחק"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "מדע"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "דוא״ל בדפדפן"
@@ -96,3 +92,6 @@ msgstr "דוא״ל בדפדפן"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "עבודה"
+
+#~ msgid "Science"
+#~ msgstr "מדע"

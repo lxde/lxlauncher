@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXDE\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-08-17 01:29+0000\n"
 "Last-Translator: Anonymous Pootle User\n"
 "Language-Team: Romanian <LL@li.org>\n"
@@ -23,16 +23,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Personalizare"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Înapoi la „%s”"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Activează navigarea cu taste"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -79,10 +79,6 @@ msgstr ""
 
 #: ../data/lxde-play.directory.in.h:1
 msgid "Play"
-msgstr ""
-
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
 msgstr ""
 
 #: ../data/lxde-webmail.directory.in.h:1

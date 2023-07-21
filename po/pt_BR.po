@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-05-19 22:15+0000\n"
 "Last-Translator: Felipe Braga <fbobraga@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -28,16 +28,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Personalizar"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Voltar para \"%s\""
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Habilitar navegação pelo teclado"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -86,10 +86,6 @@ msgstr "Matemática"
 msgid "Play"
 msgstr "Reproduzir"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Ciências"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Webmail"
@@ -97,3 +93,6 @@ msgstr "Webmail"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Trabalho"
+
+#~ msgid "Science"
+#~ msgstr "Ciências"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-01-19 20:48+0000\n"
 "Last-Translator: Anari Jalakas <anari.jalakas@gmail.com>\n"
 "Language-Team: Gnome Estonian Translation Team <gnome-et linux ee>\n"
@@ -28,16 +28,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Kohanda"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Mine tagasi \"%s\"-le"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Klahvidega liikumise lubamine"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -86,10 +86,6 @@ msgstr "Matemaatika"
 msgid "Play"
 msgstr "Mängimine"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Teadus"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Veebimeil"
@@ -97,3 +93,6 @@ msgstr "Veebimeil"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Töö"
+
+#~ msgid "Science"
+#~ msgstr "Teadus"

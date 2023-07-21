@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-06-19 13:27+0000\n"
 "Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "మలచుకొను (_C)"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "వెనుకకు \"%s\"కి వెళ్ళు"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "దిశానిర్ధేశిత కీను చేతనపరుచు"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -84,10 +84,6 @@ msgstr "గణితం"
 msgid "Play"
 msgstr "ఆడించండి"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "విజ్ఞానం"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "వెబ్ మెయిల్"
@@ -95,3 +91,6 @@ msgstr "వెబ్ మెయిల్"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "పని"
+
+#~ msgid "Science"
+#~ msgstr "విజ్ఞానం"

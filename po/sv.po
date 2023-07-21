@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2017-06-26 09:17+0000\n"
 "Last-Translator: Martin Bagge <brother@bsnet.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -28,17 +28,17 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Anpassa"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Gå tillbaka till \"%s\""
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Aktivera tangentnavigering"
 
 # mailade pcman.tw@gmail.com om felstavningen till tab i den engelska versionen
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -87,10 +87,6 @@ msgstr "Matte"
 msgid "Play"
 msgstr "Spela upp"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Vetenskap"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Webben och E-post"
@@ -98,3 +94,6 @@ msgstr "Webben och E-post"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Arbete"
+
+#~ msgid "Science"
+#~ msgstr "Vetenskap"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2017-07-19 16:43+0000\n"
 "Last-Translator: Juhani Numminen <juhaninumminen0@gmail.com>\n"
 "Language-Team: fi <fi@li.org>\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Mukauta"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Siirry takaisin kohtaan ”%s”"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Salli näppäinkomennot"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -85,10 +85,6 @@ msgstr "Matematiikka"
 msgid "Play"
 msgstr "Pelaa"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Tiede"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Web-sähköposti"
@@ -96,6 +92,9 @@ msgstr "Web-sähköposti"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Työskentele"
+
+#~ msgid "Science"
+#~ msgstr "Tiede"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"

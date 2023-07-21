@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-07-20 13:46+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: \n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "사용자 정의(_C)"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "\"%s\"(으)로 되돌아 가기"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "키 탐색 활성화"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -84,10 +84,6 @@ msgstr "수학"
 msgid "Play"
 msgstr "놀이"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "과학"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "웹 메일"
@@ -95,3 +91,6 @@ msgstr "웹 메일"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "사무"
+
+#~ msgid "Science"
+#~ msgstr "과학"

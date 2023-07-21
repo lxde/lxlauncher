@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.2.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2014-12-16 14:07+0000\n"
 "Last-Translator: rago1975 <take1975@kumamoto.email.ne.jp>\n"
 "Language-Team: ja_JP <LL@li.org>\n"
@@ -28,16 +28,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "カスタマイズ(_C)"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "\"%s\" に戻る"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "キー操作を有効にする"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -84,10 +84,6 @@ msgstr "数学"
 msgid "Play"
 msgstr "プレイ"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "科学"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Webメール"
@@ -95,3 +91,6 @@ msgstr "Webメール"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "作業"
+
+#~ msgid "Science"
+#~ msgstr "科学"

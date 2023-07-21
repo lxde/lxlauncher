@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2014-12-11 12:41+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Aanpassen"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Ga terug naar '%s'"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Schakel toetsnavigatie in"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -85,10 +85,6 @@ msgstr "Wiskunde"
 msgid "Play"
 msgstr "Spelen"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Wetenschap"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Webmail"
@@ -96,3 +92,6 @@ msgstr "Webmail"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Werk"
+
+#~ msgid "Science"
+#~ msgstr "Wetenschap"

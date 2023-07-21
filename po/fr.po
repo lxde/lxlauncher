@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher-gmenu r844\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2014-09-28 15:34+0000\n"
 "Last-Translator: Julien Henry <Julius22@laposte.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -26,22 +26,22 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Personnaliser"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Retourner vers « %s »"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Activer la navigation au clavier"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permettre aux utilisateurs d'utiliser les touches "
-"haut/bas/gauche/droite/tabulation/entrée pour agir sur lxlauncher"
+"Permettre aux utilisateurs d'utiliser les touches haut/bas/gauche/droite/"
+"tabulation/entrée pour agir sur lxlauncher"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -84,10 +84,6 @@ msgstr "Maths"
 msgid "Play"
 msgstr "Jouer"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Sciences"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Méls"
@@ -95,3 +91,6 @@ msgstr "Méls"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Travail"
+
+#~ msgid "Science"
+#~ msgstr "Sciences"

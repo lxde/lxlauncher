@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXLauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-06-14 16:49+0000\n"
 "Last-Translator: صفا الفليج <safa1996alfulaij@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -29,16 +29,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_خصّص"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "عُد إلى \"%s\""
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "مكّن الملاحة بلوحة المفاتيح"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -87,10 +87,6 @@ msgstr "الرّياضيّات"
 msgid "Play"
 msgstr "شغّل"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "علوم"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "البريد الإلكترونيّ"
@@ -98,3 +94,6 @@ msgstr "البريد الإلكترونيّ"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "العمل"
+
+#~ msgid "Science"
+#~ msgstr "علوم"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2014-12-12 23:31+0000\n"
 "Last-Translator: nyucel <necdetyucel@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,22 +26,22 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Kişiselleştir"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "\"%s\" geri dön"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Tuşlarla dolaşımı etkinleştir"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Kullanıcıların, lxlauncher uygulamasını çalıştırmak için "
-"yukarı/aşağı/sol/sağ/sekme/enter tuşlarını kullanmalarına olanak ver"
+"Kullanıcıların, lxlauncher uygulamasını çalıştırmak için yukarı/aşağı/sol/"
+"sağ/sekme/enter tuşlarını kullanmalarına olanak ver"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -84,10 +84,6 @@ msgstr "Matematik"
 msgid "Play"
 msgstr "Oyna"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Bilim"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Web Posta"
@@ -95,3 +91,6 @@ msgstr "Web Posta"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Çalış"
+
+#~ msgid "Science"
+#~ msgstr "Bilim"

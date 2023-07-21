@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2017-05-23 02:05+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "Ба_птау"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "\"%s\" жеріне қайту"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Пернелермен навигацияны іске қосу"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -85,10 +85,6 @@ msgstr "Математика"
 msgid "Play"
 msgstr "Ойындар"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Ғылым"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Желі, пошта"
@@ -96,3 +92,6 @@ msgstr "Желі, пошта"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Жұмыс"
+
+#~ msgid "Science"
+#~ msgstr "Ғылым"

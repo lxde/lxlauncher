@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2018-12-13 11:17+0000\n"
 "Last-Translator: mirek <mirek@cnl.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Prispôsobiť"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Späť na „%s“"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Zapnúť navigáciu pomocou kláves"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -85,10 +85,6 @@ msgstr "Matematika"
 msgid "Play"
 msgstr "Hry"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Veda"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Webový email"
@@ -96,3 +92,6 @@ msgstr "Webový email"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Práca"
+
+#~ msgid "Science"
+#~ msgstr "Veda"

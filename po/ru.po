@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-19 21:01+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2014-10-19 21:18+0000\n"
 "Last-Translator: system user <>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pootle 2.7\n"
 "X-POOTLE-MTIME: 1413753531.000000\n"
 
@@ -84,10 +84,6 @@ msgstr "Математика"
 msgid "Play"
 msgstr "Забавы"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Наука"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Сеть, Почта"
@@ -95,3 +91,6 @@ msgstr "Сеть, Почта"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Работа"
+
+#~ msgid "Science"
+#~ msgstr "Наука"

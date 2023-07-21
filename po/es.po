@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-03-27 20:32+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -26,22 +26,22 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Personalizar"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Volver a «%s»"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Activar navegación mediante teclado"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
 msgstr ""
-"Permite operar lxlauncher con las teclas "
-"arriba/abajo/izquierda/derecha/tabulador/retorno"
+"Permite operar lxlauncher con las teclas arriba/abajo/izquierda/derecha/"
+"tabulador/retorno"
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -84,10 +84,6 @@ msgstr "Matemáticas"
 msgid "Play"
 msgstr "Juegos"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Ciencias"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Correo web"
@@ -95,3 +91,6 @@ msgstr "Correo web"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Trabajo"
+
+#~ msgid "Science"
+#~ msgstr "Ciencias"

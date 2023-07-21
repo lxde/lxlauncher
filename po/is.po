@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2014-12-03 12:33+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -25,16 +25,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "Sérs_níða"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Fara aftur í \"%s\""
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Virkja flakk með lyklaborði"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -83,10 +83,6 @@ msgstr "Stærðfræði"
 msgid "Play"
 msgstr "Spila"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Vísindi"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Vefpóstur"
@@ -94,3 +90,6 @@ msgstr "Vefpóstur"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Vinna"
+
+#~ msgid "Science"
+#~ msgstr "Vísindi"

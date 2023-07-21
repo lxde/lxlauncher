@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-03-20 07:17+0000\n"
 "Last-Translator: wwycheuk <wwycheuk@gmail.com>\n"
 "Language-Team: zh_TW <LL@li.org>\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "自訂(_C)"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "回到 \"%s\""
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "讓瀏覽鍵生效"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -83,10 +83,6 @@ msgstr "數學"
 msgid "Play"
 msgstr "娛樂"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "科學"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "網郵"
@@ -94,6 +90,9 @@ msgstr "網郵"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "工作"
+
+#~ msgid "Science"
+#~ msgstr "科學"
 
 #~ msgid "Internet"
 #~ msgstr "網際網路"

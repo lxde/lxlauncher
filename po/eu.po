@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2014-12-11 22:26+0000\n"
 "Last-Translator: Asier Iturralde Sarasola <asier.iturralde@gmail.com>\n"
 "Language-Team: Basque <alainmendi@gmail.com>\n"
@@ -22,16 +22,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Pertsonalizatu"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Joan atzera \"%s\"-(e)ra"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Gaitu tekla bidezko nabigazioa"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -80,10 +80,6 @@ msgstr "Matematika"
 msgid "Play"
 msgstr "Jolastu"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Zientzia"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Web-posta"
@@ -91,3 +87,6 @@ msgstr "Web-posta"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Lana"
+
+#~ msgid "Science"
+#~ msgstr "Zientzia"

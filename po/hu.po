@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-03 04:32+0300\n"
+"POT-Creation-Date: 2023-07-21 13:59+0200\n"
 "PO-Revision-Date: 2015-05-04 16:34+0000\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
@@ -22,16 +22,16 @@ msgstr ""
 msgid "_Customize"
 msgstr "_Testreszabás"
 
-#: ../src/lxlauncher.c:640
+#: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
 msgstr "Vissza ide: „%s”"
 
-#: ../src/lxlauncher.c:870
+#: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
 msgstr "Billentyűnavigáció engedélyezése"
 
-#: ../src/lxlauncher.c:871
+#: ../src/lxlauncher.c:904
 msgid ""
 "Allow users to use up/down/left/right/tab/enter keys to operate the "
 "lxlauncher"
@@ -79,10 +79,6 @@ msgstr "Matematika"
 msgid "Play"
 msgstr "Játék"
 
-#: ../data/lxde-science.directory.in.h:1
-msgid "Science"
-msgstr "Tudomány"
-
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
 msgstr "Webes levelezés"
@@ -90,6 +86,9 @@ msgstr "Webes levelezés"
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
 msgstr "Munka"
+
+#~ msgid "Science"
+#~ msgstr "Tudomány"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
