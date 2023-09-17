@@ -95,7 +95,12 @@ tvsn_get_active_workspace_number ( GdkScreen *screen )
         XFree ( prop_ret );
     }
 
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+    gdk_error_trap_pop_ignored ();
+#else
     gdk_error_trap_pop ();
+#endif
 
     return ws_num;
 }
