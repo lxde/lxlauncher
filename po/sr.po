@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LXLauncher 0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-21 13:59+0200\n"
+"POT-Creation-Date: 2025-01-27 16:40+0100\n"
 "PO-Revision-Date: 2015-05-01 12:04+0000\n"
 "Last-Translator: Jay A. Fleming <tito.nehru.naser@gmail.com>\n"
 "Language-Team: \n"
@@ -21,10 +21,6 @@ msgstr ""
 "X-Generator: Pootle 2.7\n"
 "X-POOTLE-MTIME: 1430481851.000000\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
 #: ../src/lxlauncher.c:124
 msgid "_Customize"
 msgstr "_Прилагоди"
@@ -74,6 +70,10 @@ msgstr "Да ли да сви потомци буду исте величине"
 #, c-format
 msgid "Command not found"
 msgstr "Није пронађена ова наредба"
+
+#: ../data/lxde-language.directory.in.h:1
+msgid "Language"
+msgstr ""
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lxlauncher 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-21 13:59+0200\n"
+"POT-Creation-Date: 2025-01-27 16:40+0100\n"
 "PO-Revision-Date: 2015-07-12 09:12+0000\n"
 "Last-Translator: Daniele Forsi <daniele@forsi.it>\n"
 "Language-Team: \n"
@@ -20,10 +20,6 @@ msgstr ""
 "X-POOTLE-MTIME: 1436692373.000000\n"
 
 #
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
 #: ../src/lxlauncher.c:124
 msgid "_Customize"
 msgstr "_Personalizza"
@@ -71,6 +67,10 @@ msgstr "Se i figli devono avere tutti la stessa dimensione"
 #, c-format
 msgid "Command not found"
 msgstr "Comando non trovato"
+
+#: ../data/lxde-language.directory.in.h:1
+msgid "Language"
+msgstr ""
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LxLauncher\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-21 13:59+0200\n"
+"POT-Creation-Date: 2025-01-27 16:40+0100\n"
 "PO-Revision-Date: 2015-08-17 01:29+0000\n"
 "Last-Translator: Anonymous Pootle User\n"
 "Language-Team: English UK en_GB <yorvik.ubunto@gmail.com>\n"
@@ -14,10 +14,6 @@ msgstr ""
 "X-Generator: Pootle 2.7\n"
 "X-POOTLE-MTIME: 1439774950.990020\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
 #: ../src/lxlauncher.c:124
 msgid "_Customize"
 msgstr "_Customise"
@@ -67,6 +63,10 @@ msgstr "Whether the children should be all the same size"
 #, c-format
 msgid "Command not found"
 msgstr "Command not found"
+
+#: ../data/lxde-language.directory.in.h:1
+msgid "Language"
+msgstr ""
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"

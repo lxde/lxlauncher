@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-21 13:59+0200\n"
+"POT-Creation-Date: 2025-01-27 16:40+0100\n"
 "PO-Revision-Date: 2015-08-17 01:29+0000\n"
 "Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,6 @@ msgstr ""
 "X-Generator: Pootle 2.7\n"
 "X-POOTLE-MTIME: 1439774953.875007\n"
 
-#.
-#. item = gtk_separator_menu_item_new();
-#. gtk_menu_shell_append(p, item);
-#.
 #: ../src/lxlauncher.c:124
 msgid "_Customize"
 msgstr "_Meresamkan"
@@ -73,6 +69,10 @@ msgstr "Sama ada kanak-kanak itu semua seharusnya sama saiz "
 #, c-format
 msgid "Command not found"
 msgstr "Arahan tidak dijumpai"
+
+#: ../data/lxde-language.directory.in.h:1
+msgid "Language"
+msgstr ""
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"
