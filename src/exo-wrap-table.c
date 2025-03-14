@@ -2,6 +2,7 @@
 /*-
  * Copyright (c) 2000      Ramiro Estrugo <ramiro@eazel.com>
  * Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
+ *               2025      Ingo Brückl
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -508,8 +509,10 @@ exo_wrap_table_layout (ExoWrapTable *table)
   if (G_UNLIKELY (num_cols != table->priv->num_cols))
     {
       table->priv->num_cols = num_cols;
+#if !GTK_CHECK_VERSION(3, 0, 0)
       gtk_widget_queue_resize (GTK_WIDGET (table));
       return;
+#endif
     }
 
   /* determine the horizontal bounds */
