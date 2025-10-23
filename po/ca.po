@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-27 16:40+0100\n"
-"PO-Revision-Date: 2017-06-12 14:48+0000\n"
+"PO-Revision-Date: 2025-10-23 10:55+0200\n"
 "Last-Translator: Davidmp <rbndavid@gmail.com>\n"
 "Language-Team: LXDE Catalan translators group\n"
 "Language: ca\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.8\n"
+"X-Generator: Poedit 3.6\n"
 "X-POOTLE-MTIME: 1497278897.330768\n"
 
 #: ../src/lxlauncher.c:124
@@ -26,11 +26,11 @@ msgstr "_Personalitza"
 #: ../src/lxlauncher.c:641
 #, c-format
 msgid "Go back to \"%s\""
-msgstr "Torna a \"%s\""
+msgstr "Torna a %s"
 
 #: ../src/lxlauncher.c:903
 msgid "Enable key navigation"
-msgstr "Habilita la navegació amb teclat"
+msgstr "Habilita la navegació amb el teclat"
 
 #: ../src/lxlauncher.c:904
 msgid ""
@@ -38,7 +38,7 @@ msgid ""
 "lxlauncher"
 msgstr ""
 "Permet que els usuaris usin les tecles amunt / avall / esquerra / dreta / "
-"tabulador / retorn per treballar amb lxlauncher"
+"tabulador / retorn per treballar amb lxlauncher."
 
 #: ../src/exo-wrap-table.c:196
 msgid "Column spacing"
@@ -67,11 +67,11 @@ msgstr "Si els fills han de ser de la mateixa mida"
 #: ../src/misc.c:344
 #, c-format
 msgid "Command not found"
-msgstr "No s'ha localitzat l'ordre"
+msgstr "No s'ha trobat l'ordre."
 
 #: ../data/lxde-language.directory.in.h:1
 msgid "Language"
-msgstr ""
+msgstr "Llengua"
 
 #: ../data/lxde-learn.directory.in.h:1
 msgid "Learn"
@@ -87,7 +87,7 @@ msgstr "Jocs"
 
 #: ../data/lxde-webmail.directory.in.h:1
 msgid "Web Mail"
-msgstr "Correu web"
+msgstr "Correu electrònic"
 
 #: ../data/lxde-work.directory.in.h:1
 msgid "Work"
