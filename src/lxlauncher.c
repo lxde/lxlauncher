@@ -960,6 +960,7 @@ int main(int argc, char** argv)
 
     main_window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
     gtk_window_move( GTK_WINDOW(main_window), 0, 0 );
+    gtk_window_set_decorated( GTK_WINDOW(main_window), FALSE );
     gtk_window_set_skip_pager_hint( GTK_WINDOW(main_window), TRUE );
     gtk_window_set_skip_taskbar_hint( GTK_WINDOW(main_window), TRUE );
 
